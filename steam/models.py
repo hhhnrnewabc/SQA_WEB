@@ -19,8 +19,8 @@ class Game(models.Model):
 class GameLanguages(models.Model):
     game = models.ForeignKey(Game)
     language = models.CharField(max_length=200)
-    interface = models.BigIntegerField()
-    full_audio = models.BigIntegerField()
+    interface = models.BooleanField()
+    full_audio = models.BooleanField()
     subtitles = models.BigIntegerField()
 
 
@@ -52,3 +52,4 @@ class GameSystemRequirements(models.Model):
     graphics = models.CharField(max_length=50)
     hard_drive = models.CharField(max_length=50)
     additional_notes = models.CharField(max_length=200)
+
