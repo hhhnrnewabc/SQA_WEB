@@ -1,3 +1,54 @@
 from django.db import models
 
-# Create your models here.
+REQUIRED_LEVEL = {
+    ('M', 'Minimum'),
+    ('R', 'Recommended'),
+    ('O', 'Other'),
+}
+
+
+class Game(models.Model):
+    name = models.CharField(max_length=200)
+    game_type = models.CharField(max_length=20)
+    release_date = models.DateTimeField('Release Date')
+    web = models.URLField(max_length=225)
+    developer = models.CharField(max_length=200)
+    publisher = models.CharField(max_length=200)
+
+
+class GameLanguages(models.Model):
+    game = models.ForeignKey(Game)
+    language = models.CharField(max_length=200)
+    interface = models.BigIntegerField()
+    full_audio = models.BigIntegerField()
+    subtitles = models.BigIntegerField()
+
+
+class GameVersions(models.Model):
+    game = models.ForeignKey(Game)
+    version = models.CharField(max_length=10)
+    updated_date = models.DateTimeField('Updated Date')
+
+
+class GameUpdatedDate(models.Manager):
+    game = models.ForeignKey(Game)
+    version = models.ForeignKey(GameVersions)
+    reason = models.CharField(max_length=1000)
+
+
+class GameReviews(models.Model):
+    game = models.ForeignKey(Game)
+    pub_date = models.DateTimeField('Published Date')
+    version = models.ForeignKey(GameVersions)
+    comment = models.CharField(max_length=200)
+
+
+class GameSystemRequirements(models.Model):
+    game = models.ForeignKey(Game)
+    required_level = models.CharField(max_length=1, choices=REQUIRED_LEVEL)
+    os = models.CharField(max_length=50)
+    processor = models.CharField(max_length=50)
+    memory = models.CharField(max_length=50)
+    graphics = models.CharField(max_length=50)
+    hard_drive = models.CharField(max_length=50)
+    additional_notes = models.CharField(max_length=200)
