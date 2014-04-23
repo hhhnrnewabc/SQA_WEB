@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'steam',
+    'baseuser',
 
 )
 
@@ -131,3 +132,5 @@ MEDIA_ROOT = "/var/www/swim-fish.twbbs.orgmedia/"
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+AUTH_USER_MODEL = 'baseuser.BaseUser'
