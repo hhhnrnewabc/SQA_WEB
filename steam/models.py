@@ -11,7 +11,7 @@ class Game(models.Model):
     name = models.CharField(max_length=200)
     game_type = models.CharField(max_length=20)
     release_date = models.DateTimeField('Release Date')
-    web = models.URLField(max_length=225)
+    web_url = models.URLField(max_length=225)
     developer = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
 
@@ -19,9 +19,9 @@ class Game(models.Model):
 class GameLanguages(models.Model):
     game = models.ForeignKey(Game)
     language = models.CharField(max_length=200)
-    interface = models.BooleanField()
-    full_audio = models.BooleanField()
-    subtitles = models.BigIntegerField()
+    has_interface = models.BooleanField()
+    has_full_audio = models.BooleanField()
+    has_subtitles = models.BooleanField()
 
 
 class GameVersions(models.Model):
