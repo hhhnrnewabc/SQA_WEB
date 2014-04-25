@@ -12,7 +12,7 @@ class UserManager(BaseUserManager):
     def _create_user(self, email, password,
                      is_staff, is_superuser, **extra_fields):
         """
-        Creates and saves a User with the given username, email and password.
+        Creates and saves a User with the given email and password.
         """
         now = timezone.now()
         if not email:
@@ -44,14 +44,16 @@ class BaseUser(AbstractBaseUser, PermissionsMixin):
     An abstract base class implementing a fully featured User model with
     admin-compliant permissions.
 
-    Username, password and email are required. Other fields are optional.
+    password, is_superuser, groups, user_permissions in PermissionsMixin
+
+    Username, email are required. Other fields are optional.
     """
 
     email = models.EmailField(_('email address'), unique=True, max_length=225)
     is_staff = models.BooleanField(_('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin '
                     'site.'))
-    is_active = models.BooleanField(_('active'), default=False,
+    is_active = models.BooleanField(_('active'), default=True,
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
@@ -76,4 +78,5 @@ class BaseUser(AbstractBaseUser, PermissionsMixin):
         """
         Sends an email to this User.
         """
-        send_mail(subject, message, from_email, [self.email], **kwargs)
+        # send_mail(subject, message, from_email, [self.email], **kwargs)
+        return "sent to " + self.email +" "+ subject +" "+ message

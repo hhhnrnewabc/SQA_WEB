@@ -59,6 +59,7 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'steam',
     'baseuser',
+    'django_nose',  #django nose for testing
 
 )
 
@@ -134,3 +135,17 @@ MEDIA_ROOT = "/var/www/swim-fish.twbbs.orgmedia/"
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 AUTH_USER_MODEL = 'baseuser.BaseUser'
+
+#django nose testing setting
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'baseuser' apps
+NOSE_ARGS = [
+    '--with-coverage',
+    # '--cover-erase',
+    '--cover-tests',
+    '--cover-package=baseuser',
+    '--cover-html',
+
+]
