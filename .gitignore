@@ -58,3 +58,16 @@ docs/_build/
 #Django nose test output file
 cover/
 
+#html fonts image
+fonts/
+*.ttf
+*.eot
+*.svg
+*.woff
+
+images/
+*.png
+*.jpg
+*.ico
+
+
