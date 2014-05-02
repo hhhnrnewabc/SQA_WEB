@@ -5,6 +5,19 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from baseuser.models import BaseUser
+from steam_user.models import SteamUser
+from steam_dev.models import SteamDeveloper
+
+class SteamUserInline(admin.StackedInline):
+    model = SteamUser
+    readonly_fields = ('created', 'api_token', 'secret_token')
+
+
+class SteamDeveloperInline(admin.StackedInline):
+    model = SteamDeveloper
+    fieldsets = [
+        (None,               {'fields': ['steam_user', ]}),
+    ]
 
 
 class UserCreationForm(forms.ModelForm):
@@ -62,6 +75,7 @@ class BaseUserAdmin(UserAdmin):
     # that reference specific fields on auth.User.
     list_display = ('email', 'is_active', 'is_staff')
     list_filter = ('is_staff',)
+    inlines = [SteamUserInline, SteamDeveloperInline]
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Permissions', {'fields': ('is_active', 'is_staff',)}),

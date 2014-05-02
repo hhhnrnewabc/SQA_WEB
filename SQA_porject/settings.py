@@ -57,8 +57,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'steam',
     'baseuser',
+    'steam',
+    'steam_dev',
+    'steam_user',
     'django_nose',  #django nose for testing
 
 )
@@ -70,6 +72,18 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    'django.core.context_processors.request',  # tags need
 )
 
 ROOT_URLCONF = 'SQA_porject.urls'
@@ -108,7 +122,8 @@ DATABASES = {
 LANGUAGE_CODE = 'en-us'
 # LANGUAGE_CODE = 'zh-tw'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
@@ -123,11 +138,11 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "/var/www/swim-fish.twbbs.org/static/"
+STATIC_ROOT = "/usr/local/var/www/swim-fish.twbbs.org/static/"
 # STATICFILES_DIRS =("/var/www/example.com/media",)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = "/var/www/swim-fish.twbbs.orgmedia/"
+MEDIA_ROOT = "/usr/local/var/www/swim-fish.twbbs.org/media/"
 
 # #SSL
 # SESSION_COOKIE_SECURE = True

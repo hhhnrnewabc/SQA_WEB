@@ -30,7 +30,7 @@ class GameVersions(models.Model):
     updated_date = models.DateTimeField('Updated Date')
 
 
-class GameUpdatedDate(models.Manager):
+class GameUpdatedDate(models.Model):
     game = models.ForeignKey(Game)
     version = models.ForeignKey(GameVersions)
     reason = models.CharField(max_length=1000)
