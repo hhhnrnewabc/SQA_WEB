@@ -54,3 +54,7 @@ docs/_build/
 
 #PyCharm idea file
 .idea/
+
+#Django nose test output file
+cover/
+
