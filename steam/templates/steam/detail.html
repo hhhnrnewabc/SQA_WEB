@@ -1,0 +1,151 @@
+{% load staticfiles %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<!-- Bootstrap core CSS -->
+<link href="{% static 'polls/stylesheets/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{% static 'polls/stylesheets/signin.css' %}" rel="stylesheet">
+<link href="{% static 'polls/stylesheets/dashboard.css' %}" rel="stylesheet">
+<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'polls:index' %}">Home</a>
+                </li>
+                <li><a href="#about">About</a>
+                </li>
+                <li><a href="#contact">Contact</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a>
+                        </li>
+                        <li><a href="#">Another action</a>
+                        </li>
+                        <li><a href="#">Something else here</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a>
+                        </li>
+                        <li><a href="#">One more separated link</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                {% if not user.is_authenticated %}
+                <li><a href="{% url 'polls:loginPage' %}">Login</a>
+                </li>
+                {% else %}
+                <li><a href="{% url 'polls:userLogout' %}">Logout</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>{{ user.username }}</strong>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview</a>
+            </li>
+            <li><a href="#">Reports</a>
+            </li>
+            <li><a href="#">Analytics</a>
+            </li>
+            <li><a href="#">Export</a>
+            </li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a>
+            </li>
+            <li><a href="">Nav item again</a>
+            </li>
+            <li><a href="">One more nav</a>
+            </li>
+            <li><a href="">Another nav item</a>
+            </li>
+            <li><a href="">More navigation</a>
+            </li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a>
+            </li>
+            <li><a href="">One more nav</a>
+            </li>
+            <li><a href="">Another nav item</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        {% if error_message %}
+        <div class="alert alert-danger fade in">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4>{{ error_message }}</h4>
+        </div>
+        {% endif %}
+
+        <div class="jumbotron">
+            <h1>{{ poll.question }}</h1>
+            <div class="radio">
+                <form action="{% url 'polls:vote' poll.id %}" method="post">
+                    {% csrf_token %} {% if poll.choice_set.all %} {% for choice in poll.choice_set.all %}
+                    <div class="radio">
+                        <label for="choice{{ forloop.counter }}">
+                            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">{{ choice.choice_text }}
+                        </label>
+                    </div>
+                    {% endfor %} {% else %}
+                    <div class="alert alert-warning">
+                        <a href="#" class="alert-link">
+                            <p>No choice are available.</p>
+                        </a>
+                    </div>
+                    {% endif %}
+                    <input class="btn btn-primary btn-lg" type="submit" value="Vote" />
+                </form>
+
+            </div>
+            <p><a class="btn btn-primary btn-lg" role="button" href="{% url 'polls:results' poll.id %}">Results</a>
+            </p>
+        </div>
+
+        <div>
+            <ul class="pager">
+                <li class="previous disabled"><a href="#">&larr; Older</a>
+                </li>
+                <li class="next"><a href="#">Newer &rarr;</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="{% static 'polls/javascripts/jquery.min.js' %}"></script>
+<script src="{% static 'polls/javascripts/bootstrap.js' %}"></script>

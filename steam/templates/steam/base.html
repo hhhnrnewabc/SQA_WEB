@@ -1,0 +1,122 @@
+{% load staticfiles %} 
+{% load tags %}
+
+
+{% block loadhead %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
+
+
+    {% block title %}{% endblock %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'steam/stylesheets/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'steam/stylesheets/jumbotron.css' %}" type="text/css" rel="stylesheet">
+
+    {% block importCSS %}{% endblock %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+{% endblock %} 
+
+{% block topbar %}
+<body style="">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header col-md-3">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'steam:index' %}">SQA Game Center Project</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav col-md-5">
+                <li class="{% active request "^/steam/$" %}"><a href="{% url 'steam:index' %}">Home</a>
+                </li>
+                <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">About</a>
+                </li>
+                <li class="{% active request "^/authprofile/$" %} "><a href="#">User Profile</a>
+                </li>
+                <li class="dropdown {% block topbarDropdown %} {% endblock %}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a>
+                        </li>
+                        <li><a href="#">Another action</a>
+                        </li>
+                        <li><a href="#">Something else here</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a>
+                        </li>
+                        <li><a href="#">One more separated link</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav col-md-4">
+                {% if not user.is_authenticated %}
+                <li class=""><a href="{% url 'steam:user_login' %}">Login</a>
+                </li>
+                <li class=""><a href="{% url 'steam:user_singup' %}">Login</a>
+                </li>
+                {% else %}
+                <li class=""><a href="{% url 'steam:user_logout' %}">Logout</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>{{ user.email|truncatechars:30 }}</strong>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+
+{# ----- Use this block to edit the page ----- #}
+{% block message %}{% endblock %}
+{% block maininfo %}{% endblock %}
+{% block secondinfo %}{% endblock %}
+{% block thirdinfo %}{% endblock %}
+{# -------------------------------------------- #}
+
+{% block copyright %}
+<div class="container">
+  <hr>
+    <footer>
+        <p>©  FCU SQA Game Center Project 2014</p>
+    </footer>
+</div>
+{% endblock %}
+
+
+{% block loadjavascripts %}
+<script src="{% static 'steam/javascripts/jquery.min.js' %}"></script>
+<script src="{% static 'steam/javascripts/bootstrap.js' %}"></script>
+{% endblock %}
+
+</body>
+
+{% endblock %} 

@@ -1,0 +1,88 @@
+{% extends "polls/base.html" %} {% load staticfiles %} 
+
+
+{% block title %}
+  <title>Login</title>
+{% endblock %}
+
+
+{% block importCSS %}<link href="{% static 'polls/stylesheets/signin.css' %}" rel="stylesheet">{% endblock %}
+
+
+
+
+    {% block maininfo %}
+    {% if login_success %}
+    <div class="alert alert-success">
+        <a href="#" class="alert-link">{{ login_success }}</a>
+    </div>
+    {% elif login_faill %}
+    <div class="alert alert-danger">
+        <a href="#" class="alert-link">{{ login_faill }}</a>
+    </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="">
+            {% if next %}
+            <form action="{% url 'polls:userLogin' %}?next={{next}}" class="form-signin" method="post">
+                {%else%}
+                <form action="{% url 'polls:userLogin' %}" class="form-signin" method="post">
+                    {% endif %} {% csrf_token %}
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <div class="form-group">
+                        <label for="inputEmail3" name="UserName" class="control-label">User Name</label>
+                        <div class="">
+                            <input type="text" name="UserName" class="form-control" id="inputEmail3" placeholder="User Name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="control-label">Password</label>
+                        <div class="">
+                            <input type="password" name="UserPassword" class="form-control" id="inputPassword3" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <!--                 <div class="form-group">
+                    <div class="">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div> -->
+                    <div class="form-group">
+                        <div class="">
+                            <button type="submit" class="btn btn-default">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+
+        <!--         <form action="{% url 'polls:userLogin' %}" class="form-signin" method="post">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </span>
+                    <input type="text" name="UserName" class="form-control" placeholder="Email address" required="" autofocus="">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </span>
+                    <input type="password" name="UserPassword" class="form-control" placeholder="Password" required="">
+                </div>
+            </div>
+
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me">Remember me
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+ -->
+    </div>
+    {% endblock %}
+

@@ -1,0 +1,110 @@
+{% extends "polls/base.html" %} {% load staticfiles %} {% block title %}
+<title>User Profile</title>
+{% endblock %} 
+{% block importCSS %}<link href="{% static 'polls/stylesheets/signin.css' %}" rel="stylesheet">{% endblock %} 
+
+
+
+{% block message %}
+  {% if no_user_profile %}
+    <div class="alert alert-danger alert-dismissable container">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>{{no_user_profile}}</strong>
+    </div>
+  {% endif %}
+{% endblock %} 
+
+{% block maininfo %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <h2></h2>
+            <p</p>
+                <p>
+                    <a></a>
+                </p>
+        </div>
+
+        <div class="col-md-8 ">
+            <h2>User Profile</h2>
+            <table class="table">
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">Auth User ID:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ user.id }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">Auth User Name:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ user.username }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">Auth User Password:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ user.password|truncatechars:30 }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">ID:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ userProfile.id }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">User Name:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ userProfile.user }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">Nick Name:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ userProfile.nick_name }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">Birthday:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ userProfile.birthday }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">Sex:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ userProfile.sex }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-3">
+                        <p class="text-right">Website:</p>
+                    </td>
+                    <td>
+                        <a href="">{{ userProfile.website  }}</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
