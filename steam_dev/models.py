@@ -6,6 +6,7 @@ from time import gmtime, strftime
 import binascii
 import hashlib
 import os
+from django.conf import settings
 
 
 def get_upload_file_name(instance, filename):
@@ -26,9 +27,9 @@ class SteamDevAPPS(models.Model):
     app_introduction = models.CharField(_('APP Introduction'), max_length=300,
                                         help_text=_('Your APP Introduction. Max Length:300'))
     photo_big = models.ImageField(_('Image'), help_text=_('Image:jpg'), upload_to=get_upload_file_name, max_length=200,
-                                  blank=True)
+                                  blank=True, default=settings.NO_IMAGE_AVAILABLE_PHOTO)
     photo_smell = models.ImageField(_('Image'), help_text=_('Image:jpg'), upload_to=get_upload_file_name,
-                                    max_length=200, blank=True)
+                                    max_length=200, blank=True, default=settings.NO_IMAGE_AVAILABLE_PHOTO)
     api_token = models.CharField(max_length=100, unique=True, blank=True)
     secret_token = models.CharField(max_length=100, blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -45,7 +46,21 @@ class SteamDevAPPS(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.api_token:
-            self.api_token = self.generate_key()
+            key = self.generate_key()
+            # Check api_token is unique
+            try:
+                count = 0  # generate_key in 10 times
+                while count < 10 and SteamUser.objects.get(api_token=key):
+                    count += 1
+                    key = self.generate_key()
+
+            except SteamUser.DoesNotExist:
+                self.api_token = key
         if not self.secret_token:
             self.secret_token = self.generate_key()
         return super(SteamDevAPPS, self).save(*args, **kwargs)
+
+    def update(self, **kwargs):
+        for k, v in kwargs.iteritems():
+            setattr(self, k, v)
+        self.save()

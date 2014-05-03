@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
 from steam import views
+from steam_user import views as steam_user_views
 
 
 urlpatterns = patterns('',
@@ -20,6 +21,13 @@ urlpatterns = patterns('',
     url(r'^userLogin/$', views.user_login, name='user_login'),
 
     url(r'^userLogout/$', views.user_logout, name='user_logout'),
+
+    url(r'^userSignup/$', views.CreateUserView.as_view(), name='user_signup'),
+	url(r'^userSignup/thanks/$', views.ThanksView.as_view(), name='thanks'),
+
+    url(r'active_user/$', views.active_user, name='active_user' ),
+
+     url(r'^user_profile/$', steam_user_views.SteamUserView.as_view(), name='steam_user_profile'),
 
 
 	# url(r'^contact/$', views.ContactView.as_view(), name='contact'),

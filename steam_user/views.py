@@ -1,3 +1,79 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, render_to_response
+from django.http import HttpResponseRedirect
+from django.template import RequestContext, loader
+from django.core.urlresolvers import reverse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import  login_required
+from django.forms.models import model_to_dict
+from steam_user.models import SteamUser
+from steam_user.form import SteamUserForm
+from django.views.generic.edit import FormView
+from django.http import Http404
+from django.contrib import messages
+from django.conf import settings
+from django.db.models.fields.files import ImageFieldFile, FileField
 
-# Create your views here.
+
+class SteamUserView(FormView):
+    template_name = 'steam_user/user_profile.html'
+    form_class = SteamUserForm
+    success_url = '/steam/user_profile/'
+    _user = None
+    _is_created = None
+    _steam_user = None
+
+    def form_valid(self, form):
+        if self._is_created:
+            form.instance.baseuser = self._user
+            form.save()
+        else:
+            try:
+                old_photo_name = self._steam_user.photo.name
+                new_photo_name = None
+                new_photo = form.cleaned_data.get('photo', False)
+                if new_photo:
+                    new_photo_name = new_photo.name
+
+                # if there upload new image, delete old image
+                if new_photo_name != '' and old_photo_name != '' \
+                        and new_photo_name != settings.NO_IMAGE_AVAILABLE_PHOTO and new_photo_name != old_photo_name:
+                    import os
+                    # delete the previous image but not default images
+                    if old_photo_name and old_photo_name != settings.NO_IMAGE_AVAILABLE_PHOTO:
+                        os.remove(os.path.join(settings.MEDIA_ROOT, str(old_photo_name)))
+                    self._steam_user.update(form.cleaned_data)
+                    messages.success(self.request, str(self._user.get_email) + ' Image Uploaded ')
+
+                # new image is not allow to save
+                # return old image
+                # see form_class clean_photo setting
+                else:
+                    form.cleaned_data['photo'] = self._steam_user.photo
+            except OSError:
+                messages.error(self.request, str(self._user.get_email()) + ' Upload Failed ')
+
+        return super(SteamUserView, self).form_valid(form)
+
+    def dispatch(self, *args, **kwargs):
+        user = self.request.user
+        if user.is_authenticated():
+            self._user = user
+            self._steam_user, self._is_created = SteamUser.objects.get_or_create(baseuser=self._user)
+        else:
+            return HttpResponseRedirect(reverse('steam:user_signup'))
+
+        return super(SteamUserView, self).dispatch(*args, **kwargs)
+
+    def get_initial(self):
+        # no image will return default image
+        if self._steam_user.photo.name == '':
+            default_photo = ImageFieldFile(instance=None, field=FileField(), name=settings.NO_IMAGE_AVAILABLE_PHOTO)
+            self._steam_user.photo = default_photo
+            # save image path to db
+            self._steam_user.update({'photo': default_photo})
+
+        return model_to_dict(self._steam_user)
+
+    def get_form_kwargs(self):
+        kwargs = super(SteamUserView, self).get_form_kwargs()
+        return kwargs

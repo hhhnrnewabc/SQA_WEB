@@ -48,15 +48,15 @@
             <a class="navbar-brand" href="{% url 'steam:index' %}">SQA Game Center Project</a>
         </div>
         <div class="navbar-collapse collapse">
+          {% if not user.is_authenticated %}
+            <ul class="nav navbar-nav col-md-6">
+          {% else %}
             <ul class="nav navbar-nav col-md-5">
-                <li class="{% active request "^/steam/$" %}"><a href="{% url 'steam:index' %}">Home</a>
-                </li>
-                <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">About</a>
-                </li>
-                <li class="{% active request "^/authprofile/$" %} "><a href="#">User Profile</a>
+          {% endif %}
+                <li class="{% active request "^/steam/$" %}"><a href="{% url 'steam:index' %}">Download</a>
                 </li>
                 <li class="dropdown {% block topbarDropdown %} {% endblock %}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Game <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a>
                         </li>
@@ -72,23 +72,31 @@
                         </li>
                     </ul>
                 </li>
+                <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">About</a>
+                </li>
+                <li class="{% active request "^/authprofile/$" %} "><a href="#">User</a>
+                </li>
+                <li class="{% active request "^/authprofile/$" %} "><a href="#">Developer</a>
+                </li>
             </ul>
+
+            {% if not user.is_authenticated %}
+            <ul class="nav navbar-nav col-md-3">
+                <li class=""><a href="{% url 'steam:loginPage' %}">Login</a>
+                </li>
+                <li class=""><a href="{% url 'steam:user_signup' %}">Sign up</a>
+                </li>
+            {% else %}
             <ul class="nav navbar-nav col-md-4">
-                {% if not user.is_authenticated %}
-                <li class=""><a href="{% url 'steam:user_login' %}">Login</a>
-                </li>
-                <li class=""><a href="{% url 'steam:user_singup' %}">Login</a>
-                </li>
-                {% else %}
                 <li class=""><a href="{% url 'steam:user_logout' %}">Logout</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{% url 'steam:steam_user_profile' %}">
                         <span class="glyphicon glyphicon-user"></span>
                         <strong>{{ user.email|truncatechars:30 }}</strong>
                     </a>
                 </li>
-                {% endif %}
+            {% endif %}
             </ul>
         </div>
         <!--/.navbar-collapse -->

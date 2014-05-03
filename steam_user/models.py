@@ -6,6 +6,8 @@ from time import gmtime, strftime
 import binascii
 import hashlib
 import os
+from django.conf import settings
+
 
 SEX = {
     ('F','Female'),
@@ -22,13 +24,14 @@ def get_upload_file_name(instance, filename):
 
 class SteamUser(models.Model):
     baseuser = models.OneToOneField(BaseUser)
-    first_name = models.CharField(_('First Name'), max_length=30, help_text=_('Your First Name'))
-    last_name = models.CharField(_('Last Name'), max_length=30, help_text=_('Your Last Name'))
-    nick_name = models.CharField(_('Nick Name'), max_length=30, help_text=_('Your Nick Name'))
-    cell_phone = models.CharField(_('Cell Phone'),  max_length=20, help_text=_('Cell Phone Number ex:+886 912-345-678'))
-    sex = models.CharField(_('Sex'), max_length=1, choices=SEX, help_text=_('Sex :Female, Male, Other '))
+    first_name = models.CharField(_('First Name'), max_length=30, help_text=_('Your First Name'), blank=True)
+    last_name = models.CharField(_('Last Name'), max_length=30, help_text=_('Your Last Name'), blank=True)
+    nick_name = models.CharField(_('Nick Name'), max_length=30, help_text=_('Your Nick Name'), blank=True)
+    cell_phone = models.CharField(_('Cell Phone'),  max_length=20, help_text=_('Cell Phone Number ex:+886 912-345-678'),
+                                  blank=True)
+    sex = models.CharField(_('Sex'), max_length=1, choices=SEX, help_text=_('Sex :Female, Male, Other '), blank=True)
     photo = models.ImageField(_('Image'), help_text=_('Image:jpg'), upload_to=get_upload_file_name, max_length=200,
-                              blank=True)
+                              blank=True, default=settings.NO_IMAGE_AVAILABLE_PHOTO)
 
     api_token = models.CharField(max_length=100, unique=True, blank=True)
     secret_token = models.CharField(max_length=100, blank=True)
@@ -41,15 +44,21 @@ class SteamUser(models.Model):
         self.secret_token = self.generate_key()
         self.save()
 
-    def save(self, *args, **kwargs):
+    def save(self, commit=True, *args, **kwargs):
         if not self.api_token:
             self.api_token = self.generate_key()
         if not self.secret_token:
             self.secret_token = self.generate_key()
-        return super(SteamUser, self).save(*args, **kwargs)
+        if commit:
+            return super(SteamUser, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.baseuser.email
+
+    def update(self, dict):
+        for k, v in dict.items():
+            setattr(self, k, v)
+        self.save()
 
 
 class StreamFriends(models.Model):

@@ -26,63 +26,29 @@
         <div class="">
             {% if next %}
             <form action="{% url 'steam:user_login' %}?next={{next}}" class="form-signin" method="post">
-                {%else%}
-                <form action="{% url 'steam:user_login' %}" class="form-signin" method="post">
-                    {% endif %} {% csrf_token %}
-                    <h2 class="form-signin-heading">Please sign in</h2>
-                    <div class="form-group">
-                        <label for="inputEmail" name="Email" class="control-label">User Email</label>
-                        <div class="">
-                            <input type="email" name="Email" class="form-control" id="inputEmail" placeholder="Email Address" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword3" class="control-label">Password</label>
-                        <div class="">
-                            <input type="password" name="UserPassword" class="form-control" id="inputPassword3" placeholder="Password" required>
-                        </div>
-                    </div>
-                    <!--                 <div class="form-group">
+            {%else%}
+            <form action="{% url 'steam:user_login' %}" class="form-signin" method="post">
+                {% endif %} {% csrf_token %}
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <div class="form-group">
+                    <label for="inputEmail" name="Email" class="control-label">User Email</label>
                     <div class="">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">Remember me
-                            </label>
-                        </div>
+                        <input type="email" name="Email" class="form-control" id="inputEmail" placeholder="Email Address" required>
                     </div>
-                </div> -->
-                    <div class="form-group">
-                        <div class="">
-                            <button type="submit" class="btn btn-default">Sign in</button>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="control-label">Password</label>
+                    <div class="">
+                        <input type="password" name="UserPassword" class="form-control" id="inputPassword3" placeholder="Password" required>
                     </div>
-                </form>
+                </div>
+                <div class="form-group">
+                    <div class="">
+                        <button type="submit" class="btn btn-primary form-control">Sign in</button>
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <!--         <form action="{% url 'steam:user_logout' %}" class="form-signin" method="post">
-            {% csrf_token %}
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <div>
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </span>
-                    <input type="text" name="UserName" class="form-control" placeholder="Email address" required="" autofocus="">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </span>
-                    <input type="password" name="UserPassword" class="form-control" placeholder="Password" required="">
-                </div>
-            </div>
-
-            <label class="checkbox">
-                <input type="checkbox" value="remember-me">Remember me
-            </label>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
- -->
     </div>
     {% endblock %}
 

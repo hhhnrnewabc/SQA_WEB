@@ -1,0 +1,24 @@
+{% extends "steam/base.html" %}{% load staticfiles %}{% load bootstrap %}
+
+{% block title %}
+  <title>Sign up</title>
+{% endblock %}
+
+
+{% block importCSS %}<link href="{% static 'steam/stylesheets/signin.css' %}" rel="stylesheet">{% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'steam/stylesheets/styles.css' %}" />
+
+{% block maininfo %}
+<div class="container">
+    <div class="">
+        <form action="{% url 'steam:user_signup' %}" method="post" class="form-signin">{% csrf_token %}
+            <h2 class="form-signin-heading">Sign up</h2>
+                {% for field in form %}
+                    {{ field|bootstrap }}
+                {% endfor %}
+        <input class="btn btn-success form-control" type="submit" value="Sign up" />
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -6,6 +6,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import permission_required, login_required
 from steam.models import Game
+from django.forms.models import model_to_dict
+from baseuser.models import BaseUser
+from steam_user.models import SteamUser
+from steam.form import UserCreationForm
+from django.views.generic.edit import FormView
+from django.views import generic
+from django.http import Http404
+from django.contrib import messages
 
 
 def index(request):
@@ -27,20 +35,18 @@ def user_login(request):
     if request.GET:
         next = request.GET['next']
 
-    # if username == "" or password == "":
-    #     return HttpResponseRedirect( reverse('polls:index' ) )
-
     user = authenticate(email=email, password=password)
     if user is not None:
         if user.is_active:
             login(request, user)
+            steam_user = get_object_or_404(SteamUser, baseuser=user)
+            if steam_user:
+                steam_user.create_new_secret_token()
             # Redirect to a success page.
             if next == "":
-                return HttpResponseRedirect( reverse('steam:index' ) )
+                return HttpResponseRedirect(reverse('steam:index'))
             else:
                 return HttpResponseRedirect(next)
-            # return render_to_response('polls/index.html', { 'login_success':"Login Success", },
-            #     context_instance=RequestContext(request, default_context ) )
 
         else:
             # Return a 'disabled account' error message
@@ -57,4 +63,48 @@ def user_logout(request):
     logout(request)
     return render_to_response('steam/index.html', {'logout_success': "Logout Success", },
                               context_instance=RequestContext(request, ))
+
+
+class CreateUserView(FormView):
+    template_name = 'steam/create_user.html'
+    form_class = UserCreationForm
+    success_url = 'thanks/'
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+
+        #Get user email
+        self.request.session['user'] = form.save().get_short_name()
+        return super(CreateUserView, self).form_valid(form)
+
+
+class ThanksView(generic.View):
+
+    def get(self, request, *args, **kwargs):
+
+        text = '<div class="redirect">'
+        text += request.session['user']
+        text += ' is not active. '
+        text += 'Please check the URL.  Otherwise, '
+        text += '<a href="/steam/active_user/"> here</a> '
+        text += 'to active </div>'
+        return HttpResponse(text)
+
+
+def active_user(request):
+    email = request.session.get('user', None)
+    user = get_object_or_404(BaseUser, email=email)
+    if user:
+        user.is_active = True
+        user.save()
+
+        #AUTOMATIC LOGIN
+        user.backend = "django.contrib.auth.backends.ModelBackend"
+        login(request, user)
+
+    return render_to_response('steam/index.html', {'signup_success': "Sign up Success", },
+                              context_instance=RequestContext(request, ))
+
+
 

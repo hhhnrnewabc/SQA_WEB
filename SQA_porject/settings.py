@@ -62,6 +62,7 @@ INSTALLED_APPS = (
     'steam_dev',
     'steam_user',
     'django_nose',  #django nose for testing
+    'bootstrapform',  #Twitter Bootstrap for Django Form.
 
 )
 
@@ -164,3 +165,6 @@ NOSE_ARGS = [
     '--cover-html',
 
 ]
+
+NO_IMAGE_AVAILABLE_PHOTO = 'noImageAvailable300.png'
+
