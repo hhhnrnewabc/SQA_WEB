@@ -10,7 +10,7 @@ from django.contrib.auth.models import (
 class UserManager(BaseUserManager):
 
     def _create_user(self, email, password,
-                     is_staff, is_superuser, is_active=True, **extra_fields):
+                     is_staff, is_superuser, is_active=False, **extra_fields):
         """
         Creates and saves a User with the given email and password.
         """
@@ -27,7 +27,7 @@ class UserManager(BaseUserManager):
         return user
 
     def create_user(self, email=None, password=None, **extra_fields):
-        return self._create_user(email, password, False, False,
+        return self._create_user(email, password, False, False, False,
                                  **extra_fields)
 
     def create_staff(self, email=None, password=None, **extra_fields):
