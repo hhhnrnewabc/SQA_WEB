@@ -1,0 +1,5 @@
+#myModal_scroll_data .scrollspy-example
+{
+  height:500px;
+  overflow:auto;
+}

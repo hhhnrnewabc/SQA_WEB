@@ -168,3 +168,15 @@ NOSE_ARGS = [
 
 NO_IMAGE_AVAILABLE_PHOTO = 'noImageAvailable300.png'
 
+
+# define auto load templatetags
+AUTOLOAD_TEMPLATETAGS = (
+    'bootstrapform.templatetags.bootstrap',
+)
+
+# for every template page load {% load i18n %}...
+from django.template import add_to_builtins
+add_to_builtins('django.templatetags.i18n')
+add_to_builtins('django.contrib.staticfiles.templatetags.staticfiles')
+for tag in AUTOLOAD_TEMPLATETAGS:
+    add_to_builtins(tag)
