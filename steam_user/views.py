@@ -71,7 +71,9 @@ class SteamUserView(FormView):
             self._steam_user.photo = default_photo
             # save image path to db
             self._steam_user.update({'photo': default_photo})
-
+        # load data form models to form
+        # use model_to_dict(model_object) will return dict_data
+        # get_initial need return dict_type data to init the form
         return model_to_dict(self._steam_user)
 
     def get_form_kwargs(self):
