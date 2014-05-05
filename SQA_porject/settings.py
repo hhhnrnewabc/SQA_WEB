@@ -146,9 +146,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = "/usr/local/var/www/swim-fish.twbbs.org/media/"
 
 # #SSL
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 AUTH_USER_MODEL = 'baseuser.BaseUser'
 

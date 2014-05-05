@@ -15,7 +15,10 @@
 {% block maininfo %}
 <div class="container">
     <div class="">
-        <form action="{% url 'steam:user_signup' %}" method="post" class="form-signin">
+        {# when type Enter not auto sent form #}
+        {# in form add: onsubmit="return false" #}
+        {# and all input/button type="" can't be type="subment" , use type="button" #}
+        <form action="{% url 'steam:user_signup' %}" method="post" class="form-signin" onsubmit="return false">
             {% csrf_token %}
             <h2 class="form-signin-heading">Sign up</h2>
                 {% for field in form %}
@@ -40,7 +43,7 @@
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-danger btn-block" type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
-                    <input class="btn btn-success btn-block" type="submit" value={% trans '"I agree to the SQA Terms and Create Account"' %} />
+                    <input class="btn btn-success btn-block" type="button" value={% trans '"I agree to the SQA Terms and Create Account"' %} onclick="this.form.submit()" />
                   </div>
                 </div>
               </div>
