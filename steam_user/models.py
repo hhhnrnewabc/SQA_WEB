@@ -53,7 +53,18 @@ class SteamUser(models.Model):
             return super(SteamUser, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.baseuser.email
+        return self.get_full_name()
+
+    def get_first_name(self):
+        return self.first_name
+
+    def get_last_name(self):
+        return self.last_name
+
+    def get_full_name(self):
+        if self.first_name != '' and self.last_name != '':
+            return self.get_first_name() + self.get_last_name()
+        return "<No Full Name>" + self.baseuser.email
 
     def update(self, dict):
         for k, v in dict.items():
