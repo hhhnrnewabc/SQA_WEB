@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-06 01:57+0800\n"
+"POT-Creation-Date: 2014-05-06 05:29+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,14 @@ msgstr "圖片"
 #: form.py:8 models.py:33
 msgid "Image:jpg"
 msgstr "圖片:jpg"
+
+#: form.py:28
+msgid "Image file too large ( > 1mb )"
+msgstr "圖片檔案太大(超過1Mb)"
+
+#: form.py:37
+msgid "Couldn't read uploaded image"
+msgstr "無法上傳照片"
 
 #: models.py:13
 msgid "Female"

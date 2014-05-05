@@ -16,7 +16,7 @@ class UserManager(BaseUserManager):
         """
         now = timezone.now()
         if not email:
-            raise ValueError('The given email must be set')
+            raise ValueError(_('The given email must be set'))
         email = self.normalize_email(email)
         user = self.model(email=email,
                           is_staff=is_staff, is_active=is_active,
@@ -50,7 +50,8 @@ class BaseUser(AbstractBaseUser, PermissionsMixin):
     """
 
     email = models.EmailField(_('email address'), unique=True, max_length=225,
-                              error_messages={'unique': "This email has already been registered."})
+                              error_messages={'unique': _("This email has already been registered."),
+                                              'invalid': _("This is not the e-mail format")})
     is_staff = models.BooleanField(_('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin site.'))
     is_active = models.BooleanField(_('active'), default=True,

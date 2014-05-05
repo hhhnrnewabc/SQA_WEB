@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-05 23:55+0800\n"
+"POT-Creation-Date: 2014-05-06 05:46+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,28 +18,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: admin.py:27 admin.py:56
+msgid "Password"
+msgstr "密碼"
+
+#: admin.py:28
+msgid "Password confirmation"
+msgstr "確認密碼"
+
+#: admin.py:39
+msgid "Passwords don't match"
+msgstr "密碼不一致"
+
+#: admin.py:57
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user's "
+"password, but you can change the password using <a href=\"password/\">this "
+"form</a>."
+msgstr ""
+"密碼已經加密, 無法取的原始密碼, 重設密碼透過 <a href=\"password/\">這個表單</"
+"a>進行"
+
+#: models.py:19
+msgid "The given email must be set"
+msgstr "此欄位必須填入資料"
+
 #: models.py:52
 msgid "email address"
 msgstr "電子郵件地址"
 
+#: models.py:53
+msgid "This email has already been registered."
+msgstr "電子郵件已經被註冊"
+
 #: models.py:54
+msgid "This is not the e-mail format"
+msgstr "無效的電子郵件格式"
+
+#: models.py:55
 msgid "staff status"
 msgstr "工作人員"
 
-#: models.py:55
+#: models.py:56
 msgid "Designates whether the user can log into this admin site."
 msgstr "管理員 可以登入後端網站管理頁面"
 
-#: models.py:56
+#: models.py:57
 msgid "active"
 msgstr "啟用"
 
-#: models.py:57
+#: models.py:58
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr "使用者是否啟用, 如果為否則無法登入"
 
-#: models.py:59
+#: models.py:60
 msgid "date joined"
 msgstr "加入日期"

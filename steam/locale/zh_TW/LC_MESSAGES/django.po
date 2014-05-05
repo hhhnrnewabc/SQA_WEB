@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-06 01:50+0800\n"
+"POT-Creation-Date: 2014-05-06 05:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: form.py:30
+msgid "Email"
+msgstr "電子郵件"
+
+#: form.py:31
+msgid "This email has already been registered."
+msgstr "電子郵件已經被註冊"
+
+#: form.py:32
+msgid "This is not the e-mail format"
+msgstr "無效的電子郵件格式"
+
+#: form.py:34 templates/steam/login.html:39
+msgid "Password"
+msgstr "密碼"
+
+#: form.py:35
+msgid "Password confirmation"
+msgstr "確認密碼"
+
+#: form.py:46
+msgid "Passwords don't match"
+msgstr "密碼不一致"
 
 #: models.py:5
 msgid "Minimum"
@@ -110,14 +134,34 @@ msgstr "登出"
 msgid "FCU SQA Game Center Project Terms"
 msgstr "FCU SQA 遊戲中心專案 條款"
 
-#: templates/steam/create_user.html:45
+#: templates/steam/create_user.html:44
 msgid "Close"
 msgstr "離開"
 
-#: templates/steam/create_user.html:46
+#: templates/steam/create_user.html:45
 msgid "'I agree to the SQA Terms and Create Account'"
-msgstr "'我同意 SQA 條款, 註冊帳號"
+msgstr "'我同意 SQA 條款, 註冊帳號'"
 
-#: templates/steam/create_user.html:56
+#: templates/steam/create_user.html:55
 msgid "Next"
 msgstr "下一步"
+
+#: templates/steam/login.html:31
+msgid "Please sign in"
+msgstr "請登入"
+
+#: templates/steam/login.html:33
+msgid "User Email"
+msgstr "電子郵件"
+
+#: templates/steam/login.html:35
+msgid "\"Email Address\""
+msgstr "\"電子郵件地址\""
+
+#: templates/steam/login.html:41
+msgid "\"Password\""
+msgstr "\"密碼\""
+
+#: templates/steam/login.html:46
+msgid "Sign in"
+msgstr "註冊"

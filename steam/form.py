@@ -2,6 +2,7 @@ from django import forms
 from baseuser.models import BaseUser
 from steam_user.models import SteamUser
 from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
 
 
 class AdminImageWidget(forms.FileInput):
@@ -26,9 +27,12 @@ class AdminImageWidget(forms.FileInput):
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
-    email = forms.CharField(label='Email', widget=forms.EmailInput(attrs={'required': True}))
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'required': True}))
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput(attrs={'required': True}))
+    email = forms.EmailField(label=_('Email'),
+                             error_messages={'unique': _("This email has already been registered."),
+                                             'invalid': _("This is not the e-mail format")},
+                             widget=forms.EmailInput(attrs={'required': True}))
+    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={'required': True}))
+    password2 = forms.CharField(label=_('Password confirmation'), widget=forms.PasswordInput(attrs={'required': True}))
 
     class Meta:
         model = BaseUser
@@ -39,7 +43,7 @@ class UserCreationForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError(_("Passwords don't match"))
         return password2
 
     def save(self, commit=True):

@@ -6,6 +6,7 @@ from django.views.generic.edit import FormView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.forms.models import model_to_dict
 
 
 class UserDevView(FormView):
@@ -18,34 +19,6 @@ class UserDevView(FormView):
     _user = None
 
     def form_valid(self, form):
-        if self._is_created:
-            form.instance.baseuser = self._user
-            form.save()
-        else:
-            try:
-                old_photo_name = self._steam_user.photo.name
-                new_photo_name = None
-                new_photo = form.cleaned_data.get('photo', False)
-                if new_photo:
-                    new_photo_name = new_photo.name
-
-                # if there upload new image, delete old image
-                if new_photo_name != '' and old_photo_name != '' \
-                        and new_photo_name != settings.NO_IMAGE_AVAILABLE_PHOTO and new_photo_name != old_photo_name:
-                    import os
-                    # delete the previous image but not default images
-                    if old_photo_name and old_photo_name != settings.NO_IMAGE_AVAILABLE_PHOTO:
-                        os.remove(os.path.join(settings.MEDIA_ROOT, str(old_photo_name)))
-                    self._steam_user.update(form.cleaned_data)
-                    messages.success(self.request, str(self._user.get_email) + ' Image Uploaded ')
-
-                # new image is not allow to save
-                # return old image
-                # see form_class clean_photo setting
-                else:
-                    form.cleaned_data['photo'] = self._steam_user.photo
-            except OSError:
-                messages.error(self.request, str(self._user.get_email()) + ' Upload Failed ')
 
         return super(UserDevView, self).form_valid(form)
 
@@ -61,3 +34,11 @@ class UserDevView(FormView):
                                                                                  steam_user=self._steam_user)
 
         return super(UserDevView, self).dispatch(*args, **kwargs)
+
+    def get_initial(self):
+        # no image will return default image
+        if self._is_created:
+            self._steam_dev.update({'first_name': self._steam_user.first_name, 'last_name': self._steam_user.last_name})
+            self._steam_dev.save()
+
+        return model_to_dict(self._steam_dev)
