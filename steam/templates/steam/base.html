@@ -1,9 +1,11 @@
 {% load tags %}
 
-
 {% block loadhead %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,73 +36,76 @@
 {% endblock %} 
 
 {% block topbar %}
-<body style="">
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header col-md-3">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'steam:index' %}">SQA Game Center Project</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          {% if not user.is_authenticated %}
-            <ul class="nav navbar-nav col-md-6">
-          {% else %}
-            <ul class="nav navbar-nav col-md-5">
-          {% endif %}
-                <li class="{% active request "^/steam/$" %}"><a href="{% url 'steam:index' %}">Download</a>
-                </li>
-                <li class="dropdown {% block topbarDropdown %} {% endblock %}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Game" %} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">{% trans "Action" %}</a>
-                        </li>
-                        <li><a href="#">{% trans "Another action" %}</a>
-                        </li>
-                        <li><a href="#">{% trans "Something else here" %}</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">{% trans "Separated link" %}</a>
-                        </li>
-                        <li><a href="#">{% trans "One more separated link" %}</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">{% trans "About" %}</a>
-                </li>
-                <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "User" %}</a>
-                </li>
-                <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "Developer" %}</a>
-                </li>
-            </ul>
+<body {% block body_attrs %}style=""{% endblock %}>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header col-md-3">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'steam:index' %}">SQA Game Center Project</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              {% if not user.is_authenticated %}
+                <ul class="nav navbar-nav col-md-6">
+              {% else %}
+                <ul class="nav navbar-nav col-md-5">
+              {% endif %}
+                    <li class="{% active request "^/steam/$" %}"><a href="{% url 'steam:index' %}">Download</a>
+                    </li>
+                    <li class="dropdown {% block topbarDropdown %} {% endblock %}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Game" %} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">{% trans "Action" %}</a>
+                            </li>
+                            <li><a href="#">{% trans "Another action" %}</a>
+                            </li>
+                            <li><a href="#">{% trans "Something else here" %}</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">{% trans "Separated link" %}</a>
+                            </li>
+                            <li><a href="#">{% trans "One more separated link" %}</a>
+                            </li>
+                        </ul>
+                    </li>
+                     <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "User" %}</a>
+                    </li>
+                    <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "Developer" %}</a>
+                    </li>
+                    <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">{% trans "About" %}</a>
+                    </li>
+                </ul>
 
-            {% if not user.is_authenticated %}
-            <ul class="nav navbar-nav col-md-3">
-                <li class=""><a href="{% url 'steam:loginPage' %}">{% trans "Login" %}</a>
-                </li>
-                <li class=""><a href="{% url 'steam:user_signup' %}">{% trans "Sign up" %}</a>
-                </li>
-            {% else %}
-            <ul class="nav navbar-nav col-md-4">
-                <li class=""><a href="{% url 'steam:user_logout' %}">{% trans "Logout" %}</a>
-                </li>
-                <li>
-                    <a href="{% url 'steam:steam_user_profile' %}">
-                        <span class="glyphicon glyphicon-user"></span>
-                        <strong>{{ user.email|truncatechars:30 }}</strong>
-                    </a>
-                </li>
-            {% endif %}
-            </ul>
+                {% if not user.is_authenticated %}
+                <ul class="nav navbar-nav col-md-3">
+                    <li class=""><a href="{% url 'steam:loginPage' %}">{% trans "Login" %}</a>
+                    </li>
+                    <li class=""><a href="{% url 'steam:user_signup' %}">{% trans "Sign up" %}</a>
+                    </li>
+                {% else %}
+                <ul class="nav navbar-nav col-md-4">
+                    <li class=""><a href="{% url 'steam:user_logout' %}">{% trans "Logout" %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'steam:steam_user_profile' %}">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <strong>{{ user.email|truncatechars:30 }}</strong>
+                        </a>
+                    </li>
+                {% endif %}
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
         </div>
-        <!--/.navbar-collapse -->
     </div>
-</div>
 
 {# ----- Use this block to edit the page ----- #}
 {% block message %}{% endblock %}
@@ -120,7 +125,9 @@
 
 
 {% block loadjavascripts %}
-<script src="{% static 'steam/javascripts/jquery.min.js' %}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+{#<script src="{% static 'steam/javascripts/jquery.min.js' %}"></script>#}
 <script src="{% static 'steam/javascripts/bootstrap.js' %}"></script>
 {% endblock %}
 
