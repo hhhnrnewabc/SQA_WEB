@@ -68,6 +68,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -84,7 +85,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    'django.core.context_processors.request',  # tags need
+    "django.core.context_processors.request",  # tags need
 )
 
 ROOT_URLCONF = 'SQA_porject.urls'
@@ -120,8 +121,8 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-# LANGUAGE_CODE = 'zh-tw'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-tw'
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Taipei'
@@ -139,11 +140,11 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "/usr/local/var/www/swim-fish.twbbs.org/static/"
+STATIC_ROOT = "/usr/local/var/www/sqa.swim-fish.info/static/"
 # STATICFILES_DIRS =("/var/www/example.com/media",)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = "/usr/local/var/www/swim-fish.twbbs.org/media/"
+MEDIA_ROOT = "/usr/local/var/www/sqa.swim-fish.info/media/"
 
 # #SSL
 SESSION_COOKIE_SECURE = True
@@ -180,3 +181,5 @@ add_to_builtins('django.templatetags.i18n')
 add_to_builtins('django.contrib.staticfiles.templatetags.staticfiles')
 for tag in AUTOLOAD_TEMPLATETAGS:
     add_to_builtins(tag)
+
+

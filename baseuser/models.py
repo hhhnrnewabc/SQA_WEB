@@ -52,8 +52,7 @@ class BaseUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True, max_length=225,
                               error_messages={'unique': "This email has already been registered."})
     is_staff = models.BooleanField(_('staff status'), default=False,
-        help_text=_('Designates whether the user can log into this admin '
-                    'site.'))
+        help_text=_('Designates whether the user can log into this admin site.'))
     is_active = models.BooleanField(_('active'), default=True,
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
@@ -72,7 +71,7 @@ class BaseUser(AbstractBaseUser, PermissionsMixin):
         return self.email.strip()
 
     def get_short_name(self):
-        "Returns the short name for the user."
+        """Returns the short name for the user."""
         return self.email
 
     def email_user(self, subject, message, from_email=None, **kwargs):

@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-06 01:57+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: form.py:8 models.py:33 views.py:71
+msgid "Image"
+msgstr "圖片"
+
+#: form.py:8 models.py:33
+msgid "Image:jpg"
+msgstr "圖片:jpg"
+
+#: models.py:13
+msgid "Female"
+msgstr "女"
+
+#: models.py:14
+msgid "Male"
+msgstr "男"
+
+#: models.py:15
+msgid "Other"
+msgstr "其他"
+
+#: models.py:27
+msgid "First Name"
+msgstr "名字"
+
+#: models.py:27
+msgid "Your First Name"
+msgstr "你的名字"
+
+#: models.py:28
+msgid "Last Name"
+msgstr "姓名"
+
+#: models.py:28
+msgid "Your Last Name"
+msgstr "你的姓名"
+
+#: models.py:29
+msgid "Nick Name"
+msgstr "綽號"
+
+#: models.py:29
+msgid "Your Nick Name"
+msgstr "你的綽號"
+
+#: models.py:30
+msgid "Cell Phone"
+msgstr "手機號碼"
+
+#: models.py:30
+msgid "Cell Phone Number ex:+886 912-345-678"
+msgstr "手機號碼 例:+886 912-345-678"
+
+#: models.py:32
+msgid "Sex"
+msgstr "性別"
+
+#: models.py:32
+msgid "Sex :Female, Male, Other "
+msgstr "性別 :女, 男, 其他"
+
+#: templates/steam_user/user_profile.html:25
+msgid "Update"
+msgstr "更新"

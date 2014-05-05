@@ -1,4 +1,4 @@
-{% extends "steam/base.html" %}{% load bootstrap %}
+{% extends "steam/base.html" %} {% load bootstrap %}
 
 {% block title %}
   <title>Sign up</title>
@@ -31,19 +31,19 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">{% trans "FCU SQA Game Center Project Terms" %}</h4>
+                    <h4 class="modal-title" id="myModalLabel"> {% trans "FCU SQA Game Center Project Terms" %} </h4>
                   </div>
                   <div class="modal-body" id="myModal_scroll_data">
                     <div data-spy="scroll" data-target="navbar-example" data-offset="0" class="scrollspy-example">
                         <div class="navbar-example">
-                            {% include "steam/terms_zh-tw.html" %}
+                            {% include "steam/terms_zh-tw.html" %} 
                         </div>
                     </div>
 
                   </div>
                   <div class="modal-footer">
-                    <button class="btn btn-danger btn-block" type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
-                    <input class="btn btn-success btn-block" type="button" value={% trans '"I agree to the SQA Terms and Create Account"' %} onclick="this.form.submit()" />
+                    <button class="btn btn-danger btn-block" type="button" class="btn btn-default" data-dismiss="modal"> {% trans 'Close' %} </button>
+                    <input class="btn btn-success btn-block" type="button" value= {% trans "'I agree to the SQA Terms and Create Account'" %} onclick="this.form.submit()" />
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@
         <div class="form-signin">
             <!-- Button trigger modal -->
             <button class="btn btn-info form-control" data-toggle="modal" data-target="#myModal">
-              Terms
+                {% trans 'Next' %}
             </button>
         </div>
     </div>

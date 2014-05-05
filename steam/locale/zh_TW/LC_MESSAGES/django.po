@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-06 01:50+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: models.py:5
+msgid "Minimum"
+msgstr "最低需求"
+
+#: models.py:6
+msgid "Recommended"
+msgstr "建議需求"
+
+#: models.py:7
+msgid "Other"
+msgstr "其他"
+
+#: models.py:14
+msgid "Release Date"
+msgstr "發佈日期"
+
+#: models.py:31
+msgid "Updated Date"
+msgstr "更新日期"
+
+#: models.py:42
+msgid "Published Date"
+msgstr "發佈日期"
+
+#: views.py:54
+msgid "disabled account"
+msgstr "登入失敗：非法帳號"
+
+#: views.py:60
+msgid "invalid login"
+msgstr "登入失敗"
+
+#: views.py:65
+msgid "Logout Success"
+msgstr "登出成功"
+
+#: templates/steam/base.html:70
+msgid "Download"
+msgstr "下載"
+
+#: templates/steam/base.html:73
+msgid "Game"
+msgstr "遊戲"
+
+#: templates/steam/base.html:75
+msgid "Action"
+msgstr "動作"
+
+#: templates/steam/base.html:77
+msgid "Another action"
+msgstr ""
+
+#: templates/steam/base.html:79
+msgid "Something else here"
+msgstr ""
+
+#: templates/steam/base.html:83
+msgid "Separated link"
+msgstr ""
+
+#: templates/steam/base.html:85
+msgid "One more separated link"
+msgstr ""
+
+#: templates/steam/base.html:89
+msgid "User"
+msgstr "使用者"
+
+#: templates/steam/base.html:91
+msgid "Developer"
+msgstr "開發者"
+
+#: templates/steam/base.html:93
+msgid "About"
+msgstr "關於"
+
+#: templates/steam/base.html:99
+msgid "Login"
+msgstr "登入"
+
+#: templates/steam/base.html:101
+msgid "Sign up"
+msgstr "註冊"
+
+#: templates/steam/base.html:105
+msgid "Logout"
+msgstr "登出"
+
+#: templates/steam/create_user.html:34
+msgid "FCU SQA Game Center Project Terms"
+msgstr "FCU SQA 遊戲中心專案 條款"
+
+#: templates/steam/create_user.html:45
+msgid "Close"
+msgstr "離開"
+
+#: templates/steam/create_user.html:46
+msgid "'I agree to the SQA Terms and Create Account'"
+msgstr "'我同意 SQA 條款, 註冊帳號"
+
+#: templates/steam/create_user.html:56
+msgid "Next"
+msgstr "下一步"

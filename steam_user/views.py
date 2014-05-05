@@ -12,6 +12,7 @@ from django.http import Http404
 from django.contrib import messages
 from django.conf import settings
 from django.db.models.fields.files import ImageFieldFile, FileField
+from django.utils.translation import ugettext_lazy as _
 
 
 class SteamUserView(FormView):
@@ -67,7 +68,7 @@ class SteamUserView(FormView):
     def get_initial(self):
         # no image will return default image
         if self._steam_user.photo.name == '':
-            default_photo = ImageFieldFile(instance=None, field=FileField(), name=settings.NO_IMAGE_AVAILABLE_PHOTO)
+            default_photo = ImageFieldFile(_('Image'), field=FileField(), name=settings.NO_IMAGE_AVAILABLE_PHOTO)
             self._steam_user.photo = default_photo
             # save image path to db
             self._steam_user.update({'photo': default_photo})

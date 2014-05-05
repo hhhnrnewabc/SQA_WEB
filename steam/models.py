@@ -1,16 +1,17 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 REQUIRED_LEVEL = {
-    ('M', 'Minimum'),
-    ('R', 'Recommended'),
-    ('O', 'Other'),
+    ('M', _('Minimum')),
+    ('R', _('Recommended')),
+    ('O', _('Other')),
 }
 
 
 class Game(models.Model):
     name = models.CharField(max_length=200)
     game_type = models.CharField(max_length=20)
-    release_date = models.DateTimeField('Release Date')
+    release_date = models.DateTimeField(_('Release Date'))
     web_url = models.URLField(max_length=225)
     developer = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
@@ -27,7 +28,7 @@ class GameLanguages(models.Model):
 class GameVersions(models.Model):
     game = models.ForeignKey(Game)
     version = models.CharField(max_length=10)
-    updated_date = models.DateTimeField('Updated Date')
+    updated_date = models.DateTimeField(_('Updated Date'))
 
 
 class GameUpdatedDate(models.Model):
@@ -38,7 +39,7 @@ class GameUpdatedDate(models.Model):
 
 class GameReviews(models.Model):
     game = models.ForeignKey(Game)
-    pub_date = models.DateTimeField('Published Date')
+    pub_date = models.DateTimeField(_('Published Date'))
     version = models.ForeignKey(GameVersions)
     comment = models.CharField(max_length=200)
 

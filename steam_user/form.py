@@ -1,10 +1,11 @@
 from django import forms
 from steam_user.models import SteamUser
 from steam.form import AdminImageWidget
+from django.utils.translation import ugettext_lazy as _
 
 
 class SteamUserForm(forms.ModelForm):
-    photo = forms.ImageField(widget=AdminImageWidget)
+    photo = forms.ImageField(_('Image'), label=_('Image'), help_text=_('Image:jpg'), widget=AdminImageWidget)
 
     class Meta:
         model = SteamUser

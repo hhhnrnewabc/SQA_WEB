@@ -67,7 +67,7 @@
                   {% else %}
                     <ul class="nav navbar-nav col-md-5">
                   {% endif %}
-                        <li class="{% active request "^/steam/$" %}"><a href="{% url 'steam:index' %}">Download</a>
+                        <li class="{% active request "^/steam/download$" %}"><a href="{% url 'steam:index' %}">{% trans "Download" %}</a>
                         </li>
                         <li class="dropdown {% block topbarDropdown %} {% endblock %}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Game" %} <b class="caret"></b></a>
@@ -128,7 +128,9 @@
         <div class="container">
           <hr>
             <footer>
-                <p>©  FCU SQA Game Center Project 2014</p>
+                <span class="">
+                    <p>©  FCU SQA Game Center Project 2014</p>
+                </span>
             </footer>
         </div>
         {% endblock %}

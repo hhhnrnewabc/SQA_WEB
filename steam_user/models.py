@@ -10,9 +10,9 @@ from django.conf import settings
 
 
 SEX = {
-    ('F','Female'),
-    ('M','Male'),
-    ('O','Other'),
+    ('F', _('Female')),
+    ('M', _('Male')),
+    ('O', _('Other')),
 }
 
 
@@ -30,7 +30,7 @@ class SteamUser(models.Model):
     cell_phone = models.CharField(_('Cell Phone'),  max_length=20, help_text=_('Cell Phone Number ex:+886 912-345-678'),
                                   blank=True)
     sex = models.CharField(_('Sex'), max_length=1, choices=SEX, help_text=_('Sex :Female, Male, Other '), blank=True)
-    photo = models.ImageField(_('Image'), help_text=_('Image:jpg'), upload_to=get_upload_file_name, max_length=200,
+    photo = models.ImageField(_('Image'),  help_text=_('Image:jpg'), upload_to=get_upload_file_name, max_length=200,
                               blank=True, default=settings.NO_IMAGE_AVAILABLE_PHOTO)
 
     api_token = models.CharField(max_length=100, unique=True, blank=True)

@@ -14,6 +14,7 @@ from django.views.generic.edit import FormView
 from django.views import generic
 from django.http import Http404
 from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 
 def index(request):
@@ -50,18 +51,18 @@ def user_login(request):
 
         else:
             # Return a 'disabled account' error message
-            return render_to_response('steam/login.html', {'login_faill': "disabled account", },
+            return render_to_response('steam/login.html', {'login_faill': _("disabled account"), },
                 context_instance=RequestContext(request))
 
     else:
         # Return an 'invalid login' error message.
         return render_to_response('steam/login.html',
-                                  {'login_faill': "invalid login", }, context_instance=RequestContext(request))
+                                  {'login_faill': _("invalid login"), }, context_instance=RequestContext(request))
 
 
 def user_logout(request):
     logout(request)
-    return render_to_response('steam/index.html', {'logout_success': "Logout Success", },
+    return render_to_response('steam/index.html', {'logout_success': _("Logout Success"), },
                               context_instance=RequestContext(request, ))
 
 
