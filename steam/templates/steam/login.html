@@ -10,8 +10,7 @@
 
 
 
-
-    {% block maininfo %}
+{% block maininfo %}
     {% if login_success %}
     <div class="alert alert-success">
         <a href="#" class="alert-link">{{ login_success }}</a>
@@ -50,5 +49,5 @@
             </form>
         </div>
     </div>
-    {% endblock %}
+{% endblock %}
 

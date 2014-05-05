@@ -1,136 +1,148 @@
 {% load tags %}
 
 {% block loadhead %}
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
 
 
-    {% block title %}{% endblock %}
+        {% block title %}{% endblock %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'steam/stylesheets/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'steam/stylesheets/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'steam/stylesheets/jumbotron.css' %}" type="text/css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{% static 'steam/stylesheets/jumbotron.css' %}" type="text/css" rel="stylesheet">
 
-    {% block importCSS %}{% endblock %}
+        {% block importCSS %}{% endblock %}
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
 
-</head>
+    </head>
 {% endblock %} 
 
-{% block topbar %}
-<body {% block body_attrs %}style=""{% endblock %}>
-    <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header col-md-3">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'steam:index' %}">SQA Game Center Project</a>
-            </div>
-            <div class="navbar-collapse collapse">
-              {% if not user.is_authenticated %}
-                <ul class="nav navbar-nav col-md-6">
-              {% else %}
-                <ul class="nav navbar-nav col-md-5">
-              {% endif %}
-                    <li class="{% active request "^/steam/$" %}"><a href="{% url 'steam:index' %}">Download</a>
-                    </li>
-                    <li class="dropdown {% block topbarDropdown %} {% endblock %}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Game" %} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">{% trans "Action" %}</a>
-                            </li>
-                            <li><a href="#">{% trans "Another action" %}</a>
-                            </li>
-                            <li><a href="#">{% trans "Something else here" %}</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">{% trans "Separated link" %}</a>
-                            </li>
-                            <li><a href="#">{% trans "One more separated link" %}</a>
-                            </li>
-                        </ul>
-                    </li>
-                     <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "User" %}</a>
-                    </li>
-                    <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "Developer" %}</a>
-                    </li>
-                    <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">{% trans "About" %}</a>
-                    </li>
-                </ul>
+{% block body %}
+    <body {% block body_attrs %}style=""{% endblock %}>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header col-md-3">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'steam:index' %}">SQA Game Center Project</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                  {% if not user.is_authenticated %}
+                    <ul class="nav navbar-nav col-md-6">
+                  {% else %}
+                    <ul class="nav navbar-nav col-md-5">
+                  {% endif %}
+                        <li class="{% active request "^/steam/$" %}"><a href="{% url 'steam:index' %}">Download</a>
+                        </li>
+                        <li class="dropdown {% block topbarDropdown %} {% endblock %}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Game" %} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">{% trans "Action" %}</a>
+                                </li>
+                                <li><a href="#">{% trans "Another action" %}</a>
+                                </li>
+                                <li><a href="#">{% trans "Something else here" %}</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">{% trans "Separated link" %}</a>
+                                </li>
+                                <li><a href="#">{% trans "One more separated link" %}</a>
+                                </li>
+                            </ul>
+                        </li>
+                         <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "User" %}</a>
+                        </li>
+                        <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "Developer" %}</a>
+                        </li>
+                        <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">{% trans "About" %}</a>
+                        </li>
+                    </ul>
 
-                {% if not user.is_authenticated %}
-                <ul class="nav navbar-nav col-md-3">
-                    <li class=""><a href="{% url 'steam:loginPage' %}">{% trans "Login" %}</a>
-                    </li>
-                    <li class=""><a href="{% url 'steam:user_signup' %}">{% trans "Sign up" %}</a>
-                    </li>
-                {% else %}
-                <ul class="nav navbar-nav col-md-4">
-                    <li class=""><a href="{% url 'steam:user_logout' %}">{% trans "Logout" %}</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'steam:steam_user_profile' %}">
-                            <span class="glyphicon glyphicon-user"></span>
-                            <strong>{{ user.email|truncatechars:30 }}</strong>
-                        </a>
-                    </li>
-                {% endif %}
-                </ul>
+                    {% if not user.is_authenticated %}
+                    <ul class="nav navbar-nav col-md-3">
+                        <li class=""><a href="{% url 'steam:loginPage' %}">{% trans "Login" %}</a>
+                        </li>
+                        <li class=""><a href="{% url 'steam:user_signup' %}">{% trans "Sign up" %}</a>
+                        </li>
+                    {% else %}
+                    <ul class="nav navbar-nav col-md-4">
+                        <li class=""><a href="{% url 'steam:user_logout' %}">{% trans "Logout" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'steam:steam_user_profile' %}">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <strong>{{ user.email|truncatechars:30 }}</strong>
+                            </a>
+                        </li>
+                    {% endif %}
+                    </ul>
+                </div>
+                <!--/.navbar-collapse -->
             </div>
-            <!--/.navbar-collapse -->
         </div>
-    </div>
 
-{# ----- Use this block to edit the page ----- #}
-{% block message %}{% endblock %}
-{% block maininfo %}{% endblock %}
-{% block secondinfo %}{% endblock %}
-{% block thirdinfo %}{% endblock %}
-{# -------------------------------------------- #}
+        {# ----- Use this block to edit the page ----- #}
+        {% block message %}{% endblock %}
+        {% block maininfo %}{% endblock %}
+        {% block secondinfo %}{% endblock %}
+        {% block thirdinfo %}{% endblock %}
+        {# -------------------------------------------- #}
 
-{% block copyright %}
-<div class="container">
-  <hr>
-    <footer>
-        <p>©  FCU SQA Game Center Project 2014</p>
-    </footer>
-</div>
-{% endblock %}
+        {% block copyright %}
+        <div class="container">
+          <hr>
+            <footer>
+                <p>©  FCU SQA Game Center Project 2014</p>
+            </footer>
+        </div>
+        {% endblock %}
 
 
-{% block loadjavascripts %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
-{#<script src="{% static 'steam/javascripts/jquery.min.js' %}"></script>#}
-<script src="{% static 'steam/javascripts/bootstrap.js' %}"></script>
-{% endblock %}
+        {% block loadjavascripts %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+        {#<script src="{% static 'steam/javascripts/jquery.min.js' %}"></script>#}
+        <script src="{% static 'steam/javascripts/bootstrap.js' %}"></script>
+        {% endblock %}
 
-</body>
+        {% block googlean_alytics %}
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-50649187-1', 'swim-fish.info');
+                ga('send', 'pageview');
+            </script>
+        {% endblock %}
+
+    </body>
 
 {% endblock %} 
