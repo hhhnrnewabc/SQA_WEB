@@ -3,97 +3,97 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SQA\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-06 02:27+0800\n"
-"PO-Revision-Date: 2014-05-06 18:40+0800\n"
+"POT-Creation-Date: 2014-05-06 14:41+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: zh_Hant_TW\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.6.5\n"
 
 #: models.py:21
 msgid "First Name"
-msgstr "名字"
+msgstr ""
 
 #: models.py:21
 msgid "Your First Name"
-msgstr "你的名字"
+msgstr ""
 
 #: models.py:22
 msgid "Last Name"
-msgstr "姓名"
+msgstr ""
 
 #: models.py:22
 msgid "Your Last Name"
-msgstr "你的姓名"
+msgstr ""
 
 #: models.py:23
 msgid "Address"
-msgstr "地址"
+msgstr ""
 
 #: models.py:23
 msgid "Your Address"
-msgstr "你網站的網址"
+msgstr ""
 
 #: models.py:24
 msgid "Work Phone"
-msgstr "工作電話"
+msgstr ""
 
 #: models.py:24
 msgid "Work Number ex:+886 4-2451-7250"
-msgstr "工作電話號碼 例：+886 4-2451-7250"
+msgstr ""
 
 #: models.py:26
 msgid "Fax"
-msgstr "傳真"
+msgstr ""
 
 #: models.py:26
 msgid "Fax Number ex:+886 4-2451-7250"
-msgstr "傳真電話號碼 例：+886 4-2451-7250"
+msgstr ""
 
 #: models.py:27
 msgid "Office Name"
-msgstr "公司名稱"
+msgstr ""
 
 #: models.py:27
 msgid "Your Office Name, Max length 50"
-msgstr "你的應用程式名稱. 最多50個字"
+msgstr ""
 
 #: models.py:33
 msgid "Web URL"
-msgstr "網址"
+msgstr ""
 
 #: models.py:33
 msgid "Your Web URL Address"
-msgstr "你網站的網址"
+msgstr ""
 
 #: models.py:34
 msgid "APP Name"
-msgstr "應用程式名稱"
+msgstr ""
 
 #: models.py:34
 msgid "Your APP Name. Max Length:30"
-msgstr "你的應用程式名稱. 最多30個字"
+msgstr ""
 
 #: models.py:35
 msgid "APP Introduction"
-msgstr "應用程式詳細介紹"
+msgstr ""
 
 #: models.py:36
 msgid "Your APP Introduction. Max Length:300"
-msgstr "你的應用程式詳細介紹. 最多300個字"
+msgstr ""
 
 #: models.py:37 models.py:39
 msgid "Image"
-msgstr "圖片"
+msgstr ""
 
 #: models.py:37 models.py:39
 msgid "Image:jpg"
-msgstr "圖片:jpg"
+msgstr ""

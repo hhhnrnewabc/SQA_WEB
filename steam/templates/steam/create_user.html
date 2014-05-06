@@ -20,7 +20,7 @@
         {# and all input/button type="" can't be type="subment" , use type="button" #}
         <form action="{% url 'steam:user_signup' %}" method="post" class="form-signin" onsubmit="return false">
             {% csrf_token %}
-            <h2 class="form-signin-heading">Sign up</h2>
+            <h2 class="form-signin-heading">{% trans "Sign up" %}</h2>
                 {% for field in form %}
                     {{ field|bootstrap }}
                 {% endfor %}

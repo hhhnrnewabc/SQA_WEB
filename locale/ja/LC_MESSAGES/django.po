@@ -1,0 +1,348 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-06 20:22+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: SQA_porject/settings.py:130
+msgid "English"
+msgstr ""
+
+#: SQA_porject/settings.py:131
+msgid "Traditional Chinese"
+msgstr ""
+
+#: SQA_porject/settings.py:132
+msgid "Japanese"
+msgstr ""
+
+#: baseuser/admin.py:27 baseuser/admin.py:56 steam/form.py:34
+#: steam/templates/steam/login.html:39
+msgid "Password"
+msgstr ""
+
+#: baseuser/admin.py:28 steam/form.py:35
+msgid "Password confirmation"
+msgstr ""
+
+#: baseuser/admin.py:39 steam/form.py:46
+msgid "Passwords don't match"
+msgstr ""
+
+#: baseuser/admin.py:57
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user's "
+"password, but you can change the password using <a href=\"password/\">this "
+"form</a>."
+msgstr ""
+
+#: baseuser/models.py:19
+msgid "The given email must be set"
+msgstr ""
+
+#: baseuser/models.py:52
+msgid "email address"
+msgstr ""
+
+#: baseuser/models.py:53 steam/form.py:31
+msgid "This email has already been registered."
+msgstr ""
+
+#: baseuser/models.py:54 steam/form.py:32
+msgid "This is not the e-mail format"
+msgstr ""
+
+#: baseuser/models.py:55
+msgid "staff status"
+msgstr ""
+
+#: baseuser/models.py:56
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: baseuser/models.py:57
+msgid "active"
+msgstr ""
+
+#: baseuser/models.py:58
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: baseuser/models.py:60
+msgid "date joined"
+msgstr ""
+
+#: steam/form.py:30
+msgid "Email"
+msgstr ""
+
+#: steam/models.py:5
+msgid "Minimum"
+msgstr ""
+
+#: steam/models.py:6
+msgid "Recommended"
+msgstr ""
+
+#: steam/models.py:7 steam_user/models.py:15
+msgid "Other"
+msgstr ""
+
+#: steam/models.py:14
+msgid "Release Date"
+msgstr ""
+
+#: steam/models.py:31
+msgid "Updated Date"
+msgstr ""
+
+#: steam/models.py:42
+msgid "Published Date"
+msgstr ""
+
+#: steam/views.py:54
+msgid "disabled account"
+msgstr ""
+
+#: steam/views.py:60
+msgid "invalid login"
+msgstr ""
+
+#: steam/views.py:65
+msgid "Logout Success"
+msgstr ""
+
+#: steam/templates/steam/base.html:70
+msgid "Download"
+msgstr ""
+
+#: steam/templates/steam/base.html:73
+msgid "Game"
+msgstr ""
+
+#: steam/templates/steam/base.html:75
+msgid "Action"
+msgstr ""
+
+#: steam/templates/steam/base.html:77
+msgid "Another action"
+msgstr ""
+
+#: steam/templates/steam/base.html:79
+msgid "Something else here"
+msgstr ""
+
+#: steam/templates/steam/base.html:83
+msgid "Separated link"
+msgstr ""
+
+#: steam/templates/steam/base.html:85
+msgid "One more separated link"
+msgstr ""
+
+#: steam/templates/steam/base.html:89
+msgid "User"
+msgstr ""
+
+#: steam/templates/steam/base.html:91
+msgid "Developer"
+msgstr ""
+
+#: steam/templates/steam/base.html:93
+msgid "About"
+msgstr ""
+
+#: steam/templates/steam/base.html:100
+msgid "Login"
+msgstr ""
+
+#: steam/templates/steam/base.html:102
+#: steam/templates/steam/create_user.html:23
+msgid "Sign up"
+msgstr ""
+
+#: steam/templates/steam/base.html:106
+msgid "Logout"
+msgstr ""
+
+#: steam/templates/steam/create_user.html:34
+msgid "FCU SQA Game Center Project Terms"
+msgstr ""
+
+#: steam/templates/steam/create_user.html:44
+msgid "Close"
+msgstr ""
+
+#: steam/templates/steam/create_user.html:45
+msgid "'I agree to the SQA Terms and Create Account'"
+msgstr ""
+
+#: steam/templates/steam/create_user.html:55
+msgid "Next"
+msgstr ""
+
+#: steam/templates/steam/login.html:31
+msgid "Please sign in"
+msgstr ""
+
+#: steam/templates/steam/login.html:33
+msgid "User Email"
+msgstr ""
+
+#: steam/templates/steam/login.html:35
+msgid "\"Email Address\""
+msgstr ""
+
+#: steam/templates/steam/login.html:41
+msgid "\"Password\""
+msgstr ""
+
+#: steam/templates/steam/login.html:46
+msgid "Sign in"
+msgstr ""
+
+#: steam/templates/steam/select_language.html:2
+msgid "Language"
+msgstr ""
+
+#: steam_dev/models.py:21 steam_user/models.py:27
+msgid "First Name"
+msgstr ""
+
+#: steam_dev/models.py:21 steam_user/models.py:27
+msgid "Your First Name"
+msgstr ""
+
+#: steam_dev/models.py:22 steam_user/models.py:28
+msgid "Last Name"
+msgstr ""
+
+#: steam_dev/models.py:22 steam_user/models.py:28
+msgid "Your Last Name"
+msgstr ""
+
+#: steam_dev/models.py:23
+msgid "Address"
+msgstr ""
+
+#: steam_dev/models.py:23
+msgid "Your Address"
+msgstr ""
+
+#: steam_dev/models.py:24
+msgid "Work Phone"
+msgstr ""
+
+#: steam_dev/models.py:24
+msgid "Work Number ex:+886 4-2451-7250"
+msgstr ""
+
+#: steam_dev/models.py:26
+msgid "Fax"
+msgstr ""
+
+#: steam_dev/models.py:26
+msgid "Fax Number ex:+886 4-2451-7250"
+msgstr ""
+
+#: steam_dev/models.py:27
+msgid "Office Name"
+msgstr ""
+
+#: steam_dev/models.py:27
+msgid "Your Office Name, Max length 50"
+msgstr ""
+
+#: steam_dev/models.py:33
+msgid "Web URL"
+msgstr ""
+
+#: steam_dev/models.py:33
+msgid "Your Web URL Address"
+msgstr ""
+
+#: steam_dev/models.py:34
+msgid "APP Name"
+msgstr ""
+
+#: steam_dev/models.py:34
+msgid "Your APP Name. Max Length:30"
+msgstr ""
+
+#: steam_dev/models.py:35
+msgid "APP Introduction"
+msgstr ""
+
+#: steam_dev/models.py:36
+msgid "Your APP Introduction. Max Length:300"
+msgstr ""
+
+#: steam_dev/models.py:37 steam_dev/models.py:39 steam_user/form.py:8
+#: steam_user/models.py:33 steam_user/views.py:72
+msgid "Image"
+msgstr ""
+
+#: steam_dev/models.py:37 steam_dev/models.py:39 steam_user/form.py:8
+#: steam_user/models.py:33
+msgid "Image:jpg"
+msgstr ""
+
+#: steam_user/form.py:28
+msgid "Image file too large ( > 1mb )"
+msgstr ""
+
+#: steam_user/form.py:37
+msgid "Couldn't read uploaded image"
+msgstr ""
+
+#: steam_user/models.py:13
+msgid "Female"
+msgstr ""
+
+#: steam_user/models.py:14
+msgid "Male"
+msgstr ""
+
+#: steam_user/models.py:29
+msgid "Nick Name"
+msgstr ""
+
+#: steam_user/models.py:29
+msgid "Your Nick Name"
+msgstr ""
+
+#: steam_user/models.py:30
+msgid "Cell Phone"
+msgstr ""
+
+#: steam_user/models.py:30
+msgid "Cell Phone Number ex:+886 912-345-678"
+msgstr ""
+
+#: steam_user/models.py:32
+msgid "Sex"
+msgstr ""
+
+#: steam_user/models.py:32
+msgid "Sex :Female, Male, Other "
+msgstr ""
+
+#: steam_user/templates/steam_user/user_profile.html:25
+msgid "Update"
+msgstr ""

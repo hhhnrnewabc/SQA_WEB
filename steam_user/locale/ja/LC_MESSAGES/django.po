@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SQA_Steam_user\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-06 14:41+0800\n"
+"PO-Revision-Date: 2014-05-06 22:34+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.6.5\n"
+
+#: form.py:8 models.py:33 views.py:71
+msgid "Image"
+msgstr "画像"
+
+#: form.py:8 models.py:33
+msgid "Image:jpg"
+msgstr "画像:jpg"
+
+#: form.py:28
+msgid "Image file too large ( > 1mb )"
+msgstr "画像が大きすぎます ( > 1mb )"
+
+#: form.py:37
+msgid "Couldn't read uploaded image"
+msgstr "アップロードされた画像を読み取ることができませんでした"
+
+#: models.py:13
+msgid "Female"
+msgstr "女性"
+
+#: models.py:14
+msgid "Male"
+msgstr "男性"
+
+#: models.py:15
+msgid "Other"
+msgstr "その他"
+
+#: models.py:27
+msgid "First Name"
+msgstr "姓"
+
+#: models.py:27
+msgid "Your First Name"
+msgstr "姓（氏名）"
+
+#: models.py:28
+msgid "Last Name"
+msgstr "名"
+
+#: models.py:28
+msgid "Your Last Name"
+msgstr "名（氏名）"
+
+#: models.py:29
+msgid "Nick Name"
+msgstr "ニックネーム"
+
+#: models.py:29
+msgid "Your Nick Name"
+msgstr "あなたのニックネーム"
+
+#: models.py:30
+msgid "Cell Phone"
+msgstr "携帯"
+
+#: models.py:30
+msgid "Cell Phone Number ex:+886 912-345-678"
+msgstr "携帯番号　例：+886 912-345-678"
+
+#: models.py:32
+msgid "Sex"
+msgstr "性別"
+
+#: models.py:32
+msgid "Sex :Female, Male, Other "
+msgstr "性別:女性, 男性, その他"
+
+#: templates/steam_user/user_profile.html:25
+msgid "Update"
+msgstr "アップデート"

@@ -192,3 +192,6 @@ for tag in AUTOLOAD_TEMPLATETAGS:
     add_to_builtins(tag)
 
 
+# Testing mail
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025

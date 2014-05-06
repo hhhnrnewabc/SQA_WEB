@@ -5,13 +5,13 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: django\n"
+"Project-Id-Version: SQA_Base_user\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-06 05:46+0800\n"
-"PO-Revision-Date: 2014-05-06 18:39+0800\n"
+"POT-Creation-Date: 2014-05-06 14:39+0800\n"
+"PO-Revision-Date: 2014-05-06 22:46+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: zh_Hant_TW\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,15 +20,15 @@ msgstr ""
 
 #: admin.py:27 admin.py:56
 msgid "Password"
-msgstr "密碼"
+msgstr "パスワード"
 
 #: admin.py:28
 msgid "Password confirmation"
-msgstr "確認密碼"
+msgstr "パスワードの確認"
 
 #: admin.py:39
 msgid "Passwords don't match"
-msgstr "密碼不一致"
+msgstr "パスワードが一致しません"
 
 #: admin.py:57
 msgid ""
@@ -36,43 +36,46 @@ msgid ""
 "password, but you can change the password using <a href=\"password/\">this "
 "form</a>."
 msgstr ""
-"原始密碼尚未儲存，因此無法存取此帳號的密碼，但你可以透過 <a href=\"password/"
-"\">這個表單</a>來變更密碼。"
+"生のパスワードが格納されていないので、このユーザーのパスワードは参照できませ"
+"んが、<a href=\"password/\"> このフォーム </a>.を使用してパスワードを変更でき"
+"ます 。"
 
 #: models.py:19
 msgid "The given email must be set"
-msgstr "此欄位必須填入資料"
+msgstr "このメールのフィールドは必須です。"
 
 #: models.py:52
 msgid "email address"
-msgstr "電子郵件地址"
+msgstr "電子メールアドレス"
 
 #: models.py:53
 msgid "This email has already been registered."
-msgstr "電子郵件已經被註冊"
+msgstr "このメールはすでに登録されています。"
 
 #: models.py:54
 msgid "This is not the e-mail format"
-msgstr "無效的電子郵件格式"
+msgstr "これは電子メール形式ではありません"
 
 #: models.py:55
 msgid "staff status"
-msgstr "工作人員"
+msgstr "スタッフ"
 
 #: models.py:56
 msgid "Designates whether the user can log into this admin site."
-msgstr "管理員 可以登入後端網站管理頁面"
+msgstr "ユーザーが管理サイトにログイン可能かどうかを示します。"
 
 #: models.py:57
 msgid "active"
-msgstr "啟用"
+msgstr "有効"
 
 #: models.py:58
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
-msgstr "使用者是否啟用, 如果為否則無法登入"
+msgstr ""
+"ユーザーがアクティブかどうかを示します。アカウントを消す代わりに選択を解除し"
+"てください。"
 
 #: models.py:60
 msgid "date joined"
-msgstr "加入日期"
+msgstr "加入した日付"
