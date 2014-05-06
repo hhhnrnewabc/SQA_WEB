@@ -124,11 +124,11 @@ DATABASES = {
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-tw'
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 LANGUAGES = (
             ('en', _("English")),
-            ('zh-tw', _("Chinese (Taiwan)")),
+            ('zh-tw', _("Traditional Chinese")),
             ('ja', _("Japanese")),
 )
 
