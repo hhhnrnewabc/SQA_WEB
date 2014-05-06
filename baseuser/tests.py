@@ -51,5 +51,5 @@ class BaseUserTestCase(TestCase):
 
     def test_creat_user_with_no_input_email(self):
         kargs = {'password':"1234",}
-        self.assertRaisesRegex(ValueError,"The given email must be set", 
+        self.assertRaisesRegex(ValueError, "此欄位必須填入資料",
             BaseUser.objects.create_user, **kargs)

@@ -36,8 +36,8 @@ msgid ""
 "password, but you can change the password using <a href=\"password/\">this "
 "form</a>."
 msgstr ""
-"密碼已經加密, 無法取的原始密碼, 重設密碼透過 <a href=\"password/\">這個表單</"
-"a>進行"
+"原始密碼尚未儲存，因此無法存取此帳號的密碼，但你可以透過 <a href=\"password/\">這個表單</"
+"a>來變更密碼。"
 
 #: models.py:19
 msgid "The given email must be set"

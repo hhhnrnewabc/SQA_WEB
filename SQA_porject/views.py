@@ -4,4 +4,5 @@ from django.core.urlresolvers import reverse
 
 
 def steam_404_view(request):
-    return render(request, 'polls/404.html',)
+    return render(request, 'steam/404.html',)
+

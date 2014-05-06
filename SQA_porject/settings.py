@@ -68,7 +68,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # 自動切換語言
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -124,6 +124,15 @@ DATABASES = {
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-tw'
 
+from django.utils.translation import ugettext_lazy as _
+
+LANGUAGES = (
+            ('en', _("English")),
+            ('zh-tw', _("Chinese (Taiwan)")),
+            ('ja', _("Japanese")),
+)
+
+
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Taipei'
 
@@ -162,7 +171,7 @@ NOSE_ARGS = [
     '--with-coverage',
     # '--cover-erase',
     '--cover-tests',
-    '--cover-package=baseuser',
+    '--cover-package=baseuser, steam,steam_user,steam_dev',
     '--cover-html',
 
 ]

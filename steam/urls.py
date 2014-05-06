@@ -15,8 +15,7 @@ urlpatterns = patterns('',
 
 	url(r'^$', views.index, name='index'),
 
-    url(r'^login/$', 'django.contrib.auth.views.login',
-            {'template_name': 'steam/login.html'},name='loginPage'),
+    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'steam/login.html'}, name='loginPage'),
 
     url(r'^userLogin/$', views.user_login, name='user_login'),
 

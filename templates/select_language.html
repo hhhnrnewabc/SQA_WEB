@@ -1,0 +1,16 @@
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Language" %}<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+
+    {% for lang in LANGUAGES %}
+        <li>
+            <a href="#" onclick="document.setLang{{ forloop.counter }}.submit();return false;">{{ lang.1 }}</a>
+            <form name="setLang{{ forloop.counter }}" action="/i18n/setlang/" method="POST">{% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.path }}" />
+                <input type="hidden" name="language" value="{{ lang.0 }}" />
+            </form>
+        </li>
+    {% endfor %}
+
+    </ul>
+</li>
