@@ -46,10 +46,11 @@ class SteamUserView(FormView):
                     messages.success(self.request, str(self._user.get_email) + ' Image Uploaded ')
 
                 # new image is not allow to save
-                # return old image
+                # return old image and save other data
                 # see form_class clean_photo setting
                 else:
                     form.cleaned_data['photo'] = self._steam_user.photo
+                    self._steam_user.update(form.cleaned_data)
             except OSError:
                 messages.error(self.request, str(self._user.get_email()) + ' Upload Failed ')
 
