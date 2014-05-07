@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA_Steam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-06 23:16+0800\n"
+"POT-Creation-Date: 2014-05-07 12:16+0800\n"
 "PO-Revision-Date: 2014-05-06 23:55+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,6 +77,10 @@ msgstr "無効なログイン"
 #: views.py:65
 msgid "Logout Success"
 msgstr "ログアウト成功"
+
+#: views.py:107
+msgid "Sign up Success"
+msgstr "登録成功"
 
 #: templates/steam/base.html:70
 msgid "Download"

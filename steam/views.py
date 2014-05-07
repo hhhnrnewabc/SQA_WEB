@@ -104,7 +104,7 @@ def active_user(request):
         user.backend = "django.contrib.auth.backends.ModelBackend"
         login(request, user)
 
-    return render_to_response('steam/index.html', {'signup_success': "Sign up Success", },
+    return render_to_response('steam/index.html', {'signup_success': _("Sign up Success"), },
                               context_instance=RequestContext(request, ))
 
 
