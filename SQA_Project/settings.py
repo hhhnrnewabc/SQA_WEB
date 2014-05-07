@@ -195,3 +195,12 @@ for tag in AUTOLOAD_TEMPLATETAGS:
 # Testing mail
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
+
+
+# import path dor AWS EC2 SERVER
+# . is point to WEB/
+# path put in ../aws_path_fix.py
+import sys
+print(sys.path)
+sys.path.insert(0, '..')
+from aws_path_fix import *
