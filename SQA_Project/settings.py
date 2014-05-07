@@ -201,6 +201,5 @@ EMAIL_PORT = 1025
 # . is point to WEB/
 # path put in ../aws_path_fix.py
 import sys
-print(sys.path)
 sys.path.insert(0, '..')
 from aws_path_fix import *
