@@ -40,8 +40,8 @@ def user_login(request):
     if user is not None:
         if user.is_active:
             login(request, user)
-            steam_user = get_object_or_404(SteamUser, baseuser=user)
-            if steam_user:
+            steam_user, is_create = SteamUser.objects.get_or_create(baseuser=user)
+            if not is_create:
                 steam_user.create_new_secret_token()
             # Redirect to a success page.
             if next == "":
