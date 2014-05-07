@@ -86,10 +86,10 @@ class ThanksView(generic.View):
 
         text = '<div class="redirect">'
         text += request.session['user']
-        text += ' is not active. '
-        text += 'Please check the URL.  Otherwise, '
-        text += '<a href="/steam/active_user/"> here</a> '
-        text += 'to active </div>'
+        text += _(' is not active. Please check the URL.  Otherwise, '
+                '<a href="/steam/active_user/"> here</a> '
+                'to active ')
+        text += '</div>'
         return HttpResponse(text)
 
 
