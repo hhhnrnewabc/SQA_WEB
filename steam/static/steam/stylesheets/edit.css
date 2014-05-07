@@ -50,3 +50,12 @@ max-height:300px; /* FF IE7 */
 _width:expression(this.width > 300 && this.width > this.height ? 300: auto); /* IE6 */
 _height:expression(this.height > 300 ? 300 : auto); /* IE6 */ 
 }
+
+.steam_user_edit {
+padding-top: 48px;
+padding-bottom: 48px;
+}
+
+hr {
+border-top: 1px solid #999;
+}

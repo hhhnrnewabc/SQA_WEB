@@ -63,7 +63,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                   {% if not user.is_authenticated %}
-                    <ul class="nav navbar-nav col-md-6">
+                    <ul class="nav navbar-nav col-md-7">
                   {% else %}
                     <ul class="nav navbar-nav col-md-6">
                   {% endif %}
@@ -96,7 +96,7 @@
                     </ul>
 
                     {% if not user.is_authenticated %}
-                    <ul class="nav navbar-nav col-md-4">
+                    <ul class="nav navbar-nav col-md-3">
                         <li class=""><a href="{% url 'steam:loginPage' %}">{% trans "Login" %}</a>
                         </li>
                         <li class=""><a href="{% url 'steam:user_signup' %}">{% trans "Sign up" %}</a>
