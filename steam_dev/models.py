@@ -21,9 +21,9 @@ class SteamDeveloper(models.Model):
     first_name = models.CharField(_('First Name'), max_length=30, help_text=_('Your First Name'), blank=True)
     last_name = models.CharField(_('Last Name'), max_length=30, help_text=_('Your Last Name'), blank=True)
     address = models.CharField(_('Address'), max_length=200, help_text=_('Your Address'), blank=True)
-    work_phone = models.CharField(_('Work Phone'),  max_length=20, help_text=_('Work Number ex:+886 4-2451-7250'),
+    work_phone = models.CharField(_('Work Phone'), max_length=20, help_text=_('Work Number ex:+886 4-2451-7250'),
                                   blank=True)
-    fax = models.CharField(_('Fax'),  max_length=20, help_text=_('Fax Number ex:+886 4-2451-7250'), blank=True)
+    fax = models.CharField(_('Fax'), max_length=20, help_text=_('Fax Number ex:+886 4-2451-7250'), blank=True)
     office_name = models.CharField(_('Office Name'), max_length=50, help_text=_('Your Office Name, Max length 50'),
                                    blank=True)
 

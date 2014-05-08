@@ -1,12 +1,12 @@
 from django import forms
-from steam_dev.models import SteamUser
+from steam_dev.models import SteamDeveloper
 from django.utils.translation import ugettext_lazy as _
 
 
 class CreateSteamDevForm(forms.ModelForm):
 
     class Meta:
-        model = SteamUser
+        model = SteamDeveloper
         fields = ('baseuser', 'steam_user', 'first_name', 'last_name', 'address', 'work_phone', 'fax', 'office_name',)
 
     def __init__(self, *args, **kwargs):

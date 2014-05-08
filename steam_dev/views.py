@@ -9,6 +9,10 @@ from django.core.urlresolvers import reverse
 from django.forms.models import model_to_dict
 
 
+def index(request):
+    return render(request, 'steam_dev/index.html')
+
+
 class UserDevView(FormView):
     template_name = 'steam_dev/user_profile.html'
     form_class = CreateSteamDevForm
