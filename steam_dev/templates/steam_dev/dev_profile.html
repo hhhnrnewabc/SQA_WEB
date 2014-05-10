@@ -11,17 +11,15 @@
     <div class="col-md-12">
         <div class="steam_user_edit">
             <div class="container">
-                <form action="{% url 'steam:steam_user_profile' %}" method="post" class="form-edit form-horizontal" enctype="multipart/form-data">{% csrf_token %}
-                    <h2 class="form-edit-heading">Edit Steam User</h2>
+                <form action="{% url 'steam_dev:dev_profile' %}" method="post" class="form-edit form-horizontal" enctype="multipart/form-data">{% csrf_token %}
+                    <h2 class="form-edit-heading">Edit Steam Developer</h2>
                     <h3 class="form-edit-heading">Email: {{ user }}</h3>
                     {% for field in form %}
-                        {% if field.label != 'Image' %}
-                            {{ field|bootstrap_horizontal }}
-                        {% else %}
-                            {{ field|bootstrap_horizontal }}
-                        {% endif %}
-
+                        {{ field|bootstrap_horizontal }}
                     {% endfor %}
+
+                    {{ form.readonly }}
+
                     <div class="form-group">
                         <span class="control-label col-sm-2 col-lg-2 " >
                             <p></p>

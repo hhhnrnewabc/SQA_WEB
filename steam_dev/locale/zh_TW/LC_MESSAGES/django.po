@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-06 02:27+0800\n"
+"POT-Creation-Date: 2014-05-10 18:28+0800\n"
 "PO-Revision-Date: 2014-05-06 18:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
+
+#: form.py:56
+msgid "I Agree"
+msgstr "我同意"
+
+#: form.py:58
+msgid "If you agree the terns. Please check I agree."
+msgstr "如果你同意條款，請勾選我同意"
 
 #: models.py:21
 msgid "First Name"
@@ -59,41 +67,58 @@ msgid "Fax Number ex:+886 4-2451-7250"
 msgstr "傳真電話號碼 例：+886 4-2451-7250"
 
 #: models.py:27
-msgid "Office Name"
+msgid "Company Name"
 msgstr "公司名稱"
 
 #: models.py:27
-msgid "Your Office Name, Max length 50"
-msgstr "你的應用程式名稱. 最多50個字"
+msgid "Your Company Name, Max length 50"
+msgstr "你的公司名稱名稱. 最多50個字"
 
-#: models.py:33
+#: models.py:57
 msgid "Web URL"
 msgstr "網址"
 
-#: models.py:33
+#: models.py:57
 msgid "Your Web URL Address"
 msgstr "你網站的網址"
 
-#: models.py:34
+#: models.py:58
 msgid "APP Name"
 msgstr "應用程式名稱"
 
-#: models.py:34
+#: models.py:58
 msgid "Your APP Name. Max Length:30"
 msgstr "你的應用程式名稱. 最多30個字"
 
-#: models.py:35
+#: models.py:59
 msgid "APP Introduction"
 msgstr "應用程式詳細介紹"
 
-#: models.py:36
+#: models.py:60
 msgid "Your APP Introduction. Max Length:300"
 msgstr "你的應用程式詳細介紹. 最多300個字"
 
-#: models.py:37 models.py:39
-msgid "Image"
-msgstr "圖片"
+#: models.py:61
+msgid "Image Big"
+msgstr "大圖片"
 
-#: models.py:37 models.py:39
-msgid "Image:jpg"
-msgstr "圖片:jpg"
+#: models.py:61
+msgid "Image Big:jpg"
+msgstr "大圖片:jpg"
+
+#: models.py:64
+msgid "Image Small"
+msgstr "小圖片"
+
+#: models.py:64
+msgid "Image Small:jpg"
+msgstr "小圖片:jpg"
+
+#: templates/steam_dev/dev_apply.html:46
+msgid "Next"
+msgstr ""
+
+#: templates/steam_dev/dev_profile.html:29
+#: templates/steam_dev/userProfile.html:31
+msgid "Update"
+msgstr ""

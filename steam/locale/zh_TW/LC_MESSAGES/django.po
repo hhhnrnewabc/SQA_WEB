@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-07 12:30+0800\n"
+"POT-Creation-Date: 2014-05-10 18:39+0800\n"
 "PO-Revision-Date: 2014-05-06 18:30+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,62 +82,71 @@ msgstr "登出成功"
 msgid ""
 " is not active. Please check the URL.  Otherwise, <a href=\"/steam/"
 "active_user/\"> here</a> to active "
-msgstr " 使用者尚未啟用. 請點選下列網址  <a href=\"/steam/"
-"active_user/\"> 這裡 </a> 進行啟用 "
+msgstr ""
+" 使用者尚未啟用. 請點選下列網址  <a href=\"/steam/active_user/\"> 這裡 </a> "
+"進行啟用 "
 
 #: views.py:107
 msgid "Sign up Success"
 msgstr "註冊成功"
 
-#: templates/steam/base.html:70
+#: templates/steam/base.html:72
 msgid "Download"
 msgstr "下載"
 
-#: templates/steam/base.html:73
+#: templates/steam/base.html:75
 msgid "Game"
 msgstr "遊戲"
 
-#: templates/steam/base.html:75
+#: templates/steam/base.html:77
 msgid "Action"
 msgstr "動作"
 
-#: templates/steam/base.html:77
+#: templates/steam/base.html:80 templates/steam/base.html.py:103
 msgid "Another action"
 msgstr ""
 
-#: templates/steam/base.html:79
+#: templates/steam/base.html:82 templates/steam/base.html.py:105
 msgid "Something else here"
 msgstr ""
 
-#: templates/steam/base.html:83
+#: templates/steam/base.html:86 templates/steam/base.html.py:109
 msgid "Separated link"
 msgstr ""
 
-#: templates/steam/base.html:85
+#: templates/steam/base.html:88 templates/steam/base.html.py:111
 msgid "One more separated link"
 msgstr ""
 
-#: templates/steam/base.html:89
+#: templates/steam/base.html:92
 msgid "User"
 msgstr "使用者"
 
-#: templates/steam/base.html:91
+#: templates/steam/base.html:95
 msgid "Developer"
 msgstr "開發者"
 
-#: templates/steam/base.html:93
+#: templates/steam/base.html:98
+msgid "Home"
+msgstr ""
+
+#: templates/steam/base.html:101
+msgid "Developer Profile"
+msgstr "開發者個人資訊"
+
+#: templates/steam/base.html:116
 msgid "About"
 msgstr "關於"
 
-#: templates/steam/base.html:100
+#: templates/steam/base.html:123
 msgid "Login"
 msgstr "登入"
 
-#: templates/steam/base.html:102 templates/steam/create_user.html:23
+#: templates/steam/base.html:125 templates/steam/create_user.html:23
 msgid "Sign up"
 msgstr "註冊"
 
-#: templates/steam/base.html:106
+#: templates/steam/base.html:129
 msgid "Logout"
 msgstr "登出"
 

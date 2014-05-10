@@ -1,0 +1,53 @@
+{% extends "steam/base.html" %}
+
+{% block title %}
+  <title>User Profile</title>
+{% endblock %}
+
+
+{% block importCSS %}<link href="{% static 'steam/stylesheets/edit.css' %}" rel="stylesheet">{% endblock %}
+
+{% block maininfo %}
+    <div class="col-md-12">
+        <div class="steam_user_edit">
+            <div class="container">
+                <form action="{% url 'steam_dev:dev_apply' %}" method="post" class="form-edit form-horizontal" enctype="multipart/form-data">{% csrf_token %}
+                    <h2 class="form-edit-heading">Developer Terms</h2>
+                    <h3 class="form-edit-heading">Email: {{ user }}</h3>
+                    <div class="modal-body" id="myModal_scroll_data">
+                        <div data-spy="scroll" data-target="navbar-example" data-offset="0" class="scrollspy-example">
+                            <div class="navbar-example">
+                                {% include "steam/terms_zh-tw.html" %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group{% if form.agree.errors %} has-error {% endif %}has-feedback">
+                        <label class="control-label col-sm-2 col-lg-2 " for="id_agree"><span>{{ form.agree.label }}</span></label>
+                        <div class=" col-sm-10 col-lg-10 ">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.agree }}
+                                </label>
+                                <p class="help-block">
+                                    {{ form.agree.help_text }}
+                                </p>
+                                {% for error in form.agree.errors %}
+                                <span class="help-block {{ form.error_css_class }}">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="control-label col-sm-2 col-lg-2 " >
+                            <p></p>
+                        </span>
+                        <div class=" col-sm-10 col-lg-10 ">
+                            <hr>
+                           <input class="btn btn-success form-control" type="submit" value="{% trans 'Next' %}" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

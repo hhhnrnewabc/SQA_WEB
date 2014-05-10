@@ -24,9 +24,9 @@ urlpatterns = patterns('',
     url(r'^userSignup/$', views.CreateUserView.as_view(), name='user_signup'),
 	url(r'^userSignup/thanks/$', views.ThanksView.as_view(), name='thanks'),
 
-    url(r'active_user/$', views.active_user, name='active_user' ),
+    url(r'active_user/$', views.active_user, name='active_user'),
 
-     url(r'^user_profile/$', steam_user_views.SteamUserView.as_view(), name='steam_user_profile'),
+    url(r'^user_profile/$', steam_user_views.SteamUserView.as_view(), name='steam_user_profile'),
 
 
 	# url(r'^contact/$', views.ContactView.as_view(), name='contact'),

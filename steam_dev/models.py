@@ -24,8 +24,32 @@ class SteamDeveloper(models.Model):
     work_phone = models.CharField(_('Work Phone'), max_length=20, help_text=_('Work Number ex:+886 4-2451-7250'),
                                   blank=True)
     fax = models.CharField(_('Fax'), max_length=20, help_text=_('Fax Number ex:+886 4-2451-7250'), blank=True)
-    office_name = models.CharField(_('Office Name'), max_length=50, help_text=_('Your Office Name, Max length 50'),
+    company_name = models.CharField(_('Company Name'), max_length=50, help_text=_('Your Company Name, Max length 50'),
                                    blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.get_full_name()
+
+    def get_first_name(self):
+        return self.first_name
+
+    def get_last_name(self):
+        return self.last_name
+
+    def get_full_name(self):
+        if self.first_name != '' and self.last_name != '':
+            return self.get_first_name() + self.get_last_name()
+        return "<No Full Name>" + self.baseuser.email
+
+    def update(self, dict):
+        for k, v in dict.items():
+            setattr(self, k, v)
+        self.save()
+
+    def save(self, commit=True, *args, **kwargs):
+        if commit:
+            return super(SteamDeveloper, self).save(*args, **kwargs)
 
 
 class SteamDevAPPS(models.Model):
@@ -34,16 +58,22 @@ class SteamDevAPPS(models.Model):
     app_name = models.CharField(_('APP Name'), max_length=30, help_text=_('Your APP Name. Max Length:30'))
     app_introduction = models.CharField(_('APP Introduction'), max_length=300,
                                         help_text=_('Your APP Introduction. Max Length:300'))
-    photo_big = models.ImageField(_('Image'), help_text=_('Image:jpg'), upload_to=get_upload_file_name, max_length=200,
+    photo_big = models.ImageField(_('Image Big'), help_text=_('Image Big:jpg'),
+                                  upload_to=get_upload_file_name, max_length=200,
                                   blank=True, default=settings.NO_IMAGE_AVAILABLE_PHOTO)
-    photo_smell = models.ImageField(_('Image'), help_text=_('Image:jpg'), upload_to=get_upload_file_name,
+    photo_small = models.ImageField(_('Image Small'), help_text=_('Image Small:jpg'),
+                                    upload_to=get_upload_file_name,
                                     max_length=200, blank=True, default=settings.NO_IMAGE_AVAILABLE_PHOTO)
     api_token = models.CharField(max_length=100, unique=True, blank=True)
     secret_token = models.CharField(max_length=100, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.steam_dev.baseuser.email
+        return self.get_app_name()
+
+    def get_app_name(self):
+        return self.app_name
+
 
     def generate_key(self):
         return binascii.hexlify(os.urandom(50))  # Generate key ex:b'fd2eaf5c3677f50820b8c...' lenght is 100
@@ -52,7 +82,7 @@ class SteamDevAPPS(models.Model):
         self.secret_token = self.generate_key()
         self.save()
 
-    def save(self, *args, **kwargs):
+    def save(self, commit=True, *args, **kwargs):
         if not self.api_token:
             key = self.generate_key()
             # Check api_token is unique
@@ -66,9 +96,10 @@ class SteamDevAPPS(models.Model):
                 self.api_token = key
         if not self.secret_token:
             self.secret_token = self.generate_key()
-        return super(SteamDevAPPS, self).save(*args, **kwargs)
+        if commit:
+            return super(SteamDevAPPS, self).save(*args, **kwargs)
 
-    def update(self, **kwargs):
-        for k, v in kwargs.iteritems():
+    def update(self, dict):
+        for k, v in dict.items():
             setattr(self, k, v)
         self.save()

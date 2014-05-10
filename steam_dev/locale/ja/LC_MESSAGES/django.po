@@ -3,97 +3,122 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-06 14:41+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2014-05-10 18:28+0800\n"
+"PO-Revision-Date: 2014-05-10 18:29+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.6.5\n"
+
+#: form.py:56
+msgid "I Agree"
+msgstr "同意する"
+
+#: form.py:58
+msgid "If you agree the terns. Please check I agree."
+msgstr "あなたは利用規約に同意した場合。同意するか確認してください。"
 
 #: models.py:21
 msgid "First Name"
-msgstr ""
+msgstr "名"
 
 #: models.py:21
 msgid "Your First Name"
-msgstr ""
+msgstr "名（氏名）"
 
 #: models.py:22
 msgid "Last Name"
-msgstr ""
+msgstr "姓"
 
 #: models.py:22
 msgid "Your Last Name"
-msgstr ""
+msgstr "姓（氏名）"
 
 #: models.py:23
 msgid "Address"
-msgstr ""
+msgstr "住所"
 
 #: models.py:23
 msgid "Your Address"
-msgstr ""
+msgstr "あなたの住所"
 
 #: models.py:24
 msgid "Work Phone"
-msgstr ""
+msgstr "仕事用の電話"
 
 #: models.py:24
 msgid "Work Number ex:+886 4-2451-7250"
-msgstr ""
+msgstr "仕事用の電話番号 ex:+886 4-2451-7250"
 
 #: models.py:26
 msgid "Fax"
-msgstr ""
+msgstr "ファックス"
 
 #: models.py:26
 msgid "Fax Number ex:+886 4-2451-7250"
-msgstr ""
+msgstr "ファクス番号 ex:+886 4-2451-7250"
 
 #: models.py:27
-msgid "Office Name"
-msgstr ""
+msgid "Company Name"
+msgstr "会社名"
 
 #: models.py:27
-msgid "Your Office Name, Max length 50"
-msgstr ""
+msgid "Your Company Name, Max length 50"
+msgstr "あなたの会社名、最大長50"
 
-#: models.py:33
+#: models.py:57
 msgid "Web URL"
-msgstr ""
+msgstr "WebのURL"
 
-#: models.py:33
+#: models.py:57
 msgid "Your Web URL Address"
-msgstr ""
+msgstr "あなたのWebのURLアドレス"
 
-#: models.py:34
+#: models.py:58
 msgid "APP Name"
-msgstr ""
+msgstr "アプリ名"
 
-#: models.py:34
+#: models.py:58
 msgid "Your APP Name. Max Length:30"
-msgstr ""
+msgstr "アプリの名前。最大長：30"
 
-#: models.py:35
+#: models.py:59
 msgid "APP Introduction"
-msgstr ""
+msgstr "APPの紹介"
 
-#: models.py:36
+#: models.py:60
 msgid "Your APP Introduction. Max Length:300"
+msgstr "アプリの紹介。最大長：300"
+
+#: models.py:61
+msgid "Image Big"
+msgstr "大きな画像"
+
+#: models.py:61
+msgid "Image Big:jpg"
+msgstr "大きな画像:jpg"
+
+#: models.py:64
+msgid "Image Small"
+msgstr "小さな画像"
+
+#: models.py:64
+msgid "Image Small:jpg"
+msgstr "小さな画像:jpg"
+
+#: templates/steam_dev/dev_apply.html:46
+msgid "Next"
 msgstr ""
 
-#: models.py:37 models.py:39
-msgid "Image"
-msgstr ""
-
-#: models.py:37 models.py:39
-msgid "Image:jpg"
+#: templates/steam_dev/dev_profile.html:29
+#: templates/steam_dev/userProfile.html:31
+msgid "Update"
 msgstr ""

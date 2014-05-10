@@ -76,6 +76,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#">{% trans "Action" %}</a>
                                 </li>
+                                <li class="divider"></li>
                                 <li><a href="#">{% trans "Another action" %}</a>
                                 </li>
                                 <li><a href="#">{% trans "Something else here" %}</a>
@@ -90,7 +91,27 @@
                         </li>
                          <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "User" %}</a>
                         </li>
-                        <li class="{% active request "^/steam/dev/$" %} "><a href="{% url 'steam_dev:index' %}">{% trans "Developer" %}</a>
+                        <li class="dropdown {% active request "^/steam/dev/$" %} ">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Developer" %} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="{% active request "^/steam/dev/$" %} ">
+                                    <a href="{% url 'steam_dev:index' %}">{% trans "Home" %}</a>
+                                </li>
+                                <li class="{% active request "^/steam/dev/dev_profile$" %}">
+                                    <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
+                                </li>
+                                <li><a href="#">{% trans "Another action" %}</a>
+                                </li>
+                                <li><a href="#">{% trans "Something else here" %}</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">{% trans "Separated link" %}</a>
+                                </li>
+                                <li><a href="#">{% trans "One more separated link" %}</a>
+                                </li>
+                            </ul>
+                        </li>
                         </li>
                         <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">{% trans "About" %}</a>
                         </li>

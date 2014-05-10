@@ -24,9 +24,10 @@ class GameSystemRequirementsInline(admin.TabularInline):
 
 class GameAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,          {'fields': ['name', 'game_type', 'release_date', 'web_url', 'developer', 'publisher']})
+        (None, {'fields': ['name', 'game_type', 'release_date', 'web_url', 'developer', 'publisher']})
     ]
-    inlines = [GameLanguagesInline, GameVersionsInline, GameUpdatedDateInline, GameReviewsInline, GameSystemRequirementsInline]
+    inlines = [GameLanguagesInline, GameVersionsInline, GameUpdatedDateInline, GameReviewsInline,
+               GameSystemRequirementsInline]
     list_display = ('name', 'game_type', 'release_date', 'web_url', 'developer', 'publisher')
     list_filter = ('game_type', 'developer', 'publisher')
     search_fields = ('name', 'release_date', 'web_url', 'developer', 'publisher')

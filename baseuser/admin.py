@@ -16,9 +16,7 @@ class SteamUserInline(admin.StackedInline):
 
 class SteamDeveloperInline(admin.StackedInline):
     model = SteamDeveloper
-    fieldsets = [
-        (None,               {'fields': ['steam_user', ]}),
-    ]
+    readonly_fields = ('created',)
 
 
 class UserCreationForm(forms.ModelForm):
