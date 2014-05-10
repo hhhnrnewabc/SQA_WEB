@@ -76,7 +76,8 @@ class SteamDevAPPS(models.Model):
 
 
     def generate_key(self):
-        return binascii.hexlify(os.urandom(50))  # Generate key ex:b'fd2eaf5c3677f50820b8c...' lenght is 100
+        # Generate key ex:'fd2eaf5c3677f50820b8c...' length is 100
+        return binascii.hexlify(os.urandom(50)).decode("utf-8")
 
     def create_new_secret_token(self):
         self.secret_token = self.generate_key()

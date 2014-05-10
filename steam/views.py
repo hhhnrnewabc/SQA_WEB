@@ -76,7 +76,14 @@ class CreateUserView(FormView):
         # It should return an HttpResponse.
 
         #Get user email
-        self.request.session['user'] = form.save().get_short_name()
+        user_mail = form.save().get_email()
+        self.request.session['user'] = user_mail
+        try:
+            user = BaseUser.objects.get(email=user_mail)
+        except BaseUser.DoesNotExist:
+            return HttpResponse("SYSTEM ERROR")
+        steam_user, is_create = SteamUser.objects.get_or_create(baseuser=user)
+        self.request.session['user_api_token'] = steam_user.api_token
         return super(CreateUserView, self).form_valid(form)
 
 
@@ -90,6 +97,9 @@ class ThanksView(generic.View):
                 '<a href="/steam/active_user/"> here</a> '
                 'to active ')
         text += '</div>'
+        text += '<p>API_Token = '
+        text += request.session['user_api_token']
+        text += '</p>'
         return HttpResponse(text)
 
 
