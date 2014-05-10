@@ -1,6 +1,7 @@
 from django.db import models
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.utils import timezone
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin,
@@ -75,12 +76,13 @@ class BaseUser(AbstractBaseUser, PermissionsMixin):
         """Returns the short name for the user."""
         return self.email
 
-    def email_user(self, subject, message, from_email=None, **kwargs):
+    def email_user(self, subject, html_content, from_email=settings.EMAIL_HOST_USER, **kwargs):
         """
         Sends an email to this User.
         """
-        # send_mail(subject, message, from_email, [self.email], **kwargs)
-        return "sent to " + self.email +" "+ subject +" "+ message
+        msg = EmailMessage(subject, html_content, from_email, [self.email], **kwargs)
+        msg.content_subtype = "html"  # Main content is now text/html
+        msg.send()
 
     def __str__(self):
         return self.get_email()

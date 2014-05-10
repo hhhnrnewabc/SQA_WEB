@@ -16,8 +16,8 @@ def get_upload_file_name(instance, filename):
 
 
 class SteamDeveloper(models.Model):
-    baseuser = models.OneToOneField(BaseUser)
-    steam_user = models.OneToOneField(SteamUser)
+    baseuser = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
+    steam_user = models.OneToOneField(SteamUser, on_delete=models.CASCADE)
     first_name = models.CharField(_('First Name'), max_length=30, help_text=_('Your First Name'), blank=True)
     last_name = models.CharField(_('Last Name'), max_length=30, help_text=_('Your Last Name'), blank=True)
     address = models.CharField(_('Address'), max_length=200, help_text=_('Your Address'), blank=True)
@@ -53,7 +53,7 @@ class SteamDeveloper(models.Model):
 
 
 class SteamDevAPPS(models.Model):
-    steam_dev = models.ForeignKey(SteamDeveloper)
+    steam_dev = models.ForeignKey(SteamDeveloper, on_delete=models.CASCADE)
     web_url = models.URLField(_('Web URL'), max_length=225, help_text=_('Your Web URL Address'))
     app_name = models.CharField(_('APP Name'), max_length=30, help_text=_('Your APP Name. Max Length:30'))
     app_introduction = models.CharField(_('APP Introduction'), max_length=300,

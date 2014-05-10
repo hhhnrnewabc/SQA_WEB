@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-10 18:39+0800\n"
+"POT-Creation-Date: 2014-05-11 01:23+0800\n"
 "PO-Revision-Date: 2014-05-06 18:30+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,24 @@ msgstr "登入失敗"
 msgid "Logout Success"
 msgstr "登出成功"
 
+#: views.py:87
+msgid " is not active. Please check the URL.  Otherwise, "
+msgstr ""
+" 使用者尚未啟用. 請點選下列網址 "
+
 #: views.py:89
+msgid "here"
+msgstr "這裡"
+
+#: views.py:89
+msgid "to active."
+msgstr "進行啟用"
+
+#: views.py:90
+msgid "Welcome SQA Game Center Project"
+msgstr "FCU SQA 遊戲中心專案"
+
+#: views.py:100
 msgid ""
 " is not active. Please check the URL.  Otherwise, <a href=\"/steam/"
 "active_user/\"> here</a> to active "
@@ -86,7 +103,7 @@ msgstr ""
 " 使用者尚未啟用. 請點選下列網址  <a href=\"/steam/active_user/\"> 這裡 </a> "
 "進行啟用 "
 
-#: views.py:107
+#: views.py:121
 msgid "Sign up Success"
 msgstr "註冊成功"
 

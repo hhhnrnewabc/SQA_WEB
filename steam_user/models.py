@@ -23,7 +23,7 @@ def get_upload_file_name(instance, filename):
 
 
 class SteamUser(models.Model):
-    baseuser = models.OneToOneField(BaseUser)
+    baseuser = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
     first_name = models.CharField(_('First Name'), max_length=30, help_text=_('Your First Name'), blank=True)
     last_name = models.CharField(_('Last Name'), max_length=30, help_text=_('Your Last Name'), blank=True)
     nick_name = models.CharField(_('Nick Name'), max_length=30, help_text=_('Your Nick Name'), blank=True)

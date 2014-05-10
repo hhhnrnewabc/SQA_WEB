@@ -84,6 +84,10 @@ class CreateUserView(FormView):
             return HttpResponse("SYSTEM ERROR")
         steam_user, is_create = SteamUser.objects.get_or_create(baseuser=user)
         self.request.session['user_api_token'] = steam_user.api_token
+        message = user_mail + _(' is not active. Please check the URL.  Otherwise, ')
+        message += '<a href="/steam/active_user/' + steam_user.api_token + '"> '
+        message += _('here') + ' </a> ' + _('to active.')
+        user.email_user(_('Welcome SQA Game Center Project'), message)
         return super(CreateUserView, self).form_valid(form)
 
 
