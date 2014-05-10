@@ -24,24 +24,6 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/Library/Logs/django/SQA_porject/debug.log',
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
 
 ALLOWED_HOSTS = ['*']
 
@@ -93,30 +75,7 @@ ROOT_URLCONF = 'SQA_Project.urls'
 WSGI_APPLICATION = 'SQA_Project.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'django_SQA_Project_main',
-       'USER': 'swim',
-       'PASSWORD': '1314',
-       'HOST': '127.0.0.1',
-       'PORT': '3306'
-    },
-
-   'mariadb': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'django_SQA_Project',
-       'USER': 'swim',
-       'PASSWORD': '1314',
-       'HOST': '127.0.0.1',
-       'PORT': '3306'
-    },
-}
-
-# DATABASE_ROUTERS = ['mysite.dbsetings.AuthRouter', 'mysite.dbsetings.MasterSlaveRouter']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -148,12 +107,7 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = "/usr/local/var/www/sqa.swim-fish.info/static/"
-# STATICFILES_DIRS =("/var/www/example.com/media",)
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = "/usr/local/var/www/sqa.swim-fish.info/media/"
 
 # #SSL
 SESSION_COOKIE_SECURE = True
@@ -191,10 +145,6 @@ add_to_builtins('django.contrib.staticfiles.templatetags.staticfiles')
 for tag in AUTOLOAD_TEMPLATETAGS:
     add_to_builtins(tag)
 
-
-# Testing mail
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
 
 
 # import path dor AWS EC2 SERVER
