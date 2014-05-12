@@ -8,6 +8,8 @@ import hashlib
 import os
 from django.conf import settings
 
+MAX_TOKEN_LENGTH = 100  # Must be Even number if number is 99 will return int(99/2)*2 >> 98
+
 
 def get_upload_file_name(instance, filename):
     return "uploaded_files/dev/%s/" % hashlib.sha256(binascii.hexlify(
@@ -26,6 +28,8 @@ class SteamDeveloper(models.Model):
     fax = models.CharField(_('Fax'), max_length=20, help_text=_('Fax Number ex:+886 4-2451-7250'), blank=True)
     company_name = models.CharField(_('Company Name'), max_length=50, help_text=_('Your Company Name, Max length 50'),
                                    blank=True)
+    api_token = models.CharField(max_length=100, unique=True, blank=True)
+    secret_token = models.CharField(max_length=100, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -42,12 +46,33 @@ class SteamDeveloper(models.Model):
             return self.get_first_name() + self.get_last_name()
         return "<No Full Name>" + self.baseuser.email
 
+    def generate_key(self):
+        # Generate key ex:'fd2eaf5c3677f50820b8c...' length MAX_TOKEN_LENGTH
+        return binascii.hexlify(os.urandom(int(MAX_TOKEN_LENGTH / 2))).decode("utf-8")
+
+    def create_new_secret_token(self):
+        self.secret_token = self.generate_key()
+        self.save()
+
     def update(self, dict):
         for k, v in dict.items():
             setattr(self, k, v)
         self.save()
 
     def save(self, commit=True, *args, **kwargs):
+        if not self.api_token:
+            key = self.generate_key()
+            # Check api_token is unique
+            try:
+                count = 0  # generate_key in 10 times
+                while count < 10 and SteamUser.objects.get(api_token=key):
+                    count += 1
+                    key = self.generate_key()
+
+            except SteamUser.DoesNotExist:
+                self.api_token = key
+        if not self.secret_token:
+            self.secret_token = self.generate_key()
         if commit:
             return super(SteamDeveloper, self).save(*args, **kwargs)
 
@@ -74,10 +99,9 @@ class SteamDevAPPS(models.Model):
     def get_app_name(self):
         return self.app_name
 
-
     def generate_key(self):
         # Generate key ex:'fd2eaf5c3677f50820b8c...' length is 100
-        return binascii.hexlify(os.urandom(50)).decode("utf-8")
+        return binascii.hexlify(os.urandom(int(MAX_TOKEN_LENGTH / 2))).decode("utf-8")
 
     def create_new_secret_token(self):
         self.secret_token = self.generate_key()

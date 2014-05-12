@@ -12,12 +12,17 @@ def _get_cleaner(form, field):
 
 class SteamDevForm(forms.ModelForm):
 
+    READONLY_FIELDS = ('api_token', 'secret_token',)
+
     class Meta:
         model = SteamDeveloper
-        fields = ('first_name', 'last_name', 'address', 'work_phone', 'fax', 'company_name',)
+        fields = ('first_name', 'last_name', 'address', 'work_phone', 'fax', 'company_name',
+                  'api_token', 'secret_token',)
 
     def __init__(self, *args, **kwargs):
         super(SteamDevForm, self).__init__(*args, **kwargs)
+        for field in self.READONLY_FIELDS:
+            self.fields[field].widget.attrs['readonly'] = True
 
     def save(self, commit=True):
         steam_dev = super(SteamDevForm, self).save(commit=False)

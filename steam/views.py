@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-from django.template import RequestContext, loader
+from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login, logout
@@ -51,13 +51,15 @@ def user_login(request):
 
         else:
             # Return a 'disabled account' error message
-            return render_to_response('steam/login.html', {'login_faill': _("disabled account"), },
+            return render_to_response('steam/login.html', {'login_fall': _("disabled account"), },
                 context_instance=RequestContext(request))
 
     else:
         # Return an 'invalid login' error message.
         return render_to_response('steam/login.html',
-                                  {'login_faill': _("invalid login"), }, context_instance=RequestContext(request))
+                                  {'login_fall': _("invalid login"),
+                                   'user_email': email
+                                   }, context_instance=RequestContext(request))
 
 
 def user_logout(request):

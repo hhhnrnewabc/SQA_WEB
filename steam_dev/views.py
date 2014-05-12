@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.forms.models import model_to_dict
+from django.http import Http404
 
 
 def index(request):
@@ -75,6 +76,7 @@ class SteamDevApplyView(FormView):
             pass
         else:
             return HttpResponseRedirect(reverse('steam_dev:dev_profile'))
+
         return super(SteamDevApplyView, self).dispatch(request, *args, **kwargs)
 
     def get_initial(self):
@@ -98,6 +100,12 @@ class SteamDevView(FormView):
 
     def get_initial(self):
         # load data
+        if not self._steam_dev.api_token:
+            self._steam_dev.api_token = self._steam_dev.generate_key()
+            self._steam_dev.save()
+        if not self._steam_dev.secret_token:
+            self._steam_dev.api_token = self._steam_dev.generate_key()
+            self._steam_dev.save()
         return model_to_dict(self._steam_dev)
 
 
@@ -116,3 +124,110 @@ class SteamDevAPPView(FormView):
         return model_to_dict(self._steam_dev)
 
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import renderers
+from rest_framework.decorators import api_view
+from rest_framework import generics
+from rest_framework.reverse import reverse
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from django.views.decorators.csrf import csrf_exempt
+from steam_dev.serializers import SteamUserSerializer, SteamDeveloperSerializer ,SteamDevAPPSSerializer
+
+
+def steam_dev_api_check(function):
+    def post(self, request, format=None):
+        if request.DATA:
+            data = request.DATA
+            api_token = data.get('api_token', '')
+            secret_token = data.get('secret_token', '')
+            try:
+                dev_user = SteamDeveloper.objects.get(api_token=api_token, secret_token=secret_token)
+            except SteamDeveloper.DoesNotExist:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+            return function(self, request, format=None)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    return post
+
+
+class SteamUserList(APIView):
+    """
+    List all steam user.
+
+    POST your Api Token and Secret Token :
+
+        {
+            "api_token" : "Your Api Token"
+            "secret_token" : "Your Secret Token"
+        }
+
+    if is correct will return:
+
+        [
+            {
+                "first_name": "",
+                "last_name": "",
+                "nick_name": "",
+                "cell_phone": "",
+                "sex": "",
+                "photo": "noImageAvailable300.png",
+                "api_token": "...",
+                "secret_token": "..."
+            }
+        ]
+    """
+    @csrf_exempt
+    @steam_dev_api_check
+    def post(self, request, format=None):
+        steam_users = SteamUser.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False)
+        serializer = SteamUserSerializer(steam_users, many=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class SteamDeveloperList(APIView):
+    """
+    List all steam developer.
+
+    POST your Api Token and Secret Token :
+
+        {
+            "api_token" : "Your Api Token"
+            "secret_token" : "Your Secret Token"
+        }
+
+    if is correct will return:
+
+        [
+            {
+                "first_name": "",
+                "last_name": "",
+                "address": "",
+                "work_phone": "",
+                "fax": "",
+                "company_name": "",
+                "created": "2014-05-12T03:58:55Z"
+            }
+        ]
+    """
+    @csrf_exempt
+    @steam_dev_api_check
+    def post(self, request, format=None):
+        steam_dev = SteamDeveloper.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False)
+        serializer = SteamDeveloperSerializer(steam_dev, many=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(('GET',))
+def api_root(request, format=None):
+    """
+    API Root Page
+    
+    """
+    # Assuming we have views named 'steam_user_list'
+    # in our project's URLconf namespace 'steam_dev'.
+    return Response({
+        'Steam User List': reverse('steam_dev:steam_user_list', request=request, format=format),
+        'Steam Developer List': reverse('steam_dev:steam_dev_list', request=request, format=format),
+    })

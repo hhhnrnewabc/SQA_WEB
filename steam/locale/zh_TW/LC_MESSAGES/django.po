@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-11 01:23+0800\n"
+"POT-Creation-Date: 2014-05-12 11:38+0800\n"
 "PO-Revision-Date: 2014-05-06 18:30+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: form.py:30
+#: form.py:37 form.py:68
 msgid "Email"
 msgstr "電子郵件"
 
-#: form.py:31
+#: form.py:38
 msgid "This email has already been registered."
 msgstr "電子郵件已經被註冊"
 
-#: form.py:32
+#: form.py:39
 msgid "This is not the e-mail format"
 msgstr "無效的電子郵件格式"
 
-#: form.py:34 templates/steam/login.html:39
+#: form.py:41 templates/steam/login.html:40
 msgid "Password"
 msgstr "密碼"
 
-#: form.py:35
+#: form.py:42
 msgid "Password confirmation"
 msgstr "確認密碼"
 
-#: form.py:46
+#: form.py:53
 msgid "Passwords don't match"
 msgstr "密碼不一致"
 
@@ -74,28 +74,27 @@ msgstr "登入失敗：非法帳號"
 msgid "invalid login"
 msgstr "登入失敗"
 
-#: views.py:65
+#: views.py:67
 msgid "Logout Success"
 msgstr "登出成功"
 
-#: views.py:87
-msgid " is not active. Please check the URL.  Otherwise, "
-msgstr ""
-" 使用者尚未啟用. 請點選下列網址 "
-
 #: views.py:89
+msgid " is not active. Please check the URL.  Otherwise, "
+msgstr " 使用者尚未啟用. 請點選下列網址 "
+
+#: views.py:91
 msgid "here"
 msgstr "這裡"
 
-#: views.py:89
+#: views.py:91
 msgid "to active."
 msgstr "進行啟用"
 
-#: views.py:90
+#: views.py:92
 msgid "Welcome SQA Game Center Project"
 msgstr "FCU SQA 遊戲中心專案"
 
-#: views.py:100
+#: views.py:102
 msgid ""
 " is not active. Please check the URL.  Otherwise, <a href=\"/steam/"
 "active_user/\"> here</a> to active "
@@ -103,67 +102,67 @@ msgstr ""
 " 使用者尚未啟用. 請點選下列網址  <a href=\"/steam/active_user/\"> 這裡 </a> "
 "進行啟用 "
 
-#: views.py:121
+#: views.py:123
 msgid "Sign up Success"
 msgstr "註冊成功"
 
-#: templates/steam/base.html:72
+#: templates/steam/base_body.html:24
 msgid "Download"
 msgstr "下載"
 
-#: templates/steam/base.html:75
+#: templates/steam/base_body.html:27
 msgid "Game"
 msgstr "遊戲"
 
-#: templates/steam/base.html:77
+#: templates/steam/base_body.html:29
 msgid "Action"
 msgstr "動作"
 
-#: templates/steam/base.html:80 templates/steam/base.html.py:103
+#: templates/steam/base_body.html:32 templates/steam/base_body.html.py:55
 msgid "Another action"
 msgstr ""
 
-#: templates/steam/base.html:82 templates/steam/base.html.py:105
+#: templates/steam/base_body.html:34 templates/steam/base_body.html.py:57
 msgid "Something else here"
 msgstr ""
 
-#: templates/steam/base.html:86 templates/steam/base.html.py:109
+#: templates/steam/base_body.html:38 templates/steam/base_body.html.py:61
 msgid "Separated link"
 msgstr ""
 
-#: templates/steam/base.html:88 templates/steam/base.html.py:111
+#: templates/steam/base_body.html:40 templates/steam/base_body.html.py:63
 msgid "One more separated link"
 msgstr ""
 
-#: templates/steam/base.html:92
+#: templates/steam/base_body.html:44
 msgid "User"
 msgstr "使用者"
 
-#: templates/steam/base.html:95
+#: templates/steam/base_body.html:47
 msgid "Developer"
 msgstr "開發者"
 
-#: templates/steam/base.html:98
+#: templates/steam/base_body.html:50
 msgid "Home"
 msgstr ""
 
-#: templates/steam/base.html:101
+#: templates/steam/base_body.html:53
 msgid "Developer Profile"
 msgstr "開發者個人資訊"
 
-#: templates/steam/base.html:116
+#: templates/steam/base_body.html:68
 msgid "About"
 msgstr "關於"
 
-#: templates/steam/base.html:123
+#: templates/steam/base_body.html:75
 msgid "Login"
 msgstr "登入"
 
-#: templates/steam/base.html:125 templates/steam/create_user.html:23
+#: templates/steam/base_body.html:77 templates/steam/create_user.html:23
 msgid "Sign up"
 msgstr "註冊"
 
-#: templates/steam/base.html:129
+#: templates/steam/base_body.html:81
 msgid "Logout"
 msgstr "登出"
 
@@ -195,13 +194,21 @@ msgstr "電子郵件"
 msgid "\"Email Address\""
 msgstr "\"電子郵件地址\""
 
-#: templates/steam/login.html:41
+#: templates/steam/login.html:42
 msgid "\"Password\""
 msgstr "\"密碼\""
 
-#: templates/steam/login.html:46
+#: templates/steam/login.html:47
 msgid "Login in"
 msgstr "登入"
+
+#: templates/steam/login.html:54
+msgid " OR Reset Password"
+msgstr "或者重設密碼"
+
+#: templates/steam/login.html:56
+msgid "Reset Password"
+msgstr "重設密碼"
 
 #: templates/steam/select_language.html:2
 msgid "Language"

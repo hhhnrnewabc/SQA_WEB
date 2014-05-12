@@ -15,9 +15,9 @@
     <div class="alert alert-success">
         <a href="#" class="alert-link">{{ login_success }}</a>
     </div>
-    {% elif login_faill %}
+    {% elif login_fall %}
     <div class="alert alert-danger">
-        <a href="#" class="alert-link">{{ login_faill }}</a>
+        <a href="#" class="alert-link">{{ login_fall }}</a>
     </div>
     {% endif %}
 
@@ -32,7 +32,8 @@
                 <div class="form-group">
                     <label for="inputEmail" name="Email" class="control-label">{% trans "User Email" %}</label>
                     <div class="">
-                        <input type="email" name="Email" class="form-control" id="inputEmail" placeholder={% trans '"Email Address"' %} required>
+                        <input type="email" name="Email" class="form-control" id="inputEmail" placeholder={% trans '"Email Address"' %}
+                                {% if user_email %}value="{{ user_email }}"{% endif %} required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -46,6 +47,16 @@
                         <button type="submit" class="btn btn-primary form-control">{% trans "Login in" %}</button>
                     </div>
                 </div>
+                {% if login_fall %}
+                <br/>
+                <div class="form-group">
+                    <div class="">
+                        <label class="control-label">{% trans " OR Reset Password" %}</label>
+                        <input type="hidden" name="RestPassword" value="True">
+                        <a href="#" class="btn btn-warning form-control">{% trans "Reset Password" %}</a>
+                    </div>
+                </div>
+                {% endif %}
             </form>
         </div>
     </div>
