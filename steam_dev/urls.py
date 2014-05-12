@@ -9,8 +9,8 @@ urlpatterns = patterns('',
     url(r'^dev_apply$', views.SteamDevApplyView.as_view(), name='dev_apply'),
 
 
-    url(r'^api/steam_user$', views.SteamUserList.as_view(), name="steam_user_list"),
-    url(r'^api/steam_dev$', views.SteamDeveloperList.as_view(), name="steam_dev_list"),
+    url(r'^api/steam_user_list$', views.SteamUserList.as_view(), name="steam_user_list"),
+    url(r'^api/steam_dev_list$', views.SteamDeveloperList.as_view(), name="steam_dev_list"),
 
 )
 

@@ -138,25 +138,30 @@ from steam_dev.serializers import SteamUserSerializer, SteamDeveloperSerializer 
 
 
 def steam_dev_api_check(function):
-    def post(self, request, format=None):
-        if request.DATA:
-            data = request.DATA
-            api_token = data.get('api_token', '')
-            secret_token = data.get('secret_token', '')
-            try:
-                dev_user = SteamDeveloper.objects.get(api_token=api_token, secret_token=secret_token)
-            except SteamDeveloper.DoesNotExist:
-                return Response(status=status.HTTP_403_FORBIDDEN)
-            return function(self, request, format=None)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-    return post
+    if hasattr(function, "post"):
+        def post(self, request, format=None):
+            if request.DATA:
+                data = request.DATA
+                api_token = data.get('api_token', '')
+                secret_token = data.get('secret_token', '')
+                try:
+                    dev_user = SteamDeveloper.objects.get(api_token=api_token, secret_token=secret_token)
+                except SteamDeveloper.DoesNotExist:
+                    return Response(status=status.HTTP_403_FORBIDDEN)
+                return function(self, request, format=None)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        return post
+    # if hasattr(function, "get"):
+    #     def get(self, request, format=None):
+    #         return function(self, request, format=None)
+    #     return get
 
 
 class SteamUserList(APIView):
     """
     List all steam user.
 
-    POST your Api Token and Secret Token :
+    POST your Dev Api Token and Secret Token :
 
         {
             "api_token" : "Your Api Token"
@@ -190,7 +195,7 @@ class SteamDeveloperList(APIView):
     """
     List all steam developer.
 
-    POST your Api Token and Secret Token :
+    POST your Dev Api Token and Secret Token :
 
         {
             "api_token" : "Your Api Token"
@@ -223,7 +228,7 @@ class SteamDeveloperList(APIView):
 def api_root(request, format=None):
     """
     API Root Page
-    
+
     """
     # Assuming we have views named 'steam_user_list'
     # in our project's URLconf namespace 'steam_dev'.
