@@ -158,7 +158,7 @@ def steam_dev_api_check(function):
 class SteamUserList(APIView):
     """
     List all steam user.
-    --------------------
+    ----------------------------------------------------------------------------------------------------------
 
     POST your dev `api_token` and `secret_token` :
 
@@ -182,6 +182,159 @@ class SteamUserList(APIView):
                 "created": "2014-05-12T03:58:55Z"
             }
         ]
+
+
+    ##Data Type:
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value Type</th>
+          <th>Max length</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> first_name    </td>
+          <td>       string  </td>
+          <td> 30           </td>
+        </tr>
+        <tr>
+          <td> last_name     </td>
+          <td>       string  </td>
+          <td> 30           </td>
+        </tr>
+        <tr>
+          <td> nick_name     </td>
+          <td>       string  </td>
+          <td> 30           </td>
+        </tr>
+        <tr>
+          <td> cell_phone    </td>
+          <td>       string  </td>
+          <td> 20           </td>
+        </tr>
+        <tr>
+          <td> sex           </td>
+          <td>       string  </td>
+          <td> 1            </td>
+        </tr>
+        <tr>
+          <td> photo         </td>
+          <td>          url  </td>
+          <td> 200          </td>
+        </tr>
+        <tr>
+          <td> api_token     </td>
+          <td>       string  </td>
+          <td> 100          </td>
+        </tr>
+        <tr>
+          <td> secret_token  </td>
+          <td>       string  </td>
+          <td> 100          </td>
+        </tr>
+        <tr>
+          <td> created       </td>
+          <td>       string  </td>
+          <td> 20*           </td>
+        </tr>
+      </tbody>
+    </table>
+
+    ----------------------------------------------------------------------------------------------------------
+    ###sex:
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>     code </th>
+          <th> representation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>        F </td>
+          <td>        Female </td>
+        </tr>
+        <tr>
+          <td>        M </td>
+          <td>          Male </td>
+        </tr>
+        <tr>
+          <td>        O </td>
+          <td>         Other </td>
+        </tr>
+      </tbody>
+    </table>
+
+    ----------------------------------------------------------------------------------------------------------
+    ###photo:
+
+    example: `noImageAvailable300.png`
+
+    media url: `https://sqa.swim-fish.info/media/` + path
+
+    Location is: `https://sqa.swim-fish.info/media/noImageAvailable300.png`
+
+    ----------------------------------------------------------------------------------------------------------
+    ###token:
+
+    length 100
+
+    composition: `a`to`z` or `0`to`9`
+
+    ----------------------------------------------------------------------------------------------------------
+    ###created:
+
+    example: `2014-05-13T15:44:05Z`
+
+    **year**`-`**month**`-`**day**`T`**hour**`:`**minute**`:`**second**`Z`
+
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th> time unit </th>
+          <th>    number length </th>
+          <th> example </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>      year </td>
+          <td>                4  </td>
+          <td>    2014 </td>
+        </tr>
+        <tr>
+          <td>     month </td>
+          <td>                2  </td>
+          <td>      05 </td>
+        </tr>
+        <tr>
+          <td>       day </td>
+          <td>                2  </td>
+          <td>      13 </td>
+        </tr>
+        <tr>
+          <td>      hour </td>
+          <td> 2 (24-hour clock) </td>
+          <td>      15 </td>
+        </tr>
+        <tr>
+          <td>    minute </td>
+          <td>                2  </td>
+          <td>      44 </td>
+        </tr>
+        <tr>
+          <td>    second </td>
+          <td>                2  </td>
+          <td>      05 </td>
+        </tr>
+      </tbody>
+    </table>
+
     """
     @csrf_exempt
     @steam_dev_api_check
@@ -194,7 +347,7 @@ class SteamUserList(APIView):
 class SteamDeveloperList(APIView):
     """
     List all steam developer.
-    -------------------------
+    -----------------------
 
     POST your dev `api_token` and `secret_token` :
 
@@ -216,6 +369,108 @@ class SteamDeveloperList(APIView):
                 "created": "2014-05-12T03:58:55Z"
             }
         ]
+
+
+    ##Data Type:
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th> Key           </th>
+          <th> Value Type    </th>
+          <th> Max length   </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> first_name    </td>
+          <td>       string  </td>
+          <td> 30           </td>
+        </tr>
+        <tr>
+          <td> last_name     </td>
+          <td>       string  </td>
+          <td> 30           </td>
+        </tr>
+        <tr>
+          <td> address       </td>
+          <td>       string  </td>
+          <td> 200          </td>
+        </tr>
+        <tr>
+          <td> work_phone    </td>
+          <td>       string  </td>
+          <td> 20           </td>
+        </tr>
+        <tr>
+          <td> fax           </td>
+          <td>       string  </td>
+          <td> 20           </td>
+        </tr>
+        <tr>
+          <td> company_name  </td>
+          <td>          url  </td>
+          <td> 50           </td>
+        </tr>
+        <tr>
+          <td> created       </td>
+          <td>         time  </td>
+          <td> 20*           </td>
+        </tr>
+      </tbody>
+    </table>
+
+    ----------------------------------------------------------------------------------------------------------
+
+
+    ###created:
+    example: `2014-05-13T15:44:05Z`
+
+    **year**`-`**month**`-`**day**`T`**hour**`:`**minute**`:`**second**`Z`
+
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th> time unit </th>
+          <th>    number length  </th>
+          <th> example </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>      year </td>
+          <td> 4                 </td>
+          <td>    2014 </td>
+        </tr>
+        <tr>
+          <td>     month </td>
+          <td> 2                 </td>
+          <td>      05 </td>
+        </tr>
+        <tr>
+          <td>       day </td>
+          <td> 2                 </td>
+          <td>      13 </td>
+        </tr>
+        <tr>
+          <td>      hour </td>
+          <td> 2 (24-hour clock) </td>
+          <td>      15 </td>
+        </tr>
+        <tr>
+          <td>    minute </td>
+          <td> 2                 </td>
+          <td>      44 </td>
+        </tr>
+        <tr>
+          <td>    second </td>
+          <td> 2                 </td>
+          <td>      05 </td>
+        </tr>
+      </tbody>
+    </table>
+
     """
     @csrf_exempt
     @steam_dev_api_check
@@ -234,6 +489,18 @@ def api_root(request, format=None):
 
     Detailed usage instructions, please refer to the following link.
 
+    POST use curl :
+
+        curl -k https://sqa.swim-fish.info/steam/dev/api/steam_user_list
+             -H "Content-Type: application/json"
+             -d '{
+                    "api_token":"...",
+                    "secret_token":"..."
+                 }'
+
+    `-k` for https \n
+    `-H` Http Head \n
+    `-d` POST DATA \n
     """
     # Assuming we have views named 'steam_user_list'
     # in our project's URLconf namespace 'steam_dev'.
