@@ -180,7 +180,6 @@ msgid "You're receiving this email because you signup at %(site_name)s."
 msgstr "因為您在 %(site_name)s 註冊，才會收到這封電子郵件"
 
 #: templates/steam/email_confirm.html:5
-#, fuzzy
 msgid "Please go to the following page to active account:"
 msgstr "請進入下面的頁面，以啟動帳戶："
 

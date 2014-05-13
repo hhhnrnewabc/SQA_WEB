@@ -83,7 +83,6 @@ msgid "Create User Success"
 msgstr ""
 
 #: views.py:124
-#, fuzzy
 msgid "Welcome SQA Game Center Project"
 msgstr "FCU SQA ゲームセンター  プロジェクト"
 
