@@ -136,7 +136,7 @@ def active_user(request, uidb64, token):
             user = None
 
         if user.is_active:
-            HttpResponseRedirect(reverse('steam:index'))
+            return HttpResponseRedirect(reverse('steam:index'))
 
         if user is not None and default_token_generator.check_token(user, token):
             user.is_active = True
