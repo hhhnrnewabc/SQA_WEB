@@ -17,7 +17,9 @@ from django.contrib import messages
 from django.utils.translation import ugettext as _
 from baseuser.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes ,force_str
+from django.utils.encoding import force_bytes, force_str
+from django.contrib.sites.models import get_current_site
+from django.template import loader
 
 
 def index(request):
@@ -75,66 +77,76 @@ class CreateUserView(FormView):
     template_name = 'steam/create_user.html'
     form_class = UserCreationForm
     success_url = 'thanks/'
+    use_https = True
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
-
-        #Get user email
-        user_mail = form.save().get_email()
-        self.request.session['user'] = user_mail
-        try:
-            user = BaseUser.objects.get(email=user_mail)
-        except BaseUser.DoesNotExist:
-            return HttpResponse("SYSTEM ERROR")
-        token = default_token_generator.make_token(user)
-        uid = force_str(urlsafe_base64_encode(force_bytes(user.pk)))
-        self.request.token = token
-        self.request.uidb64 = uid
-        message = user_mail + _(' is not active. Please check the URL.  Otherwise, ')
-        message += '<a href="/steam/active_user/' + uid + '/' + token + '/"> '
-        message += _('here') + ' </a> ' + _('to active.')
-        user.email_user(_('Welcome SQA Game Center Project'), message)
+        self.request.session["_auth_user_id"] = form.save().id
+        messages.success(self.request, _("Create User Success"))
         return super(CreateUserView, self).form_valid(form)
 
 
-class ThanksView(generic.View):
+class ThanksView(generic.TemplateView):
+    template_name = 'steam/signup_thanks.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        return super(ThanksView, self).dispatch(request, *args, **kwargs)
+
+
+class EmailView(generic.View):
 
     def get(self, request, *args, **kwargs):
+        try:
+            user = BaseUser.objects.get(id=self.request.session["_auth_user_id"])
+        except (BaseUser.DoesNotExist, TypeError, ValueError, OverflowError, KeyError):
+            return HttpResponse("{'status':'error'}")
 
-        text = '<div class="redirect">'
-        text += request.session['user']
-        text += _(' is not active. Please check the URL.  Otherwise, ')
-        text += '<a href="/steam/active_user/' \
-                + self.request.uidb64 + '/' + request.token + '/"> '
-        text += _('here</a> to active ')
-        text += '</div>'
-        text += '<p>Signup_Token = ' + request.session['user_signup_token']
-        text += ', Uid = ' + self.request.uidb64
-        text += '</p>'
-        return HttpResponse(text)
+        if user.is_active:
+            return HttpResponse("{'status': 'is_already_active'}")
+        token = default_token_generator.make_token(user)
+        current_site = get_current_site(self.request)
+        site_name = current_site.name
+        domain = current_site.domain
+        use_https = self.request.is_secure()
+        c = {
+            'email': user.email,
+            'domain': domain,
+            'site_name': site_name,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'user': user,
+            'token': token,
+            'protocol': 'https' if use_https else 'http',
+        }
+        subject = loader.render_to_string('steam/email_confirm.html', c)
+        user.email_user(_('Welcome SQA Game Center Project'), subject)
+        return HttpResponse("{'status':'ok'}")
 
 
-def active_user(request, uidb64 ,token):
+def active_user(request, uidb64, token):
     if token:
         from django.contrib.auth import get_user_model
-        UserModel = get_user_model()
+        user_model = get_user_model()
         try:
             uid = urlsafe_base64_decode(uidb64)
-            user = UserModel._default_manager.get(pk=uid)
-        except (TypeError, ValueError, OverflowError, UserModel.DoesNotExist):
+            user = user_model._default_manager.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, user_model.DoesNotExist):
             user = None
 
-    if user is not None and default_token_generator.check_token(user, token):
-        user.is_active = True
-        user.save()
+        if user.is_active:
+            HttpResponseRedirect(reverse('steam:index'))
 
-        #AUTOMATIC LOGIN
-        user.backend = "django.contrib.auth.backends.ModelBackend"
-        login(request, user)
+        if user is not None and default_token_generator.check_token(user, token):
+            user.is_active = True
+            user.save()
 
-        return render_to_response('steam/index.html', {'signup_success': _("Sign up Success"), },
-                              context_instance=RequestContext(request, ))
+            #AUTOMATIC LOGIN
+            user.backend = "django.contrib.auth.backends.ModelBackend"
+            login(request, user)
+
+            return render_to_response('steam/index.html', {'signup_success': _("Sign up Success"), },
+                                  context_instance=RequestContext(request, ))
+
     return HttpResponse(status=404)
 
 

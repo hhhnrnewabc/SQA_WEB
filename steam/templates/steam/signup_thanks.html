@@ -1,0 +1,74 @@
+{% extends "steam/base.html" %}
+{% block title %}
+  <title>SQA Game Center Project</title>
+{% endblock %}
+
+{% block importCSS %}
+    <link href="{% static 'steam/stylesheets/thanks.css' %}" rel="stylesheet">
+{% endblock %}
+
+{#{% block meta %}#}
+{#<meta http-equiv="refresh" content="3; url={% url 'steam:index' %}">#}
+{#{% endblock %}#}
+
+    {% block message %}
+        <div class="messages">
+            {% for message in messages %}
+            <div{% if message.tags != 'debug' and message.tags %} class="alert alert-{{ message.tags }} alert-dismissable container"{% endif %}>
+                <strong>{{ message }}</strong>
+            </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+
+    {% block maininfo %}
+        <div class="container steam_thanks">
+            <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">{% trans "Sending Email" %}</h3>
+                  </div>
+                  <div class="panel-body">
+                    <p>{% trans "Sending Email. Please wait a few moment.  Will return to Home Page" %}</p>
+                  </div>
+            </div>
+            <div class="progress progress-striped active">
+              <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" id="laoding" style="width: 0">
+                <span id="laoding_p" class="sr-only">70% Complete</span>
+              </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block after_body %}
+{#        <script>#}
+{##}
+{#   #}
+{#        window.location = "{% url 'steam:index' %}";#}
+{#        {% url 'steam:email' %}#}
+{#        </script>#}
+        <script>
+             $(function() {
+                $.getJSON('{% url "steam:email" %}', function(data) {
+                    if (data.status == 'ok') {
+                        document.getElementById('laoding').style.width = 100 + "%";
+                        document.getElementById("laoding_p").innerHTML = bar + "% Complete";
+                        window.location = "{% url 'steam:index' %}";
+                    }
+                });
+            });
+            var bar = 0
+            count()
+            function count(){
+                bar = bar+2;
+                document.getElementById('laoding').style.width = bar + "%";
+                document.getElementById("laoding_p").innerHTML = bar + "% Complete";
+                if (bar<99)
+                {setTimeout("count()",100);}
+                else
+                {
+                    window.location = "{% url 'steam:index' %}";
+                }
+            }
+        </script>
+    {% endblock %}
+{#    {% block thirdinfo %}{% endblock %}#}

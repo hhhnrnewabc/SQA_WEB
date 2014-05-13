@@ -127,8 +127,17 @@ NOSE_ARGS = [
     '--cover-tests',
     '--cover-package=baseuser, steam,steam_user,steam_dev',
     '--cover-html',
-
 ]
+
+# for bootstrap3 class
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
 
 NO_IMAGE_AVAILABLE_PHOTO = 'noImageAvailable300.png'
 
