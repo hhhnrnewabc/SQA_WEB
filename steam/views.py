@@ -91,6 +91,8 @@ class ThanksView(generic.TemplateView):
     template_name = 'steam/signup_thanks.html'
 
     def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('steam:index', ))
         return super(ThanksView, self).dispatch(request, *args, **kwargs)
 
 
