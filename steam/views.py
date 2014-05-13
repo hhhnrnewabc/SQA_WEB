@@ -135,7 +135,7 @@ def active_user(request, uidb64, token):
         except (TypeError, ValueError, OverflowError, user_model.DoesNotExist):
             user = None
 
-        if user.is_active:
+        if user is not None and user.is_active:
             return HttpResponseRedirect(reverse('steam:index'))
 
         if user is not None and default_token_generator.check_token(user, token):
