@@ -10,9 +10,26 @@ def _get_cleaner(form, field):
     return clean_field
 
 
-class SteamDevForm(forms.ModelForm):
+class ReadOnlyFieldsMixin(object):
+    readonly_fields = ()
 
-    READONLY_FIELDS = ('api_token', 'secret_token',)
+    def __init__(self, *args, **kwargs):
+        super(ReadOnlyFieldsMixin, self).__init__(*args, **kwargs)
+        for field in (field for name, field in self.fields.items() if name in self.readonly_fields):
+            field.widget.attrs['disabled'] = 'true'
+            field.required = False
+
+    def clean(self):
+        cleaned_data = super(ReadOnlyFieldsMixin, self).clean()
+        for field in self.readonly_fields:
+            cleaned_data[field] = getattr(self.instance, field)
+
+        return cleaned_data
+
+
+class SteamDevForm(ReadOnlyFieldsMixin, forms.ModelForm):
+
+    readonly_fields = ('api_token', 'secret_token',)
 
     class Meta:
         model = SteamDeveloper
@@ -21,8 +38,8 @@ class SteamDevForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(SteamDevForm, self).__init__(*args, **kwargs)
-        for field in self.READONLY_FIELDS:
-            self.fields[field].widget.attrs['readonly'] = True
+        # for field in self.READONLY_FIELDS:
+        #     self.fields[field].widget.attrs['readonly'] = True
 
     def save(self, commit=True):
         steam_dev = super(SteamDevForm, self).save(commit=False)

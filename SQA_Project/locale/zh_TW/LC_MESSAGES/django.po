@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-06 20:22+0800\n"
+"POT-Creation-Date: 2014-05-13 20:13+0800\n"
 "PO-Revision-Date: 2014-05-06 18:22+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,14 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: settings.py:130
+#: settings.py:89
 msgid "English"
 msgstr "英文"
 
-#: settings.py:131
+#: settings.py:90
 msgid "Traditional Chinese"
 msgstr "繁體中文"
 
-#: settings.py:132
+#: settings.py:91
 msgid "Japanese"
 msgstr "日文"
-

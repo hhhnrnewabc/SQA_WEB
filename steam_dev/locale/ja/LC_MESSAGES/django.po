@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-10 18:28+0800\n"
+"POT-Creation-Date: 2014-05-13 19:52+0800\n"
 "PO-Revision-Date: 2014-05-10 18:29+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,99 +18,99 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: form.py:56
+#: form.py:78
 msgid "I Agree"
 msgstr "同意する"
 
-#: form.py:58
+#: form.py:80
 msgid "If you agree the terns. Please check I agree."
 msgstr "あなたは利用規約に同意した場合。同意するか確認してください。"
 
-#: models.py:21
+#: models.py:23
 msgid "First Name"
 msgstr "名"
 
-#: models.py:21
+#: models.py:23
 msgid "Your First Name"
 msgstr "名（氏名）"
 
-#: models.py:22
+#: models.py:24
 msgid "Last Name"
 msgstr "姓"
 
-#: models.py:22
+#: models.py:24
 msgid "Your Last Name"
 msgstr "姓（氏名）"
 
-#: models.py:23
+#: models.py:25
 msgid "Address"
 msgstr "住所"
 
-#: models.py:23
+#: models.py:25
 msgid "Your Address"
 msgstr "あなたの住所"
 
-#: models.py:24
+#: models.py:26
 msgid "Work Phone"
 msgstr "仕事用の電話"
 
-#: models.py:24
+#: models.py:26
 msgid "Work Number ex:+886 4-2451-7250"
 msgstr "仕事用の電話番号 ex:+886 4-2451-7250"
 
-#: models.py:26
+#: models.py:28
 msgid "Fax"
 msgstr "ファックス"
 
-#: models.py:26
+#: models.py:28
 msgid "Fax Number ex:+886 4-2451-7250"
 msgstr "ファクス番号 ex:+886 4-2451-7250"
 
-#: models.py:27
+#: models.py:29
 msgid "Company Name"
 msgstr "会社名"
 
-#: models.py:27
+#: models.py:29
 msgid "Your Company Name, Max length 50"
 msgstr "あなたの会社名、最大長50"
 
-#: models.py:57
+#: models.py:82
 msgid "Web URL"
 msgstr "WebのURL"
 
-#: models.py:57
+#: models.py:82
 msgid "Your Web URL Address"
 msgstr "あなたのWebのURLアドレス"
 
-#: models.py:58
+#: models.py:83
 msgid "APP Name"
 msgstr "アプリ名"
 
-#: models.py:58
+#: models.py:83
 msgid "Your APP Name. Max Length:30"
 msgstr "アプリの名前。最大長：30"
 
-#: models.py:59
+#: models.py:84
 msgid "APP Introduction"
 msgstr "APPの紹介"
 
-#: models.py:60
+#: models.py:85
 msgid "Your APP Introduction. Max Length:300"
 msgstr "アプリの紹介。最大長：300"
 
-#: models.py:61
+#: models.py:86
 msgid "Image Big"
 msgstr "大きな画像"
 
-#: models.py:61
+#: models.py:86
 msgid "Image Big:jpg"
 msgstr "大きな画像:jpg"
 
-#: models.py:64
+#: models.py:89
 msgid "Image Small"
 msgstr "小さな画像"
 
-#: models.py:64
+#: models.py:89
 msgid "Image Small:jpg"
 msgstr "小さな画像:jpg"
 
@@ -118,7 +118,7 @@ msgstr "小さな画像:jpg"
 msgid "Next"
 msgstr ""
 
-#: templates/steam_dev/dev_profile.html:29
+#: templates/steam_dev/dev_profile.html:26
 #: templates/steam_dev/userProfile.html:31
 msgid "Update"
 msgstr ""

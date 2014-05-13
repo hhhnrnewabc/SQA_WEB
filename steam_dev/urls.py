@@ -5,7 +5,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^dev_profile$', views.SteamDevView.as_view(), name='dev_profile'),
+    url(r'^dev_profile$', views.SteamDevProfileView.as_view(), name='dev_profile'),
     url(r'^dev_apply$', views.SteamDevApplyView.as_view(), name='dev_apply'),
 
 

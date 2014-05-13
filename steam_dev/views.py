@@ -8,6 +8,8 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.forms.models import model_to_dict
 from django.http import Http404
+from django.shortcuts import render_to_response
+from django.template import RequestContext, loader
 
 
 def index(request):
@@ -83,7 +85,7 @@ class SteamDevApplyView(FormView):
         return super(SteamDevApplyView, self).get_initial()
 
 
-class SteamDevView(FormView):
+class SteamDevProfileView(FormView):
     template_name = 'steam_dev/dev_profile.html'
     form_class = SteamDevForm
     success_url = 'dev_profile'
@@ -91,21 +93,20 @@ class SteamDevView(FormView):
     _user = None
 
     def form_valid(self, form):
-
-        return super(SteamDevView, self).form_valid(form)
+        # Exclude readonly_fields for ReadOnlyFieldsMixin
+        if self.form_class.readonly_fields:
+            for k in self.form_class.readonly_fields:
+                form.cleaned_data.pop(k, None)
+        # UPDATE DATA
+        self._steam_dev.update(form.cleaned_data)
+        return super(SteamDevProfileView, self).form_valid(form)
 
     @steam_dev_required
     def dispatch(self, request, *args, **kwargs):
-        return super(SteamDevView, self).dispatch(request, *args, **kwargs)
+        return super(SteamDevProfileView, self).dispatch(request, *args, **kwargs)
 
     def get_initial(self):
         # load data
-        if not self._steam_dev.api_token:
-            self._steam_dev.api_token = self._steam_dev.generate_key()
-            self._steam_dev.save()
-        if not self._steam_dev.secret_token:
-            self._steam_dev.api_token = self._steam_dev.generate_key()
-            self._steam_dev.save()
         return model_to_dict(self._steam_dev)
 
 
@@ -138,7 +139,8 @@ from steam_dev.serializers import SteamUserSerializer, SteamDeveloperSerializer 
 
 
 def steam_dev_api_check(function):
-    if hasattr(function, "post"):
+    # print(function.__name__)
+    if function.__name__ == 'post':
         def post(self, request, format=None):
             if request.DATA:
                 data = request.DATA
@@ -148,13 +150,9 @@ def steam_dev_api_check(function):
                     dev_user = SteamDeveloper.objects.get(api_token=api_token, secret_token=secret_token)
                 except SteamDeveloper.DoesNotExist:
                     return Response(status=status.HTTP_403_FORBIDDEN)
-                return function(self, request, format=None)
+                return function(self, request, format=format)
             return Response(status=status.HTTP_400_BAD_REQUEST)
         return post
-    # if hasattr(function, "get"):
-    #     def get(self, request, format=None):
-    #         return function(self, request, format=None)
-    #     return get
 
 
 class SteamUserList(APIView):
@@ -164,7 +162,7 @@ class SteamUserList(APIView):
     POST your Dev Api Token and Secret Token :
 
         {
-            "api_token" : "Your Api Token"
+            "api_token" : "Your Api Token",
             "secret_token" : "Your Secret Token"
         }
 
@@ -198,7 +196,7 @@ class SteamDeveloperList(APIView):
     POST your Dev Api Token and Secret Token :
 
         {
-            "api_token" : "Your Api Token"
+            "api_token" : "Your Api Token",
             "secret_token" : "Your Secret Token"
         }
 

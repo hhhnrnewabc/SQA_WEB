@@ -10,3 +10,13 @@ def active(request, pattern):
     if re.search(pattern, request.path):
         return 'active'
     return ''
+
+
+@register.filter
+def keyvalue(dict, key, default=None):
+    return dict.get(key, default)
+
+#
+# @register.filter
+# def todir(m):
+#     return dir(m)

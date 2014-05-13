@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA_Steam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-12 11:38+0800\n"
+"POT-Creation-Date: 2014-05-13 20:06+0800\n"
 "PO-Revision-Date: 2014-05-06 23:55+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,44 +66,28 @@ msgstr "アップデート日付"
 msgid "Published Date"
 msgstr "発行日"
 
-#: views.py:54
+#: views.py:59
 msgid "disabled account"
 msgstr "無効になったアカウント"
 
-#: views.py:60
+#: views.py:65
 msgid "invalid login"
 msgstr "無効なログイン"
 
-#: views.py:67
+#: views.py:72
 msgid "Logout Success"
 msgstr "ログアウト成功"
 
-#: views.py:89
-msgid " is not active. Please check the URL.  Otherwise, "
-msgstr " ユーザーが有効になっていない、次のWebサイトをクリックしてください "
+#: views.py:86
+msgid "Create User Success"
+msgstr ""
 
-#: views.py:91
-msgid "here"
-msgstr "ここに"
-
-#: views.py:91
-msgid "to active."
-msgstr "アクティブに"
-
-#: views.py:92
+#: views.py:124
 #, fuzzy
 msgid "Welcome SQA Game Center Project"
 msgstr "FCU SQA ゲームセンター  プロジェクト"
 
-#: views.py:102
-msgid ""
-" is not active. Please check the URL.  Otherwise, <a href=\"/steam/"
-"active_user/\"> here</a> to active "
-msgstr ""
-" ユーザーが有効になっていない、次のWebサイトをクリックしてください <a href="
-"\"/steam/active_user/\"> ここに </a> アクティブに "
-
-#: views.py:123
+#: views.py:149
 msgid "Sign up Success"
 msgstr "登録成功"
 
@@ -119,19 +103,19 @@ msgstr "ゲーム"
 msgid "Action"
 msgstr "アクション"
 
-#: templates/steam/base_body.html:32 templates/steam/base_body.html.py:55
+#: templates/steam/base_body.html:32
 msgid "Another action"
 msgstr ""
 
-#: templates/steam/base_body.html:34 templates/steam/base_body.html.py:57
+#: templates/steam/base_body.html:34 templates/steam/base_body.html.py:58
 msgid "Something else here"
 msgstr ""
 
-#: templates/steam/base_body.html:38 templates/steam/base_body.html.py:61
+#: templates/steam/base_body.html:38 templates/steam/base_body.html.py:62
 msgid "Separated link"
 msgstr ""
 
-#: templates/steam/base_body.html:40 templates/steam/base_body.html.py:63
+#: templates/steam/base_body.html:40 templates/steam/base_body.html.py:64
 msgid "One more separated link"
 msgstr ""
 
@@ -151,19 +135,23 @@ msgstr ""
 msgid "Developer Profile"
 msgstr "開発者プロフィール"
 
-#: templates/steam/base_body.html:68
+#: templates/steam/base_body.html:56
+msgid "API"
+msgstr ""
+
+#: templates/steam/base_body.html:69
 msgid "About"
 msgstr "ついて"
 
-#: templates/steam/base_body.html:75
+#: templates/steam/base_body.html:76
 msgid "Login"
 msgstr "ログイン"
 
-#: templates/steam/base_body.html:77 templates/steam/create_user.html:23
+#: templates/steam/base_body.html:78 templates/steam/create_user.html:23
 msgid "Sign up"
 msgstr "登録"
 
-#: templates/steam/base_body.html:81
+#: templates/steam/base_body.html:82
 msgid "Logout"
 msgstr "ログアウト"
 
@@ -182,6 +170,31 @@ msgstr "'私はSQA規約に同意し、アカウントを作成する'"
 #: templates/steam/create_user.html:55
 msgid "Next"
 msgstr "次"
+
+#: templates/steam/email_confirm.html:2
+msgid "SQA Game Center Project"
+msgstr "FCU SQA ゲームセンター  プロジェクト"
+
+#: templates/steam/email_confirm.html:3
+#, python-format
+msgid "You're receiving this email because you signup at %(site_name)s."
+msgstr "あなたが %(site_name)s でサインアップため、このメールを受信している"
+
+#: templates/steam/email_confirm.html:5
+msgid "Please go to the following page to active account:"
+msgstr "アクティブなアカウントに次のページに移動してください。"
+
+#: templates/steam/email_confirm.html:11
+msgid "Your Email:"
+msgstr "あなたのEメール"
+
+#: templates/steam/email_confirm.html:13
+msgid "Thanks for using our site!"
+msgstr "私たちのサイトを使用していただきありがとうございます！"
+
+#: templates/steam/email_confirm.html:15
+msgid "The SQA Game Center Project team"
+msgstr "FCU SQA ゲームセンター  プロジェクト  規約"
 
 #: templates/steam/login.html:31
 msgid "Please sign in"
@@ -214,6 +227,14 @@ msgstr "パスワードをリセット"
 #: templates/steam/select_language.html:2
 msgid "Language"
 msgstr "言語"
+
+#: templates/steam/signup_thanks.html:28
+msgid "Sending Email"
+msgstr "電子メールを送信する"
+
+#: templates/steam/signup_thanks.html:31
+msgid "Sending Email. Please wait a few moment.  Will return to Home Page"
+msgstr "電子メールを送信する。いくつしばらくお待ちください。ホームページに戻ります"
 
 #: templates/steam/terms_zh-tw.html:1
 msgid ""
@@ -448,3 +469,19 @@ msgstr ""
 "<p>いつでも当サイトに関係なく、通知またはユーザに通知は、任意のサービスを変更"
 "または終了する権利だけでなく、ユーザーを停止する権利を持っているかどうかに。"
 "</p>\n"
+
+#~ msgid " is not active. Please check the URL.  Otherwise, "
+#~ msgstr " ユーザーが有効になっていない、次のWebサイトをクリックしてください "
+
+#~ msgid "here"
+#~ msgstr "ここに"
+
+#~ msgid "to active."
+#~ msgstr "アクティブに"
+
+#~ msgid ""
+#~ " is not active. Please check the URL.  Otherwise, <a href=\"/steam/"
+#~ "active_user/\"> here</a> to active "
+#~ msgstr ""
+#~ " ユーザーが有効になっていない、次のWebサイトをクリックしてください <a "
+#~ "href=\"/steam/active_user/\"> ここに </a> アクティブに "

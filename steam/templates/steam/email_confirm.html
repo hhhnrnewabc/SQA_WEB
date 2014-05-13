@@ -2,7 +2,7 @@
 <h3>{% trans "SQA Game Center Project" %}</h3>
 <p>{% blocktrans %}You're receiving this email because you signup at {{ site_name }}.{% endblocktrans %}</p>
 
-<p>{% trans "Please go to the following page to active:" %}</p>
+<p>{% trans "Please go to the following page to active account:" %}</p>
 {% block reset_link %}
 <a href="{{ protocol }}://{{ domain }}{% url 'steam:active_user' uidb64=uid token=token %}">
     {{ protocol }}://{{ domain }}{% url 'steam:active_user' uidb64=uid token=token %}
