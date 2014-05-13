@@ -409,7 +409,7 @@ class SteamDeveloperList(APIView):
         </tr>
         <tr>
           <td> company_name  </td>
-          <td>          url  </td>
+          <td>       string  </td>
           <td> 50           </td>
         </tr>
         <tr>
