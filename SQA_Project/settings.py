@@ -83,14 +83,17 @@ WSGI_APPLICATION = 'SQA_Project.wsgi.application'
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-tw'
 
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 
 LANGUAGES = (
-            ('en', _("English")),
-            ('zh-tw', _("Traditional Chinese")),
-            ('ja', _("Japanese")),
+            ('en', _("English (English)")),
+            ('zh-tw', _("Traditional Chinese (繁體中文)")),
+            ('ja', _("Japanese (日本語)")),
 )
 
+LOCALE_PATHS = (
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), 'locale'),
+)
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Taipei'
