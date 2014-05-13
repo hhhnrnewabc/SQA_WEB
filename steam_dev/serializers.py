@@ -7,7 +7,8 @@ from rest_framework import serializers
 class SteamUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = SteamUser
-        fields = ('first_name', 'last_name', 'nick_name', 'cell_phone', 'sex', 'photo', 'api_token', 'secret_token', )
+        fields = ('first_name', 'last_name', 'nick_name', 'cell_phone', 'sex', 'photo', 'api_token', 'secret_token',
+                  'created')
 
 
 class SteamDeveloperSerializer(serializers.ModelSerializer):

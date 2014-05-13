@@ -158,15 +158,16 @@ def steam_dev_api_check(function):
 class SteamUserList(APIView):
     """
     List all steam user.
+    --------------------
 
-    POST your Dev Api Token and Secret Token :
+    POST your dev `api_token` and `secret_token` :
 
         {
             "api_token" : "Your Api Token",
             "secret_token" : "Your Secret Token"
         }
 
-    if is correct will return:
+    If is correct will return:
 
         [
             {
@@ -177,7 +178,8 @@ class SteamUserList(APIView):
                 "sex": "",
                 "photo": "noImageAvailable300.png",
                 "api_token": "...",
-                "secret_token": "..."
+                "secret_token": "...",
+                "created": "2014-05-12T03:58:55Z"
             }
         ]
     """
@@ -192,15 +194,16 @@ class SteamUserList(APIView):
 class SteamDeveloperList(APIView):
     """
     List all steam developer.
+    -------------------------
 
-    POST your Dev Api Token and Secret Token :
+    POST your dev `api_token` and `secret_token` :
 
         {
             "api_token" : "Your Api Token",
             "secret_token" : "Your Secret Token"
         }
 
-    if is correct will return:
+    If is correct will return:
 
         [
             {
@@ -225,7 +228,10 @@ class SteamDeveloperList(APIView):
 @api_view(('GET',))
 def api_root(request, format=None):
     """
-    API Root Page
+    IF you want to use this API, You have to sign up a dev account.  
+    Get your `api_token` and `secret_token`
+
+    Detailed usage instructions, please refer to the following link.
 
     """
     # Assuming we have views named 'steam_user_list'
