@@ -228,7 +228,8 @@ class SteamDeveloperList(APIView):
 @api_view(('GET',))
 def api_root(request, format=None):
     """
-    IF you want to use this API, You have to sign up a dev account.  
+    IF you want to use this API, You have to sign up a dev account.
+
     Get your `api_token` and `secret_token`
 
     Detailed usage instructions, please refer to the following link.
