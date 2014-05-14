@@ -487,6 +487,8 @@ def api_root(request, format=None):
 
     ##Get your `api_token` and `secret_token`
 
+    ##All api return data charset is `utf-8`, content type is `application/json`
+
     ##Detailed usage instructions, please refer to the following link.
 
     ----------------------------------------------------------------------------------------------------------------
