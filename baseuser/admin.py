@@ -75,11 +75,11 @@ class BaseUserAdmin(UserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'is_active', 'is_staff')
-    list_filter = ('is_staff',)
+    list_display = ('email', 'is_active', 'is_staff', 'date_joined')
+    list_filter = ('is_active', 'is_staff',)
     inlines = [SteamUserInline, SteamDeveloperInline]
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'password', 'date_joined')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'groups', 'user_permissions')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
