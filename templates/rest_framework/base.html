@@ -22,6 +22,25 @@
         <link rel="stylesheet" type="text/css" href="{% static "steam/stylesheets/api_view.css" %}"/>
         {% endblock %}
 
+        {% block loadjavascripts %}
+            <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+            <script src="{% static 'steam/javascripts/bootstrap.js' %}"></script>
+        {% endblock %}
+
+        {% block googlean_alytics %}
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-50649187-1', 'swim-fish.info');
+                ga('require', 'displayfeatures');
+                ga('require', 'linkid', 'linkid.js');
+                ga('send', 'pageview');
+            </script>
+        {% endblock %}
+
     {% endblock %}
     </head>
 
@@ -201,8 +220,7 @@
     {% endblock %}
 
     {% block script %}
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="{% static 'steam/javascripts/bootstrap.js' %}"></script>
+{#    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>#}
     <script src="{% static "rest_framework/js/prettify-min.js" %}"></script>
     <script src="{% static "rest_framework/js/default.js" %}"></script>
     {% endblock %}
