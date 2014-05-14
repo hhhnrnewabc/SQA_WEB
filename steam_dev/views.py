@@ -158,7 +158,6 @@ def steam_dev_api_check(function):
 class SteamUserList(APIView):
     """
     List all steam user.
-
     ----------------------------------------------------------------------------------------------------------------
 
     POST your dev `api_token` and `secret_token` :
@@ -348,7 +347,7 @@ class SteamUserList(APIView):
 class SteamDeveloperList(APIView):
     """
     List all steam developer.
-    -----------------------
+    ----------------------------------------------------------------------------------------------------------------
 
     POST your dev `api_token` and `secret_token` :
 
