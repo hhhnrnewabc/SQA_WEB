@@ -272,9 +272,9 @@ class SteamUserList(APIView):
     ----------------------------------------------------------------------------------------------------------
     ###photo:
 
-    example: `noImageAvailable300.png`
+    example photo_path: `/media/noImageAvailable300.png`
 
-    media url: `https://sqa.swim-fish.info/media/` + path
+    domain url: `https://sqa.swim-fish.info` + photo_path
 
     Location is: `https://sqa.swim-fish.info/media/noImageAvailable300.png`
 
