@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'SQA_Project.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'^$', 'steam.views.index'),
+
     url(r'^i18n/', include('django.conf.urls.i18n'), name='set_language'),
 
     url(r'^admin/', include(admin.site.urls)),
