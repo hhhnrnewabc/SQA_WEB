@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     'steam',
     'steam_dev',
     'steam_user',
-    'django_nose',  #django nose for testing
+    'django_nose',  #django nose testing
     'bootstrapform',  #Twitter Bootstrap for Django Form.
 
 )
@@ -159,7 +159,7 @@ for tag in AUTOLOAD_TEMPLATETAGS:
 
 
 
-# import path dor AWS EC2 SERVER
+# import path for AWS EC2 SERVER
 # . is point to WEB/
 # path put in ../aws_path_fix.py
 import sys
