@@ -163,8 +163,8 @@ class SteamUserList(APIView):
     POST your dev `api_token` and `secret_token` :
 
         {
-            "api_token" : "Your Api Token",
-            "secret_token" : "Your Secret Token"
+            "api_token" : "Your_Api_Token",
+            "secret_token" : "Your_Secret_Token"
         }
 
     If is correct will return:
@@ -352,8 +352,8 @@ class SteamDeveloperList(APIView):
     POST your dev `api_token` and `secret_token` :
 
         {
-            "api_token" : "Your Api Token",
-            "secret_token" : "Your Secret Token"
+            "api_token" : "Your_Api_Token",
+            "secret_token" : "Your_Secret_Token"
         }
 
     If is correct will return:
@@ -494,8 +494,8 @@ def api_root(request, format=None):
         curl -k https://sqa.swim-fish.info/steam/dev/api/steam_user_list
              -H "Content-Type: application/json"
              -d '{
-                    "api_token":"...",
-                    "secret_token":"..."
+                    "api_token":"Your_Api_Token",
+                    "secret_token":"Your_Secret_Token"
                  }'
 
     `-k` for https \n
