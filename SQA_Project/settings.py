@@ -145,6 +145,10 @@ MESSAGE_TAGS = {
 NO_IMAGE_AVAILABLE_PHOTO = 'noImageAvailable300.png'
 
 
+# The number of days a signup link is valid for.
+SIGNUP_TIMEOUT_DAYS = 7
+
+
 # define auto load templatetags
 AUTOLOAD_TEMPLATETAGS = (
     'bootstrapform.templatetags.bootstrap',

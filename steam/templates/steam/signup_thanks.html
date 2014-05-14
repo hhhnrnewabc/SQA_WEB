@@ -51,7 +51,7 @@
                 $.getJSON('{% url "steam:email" %}', function(data) {
                     if (data.status == 'ok') {
                         document.getElementById('laoding').style.width = 100 + "%";
-                        document.getElementById("laoding_p").innerHTML = bar + "% Complete";
+                        document.getElementById("laoding_p").innerHTML = 100 + "% Complete";
                         window.location = "{% url 'steam:index' %}";
                     }
                 });
