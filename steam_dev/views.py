@@ -149,16 +149,17 @@ def steam_dev_api_check(function):
                 try:
                     dev_user = SteamDeveloper.objects.get(api_token=api_token, secret_token=secret_token)
                 except SteamDeveloper.DoesNotExist:
-                    return Response(status=status.HTTP_403_FORBIDDEN)
+                    return Response({"detail": "FORBIDDEN"}, status=status.HTTP_400_BAD_REQUEST)
                 return function(self, request, format=format)
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response({"detail": "NO POST DATA"}, status=status.HTTP_400_BAD_REQUEST)
         return post
 
 
 class SteamUserList(APIView):
     """
     List all steam user.
-    ----------------------------------------------------------------------------------------------------------
+
+    ----------------------------------------------------------------------------------------------------------------
 
     POST your dev `api_token` and `secret_token` :
 
@@ -176,16 +177,16 @@ class SteamUserList(APIView):
                 "nick_name": "",
                 "cell_phone": "",
                 "sex": "",
-                "photo": "noImageAvailable300.png",
+                "photo": "/media/noImageAvailable300.png",
                 "api_token": "...",
                 "secret_token": "...",
                 "created": "2014-05-12T03:58:55Z"
             }
         ]
 
+    ----------------------------------------------------------------------------------------------------------------
 
     ##Data Type:
-
     <table class="table table-striped">
       <thead>
         <tr>
@@ -243,9 +244,9 @@ class SteamUserList(APIView):
       </tbody>
     </table>
 
-    ----------------------------------------------------------------------------------------------------------
-    ###sex:
+    ----------------------------------------------------------------------------------------------------------------
 
+    ###sex:
     <table class="table table-striped">
       <thead>
         <tr>
@@ -269,25 +270,25 @@ class SteamUserList(APIView):
       </tbody>
     </table>
 
-    ----------------------------------------------------------------------------------------------------------
-    ###photo:
+    ----------------------------------------------------------------------------------------------------------------
 
+    ###photo:
     example photo_path: `/media/noImageAvailable300.png`
 
     domain url: `https://sqa.swim-fish.info` + photo_path
 
     Location is: `https://sqa.swim-fish.info/media/noImageAvailable300.png`
 
-    ----------------------------------------------------------------------------------------------------------
-    ###token:
+    ----------------------------------------------------------------------------------------------------------------
 
+    ###token:
     length 100
 
     composition: `a`to`z` or `0`to`9`
 
-    ----------------------------------------------------------------------------------------------------------
-    ###created:
+    ----------------------------------------------------------------------------------------------------------------
 
+    ###created:
     example: `2014-05-13T15:44:05Z`
 
     **year**`-`**month**`-`**day**`T`**hour**`:`**minute**`:`**second**`Z`
@@ -341,7 +342,7 @@ class SteamUserList(APIView):
     def post(self, request, format=None):
         steam_users = SteamUser.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False)
         serializer = SteamUserSerializer(steam_users, many=True)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class SteamDeveloperList(APIView):
@@ -370,9 +371,9 @@ class SteamDeveloperList(APIView):
             }
         ]
 
+    ----------------------------------------------------------------------------------------------------------------
 
     ##Data Type:
-
     <table class="table table-striped">
       <thead>
         <tr>
@@ -420,7 +421,7 @@ class SteamDeveloperList(APIView):
       </tbody>
     </table>
 
-    ----------------------------------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------
 
 
     ###created:
@@ -477,17 +478,19 @@ class SteamDeveloperList(APIView):
     def post(self, request, format=None):
         steam_dev = SteamDeveloper.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False)
         serializer = SteamDeveloperSerializer(steam_dev, many=True)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(('GET',))
 def api_root(request, format=None):
     """
-    IF you want to use this API, You have to sign up a dev account.
+    ##IF you want to use this API, You have to sign up a dev account.
 
-    Get your `api_token` and `secret_token`
+    ##Get your `api_token` and `secret_token`
 
-    Detailed usage instructions, please refer to the following link.
+    ##Detailed usage instructions, please refer to the following link.
+
+    ----------------------------------------------------------------------------------------------------------------
 
     POST use curl :
 
@@ -501,6 +504,41 @@ def api_root(request, format=None):
     `-k` for https \n
     `-H` Http Head \n
     `-d` POST DATA \n
+
+    ----------------------------------------------------------------------------------------------------------------
+
+    ###ERROR CODE:
+    <table class="table table-striped">
+      <tr>
+        <th>POST Type</th>
+        <th>ERROR CODE</th>
+        <th>Representation</th>
+      </tr>
+      <tr>
+        <td rowspan="3">application/json</td>
+        <td>"detail": "JSON parse error - Expecting value:..."</td>
+        <td>JSON format is wrong</td>
+      </tr>
+      <tr>
+        <td>"detail": "FORBIDDEN"</td>
+        <td><code>api_token</code> or <code>secret_token</code> not correct</td>
+      </tr>
+      <tr>
+        <td>"detail": "Method 'GET' not allowed."</td>
+        <td>GET not allowed</td>
+      </tr>
+      <tr>
+        <td>application/x-www-form-urlencoded</td>
+        <td>"detail": "NO POST DATA"</td>
+        <td>POST Data is empty</td>
+      </tr>
+      <tr>
+        <td>multipart/form-data</td>
+        <td>"detail": "Multipart form parse error - Invalid Content-Type: application/x-www-form-urlencoded"</td>
+        <td>Multipart form format is wrong</td>
+      </tr>
+    </table>
+
     """
     # Assuming we have views named 'steam_user_list'
     # in our project's URLconf namespace 'steam_dev'.
