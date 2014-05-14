@@ -19,6 +19,7 @@
         {% endblock %}
         <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/prettify.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/default.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "steam/stylesheets/api_view.css" %}"/>
         {% endblock %}
 
     {% endblock %}
@@ -26,7 +27,7 @@
 
   <body class="{% block bodyclass %}{% endblock %} container">
 
-    <div class="wrapper">
+    <div class="wrapper api_root">
 
     {% block navbar %}
         {% include 'steam/base_body.html' %}
