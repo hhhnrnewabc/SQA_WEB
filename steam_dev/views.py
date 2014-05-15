@@ -339,7 +339,8 @@ class SteamUserList(APIView):
     @csrf_exempt
     @steam_dev_api_check
     def post(self, request, format=None):
-        steam_users = SteamUser.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False)
+        steam_users = SteamUser.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False,
+                                               baseuser__is_acvite=True)
         serializer = SteamUserSerializer(steam_users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -475,7 +476,8 @@ class SteamDeveloperList(APIView):
     @csrf_exempt
     @steam_dev_api_check
     def post(self, request, format=None):
-        steam_dev = SteamDeveloper.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False)
+        steam_dev = SteamDeveloper.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False,
+                                                  baseuser__is_acvite=True)
         serializer = SteamDeveloperSerializer(steam_dev, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

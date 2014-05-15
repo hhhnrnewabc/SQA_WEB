@@ -8,10 +8,8 @@ class BaseUserTestCase(TestCase):
         BaseUser.objects.create_staff(email="YY@yy.com", password="1234")
         BaseUser.objects.create_user(email="ZZ@yy.com", password="1234")
 
-
-
-    def test_creat_user(self):
-        """Animals that can speak are correctly identified"""
+    def test_create_user(self):
+        """test base user is active/staff/superuser?"""
         XX = BaseUser.objects.get(email="XX@yy.com")
         YY = BaseUser.objects.get(email="YY@yy.com")
         ZZ = BaseUser.objects.get(email="ZZ@yy.com")
@@ -22,7 +20,7 @@ class BaseUserTestCase(TestCase):
 
         self.assertEqual(XX.is_active, True)
         self.assertEqual(YY.is_active, True)
-        self.assertEqual(ZZ.is_active, True)
+        self.assertEqual(ZZ.is_active, False)
 
         self.assertEqual(XX.is_staff, True)
         self.assertEqual(YY.is_staff, True)
@@ -32,9 +30,8 @@ class BaseUserTestCase(TestCase):
         self.assertEqual(YY.is_superuser, False)
         self.assertEqual(ZZ.is_superuser, False)
 
-
         self.assertEqual(ZZ.get_full_name(), 'ZZ@yy.com')
-
+        self.assertEquals(ZZ.get_email(), 'ZZ@yy.com')
 
     def test_sent_email(self):
         ZZ = BaseUser.objects.get(email="ZZ@yy.com")
@@ -44,12 +41,11 @@ class BaseUserTestCase(TestCase):
         subject = 'subject'
         message = 'message'
         
-        self.assertEqual(XX.email_user(subject, message), "sent to XX@yy.com subject message")
-        self.assertEqual(YY.email_user(subject, message), "sent to YY@yy.com subject message")
-        self.assertEqual(ZZ.email_user(subject, message), "sent to ZZ@yy.com subject message")
+        self.assertEqual(XX.email_user(subject, message), None)
+        self.assertEqual(YY.email_user(subject, message), None)
+        self.assertEqual(ZZ.email_user(subject, message), None)
 
-
-    def test_creat_user_with_no_input_email(self):
-        kargs = {'password':"1234",}
+    def test_create_user_with_no_input_email(self):
+        kargs = {'password': "1234", }
         self.assertRaisesRegex(ValueError, "此欄位必須填入資料",
             BaseUser.objects.create_user, **kargs)
