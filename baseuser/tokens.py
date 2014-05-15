@@ -5,11 +5,15 @@ from django.utils.crypto import constant_time_compare, salted_hmac
 from django.utils import six
 
 
-class SignupTokenGenerator(object):
+class BaseTokenGenerator(object):
     """
     Strategy object used to generate and check tokens for the password
     reset mechanism.
     """
+    def __init__(self, key_salt="FCU.SQA.GAME.CENTER.PROJECT", time_limit=settings.PASSWORD_RESET_TIMEOUT_DAYS):
+        self.key_salt = key_salt
+        self.time_limit = time_limit
+
     def make_token(self, user):
         """
         Returns a token that can be used once to do a password reset
@@ -37,7 +41,7 @@ class SignupTokenGenerator(object):
             return False
 
         # Check the timestamp is within limit
-        if (self._num_days(self._today()) - ts) > settings.SIGNUP_TIMEOUT_DAYS:
+        if (self._num_days(self._today()) - ts) > self.time_limit:
             return False
 
         return True
@@ -53,7 +57,7 @@ class SignupTokenGenerator(object):
         # last_login will also change), we produce a hash that will be
         # invalid as soon as it is used.
         # We limit the hash to 20 chars to keep URL short
-        key_salt = "FCU.SQA.GAME.CENTER.PROJECT"
+        key_salt = self.key_salt
 
         # Ensure results are consistent across DB backends
         signup_timestamp = user.date_joined.replace(microsecond=0, tzinfo=None)
@@ -70,4 +74,5 @@ class SignupTokenGenerator(object):
         # Used for mocking in tests
         return date.today()
 
-default_token_generator = SignupTokenGenerator()
+default_token_generator = BaseTokenGenerator()
+signup_token_generator = BaseTokenGenerator(time_limit=settings.SIGNUP_TIMEOUT_DAYS)

@@ -15,7 +15,7 @@ from django.views import generic
 from django.http import Http404
 from django.contrib import messages
 from django.utils.translation import ugettext as _
-from baseuser.tokens import default_token_generator
+from baseuser.tokens import signup_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.contrib.sites.models import get_current_site
@@ -106,7 +106,7 @@ class EmailView(generic.View):
 
         if user.is_active:
             return HttpResponse("{'status': 'is_already_active'}")
-        token = default_token_generator.make_token(user)
+        token = signup_token_generator.make_token(user)
         current_site = get_current_site(self.request)
         site_name = current_site.name
         domain = current_site.domain
@@ -138,7 +138,7 @@ def active_user(request, uidb64, token):
         if user is not None and user.is_active:
             return HttpResponseRedirect(reverse('steam:index'))
 
-        if user is not None and default_token_generator.check_token(user, token):
+        if user is not None and signup_token_generator.check_token(user, token):
             user.is_active = True
             user.save()
 
