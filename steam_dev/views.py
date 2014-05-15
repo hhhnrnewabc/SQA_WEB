@@ -98,7 +98,7 @@ class SteamDevProfileView(FormView):
             for k in self.form_class.readonly_fields:
                 form.cleaned_data.pop(k, None)
         # UPDATE DATA
-        self._steam_dev.update(form.cleaned_data)
+        self._steam_dev.update(**form.cleaned_data)
         return super(SteamDevProfileView, self).form_valid(form)
 
     @steam_dev_required
@@ -123,6 +123,15 @@ class SteamDevAPPView(FormView):
     def get_initial(self):
         # load data
         return model_to_dict(self._steam_dev)
+
+    def form_valid(self, form):
+        # Exclude readonly_fields for ReadOnlyFieldsMixin
+        if self.form_class.readonly_fields:
+            for k in self.form_class.readonly_fields:
+                form.cleaned_data.pop(k, None)
+        # UPDATE DATA
+        self._steam_dev.update(**form.cleaned_data)
+        return super(SteamDevAPPView, self).form_valid(form)
 
 
 from rest_framework.views import APIView

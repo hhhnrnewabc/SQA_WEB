@@ -54,8 +54,8 @@ class SteamDeveloper(models.Model):
         self.secret_token = self.generate_key()
         self.save()
 
-    def update(self, dict):
-        for k, v in dict.items():
+    def update(self, **kwargs):
+        for k, v in kwargs.items():
             setattr(self, k, v)
         self.save()
 
@@ -124,7 +124,7 @@ class SteamDevAPPS(models.Model):
         if commit:
             return super(SteamDevAPPS, self).save(*args, **kwargs)
 
-    def update(self, dict):
-        for k, v in dict.items():
+    def update(self, **kwargs):
+        for k, v in kwargs.items():
             setattr(self, k, v)
         self.save()
