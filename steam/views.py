@@ -152,3 +152,24 @@ def active_user(request, uidb64, token):
     return HttpResponse(status=404)
 
 
+from django.contrib.auth.views import (password_reset, password_reset_done,
+                                       password_reset_confirm, password_reset_complete)
+from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
+from baseuser.tokens import default_token_generator
+
+
+def baseuser_password_reset(request):
+    c = {
+            'is_admin_site': False,
+            'template_name': 'steam/password_reset_form.html',
+            'email_template_name': 'steam/password_reset_email.html',
+            'subject_template_name': 'steam/password_reset_subject.txt',
+            'password_reset_form': PasswordResetForm,
+            'token_generator': default_token_generator,
+            'post_reset_redirect': None,
+            'from_email': None,
+            'current_app': None,
+            'extra_context': None,
+            'html_email_template_name': None
+    }
+    return password_reset(request, **c)

@@ -27,6 +27,8 @@ urlpatterns = patterns('',
 
     url(r'active_user/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.active_user, name='active_user'),
+    url(r'password_reset_confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.active_user, name='password_reset_confirm'),
 
     url(r'^user_profile/$', steam_user_views.SteamUserView.as_view(), name='steam_user_profile'),
 

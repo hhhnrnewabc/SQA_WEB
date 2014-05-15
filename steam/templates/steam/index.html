@@ -24,10 +24,83 @@
     {% block maininfo %}
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more »</a>
-        </p>
+        <div class="carousel col-md-9">
+            <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-captions" data-slide-to="1" class=""></li>
+                <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img data-src="holder.js/900x500/auto/#777:#777" alt="900x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojNzc3O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjU2cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+OTAweDUwMDwvdGV4dD48L3N2Zz4=">
+                  <div class="carousel-caption">
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  </div>
+                </div>
+                <div class="item">
+                  <img data-src="holder.js/900x500/auto/#666:#666" alt="900x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojNjY2O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjU2cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+OTAweDUwMDwvdGV4dD48L3N2Zz4=">
+                  <div class="carousel-caption">
+                    <h3>Second slide label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </div>
+                </div>
+                <div class="item">
+                  <img data-src="holder.js/900x500/auto/#555:#5555" alt="900x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzU1NSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojNTU1NTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZTo1NnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjkwMHg1MDA8L3RleHQ+PC9zdmc+">
+                  <div class="carousel-caption">
+                    <h3>Third slide label</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  </div>
+                </div>
+              </div>
+              <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+
+            <div class="block col-md-12" id="spotlight_block">
+                <div class="block_header"><div>スポットライト</div></div>
+                <div class="block_content nopad">
+                    <div class="spotlight_scroll_ctn" id="spotlight_scroll">
+
+                        <div class="home_area_spotlight underlined_links" id="spotlight_1" style="">
+                            <div class="spotlight_img">
+                                <a href="http://store.steampowered.com/app/50300/?snr=1_4_4__40_1">
+                                    <img src="http://cdn.akamai.steamstatic.com/steam/spotlights/00002391/spotlight_image_japanese.jpg?t=1399998247" alt="#spotlight_midweek_madness" border="0">
+                                </a>
+                            </div>
+                            <div class="spotlight_content">
+                                <h3>Midweek Madness</h3>
+                                <div class="spotlight_body">金曜日 午前10時 (米太平洋時間）に終了します。</div>
+                                <div class="spotlight_body spotlight_price price">
+                                    <div class="discount_block discount_block_spotlight"><div class="discount_pct">-75%</div><div class="discount_prices"><div class="discount_original_price">$29.99</div><div class="discount_final_price" itemprop="price">$7.49 USD</div></div></div>									<div style="clear: left;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="block_footer">
+                    <div class="right small_cap_scroll_btn col-md-6" id="spotlight_scroll_next">
+                        <a href="javascript:NextSpotlight( 2 );">次へ <img src="http://store.akamai.steamstatic.com/public/images/v5/ico_navArrow_right.gif"></a>
+                    </div>
+                    <div class="left small_cap_scroll_btn disabled col-md-6" id="spotlight_scroll_prev">
+                        <a href="javascript:PrevSpotlight( 2 );"><img src="http://store.akamai.steamstatic.com/public/images/v5/ico_navArrow_left.gif"> 前へ</a>
+                    </div>
+                    <div>
+                        &nbsp;
+                    </div>
+                </div>
+
+            </div>
+
+          </div>
       </div>
     </div>
     {% endblock %} {% block secondinfo %}

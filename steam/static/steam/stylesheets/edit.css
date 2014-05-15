@@ -43,12 +43,14 @@ body {
 }
 
 /* 網頁圖片比例縮小 300px */
-.album-pic a img { 
-vertical-align: middle; 
-max-width:300px;   /* FF IE7 */
-max-height:300px; /* FF IE7 */
-_width:expression(this.width > 300 && this.width > this.height ? 300: auto); /* IE6 */
-_height:expression(this.height > 300 ? 300 : auto); /* IE6 */ 
+.album-pic a img {
+    vertical-align: middle;
+    width: 100%;
+    margin: auto;
+/*max-width:300px;   *//* FF IE7 */
+/*max-height:300px; *//* FF IE7 */
+/*_width:expression(this.width > 300 && this.width > this.height ? 300: auto); *//* IE6 */
+/*_height:expression(this.height > 300 ? 300 : auto); *//* IE6 *//* */
 }
 
 .steam_user_edit {

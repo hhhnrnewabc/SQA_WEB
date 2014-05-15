@@ -16,11 +16,12 @@
             <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
 
             {% block title %}{% endblock %}
-            <!-- Bootstrap core CSS -->
-            <link href="{% static 'steam/stylesheets/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
-            <!-- Custom styles for this template -->
-            <link href="{% static 'steam/stylesheets/jumbotron.css' %}" type="text/css" rel="stylesheet">
-
+                <!-- Latest compiled and minified CSS -->
+                <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+                <!-- Optional theme -->
+                <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+                <!-- Custom styles for this template -->
+                <link href="{% static 'steam/stylesheets/jumbotron.css' %}" type="text/css" rel="stylesheet">
             {% block importCSS %}{% endblock %}
 
             <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -31,8 +32,8 @@
 
             {% block loadjavascripts %}
                 <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
-            {# <script src="{% static 'steam/javascripts/jquery.min.js' %}"></script>#}
-                <script src="{% static 'steam/javascripts/bootstrap.js' %}"></script>
+                <!-- Latest compiled and minified JavaScript -->
+                <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
             {% endblock %}
 
             {% block googlean_alytics %}
@@ -63,12 +64,18 @@
 
             {% block copyright %}
             <div class="container">
-              <hr>
-                <footer>
-                    <span class="">
-                        <p>©  FCU SQA Game Center Project 2014</p>
-                    </span>
-                </footer>
+                <hr>
+                <div class="col-xs-12 col-sm-6 col-md-8">
+                    <footer>
+                        <span class="">
+                            <p>©  FCU SQA Game Center Project 2014</p>
+                        </span>
+                    </footer>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    {% include 'steam/set_timezone.html' %}
+                </div>
+
             </div>
             {% endblock %}
         </body>

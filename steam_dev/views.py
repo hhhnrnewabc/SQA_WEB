@@ -194,7 +194,7 @@ class SteamUserList(APIView):
 
     ----------------------------------------------------------------------------------------------------------------
 
-    ##Data Type:
+    ##Data Type:<a class="headerlink" href="#data_type" title="Permalink to this headline">¶</a>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -225,27 +225,27 @@ class SteamUserList(APIView):
           <td> 20           </td>
         </tr>
         <tr>
-          <td> sex           </td>
+          <td><a class="reference internal" href="#sex">sex</a></td>
           <td>       string  </td>
           <td> 1            </td>
         </tr>
         <tr>
-          <td> photo         </td>
+          <td><a class="reference internal" href="#photo">photo</a></td>
           <td>          url  </td>
           <td> 200          </td>
         </tr>
         <tr>
-          <td> api_token     </td>
+          <td><a class="reference internal" href="#token">api_token</a></td>
           <td>       string  </td>
           <td> 100          </td>
         </tr>
         <tr>
-          <td> secret_token  </td>
+          <td><a class="reference internal" href="#token">secret_token</a></td>
           <td>       string  </td>
           <td> 100          </td>
         </tr>
         <tr>
-          <td> created       </td>
+          <td><a class="reference internal" href="#created">created</a></td>
           <td>       string  </td>
           <td> 20*           </td>
         </tr>
@@ -254,7 +254,7 @@ class SteamUserList(APIView):
 
     ----------------------------------------------------------------------------------------------------------------
 
-    ###sex:
+    ###sex:<a class="headerlink" href="#sex" title="Permalink to this headline">¶</a>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -280,7 +280,7 @@ class SteamUserList(APIView):
 
     ----------------------------------------------------------------------------------------------------------------
 
-    ###photo:
+    ###photo:<a class="headerlink" href="#photo" title="Permalink to this headline">¶</a>
     example photo_path: `/media/noImageAvailable300.png`
 
     domain url: `https://sqa.swim-fish.info` + photo_path
@@ -289,14 +289,14 @@ class SteamUserList(APIView):
 
     ----------------------------------------------------------------------------------------------------------------
 
-    ###token:
+    ###token:<a class="headerlink" href="#token" title="Permalink to this headline">¶</a>
     length 100
 
     composition: `a`to`z` or `0`to`9`
 
     ----------------------------------------------------------------------------------------------------------------
 
-    ###created:
+    ###created:<a class="headerlink" href="#created" title="Permalink to this headline">¶</a>
     example: `2014-05-13T15:44:05Z`
 
     **year**`-`**month**`-`**day**`T`**hour**`:`**minute**`:`**second**`Z`
@@ -382,7 +382,7 @@ class SteamDeveloperList(APIView):
 
     ----------------------------------------------------------------------------------------------------------------
 
-    ##Data Type:
+    ##Data Type:<a class="headerlink" href="#data_type" title="Permalink to this headline">¶</a>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -423,7 +423,7 @@ class SteamDeveloperList(APIView):
           <td> 50           </td>
         </tr>
         <tr>
-          <td> created       </td>
+          <td><a class="reference internal" href="#created" >created</a></td>
           <td>         time  </td>
           <td> 20*           </td>
         </tr>
@@ -433,7 +433,7 @@ class SteamDeveloperList(APIView):
     ----------------------------------------------------------------------------------------------------------------
 
 
-    ###created:
+    ###created:<a class="headerlink" href="#created" title="Permalink to this headline">¶</a>
     example: `2014-05-13T15:44:05Z`
 
     **year**`-`**month**`-`**day**`T`**hour**`:`**minute**`:`**second**`Z`

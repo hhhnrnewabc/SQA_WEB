@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^$', 'steam.views.index'),
 
     url(r'^i18n/', include('django.conf.urls.i18n'), name='set_language'),
+    url(r'^time_zone/', views.set_timezone, name='set_timezone'),
 
     url(r'^admin/', include(admin.site.urls)),
 
