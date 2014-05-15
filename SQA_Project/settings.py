@@ -95,8 +95,8 @@ LOCALE_PATHS = (
     os.path.join(os.path.dirname(os.path.abspath(__file__)), 'locale'),
 )
 
-# TIME_ZONE = 'UTC'
-TIME_ZONE = 'Asia/Taipei'
+TIME_ZONE = 'UTC'
+# TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
