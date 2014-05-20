@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-REQUIRED_LEVEL = {
+REQUIRED_LEVEL = (
     ('M', _('Minimum')),
     ('R', _('Recommended')),
     ('O', _('Other')),
-}
+)
 
 
 class Game(models.Model):
