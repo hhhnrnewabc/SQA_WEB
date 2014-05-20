@@ -144,7 +144,9 @@ from rest_framework.reverse import reverse
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
-from steam_dev.serializers import SteamUserSerializer, SteamDeveloperSerializer ,SteamDevAPPSSerializer
+from steam_dev.serializers import SteamUserSerializer
+from steam_dev.serializers import SteamDeveloperSerializer
+from steam_dev.serializers import SteamDevAPPSSerializer
 
 
 def steam_dev_api_check(function):
@@ -167,7 +169,7 @@ def steam_dev_api_check(function):
 class SteamUserList(APIView):
     """
     List all steam user.
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     POST your dev `api_token` and `secret_token` :
 
@@ -192,7 +194,7 @@ class SteamUserList(APIView):
             }
         ]
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     ##Data Type:<a class="headerlink" href="#data_type" title="Permalink to this headline">¶</a>
     <table class="table table-striped">
@@ -252,7 +254,7 @@ class SteamUserList(APIView):
       </tbody>
     </table>
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     ###sex:<a class="headerlink" href="#sex" title="Permalink to this headline">¶</a>
     <table class="table table-striped">
@@ -278,7 +280,7 @@ class SteamUserList(APIView):
       </tbody>
     </table>
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     ###photo:<a class="headerlink" href="#photo" title="Permalink to this headline">¶</a>
     example photo_path: `/media/noImageAvailable300.png`
@@ -287,14 +289,14 @@ class SteamUserList(APIView):
 
     Location is: `https://sqa.swim-fish.info/media/noImageAvailable300.png`
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     ###token:<a class="headerlink" href="#token" title="Permalink to this headline">¶</a>
     length 100
 
     composition: `a`to`z` or `0`to`9`
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     ###created:<a class="headerlink" href="#created" title="Permalink to this headline">¶</a>
     example: `2014-05-13T15:44:05Z`
@@ -348,16 +350,18 @@ class SteamUserList(APIView):
     @csrf_exempt
     @steam_dev_api_check
     def post(self, request, format=None):
-        steam_users = SteamUser.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False,
-                                               baseuser__is_acvite=True)
+        steam_users = SteamUser.objects.filter(baseuser__is_superuser=False,
+                                               baseuser__is_staff=False,
+                                               baseuser__is_active=True)
         serializer = SteamUserSerializer(steam_users, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK,
+                        content_type='application/json')
 
 
 class SteamDeveloperList(APIView):
     """
     List all steam developer.
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     POST your dev `api_token` and `secret_token` :
 
@@ -380,7 +384,7 @@ class SteamDeveloperList(APIView):
             }
         ]
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     ##Data Type:<a class="headerlink" href="#data_type" title="Permalink to this headline">¶</a>
     <table class="table table-striped">
@@ -430,7 +434,7 @@ class SteamDeveloperList(APIView):
       </tbody>
     </table>
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
 
     ###created:<a class="headerlink" href="#created" title="Permalink to this headline">¶</a>
@@ -485,10 +489,12 @@ class SteamDeveloperList(APIView):
     @csrf_exempt
     @steam_dev_api_check
     def post(self, request, format=None):
-        steam_dev = SteamDeveloper.objects.filter(baseuser__is_superuser=False, baseuser__is_staff=False,
-                                                  baseuser__is_acvite=True)
+        steam_dev = SteamDeveloper.objects.filter(baseuser__is_superuser=False,
+                                                  baseuser__is_staff=False,
+                                                  baseuser__is_active=True)
         serializer = SteamDeveloperSerializer(steam_dev, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK,
+                        content_type='application/json')
 
 
 @api_view(('GET',))
@@ -502,7 +508,7 @@ def api_root(request, format=None):
 
     ##Detailed usage instructions, please refer to the following link.
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     POST use curl :
 
@@ -517,7 +523,7 @@ def api_root(request, format=None):
     `-H` Http Head \n
     `-d` POST DATA \n
 
-    ----------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------------------------------
 
     ###ERROR CODE:
     <table class="table table-striped">
@@ -555,6 +561,8 @@ def api_root(request, format=None):
     # Assuming we have views named 'steam_user_list'
     # in our project's URLconf namespace 'steam_dev'.
     return Response({
-        'Steam User List': reverse('steam_dev:steam_user_list', request=request, format=format),
-        'Steam Developer List': reverse('steam_dev:steam_dev_list', request=request, format=format),
+        'Steam User List': reverse('steam_dev:steam_user_list',
+                                   request=request, format=format),
+        'Steam Developer List': reverse('steam_dev:steam_dev_list',
+                                        request=request, format=format),
     })

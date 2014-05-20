@@ -20,6 +20,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.contrib.sites.models import get_current_site
 from django.template import loader
+from django.conf import settings
 
 
 def index(request):
@@ -102,10 +103,10 @@ class EmailView(generic.View):
         try:
             user = BaseUser.objects.get(id=self.request.session["_auth_user_id"])
         except (BaseUser.DoesNotExist, TypeError, ValueError, OverflowError, KeyError):
-            return HttpResponse("{'status':'error'}")
+            return HttpResponse("{'status':'error'}", mimetype='application/json')
 
         if user.is_active:
-            return HttpResponse("{'status': 'is_already_active'}")
+            return HttpResponse("{'status': 'is_already_active'}", mimetype='application/json')
         token = signup_token_generator.make_token(user)
         current_site = get_current_site(self.request)
         site_name = current_site.name
@@ -122,7 +123,7 @@ class EmailView(generic.View):
         }
         subject = loader.render_to_string('steam/email_confirm.html', c)
         user.email_user(_('Welcome SQA Game Center Project'), subject)
-        return HttpResponse("{'status':'ok'}")
+        return HttpResponse("{'status':'ok'}", mimetype='application/json')
 
 
 def active_user(request, uidb64, token):
@@ -167,7 +168,7 @@ def baseuser_password_reset(request):
             'password_reset_form': PasswordResetForm,
             'token_generator': default_token_generator,
             'post_reset_redirect': None,
-            'from_email': None,
+            'from_email': settings.DEFAULT_FROM_EMAIL,
             'current_app': None,
             'extra_context': None,
             'html_email_template_name': None
