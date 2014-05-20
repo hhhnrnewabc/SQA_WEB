@@ -354,8 +354,7 @@ class SteamUserList(APIView):
                                                baseuser__is_staff=False,
                                                baseuser__is_active=True)
         serializer = SteamUserSerializer(steam_users, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK,
-                        content_type='application/json')
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class SteamDeveloperList(APIView):
@@ -493,8 +492,7 @@ class SteamDeveloperList(APIView):
                                                   baseuser__is_staff=False,
                                                   baseuser__is_active=True)
         serializer = SteamDeveloperSerializer(steam_dev, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK,
-                        content_type='application/json')
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(('GET',))
