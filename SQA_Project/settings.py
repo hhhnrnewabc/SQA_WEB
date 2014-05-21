@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',  # Django Debug Toolbar
+    'south',
     'rest_framework',
     'rest_framework.authtoken',
     'baseuser',
@@ -46,7 +46,7 @@ INSTALLED_APPS = (
     'steam_user',
     'django_nose',  # django nose testing
     'bootstrapform',  # Twitter Bootstrap for Django Form.
-
+    # 'debug_toolbar',  # Django Debug Toolbar
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,8 +57,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',  # Django Debug Toolbar
     'baseuser.middleware.time_zone.TimezoneMiddleware',  # for change time_zone
-    'debug_toolbar.middleware.DebugToolbarMiddleware',  # Django Debug Toolbar
 )
 
 
