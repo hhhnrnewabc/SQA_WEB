@@ -43,8 +43,8 @@ INSTALLED_APPS = (
     'steam',
     'steam_dev',
     'steam_user',
-    'django_nose',  #django nose testing
-    'bootstrapform',  #Twitter Bootstrap for Django Form.
+    'django_nose',  # django nose testing
+    'bootstrapform',  # Twitter Bootstrap for Django Form.
 
 )
 
@@ -57,6 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'baseuser.middleware.time_zone.TimezoneMiddleware',  # for change time_zone
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # Django Debug Toolbar
 )
 
 
