@@ -59,11 +59,11 @@ docs/_build/
 cover/
 
 #html fonts image
-fonts/
-*.ttf
-*.eot
-*.svg
-*.woff
+# fonts/
+# *.ttf
+# *.eot
+# *.svg
+# *.woff
 
 images/
 *.png
