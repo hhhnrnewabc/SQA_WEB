@@ -14,9 +14,20 @@
 
         {% block style %}
         {% block bootstrap_theme %}
-            <link href="{% static 'steam/stylesheets/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+            
             <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/bootstrap-tweaks.css" %}"/>
         {% endblock %}
+        <!-- UIkit with the basic style -->
+        <link href="{% static 'steam/stylesheets/uikit.min.css' %}" type="text/css" rel="stylesheet">
+        <!-- UIkit with Gradient style -->
+        <link href="{% static 'steam/stylesheets/uikit.gradient.min.css' %}" type="text/css" rel="stylesheet">
+        <!-- UIkit with Almost flat style -->
+        <link href="{% static 'steam/stylesheets/uikit.almost-flat.min.css' %}" type="text/css" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/prettify.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/default.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "steam/stylesheets/api_view.css" %}"/>
@@ -24,7 +35,9 @@
 
         {% block loadjavascripts %}
             <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
-            <script src="{% static 'steam/javascripts/bootstrap.js' %}"></script>
+            <!-- JavaScript and minified version -->
+            <script type="text/javascript" src="{% static 'steam/javascripts/uikit.min.js' %}"></script>
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         {% endblock %}
 
         {% block googlean_alytics %}
