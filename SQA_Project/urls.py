@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^i18n/', include('django.conf.urls.i18n'), name='set_language'),
     url(r'^time_zone/', views.set_timezone, name='set_timezone'),
 
+    url(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^steam/', include('steam.urls', namespace="steam")),
