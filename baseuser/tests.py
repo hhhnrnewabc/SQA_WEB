@@ -1,6 +1,6 @@
 from django.test import TestCase
-
 from baseuser.models import BaseUser, UserManager
+
 
 class BaseUserTestCase(TestCase):
     def setUp(self):
@@ -31,7 +31,8 @@ class BaseUserTestCase(TestCase):
         self.assertEqual(ZZ.is_superuser, False)
 
         self.assertEqual(ZZ.get_full_name(), 'ZZ@yy.com')
-        self.assertEquals(ZZ.get_email(), 'ZZ@yy.com')
+        self.assertEqual(ZZ.get_email(), 'ZZ@yy.com')
+        self.assertEqual(ZZ.__str__(), 'ZZ@yy.com')
 
     def test_sent_email(self):
         ZZ = BaseUser.objects.get(email="ZZ@yy.com")

@@ -59,12 +59,11 @@
 
   <body class="{% block bodyclass %}{% endblock %} container">
 
-    <div class="wrapper api_root">
-
     {% block navbar %}
         {% include 'steam/base_body.html' %}
     {% endblock %}
-
+    
+    <div class="wrapper api_root">
     {% block breadcrumbs %}
     <ul class="breadcrumb">
         {% for breadcrumb_name, breadcrumb_url in breadcrumblist %}

@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, url
+from steam_user import views
 
 
 urlpatterns = patterns('',
-	# # ex: /polls/
-#    url(r'^$', views.index, name='index'),
+    url(r'^$', views.index, name='index'),
+    url(r'^list_all/$', views.list_all_user, name='list_all_user'),
 #    # ex: /polls/5/
 #    url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
 #    # ex: /polls/5/results/
@@ -11,11 +12,5 @@ urlpatterns = patterns('',
 #    # ex: /polls/5/vote/
 #    url(r'^(?P<poll_id>\d+)/vote/$', views.vote, name='vote'),
 
-	# url(r'^$', views.IndexView.as_view(), name='index'),
-	# url(r'^contact/$', views.ContactView.as_view(), name='contact'),
-	# url(r'^contact/thanks/$', views.ThanksView.as_view(), name='thanks'),
-	# url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
-	# url(r'^(?P<pk>\d+)/results/$', views.ResultsView.as_view(), name='results'),
-	# url(r'^(?P<poll_id>\d+)/vote/$', views.vote, name='vote'),
 )
 

@@ -8,6 +8,7 @@ body {
     margin-bottom:0px;
 }
 
+
 div.c-wrapper{
     width: 80%; /* for example */
     margin: auto;
@@ -17,10 +18,13 @@ div.c-wrapper{
 .carousel-inner > .item > a > img{
     width: 100%; /* use this, or not */
     margin: auto;
-    min-width: 768px;
-    min-height: 432px;
+/*    min-width: 768px;
+    min-height: 432px;*/
 }
 
+.carousel .jumbotron{
+	padding-top: 88px
+}
 
 .discount_block_spotlight {
 	height: 32px;
@@ -39,17 +43,23 @@ div.c-wrapper{
 .discount_block_spotlight .discount_prices {
 	float: left;
 	text-align: left;
+	height: 32px;
 	padding: 0px 6px;
 }
 
 .discount_block_spotlight .discount_original_price {
+	line-height: 16px;
 	font-size: 11px;
 }
 
 .discount_block_spotlight .discount_final_price {
+	line-height: 16px;
 	font-size: 13px;
 }
 
+.spotlight_price {
+	height: 34px;
+}
 
 /*
  * DISCOUNTS & PRICES
@@ -147,7 +157,7 @@ div.c-wrapper{
 
 
 div#main {
-	background-image: url('http://store.akamai.steamstatic.com/public/images/v5/content_bg.png');
+	background-image: url('/static/steam/images/content_bg.png');
 	background-repeat: repeat-x;
 	background-color: #000000;
 }
@@ -172,6 +182,7 @@ div.rightcol {
 	margin-left: 14px;
 	float: left;
 	overflow: hidden;
+	background-color: #262626;
 }
 
 .block {
@@ -248,22 +259,28 @@ div.rightcol {
 
 .rightcol .block_flipped_gradient {
 	border: none;
-	background-image: url( 'http://store.akamai.steamstatic.com/public/images/v5/rightcol_bg_block_flipped.png' );
+	background-image: url( '/static/steam/images/rightcol_bg_block_flipped.png' );
 	background-position: top left;
 	background-repeat: no-repeat;
 	height: 1px;
 }
 
 .rightcol .block_content {
-	border: none;
-	border-left: 1px solid #262626;
-	background-image: url( 'http://store.akamai.steamstatic.com/public/images/v5/rightcol_bg_block.png' );
-	background-position: bottom right;
-	background-repeat: no-repeat;
+	-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-image: url( '/static/steam/images/rightcol_bg_block.png' );
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color #262626;
+    border-image: none;
+    border-style: none none none solid;
+    border-width: medium medium medium 1px;
 }
 
 .rightcol #col_right_review_payment_tips .block_content {
-	background-image: url( 'http://store.akamai.steamstatic.com/public/images/v5/rightcol_bg_block_green.png' );
+	background-image: url( '/static/steam/images/rightcol_bg_block_green.png' );
 }
 
 .block_content.nopad {
@@ -339,25 +356,25 @@ div.rightcol {
 }
 
 .block .block_header {
-	/* background-image: url('http://store.akamai.steamstatic.com/public/images/v5/full_bg_gray.png'); */
+	/* background-image: url('/static/steam/images/full_bg_gray.png'); */
 	background-repeat: no-repeat;
 	background-color: #303030;
 }
 
 .leftcol .block .block_header {
-	background-image: url('http://store.akamai.steamstatic.com/public/images/v5/maincol_bg_gray.png');
+	background-image: url('/static/steam/images/maincol_bg_gray.png');
 	background-repeat: no-repeat;
 	background-color: #303030;
 }
 
 .rightcol .block .block_header {
-	/* background-image: url('http://store.akamai.steamstatic.com/public/images/v5/rightcol_bg_blue.png'); */
+	/* background-image: url('/static/steam/images/rightcol_bg_blue.png'); */
 	background-repeat: no-repeat;
 	background-color: #3C3D3E;
 }
 
 .rightcol .block .block_header_green {
-	background-image: url('http://store.akamai.steamstatic.com/public/images/v5/rightcol_bg_green.png');
+	background-image: url('/static/steam/images/rightcol_bg_green.png');
 }
 
 .block_content h4 {
@@ -374,3 +391,37 @@ div.rightcol {
 /*_width:expression(this.width > 255 && this.width > this.height ? 255: auto); *//* IE6 */
 /*_height:expression(this.height > 255 ? 255 : auto); *//* IE6 */
 }
+
+/*For xs*/
+.carousel-indicators-xs {
+position: absolute;
+bottom: -10px;
+left: 50%;
+z-index: 15;
+width: 60%;
+margin-left: -30%;
+padding-left: 0;
+list-style: none;
+text-align: center;
+}
+
+.carousel-indicators-xs li {
+display: inline-block;
+width: 5px;
+height: 5px;
+margin: 1px;
+text-indent: -999px;
+border: 1px solid #fff;
+border-radius: 10px;
+cursor: pointer;
+background-color: #000 \9;
+background-color: rgba(0,0,0,0);
+}
+
+.carousel-indicators-xs .active {
+margin: 0;
+width: 7px;
+height: 7px;
+background-color: #fff;
+}
+

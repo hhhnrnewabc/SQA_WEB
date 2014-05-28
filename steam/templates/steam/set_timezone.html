@@ -1,11 +1,13 @@
 {% load tz %}
-<form action="{% url 'set_timezone' %}" method="POST">
+<form class="uk-form" action="{% url 'set_timezone' %}" method="POST">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ request.path }}">
-    <label for="timezone">Time zone:</label>
-    <select class="form-control input-sm" name="timezone" onchange="this.form.submit()">
-        {% for tz in request.common_timezones %}
-        <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected="selected"{% endif %}>{{ tz }}</option>
-        {% endfor %}
-    </select>
+    <fieldset data-uk-margin>
+	    <label for="timezone">Time zone:</label>
+	    <select class="form-control input-sm" name="timezone" onchange="this.form.submit()">
+	        {% for tz in request.common_timezones %}
+	        <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected="selected"{% endif %}>{{ tz }}</option>
+	        {% endfor %}
+	    </select>
+    <fieldset data-uk-margin>
 </form>

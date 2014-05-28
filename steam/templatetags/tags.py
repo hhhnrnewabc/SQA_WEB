@@ -16,6 +16,7 @@ def active(request, pattern):
 def keyvalue(dict, key, default=None):
     return dict.get(key, default)
 
+
 #
 # @register.filter
 # def todir(m):

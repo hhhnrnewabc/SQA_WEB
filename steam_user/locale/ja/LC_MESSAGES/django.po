@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA_Steam_user\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-13 19:52+0800\n"
+"POT-Creation-Date: 2014-05-28 13:13+0800\n"
 "PO-Revision-Date: 2014-05-06 22:34+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: form.py:8 models.py:33 views.py:72
+#: form.py:8 models.py:33 views.py:98
 msgid "Image"
 msgstr "画像"
 
@@ -86,6 +86,14 @@ msgstr "性別"
 msgid "Sex :Female, Male, Other "
 msgstr "性別:女性, 男性, その他"
 
-#: templates/steam_user/user_profile.html:31
+#: views.py:83
+msgid "Update Success"
+msgstr "アップデート成功"
+
+#: templates/steam_user/list_all_user.html:43
+msgid "加入日期"
+msgstr ""
+
+#: templates/steam_user/user_profile.html:41
 msgid "Update"
 msgstr "アップデート"

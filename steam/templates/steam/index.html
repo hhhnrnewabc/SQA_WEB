@@ -1,6 +1,6 @@
 {% extends "steam/base.html" %}
 {% block title %}
-  <title>SQA Game Center Project</title>
+    <title>SQA Game Center Project</title>
 {% endblock %}
 
 
@@ -22,160 +22,196 @@
 
 
     {% block maininfo %}
-    <div class="jumbotron">
-      <div class="container">
-        <div class="carousel col-md-9">
-            <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-captions" data-slide-to="1" class=""></li>
-                <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="item active">
-                  <a href="#">
-                    <img src="{% static '/media/i6ldQao4fFkYx.jpg' %}">
-                  </a>
-                  <div class="carousel-caption">
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="#">
-                    <img src="{% static '/media/秒速5公分.jpg' %}">
-                  </a>
-                  <div class="carousel-caption">
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="#">
-                    <img src="{% static '/media/ACGN20121014_00455.jpg' %}">
-                  </a>
-                  <div class="carousel-caption">
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                  </div>
-                </div>
-              </div>
-              <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-              </a>
-              <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3">
-
-            <div class="block col-md-12" id="spotlight_block">
-                <div class="block_header"><div>Spotlight</div></div>
-                <div class="block_content nopad">
-                    <div class="spotlight_scroll_ctn" id="spotlight_scroll">
-
-                        <div class="home_area_spotlight underlined_links" id="spotlight_1" style="">
-                            <div class="spotlight_img">
+    <div class="carousel">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="carousel col-md-12">
+                <!-- start only xs -->
+                    <div id="carousel-xs-captions" class="visible-xs carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators-xs carousel-indicators">
+                            <li data-target="#carousel-xs-captions" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-xs-captions" data-slide-to="1" class=""></li>
+                            <li data-target="#carousel-xs-captions" data-slide-to="2" class=""></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="spotlight_img item active">
                                 <a href="#">
-                                    <img src="{% static '/media/noImageAvailable300.png' %}" alt="#spotlight_midweek_madness" border="0">
+                                    <img src="{% static '/media/i6ldQao4fFkYx.jpg' %}">
                                 </a>
+                                <div class="carousel-caption">
+                                </div>
                             </div>
-                            <div class="spotlight_content">
-                                <h3>Midweek Madness</h3>
-                                <div class="spotlight_body">金曜日 午前10時 (米太平洋時間）に終了します。</div>
-                                <div class="spotlight_body spotlight_price price">
-                                    <div class="discount_block discount_block_spotlight">
-                                    	<div class="discount_pct">-75%</div>
-                                    	<div class="discount_prices">
-                                    		<div class="discount_original_price">$29.99</div>
-                                    		<div class="discount_final_price" itemprop="price">$7.49 USD</div>
-                                    	</div>
-                                    </div>
-                                    <div style="clear: left;"></div>
+                            <div class="spotlight_img item">
+                                <a href="#">
+                                    <img src="{% static '/media/秒速5公分.jpg' %}">
+                                </a>
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                            <div class="spotlight_img item">
+                                <a href="#">
+                                    <img src="{% static '/media/ACGN20121014_00455.jpg' %}">
+                                </a>
+                                <div class="carousel-caption">     
                                 </div>
                             </div>
                         </div>
+                        <a class="left carousel-control" href="#carousel-xs-captions" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-xs-captions" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                    <!-- end only xs -->
+                    <!-- start hidden xs -->
+                    <div id="carousel-lg-captions" class="hidden-xs carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-lg-captions" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-lg-captions" data-slide-to="1" class=""></li>
+                            <li data-target="#carousel-lg-captions" data-slide-to="2" class=""></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <a href="#">
+                                    <img src="{% static '/media/i6ldQao4fFkYx.jpg' %}">
+                                </a>
+                                <div class="carousel-caption">
+                                    <h3>First slide label</h3>
+                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
 
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a href="#">
+                                    <img src="{% static '/media/秒速5公分.jpg' %}">
+                                </a>
+                                <div class="carousel-caption">
+                                    <h3>Second slide label</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a href="#">
+                                    <img src="{% static '/media/ACGN20121014_00455.jpg' %}">
+                                </a>
+                                <div class="carousel-caption">
+                                    <h3>Third slide label</h3>
+                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-lg-captions" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-lg-captions" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
                     </div>
+                    <!-- end hidden xs -->
                 </div>
-                <div class="block_footer">
-                    <div class="right small_cap_scroll_btn col-md-6" id="spotlight_scroll_next">
-                        <a href="#">次へ<span class="glyphicon glyphicon-chevron-right"></span> </a>
-                    </div>
-                    <div class="left small_cap_scroll_btn disabled col-md-6" id="spotlight_scroll_prev">
-                        <a href="#"><span class="glyphicon glyphicon-chevron-left"></span> 前へ</a>
-                    </div>
-                    <div>
-                        &nbsp;
-                    </div>
-                </div>
-
             </div>
-
-          </div>
-      </div>
+        </div>
     </div>
     {% endblock %} {% block secondinfo %}
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h2>List</h2>
-          <p>總計：{{ poll_len }} 資料</p>
-          <p><a class="btn btn-default" href="#list" role="button">View List »</a>
-          </p>
-        </div>
-
-        <div class="col-md-4 ">
-          <h2>最後五筆資料</h2>
-          <table class="table">
-            {% if latest_poll_list %} {% for poll in latest_poll_list %}
-            <tr>
-              <td>
-                <p>Last {{ forloop.counter }}</p>
-              </td>
-              <td>
-                <a href="/polls/{{ poll.id }}/">{{ poll.question }}</a>
-              </td>
-            </tr>
-            {% endfor %} {% else %}
-            <div class="alert alert-warning">
-              <a href="#" class="alert-link">
-                <p>No polls are available.</p>
-              </a>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>List</h2>
+                <p>總計：{{ poll_len }} 資料</p>
+                <p><a class="btn btn-default" href="#list" role="button">View List »</a></p>
             </div>
-            {% endif %}
-          </table>
+
+            <div class="col-md-4 ">
+                <h2>最後五筆資料</h2>
+                <table class="table">
+                    {% if latest_poll_list %} {% for poll in latest_poll_list %}
+                    <tr>
+                        <td>
+                            <p>Last {{ forloop.counter }}</p>
+                        </td>
+                        <td>
+                            <a href="/polls/{{ poll.id }}/">{{ poll.question }}</a>
+                        </td>
+                    </tr>
+                    {% endfor %} {% else %}
+                    <div class="alert alert-warning">
+                        <a href="#" class="alert-link">
+                            <p>No polls are available.</p>
+                        </a>
+                    </div>
+                    {% endif %}
+                </table>
+            </div>
+            <div class="block col-md-4" id="spotlight_block">
+                <div class="rightcol">
+                    <div class="block_header"><div>Spotlight</div></div>
+                    <div class="block_content nopad">
+                        <div class="spotlight_scroll_ctn" id="spotlight_scroll">
+                            <div class="home_area_spotlight underlined_links" id="spotlight_1" style="">
+                                <div class="spotlight_img">
+                                    <a href="#">
+                                        <img src="{% static '/media/noImageAvailable300.png' %}" alt="#spotlight_midweek_madness" border="0">
+                                    </a>
+                                </div>
+                                <div class="spotlight_content">
+                                    <h3>Midweek Madness</h3>
+                                    <div class="spotlight_body">金曜日 午前10時 (米太平洋時間）に終了します。</div>
+                                    <div class="spotlight_body spotlight_price price">
+                                        <div class="discount_block discount_block_spotlight">
+                                            <div class="discount_pct">-75%</div>
+                                            <div class="discount_prices">
+                                                <div class="discount_original_price">$29.99</div>
+                                                <div class="discount_final_price" itemprop="price">$7.49 USD</div>
+                                            </div>
+                                        </div>
+                                        <div style="clear: left;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block_footer">
+                        <div class="right small_cap_scroll_btn col-md-6" id="spotlight_scroll_next">
+                            <a href="#">次へ<span class="glyphicon glyphicon-chevron-right"></span> </a>
+                        </div>
+                        <div class="left small_cap_scroll_btn disabled col-md-6" id="spotlight_scroll_prev">
+                            <a href="#"><span class="glyphicon glyphicon-chevron-left"></span> 前へ</a>
+                        </div>
+                        <div>
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     {% endblock %}
 
     {% block thirdinfo %}
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a>
-          </p>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details »</a>
+                </p>
+            </div>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a>
-          </p>
-        </div>
-      </div>
     </div>
     {% endblock %}
 

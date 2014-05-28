@@ -13,6 +13,33 @@ from django.contrib import messages
 from django.conf import settings
 from django.db.models.fields.files import ImageFieldFile, FileField
 from django.utils.translation import ugettext_lazy as _
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from SQA_Project.Digg_like_paginator import DiggPaginator
+
+
+def index(request):
+    return render(request, 'steam_user/index.html')
+
+
+def list_all_user(request):
+    user_list = SteamUser.objects.filter(baseuser__is_superuser=False,
+                                         baseuser__is_staff=False,
+                                         baseuser__is_active=True)
+    paginator = DiggPaginator(user_list, 5, body=2, margin=2, tail=2)
+
+    page = request.GET.get('page')
+    try:
+        contacts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        contacts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        contacts = paginator.page(paginator.num_pages)
+    
+    return render_to_response('steam_user/list_all_user.html',
+                              {"contacts": contacts},
+                              context_instance=RequestContext(request))
 
 
 class SteamUserView(FormView):
@@ -54,7 +81,8 @@ class SteamUserView(FormView):
             except OSError:
                 messages.error(self.request, str(self._user.get_email()) + ' Upload Failed ')
 
-        return super(SteamUserView, self).form_valid(form)
+        # return super(SteamUserView, self).form_valid(form)
+        return self.render_to_response(self.get_context_data(form=form, success_message=_("Update Success")))
 
     def dispatch(self, *args, **kwargs):
         user = self.request.user

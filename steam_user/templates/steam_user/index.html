@@ -1,0 +1,51 @@
+{% extends "steam/base.html" %}
+
+{% block title %}
+  <title>User</title>
+{% endblock %}
+
+{% block maininfo %}
+    <div class="col-md-12">
+        <div class="container">
+            <div class="uk-grid" style="margin-top: 30px; margin-bottom: 15px;">
+                <div class="uk-width-3-4">
+                    <span>1</span>
+                </div>
+                <div class="uk-width-1-4">
+                    <form class="uk-form uk-margin-remove uk-display-inline-block">
+                        <input type="text" placeholder="Search">
+                        <button class="uk-button uk-button-primary">Submit</button>
+                    </form>
+                </div>
+            </div>            
+            <article class="uk-article">
+                <h1 class="uk-article-title">...</h1>
+                <p class="uk-article-meta">...</p>
+                <p class="uk-article-lead">...</p>
+                ...
+                <hr class="uk-article-divider">
+                ...
+            </article>
+
+        <ul class="uk-comment-list">
+
+            <li>       
+                <article class="uk-comment">
+                    <header class="uk-comment-header">
+                        <img class="uk-comment-avatar" src="/media/noImageAvailable300.png" width="50" height="50" alt="">
+                        <h4 class="uk-comment-title">Subnav as comment meta</h4>
+                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                            <li><span>12 days ago</span></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">#</a></li>
+                        </ul>
+                    </header>
+                    <div class="uk-comment-body"></div>
+                </article>
+            </li>
+
+        </ul>
+        </div>
+    </div>
+
+{% endblock %}

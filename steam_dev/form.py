@@ -16,7 +16,7 @@ class ReadOnlyFieldsMixin(object):
     def __init__(self, *args, **kwargs):
         super(ReadOnlyFieldsMixin, self).__init__(*args, **kwargs)
         for field in (field for name, field in self.fields.items() if name in self.readonly_fields):
-            field.widget.attrs['disabled'] = 'true'
+            field.widget.attrs['readonly'] = 'true'
             field.required = False
 
     def clean(self):
@@ -38,8 +38,6 @@ class SteamDevForm(ReadOnlyFieldsMixin, forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(SteamDevForm, self).__init__(*args, **kwargs)
-        # for field in self.READONLY_FIELDS:
-        #     self.fields[field].widget.attrs['readonly'] = True
 
     def save(self, commit=True):
         steam_dev = super(SteamDevForm, self).save(commit=False)
@@ -50,10 +48,11 @@ class SteamDevForm(ReadOnlyFieldsMixin, forms.ModelForm):
 
 class SteamDevAppApiTokenView(forms.ModelForm):
 
+    readonly_fields = ('api_token', 'secret_token',)
+
     class Meta:
         model = SteamDevAPPS
         fields = ('app_name',)
-        readonly_fields = ('api_token', 'secret_token',)
 
 
 class SteamDevAPPForm(forms.ModelForm):

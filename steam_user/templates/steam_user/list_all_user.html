@@ -1,0 +1,98 @@
+{% extends "steam/base.html" %}
+{% load tags %}
+{% block title %}
+  <title>User</title>
+{% endblock %}
+
+
+{% block maininfo %}
+    <div class="col-md-12">
+        <div class="container">
+            <div class="row" style="margin-top: 80px; margin-bottom: 15px;">
+                <div class="col-xs-12 col-sm-4 ">
+                    <span>1</span>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <form class="uk-form uk-margin-remove uk-display-inline-block">
+                        <input type="text" placeholder="Search">
+                        <button class="uk-button uk-button-primary">Submit</button>
+                    </form>
+                </div>
+            </div>            
+            <article class="uk-article">
+                <h1 class="uk-article-title">...</h1>
+                <p class="uk-article-meta">...</p>
+                <p class="uk-article-lead">...</p>
+                ...
+                <hr class="uk-article-divider">
+                ...
+            </article>
+
+            <ul class="uk-comment-list">
+                {% for contact in contacts.object_list %}
+                <li>       
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar" src="{{ contact.photo.url }}" width="64" height="64" alt="">
+                            {% if contact.nick_name %}
+                                <h4 class="uk-comment-title">{{ contact.nick_name }}</h4>
+                            {% else %}
+                                <h4 class="uk-comment-title">{{ contact.get_full_name }}</h4>
+                            {% endif %}
+                            <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                <li><span>{% trans "加入日期" %} : {{ contact.baseuser.date_joined|date:"Y/m/d l H:i" }}</span></li>
+                                <li><a href="/pofile/">Profile</a></li>
+                                <li><a href="#">#</a></li>
+                            </ul>
+                        </header>
+                        <div class="uk-comment-body"></div>
+                    </article>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="pagination uk-width-medium-1-1 uk-container-center">
+                <ul class="uk-pagination">
+                    {% if contacts.number != 1 %}
+                        <li><a href="?page=1"><i class="uk-icon-angle-double-left"></i></a></li>
+                    {% else %}
+                        <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
+                    {% endif %}
+                    {% if not contacts.has_previous %}
+                        <li class="uk-disabled"><span><i class="uk-icon-angle-left"></i></span></li>
+                    {% else %}
+                        <li><a href="?page={{ contacts.previous_page_number }}"><i class="uk-icon-angle-double-left"></i></a></li>
+                    {% endif %}
+                    {% for p in contacts.leading_range %}
+                        <li><a href="?page={{ p }}">{{ p }}</a></li>
+                    {% endfor %}
+                    <li><span>...</span></li>
+                    {% for p in contacts.main_range %}
+                        {% if p == contacts.number %}
+                            <li class="uk-active"><span>{{ p }}</span></li>
+                        {% else %}    
+                            <li><a href="?page={{p}}">{{ p }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li><span>...</span></li>
+                    {% for p in contacts.trailing_range %}
+                        <li><a href="?page={{ p }}">{{ p }}</a></li>
+                    {% endfor %}
+                    {% if not contacts.has_next %}
+                        <li class="uk-disabled"><span><i class="uk-icon-angle-right"></i></span></li>
+                    {% else %}
+                        <li><a href="?page={{ contacts.next_page_number }}"><i class="uk-icon-angle-double-right"></i></a></li>
+                    {% endif %}
+                    {% if contacts.number != contacts.paginator.num_pages %}
+                        <li><a href="?page={{ contacts.paginator.num_pages }}"><i class="uk-icon-angle-double-right"></i></a></li>
+                    {% else %}
+                        <li class="uk-disabled"><span><i class="uk-icon-angle-double-right"></i></span></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

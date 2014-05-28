@@ -4,6 +4,15 @@
   <title>User Profile</title>
 {% endblock %}
 
+{% block message %}
+  {% if success_message %}
+    <div class="alert alert-success alert-dismissable container">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>{{ success_message }}</strong>
+    </div>
+  {% endif %}
+{% endblock %} 
+
 
 {% block importCSS %}<link href="{% static 'steam/stylesheets/edit.css' %}" rel="stylesheet">{% endblock %}
 

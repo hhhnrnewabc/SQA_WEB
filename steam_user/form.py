@@ -24,7 +24,7 @@ class SteamUserForm(forms.ModelForm):
         photo = self.cleaned_data.get('photo', False)
         if photo:
             try:
-                if photo._size > 1*1024*1024:
+                if photo._size > 1.1*1024*1024:
                     raise forms.ValidationError(_("Image file too large ( > 1mb )"))
 
             # no new upload image return old image

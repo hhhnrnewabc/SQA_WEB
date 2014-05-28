@@ -1,7 +1,10 @@
 {% load tags %}
-    <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <!--[if lt IE 9]>
+        <div class="alert alert-danger uk-container-center uk-text-center">
+            <p class="browsehappy">{% trans "You are using an <strong>outdated</strong> browser. Please " %}<a href="http://browsehappy.com/">{% trans "upgrade your browser" %}</a> {% trans "to improve your experience." %}</p>
+        </div>
     <![endif]-->
+
     <div class="navbar navbar-inverse navbar-fixed-top col-md-12" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -23,7 +26,28 @@
               {% endif %}
                     <li class="{% active request "^/steam/download$" %}"><a href="{% url 'steam:index' %}">{% trans "Download" %}</a>
                     </li>
-                    <li class="uk-button-dropdown" data-uk-dropdown="">
+                    <!-- start only xs -->
+                    <li class="visible-xs dropdown" data-uk-dropdown="">
+                        <a data-toggle="dropdown">{% trans "Game" %} <i class="uk-icon-caret-down"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">{% trans "Action" %}</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">{% trans "Another action" %}</a>
+                            </li>
+                            <li><a href="#">{% trans "Something else here" %}</a>
+                            </li>
+                            <li class="uk-nav-divider"></li>
+                            <li class="uk-nav-header">Nav header</li>
+                            <li><a href="#">{% trans "Separated link" %}</a>
+                            </li>
+                            <li><a href="#">{% trans "One more separated link" %}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end only xs -->
+                    <!-- start hidden xs -->
+                    <li class="hidden-xs uk-button-dropdown" data-uk-dropdown="">
                         <a class="dropdown-toggle">{% trans "Game" %} <i class="uk-icon-caret-down"></i></a>
                         <div class="uk-dropdown">
                             <ul class="uk-nav uk-nav-dropdown">
@@ -43,24 +67,54 @@
                             </ul>
                         </div>
                     </li>
-                     <li class="{% active request "^/authprofile/$" %} "><a href="#">{% trans "User" %}</a>
+                    <!-- end hidden xs -->
+                    <li class="{% active request "^/steam/user/$" %} "><a href="/steam/user/">{% trans "User" %}</a>
                     </li>
-                    <li class="uk-button-dropdown {% active request "^/steam/dev/$" %}" data-uk-dropdown="">
+                    <!-- start only xs -->
+                    <li class="visible-xs dropdown {% active request "^/steam/dev/$" %}" data-uk-dropdown="">
+                        <a href="#" data-toggle="dropdown">{% trans "Developer" %} <i class="uk-icon-caret-down"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="{% active request "^/steam/dev/$" %} ">
+                                <a href="{% url 'steam_dev:index' %}">{% trans "Home" %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'steam_dev:api_root' %}">{% trans "API ROOT" %}</a>
+                            </li>
+                            <li class="uk-nav-divider"></li>
+                            <li class="{% active request "^/steam/dev/dev_profile$" %}">
+                                <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'steam_dev:update_secret_token' %}">{% trans "Developer API Token" %}</a>
+                            </li>
+                            <li class="uk-nav-divider"></li>
+                            <li class="uk-nav-header">Nav header</li>
+                            <li><a href="#">{% trans "Separated link" %}</a>
+                            </li>
+                            <li><a href="#">{% trans "One more separated link" %}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end only xs -->
+                    <!-- start hidden xs -->
+                    <li class="hidden-xs uk-button-dropdown {% active request "^/steam/dev/$" %}" data-uk-dropdown="">
                         <a href="#" class="dropdown-toggle">{% trans "Developer" %} <i class="uk-icon-caret-down"></i></a>
                         <div class="uk-dropdown">
                             <ul class="uk-nav uk-nav-dropdown">
                                 <li class="{% active request "^/steam/dev/$" %} ">
                                     <a href="{% url 'steam_dev:index' %}">{% trans "Home" %}</a>
                                 </li>
+                                <li>
+                                    <a href="{% url 'steam_dev:api_root' %}">{% trans "API ROOT" %}</a>
+                                </li>
+                                <li class="uk-nav-divider"></li>
                                 <li class="{% active request "^/steam/dev/dev_profile$" %}">
                                     <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'steam_dev:api_root' %}">{% trans "API" %}</a>
+                                    <a href="{% url 'steam_dev:update_secret_token' %}">{% trans "Developer API Token" %}</a>
                                 </li>
-                                <li><a href="#">{% trans "Something else here" %}</a>
-                                </li>
-                                <li class="uk-nav-divider"></li>
+                                <li class="uk-nav-divider"></li>                                
                                 <li class="uk-nav-header">Nav header</li>
                                 <li><a href="#">{% trans "Separated link" %}</a>
                                 </li>
@@ -69,6 +123,7 @@
                             </ul>
                         </div>
                     </li>
+                    <!-- end hidden xs -->
                     </li>
                     <li class="{% block topbarAbout %} {% endblock %} "><a href="#about">{% trans "About" %}</a>
                     </li>
@@ -76,13 +131,13 @@
                 </ul>
 
                 {% if not user.is_authenticated %}
-                <ul class="nav navbar-nav col-md-3">
+                <ul class="nav navbar-nav navbar-right">
                     <li class=""><a href="{% url 'steam:loginPage' %}">{% trans "Login" %}</a>
                     </li>
                     <li class=""><a href="{% url 'steam:user_signup' %}">{% trans "Sign up" %}</a>
                     </li>
                 {% else %}
-                <ul class="nav navbar-nav col-md-4">
+                <ul class="nav navbar-nav navbar-right">
                     <li class=""><a href="{% url 'steam:user_logout' %}">{% trans "Logout" %}</a>
                     </li>
                     <li>

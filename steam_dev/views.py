@@ -10,6 +10,7 @@ from django.forms.models import model_to_dict
 from django.http import Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
+from django.utils.translation import ugettext_lazy as _
 
 
 def index(request):
@@ -18,6 +19,24 @@ def index(request):
 
 def dev_apply(request):
     return render(request, 'steam_dev/dev_apply.html')
+
+
+def update_secret_token(request):
+    try:
+        steam_dev = SteamDeveloper.objects.get(baseuser=request.user)
+    except SteamDeveloper.DoesNotExist:
+        return HttpResponseRedirect(reverse('steam_dev:dev_apply'))
+
+    if request.POST.get('UpdateSecretToken', None):
+        steam_dev.create_new_secret_token()
+        return render_to_response('steam_dev/update_secret_token.html',
+                                  {'steam_dev': steam_dev,
+                                   'success_message': _("Update Success")},
+                                  context_instance=RequestContext(request))
+
+    return render_to_response('steam_dev/update_secret_token.html',
+                              {'steam_dev': steam_dev},
+                              context_instance=RequestContext(request))
 
 
 # require for steam_dev
@@ -99,7 +118,8 @@ class SteamDevProfileView(FormView):
                 form.cleaned_data.pop(k, None)
         # UPDATE DATA
         self._steam_dev.update(**form.cleaned_data)
-        return super(SteamDevProfileView, self).form_valid(form)
+        # return super(SteamDevProfileView, self).form_valid(form)
+        return self.render_to_response(self.get_context_data(form=form, success_message=_("Update Success")))
 
     @steam_dev_required
     def dispatch(self, request, *args, **kwargs):
@@ -147,6 +167,11 @@ from django.views.decorators.csrf import csrf_exempt
 from steam_dev.serializers import SteamUserSerializer
 from steam_dev.serializers import SteamDeveloperSerializer
 from steam_dev.serializers import SteamDevAPPSSerializer
+from rest_framework import generics
+from steam_dev.api_doc import (api_root_api_doc,
+                               SteamUserList_api_doc,
+                               SteamDeveloperList_api_doc,
+                               SteamUserCheck_api_doc)
 
 
 def steam_dev_api_check(function):
@@ -166,187 +191,29 @@ def steam_dev_api_check(function):
         return post
 
 
-class SteamUserList(APIView):
-    """
-    List all steam user.
-    --------------------------------------------------------------------------
+class APIRoot(generics.GenericAPIView):
 
-    POST your dev `api_token` and `secret_token` :
+    __doc__ = api_root_api_doc
 
-        {
-            "api_token" : "Your_Api_Token",
-            "secret_token" : "Your_Secret_Token"
+    def get(self, request, format=None):
+
+        # Assuming we have views named 'steam_user_list'
+        # in our project's URLconf namespace 'steam_dev'.
+        url_dict = {
+            'Steam User List': reverse('steam_dev:steam_user_list',
+                                       request=request, format=format),
+            'Steam User Check': reverse('steam_dev:steam_user_check',
+                                        request=request, format=format),
+            'Steam Developer List': reverse('steam_dev:steam_dev_list',
+                                            request=request, format=format),
         }
-
-    If is correct will return:
-
-        [
-            {
-                "first_name": "",
-                "last_name": "",
-                "nick_name": "",
-                "cell_phone": "",
-                "sex": "",
-                "photo": "/media/noImageAvailable300.png",
-                "api_token": "...",
-                "secret_token": "...",
-                "created": "2014-05-12T03:58:55Z"
-            }
-        ]
-
-    --------------------------------------------------------------------------
-
-    ##Data Type:<a class="headerlink" href="#data_type" title="Permalink to this headline">¶</a>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Key</th>
-          <th>Value Type</th>
-          <th>Max length</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td> first_name    </td>
-          <td>       string  </td>
-          <td> 30           </td>
-        </tr>
-        <tr>
-          <td> last_name     </td>
-          <td>       string  </td>
-          <td> 30           </td>
-        </tr>
-        <tr>
-          <td> nick_name     </td>
-          <td>       string  </td>
-          <td> 30           </td>
-        </tr>
-        <tr>
-          <td> cell_phone    </td>
-          <td>       string  </td>
-          <td> 20           </td>
-        </tr>
-        <tr>
-          <td><a class="reference internal" href="#sex">sex</a></td>
-          <td>       string  </td>
-          <td> 1            </td>
-        </tr>
-        <tr>
-          <td><a class="reference internal" href="#photo">photo</a></td>
-          <td>          url  </td>
-          <td> 200          </td>
-        </tr>
-        <tr>
-          <td><a class="reference internal" href="#token">api_token</a></td>
-          <td>       string  </td>
-          <td> 100          </td>
-        </tr>
-        <tr>
-          <td><a class="reference internal" href="#token">secret_token</a></td>
-          <td>       string  </td>
-          <td> 100          </td>
-        </tr>
-        <tr>
-          <td><a class="reference internal" href="#created">created</a></td>
-          <td>       string  </td>
-          <td> 20*           </td>
-        </tr>
-      </tbody>
-    </table>
-
-    --------------------------------------------------------------------------
-
-    ###sex:<a class="headerlink" href="#sex" title="Permalink to this headline">¶</a>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>     code </th>
-          <th> representation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>        F </td>
-          <td>        Female </td>
-        </tr>
-        <tr>
-          <td>        M </td>
-          <td>          Male </td>
-        </tr>
-        <tr>
-          <td>        O </td>
-          <td>         Other </td>
-        </tr>
-      </tbody>
-    </table>
-
-    --------------------------------------------------------------------------
-
-    ###photo:<a class="headerlink" href="#photo" title="Permalink to this headline">¶</a>
-    example photo_path: `/media/noImageAvailable300.png`
-
-    domain url: `https://sqa.swim-fish.info` + photo_path
-
-    Location is: `https://sqa.swim-fish.info/media/noImageAvailable300.png`
-
-    --------------------------------------------------------------------------
-
-    ###token:<a class="headerlink" href="#token" title="Permalink to this headline">¶</a>
-    length 100
-
-    composition: `a`to`z` or `0`to`9`
-
-    --------------------------------------------------------------------------
-
-    ###created:<a class="headerlink" href="#created" title="Permalink to this headline">¶</a>
-    example: `2014-05-13T15:44:05Z`
-
-    **year**`-`**month**`-`**day**`T`**hour**`:`**minute**`:`**second**`Z`
+        return Response(url_dict)
 
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th> time unit </th>
-          <th>    number length </th>
-          <th> example </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>      year </td>
-          <td>                4  </td>
-          <td>    2014 </td>
-        </tr>
-        <tr>
-          <td>     month </td>
-          <td>                2  </td>
-          <td>      05 </td>
-        </tr>
-        <tr>
-          <td>       day </td>
-          <td>                2  </td>
-          <td>      13 </td>
-        </tr>
-        <tr>
-          <td>      hour </td>
-          <td> 2 (24-hour clock) </td>
-          <td>      15 </td>
-        </tr>
-        <tr>
-          <td>    minute </td>
-          <td>                2  </td>
-          <td>      44 </td>
-        </tr>
-        <tr>
-          <td>    second </td>
-          <td>                2  </td>
-          <td>      05 </td>
-        </tr>
-      </tbody>
-    </table>
+class SteamUserList(APIView):
 
-    """
+    __doc__ = SteamUserList_api_doc
+
     @csrf_exempt
     @steam_dev_api_check
     def post(self, request, format=None):
@@ -358,133 +225,9 @@ class SteamUserList(APIView):
 
 
 class SteamDeveloperList(APIView):
-    """
-    List all steam developer.
-    --------------------------------------------------------------------------
 
-    POST your dev `api_token` and `secret_token` :
+    __doc__ = SteamDeveloperList_api_doc
 
-        {
-            "api_token" : "Your_Api_Token",
-            "secret_token" : "Your_Secret_Token"
-        }
-
-    If is correct will return:
-
-        [
-            {
-                "first_name": "",
-                "last_name": "",
-                "address": "",
-                "work_phone": "",
-                "fax": "",
-                "company_name": "",
-                "created": "2014-05-12T03:58:55Z"
-            }
-        ]
-
-    --------------------------------------------------------------------------
-
-    ##Data Type:<a class="headerlink" href="#data_type" title="Permalink to this headline">¶</a>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th> Key           </th>
-          <th> Value Type    </th>
-          <th> Max length   </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td> first_name    </td>
-          <td>       string  </td>
-          <td> 30           </td>
-        </tr>
-        <tr>
-          <td> last_name     </td>
-          <td>       string  </td>
-          <td> 30           </td>
-        </tr>
-        <tr>
-          <td> address       </td>
-          <td>       string  </td>
-          <td> 200          </td>
-        </tr>
-        <tr>
-          <td> work_phone    </td>
-          <td>       string  </td>
-          <td> 20           </td>
-        </tr>
-        <tr>
-          <td> fax           </td>
-          <td>       string  </td>
-          <td> 20           </td>
-        </tr>
-        <tr>
-          <td> company_name  </td>
-          <td>       string  </td>
-          <td> 50           </td>
-        </tr>
-        <tr>
-          <td><a class="reference internal" href="#created" >created</a></td>
-          <td>         time  </td>
-          <td> 20*           </td>
-        </tr>
-      </tbody>
-    </table>
-
-    --------------------------------------------------------------------------
-
-
-    ###created:<a class="headerlink" href="#created" title="Permalink to this headline">¶</a>
-    example: `2014-05-13T15:44:05Z`
-
-    **year**`-`**month**`-`**day**`T`**hour**`:`**minute**`:`**second**`Z`
-
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th> time unit </th>
-          <th>    number length  </th>
-          <th> example </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>      year </td>
-          <td> 4                 </td>
-          <td>    2014 </td>
-        </tr>
-        <tr>
-          <td>     month </td>
-          <td> 2                 </td>
-          <td>      05 </td>
-        </tr>
-        <tr>
-          <td>       day </td>
-          <td> 2                 </td>
-          <td>      13 </td>
-        </tr>
-        <tr>
-          <td>      hour </td>
-          <td> 2 (24-hour clock) </td>
-          <td>      15 </td>
-        </tr>
-        <tr>
-          <td>    minute </td>
-          <td> 2                 </td>
-          <td>      44 </td>
-        </tr>
-        <tr>
-          <td>    second </td>
-          <td> 2                 </td>
-          <td>      05 </td>
-        </tr>
-      </tbody>
-    </table>
-
-    """
     @csrf_exempt
     @steam_dev_api_check
     def post(self, request, format=None):
@@ -495,72 +238,28 @@ class SteamDeveloperList(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@api_view(('GET',))
-def api_root(request, format=None):
-    """
-    ##IF you want to use this API, You have to sign up a dev account.
+class SteamUserCheck(APIView):
 
-    ##Get your `api_token` and `secret_token`
+    __doc__ = SteamUserCheck_api_doc
 
-    ##All api return data charset is `utf-8`, content type is `application/json`
+    @csrf_exempt
+    @steam_dev_api_check
+    def post(self, request, format=None):
+        data = request.DATA
+        if data:
+            api_token = data.get('user_api_token', None)
+            secret_token = data.get('user_secret_token', None)
+            if api_token and secret_token:
+                try:
+                    steam_users = SteamUser.objects.get(api_token=api_token,
+                                                        secret_token=secret_token,
+                                                        baseuser__is_superuser=False,
+                                                        baseuser__is_staff=False,
+                                                        baseuser__is_active=True)
+                except SteamUser.DoesNotExist:
+                    return Response({"detail": "not found"}, status=status.HTTP_200_OK)
 
-    ##Detailed usage instructions, please refer to the following link.
+                serializer = SteamUserSerializer(steam_users)
+                return Response(serializer.data, status=status.HTTP_200_OK)
 
-    --------------------------------------------------------------------------
-
-    POST use curl :
-
-        curl -k https://sqa.swim-fish.info/steam/dev/api/steam_user_list
-             -H "Content-Type: application/json"
-             -d '{
-                    "api_token":"Your_Api_Token",
-                    "secret_token":"Your_Secret_Token"
-                 }'
-
-    `-k` for https \n
-    `-H` Http Head \n
-    `-d` POST DATA \n
-
-    --------------------------------------------------------------------------
-
-    ###ERROR CODE:
-    <table class="table table-striped">
-      <tr>
-        <th>POST Type</th>
-        <th>ERROR CODE</th>
-        <th>Representation</th>
-      </tr>
-      <tr>
-        <td rowspan="3">application/json</td>
-        <td>"detail": "JSON parse error - Expecting value:..."</td>
-        <td>JSON format is wrong</td>
-      </tr>
-      <tr>
-        <td>"detail": "FORBIDDEN"</td>
-        <td><code>api_token</code> or <code>secret_token</code> not correct</td>
-      </tr>
-      <tr>
-        <td>"detail": "Method 'GET' not allowed."</td>
-        <td>GET not allowed</td>
-      </tr>
-      <tr>
-        <td>application/x-www-form-urlencoded</td>
-        <td>"detail": "NO POST DATA"</td>
-        <td>POST Data is empty</td>
-      </tr>
-      <tr>
-        <td>multipart/form-data</td>
-        <td>"detail": "Multipart form parse error - Invalid Content-Type: application/x-www-form-urlencoded"</td>
-        <td>Multipart form format is wrong</td>
-      </tr>
-    </table>
-
-    """
-    # Assuming we have views named 'steam_user_list'
-    # in our project's URLconf namespace 'steam_dev'.
-    return Response({
-        'Steam User List': reverse('steam_dev:steam_user_list',
-                                   request=request, format=format),
-        'Steam Developer List': reverse('steam_dev:steam_dev_list',
-                                        request=request, format=format),
-    })
+            Response({"detail": "no user token"}, status=status.HTTP_200_OK)

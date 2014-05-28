@@ -134,6 +134,8 @@ NOSE_ARGS = [
     '--cover-tests',
     '--cover-package=baseuser, steam,steam_user,steam_dev',
     '--cover-html',
+    '--cover-inclusive',
+    '--all-modules',
 ]
 
 # for bootstrap3 class

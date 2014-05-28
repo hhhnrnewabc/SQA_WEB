@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-13 19:52+0800\n"
+"POT-Creation-Date: 2014-05-28 13:10+0800\n"
 "PO-Revision-Date: 2014-05-10 18:29+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: form.py:78
+#: form.py:81
 msgid "I Agree"
 msgstr "同意する"
 
-#: form.py:80
+#: form.py:83
 msgid "If you agree the terns. Please check I agree."
 msgstr "あなたは利用規約に同意した場合。同意するか確認してください。"
 
@@ -114,11 +114,15 @@ msgstr "小さな画像"
 msgid "Image Small:jpg"
 msgstr "小さな画像:jpg"
 
+#: views.py:104
+msgid "Update Success"
+msgstr "アップデート成功"
+
 #: templates/steam_dev/dev_apply.html:46
 msgid "Next"
 msgstr ""
 
-#: templates/steam_dev/dev_profile.html:26
-#: templates/steam_dev/userProfile.html:31
+#: templates/steam_dev/dev_profile.html:35
+#: templates/steam_dev/userProfile.html:32
 msgid "Update"
 msgstr ""
