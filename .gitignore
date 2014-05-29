@@ -70,4 +70,6 @@ images/
 *.jpg
 *.ico
 
+#ipython notebook
+*.ipynb
 

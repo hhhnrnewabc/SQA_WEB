@@ -60,7 +60,7 @@ def steam_dev_required(function):
 
 class SteamDevApplyView(FormView):
     template_name = 'steam_dev/dev_apply.html'
-    success_url = 'dev_profile'
+    success_url = '/steam/dev/dev_profile'
     form_class = SteamDevApplyForm
     _steam_user = None
     _steam_dev = None
@@ -79,7 +79,8 @@ class SteamDevApplyView(FormView):
 
         # load first/last name from steam_user
         if is_created:
-            self._steam_dev.update({'first_name': self._steam_user.first_name, 'last_name': self._steam_user.last_name})
+            self._steam_dev.update(first_name=self._steam_user.first_name,
+                                   last_name=self._steam_user.last_name)
             self._steam_dev.save()
         return super(SteamDevApplyView, self).form_valid(form)
 
