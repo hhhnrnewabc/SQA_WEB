@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+ONAWS = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -168,10 +169,12 @@ for tag in AUTOLOAD_TEMPLATETAGS:
     add_to_builtins(tag)
 
 
-
 # import path for AWS EC2 SERVER
 # . is point to WEB/
 # path put in ../aws_path_fix.py
-import sys
-sys.path.insert(0, '..')
-from aws_path_fix import *
+if ONAWS:
+    import sys
+    sys.path.insert(0, '..')
+    from aws_path_fix import *
+else:
+    from test.path import *

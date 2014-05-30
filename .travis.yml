@@ -25,7 +25,13 @@ install:
  
   
 # command to run tests
-script: python3.4 ./manage.py test
+script: python3.4 ./manage.py travis-ci test
 
 
+branches:  
+    only:  
+        - master  
+notifications:  
+    email:  
+        - <hhhnrnew82@gmail.com>   
   
