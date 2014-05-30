@@ -4,6 +4,15 @@ body {
   background-color: #eee;
 }
 
+.steam_user_edit {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.title-panel {
+    background-color: #CECCCC;
+}
+
 .form-edit {
   max-width: 650px;
   padding: 15px;
@@ -43,21 +52,17 @@ body {
 }
 
 /* 網頁圖片比例縮小 300px */
-.album-pic a img {
+/*.album-pic a img {
     vertical-align: middle;
     width: 100%;
-    margin: auto;
+    margin: auto;*/
 /*max-width:300px;   *//* FF IE7 */
 /*max-height:300px; *//* FF IE7 */
 /*_width:expression(this.width > 300 && this.width > this.height ? 300: auto); *//* IE6 */
 /*_height:expression(this.height > 300 ? 300 : auto); *//* IE6 *//* */
 }
 
-.steam_user_edit {
-padding-top: 48px;
-padding-bottom: 48px;
-}
 
 hr {
-border-top: 1px solid #999;
+    border-top: 1px solid #999;
 }

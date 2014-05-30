@@ -27,6 +27,10 @@ def index(request):
     return render(request, 'steam/index.html')
 
 
+def game_index(request):
+    return render(request, 'steam/game_index.html')
+
+
 def login_page(request):
     return render(request, 'steam/login.html', )
 

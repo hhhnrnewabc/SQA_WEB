@@ -22,8 +22,14 @@ div.c-wrapper{
     min-height: 432px;*/
 }
 
+
 .carousel .jumbotron{
-	padding-top: 88px
+	padding-top: 88px;
+}
+
+.carousel .container{
+	padding-top: 48px;
+	padding-bottom: 48px;
 }
 
 .discount_block_spotlight {

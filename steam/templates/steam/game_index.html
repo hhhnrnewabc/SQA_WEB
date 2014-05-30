@@ -1,0 +1,117 @@
+{% extends "steam/base.html" %}
+{% block title %}
+    <title>SQA Game Center Project</title>
+{% endblock %}
+
+{% block message %}
+  {% if logout_success %}
+    <div class="alert alert-success alert-dismissable container">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>{{logout_success}}</strong>
+    </div>
+  {% endif %}
+  {% if signup_success%}
+    <div class="alert alert-success alert-dismissable container">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>{{signup_success}}</strong>
+    </div>
+  {% endif %}
+{% endblock %} 
+
+
+{% block maininfo %}
+<div class="carousel">
+    <div class="jumbotron">
+        <div class="container">
+			<div class="uk-grid">
+				<div class="uk-width-medium-1-2">
+					<div class="uk-panel uk-panel-box uk-scrollspy-init-inview uk-scrollspy-inview uk-animation-scale-up" data-uk-scrollspy="{cls:'uk-animation-scale-up', repeat: true}">
+						<div class="uk-grid">
+							<div class="uk-width-medium-2-4">
+								<a class="uk-thumbnail uk-overlay-toggle" href="/steam/game/1/">
+									<div class="uk-overlay">
+										<img src="{% static '/media/placeholder_400x250.svg' %}" width="500" height="360" alt="">
+										<div class="uk-overlay-caption">more info</div>
+									</div>
+								</a>
+							</div>
+							<div class="uk-width-medium-2-4">
+								<h3>Scale up</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="uk-width-medium-1-2">
+					<div class="uk-panel uk-panel-box uk-scrollspy-init-inview uk-scrollspy-inview uk-animation-scale-up" data-uk-scrollspy="{cls:'uk-animation-scale-up', repeat: true}">
+						<div class="uk-grid">
+							<div class="uk-width-medium-2-4">
+								<a class="uk-thumbnail uk-overlay-toggle" href="#">
+									<div class="uk-overlay">
+										<img src="{% static '/media/placeholder_400x250.svg' %}" width="500" height="360" alt="">
+										<div class="uk-overlay-caption">Some text</div>
+									</div>
+								</a>
+							</div>
+							<div class="uk-width-medium-2-4">
+								<h3>Scale up</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %} 
+
+{% block secondinfo %}
+<div class="carousel">
+    <div class="container">
+        <div class="">
+	        <div class="uk-grid">
+				<div class="uk-width-medium-1-3">
+					<h2>NEW RELEASES</h2>
+					<ul class="list-group">
+						<li class="list-group-item">
+							<span class="uk-badge uk-badge-notification uk-badge-danger badge">14</span>
+							Cras justo odio
+						</li>
+						<li class="list-group-item">
+							<span class="badge">14</span>
+							Cras justo odio
+						</li>
+					</ul>
+				</div>
+				<div class="uk-width-medium-1-3">
+					<h2>TOP DOWNLOADS</h2>
+					<ul class="list-group">
+						<li class="list-group-item">
+							<span class="uk-badge uk-badge-notification uk-badge-success badge">14</span>
+							Cras justo odio
+						</li>
+						<li class="list-group-item">
+							<span class="uk-badge uk-badge-notification uk-badge-warning badge">14</span>
+							Cras justo odio
+						</li>
+					</ul>
+				</div>
+				<div class="uk-width-medium-1-3">
+					<h2>COMING SOON</h2>
+					<ul class="list-group">
+						<li class="list-group-item">
+							<span class="uk-badge uk-badge-notification badge">14</span>
+							Cras justo odio
+						</li>
+						<li class="list-group-item">
+							<span class="uk-badge uk-badge-notification badge">14</span>
+							Cras justo odio
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %} 

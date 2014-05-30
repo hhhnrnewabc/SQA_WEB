@@ -36,9 +36,20 @@ def list_all_user(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         contacts = paginator.page(paginator.num_pages)
-    
+
     return render_to_response('steam_user/list_all_user.html',
                               {"contacts": contacts},
+                              context_instance=RequestContext(request))
+
+
+def user_profile(request, user_id):
+    try:
+        user_profile = SteamUser.objects.ger(id=user_id)
+    except SteamUser.DoesNotExist:
+        raise Http404
+
+    return render_to_response('steam_user/user_profile.html',
+                              {"user_profile": user_profile},
                               context_instance=RequestContext(request))
 
 

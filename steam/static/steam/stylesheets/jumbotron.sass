@@ -1,0 +1,438 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.alert {
+  margin-bottom: 0px;
+}
+
+div.c-wrapper {
+  width: 80%;
+  /* for example */
+  margin: auto;
+}
+
+.carousel-inner > .item > {
+  img, a > img {
+    width: 100%;
+    /* use this, or not */
+    margin: auto;
+    /*    min-width: 768px;
+        min-height: 432px;*/
+  }
+}
+
+.badge .new {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #999;
+  border-radius: 10px;
+}
+
+.carousel {
+  .jumbotron {
+    padding-top: 88px;
+  }
+  .container {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+.discount_block_spotlight {
+  height: 32px;
+  float: left;
+  .discount_pct {
+    font-size: 26px;
+    float: left;
+    padding: 0px 5px;
+    height: 32px;
+    line-height: 30px;
+  }
+  .discount_prices {
+    float: left;
+    text-align: left;
+    height: 32px;
+    padding: 0px 6px;
+  }
+  .discount_original_price {
+    line-height: 16px;
+    font-size: 11px;
+  }
+  .discount_final_price {
+    line-height: 16px;
+    font-size: 13px;
+  }
+}
+
+.spotlight_price {
+  height: 34px;
+}
+
+/*
+ * DISCOUNTS & PRICES
+ */
+
+.price, .match_price {
+  font-family: tahoma, helvetica, arial, trebuchet ms, sans-serif;
+  font-size: 11px;
+  color: #b0aeac;
+}
+
+.discount_block {
+  position: relative;
+  background-color: #000000;
+}
+
+.discount_pct {
+  background-color: #4c6b22;
+  color: #ffffff;
+}
+
+.discount_original_price {
+  font-family: tahoma, helvetica, arial, trebuchet ms, sans-serif;
+  color: #626366;
+  text-decoration: line-through;
+}
+
+.discount_final_price {
+  font-family: tahoma, helvetica, arial, trebuchet ms, sans-serif;
+  color: #d6d7d8;
+}
+
+.discount_block_large {
+  width: 157px;
+  height: 41px;
+}
+
+.discount_block_large2 {
+  width: 177px;
+}
+
+.discount_block_large {
+  .discount_pct {
+    position: absolute;
+    left: 0px;
+    width: 94px;
+    height: 41px;
+    font-size: 38px;
+    text-align: center;
+  }
+  .discount_original_price {
+    position: absolute;
+    left: 102px;
+    top: 4px;
+    font-size: 12px;
+  }
+  .discount_final_price {
+    position: absolute;
+    left: 102px;
+    top: 18px;
+    font-size: 16px;
+  }
+}
+
+.discount_block_inline {
+  display: inline;
+  font-family: tahoma, helvetica, arial, trebuchet ms, sans-serif;
+  padding: 1px 0px;
+  div {
+    display: inline;
+    padding: 1px 2px;
+  }
+}
+
+.suppress_discount_pct {
+  .discount_pct {
+    display: none;
+  }
+  &.discount_block_large {
+    width: 57px;
+    .discount_original_price, .discount_final_price {
+      left: 2px;
+    }
+  }
+}
+
+/*
+ * MAIN PAGE CONTENT
+ */
+
+div {
+  &#main {
+    background-image: url('/static/steam/images/content_bg.png');
+    background-repeat: repeat-x;
+    background-color: #000000;
+  }
+  &#main_content {
+    width: 940px;
+    margin: 0px auto;
+    min-height: 100%;
+    height: 100%;
+    padding-top: 16px;
+    width: 940px;
+  }
+  &.leftcol {
+    width: 616px;
+    float: left;
+  }
+  &.rightcol {
+    width: 308px;
+    margin-left: 14px;
+    float: left;
+    overflow: hidden;
+    background-color: #262626;
+  }
+}
+
+.block {
+  margin-bottom: 28px;
+}
+
+.leftcol {
+  .leftcol_rule {
+    border-bottom: 1px solid #3c3d3e;
+    margin: 28px 0px;
+  }
+  .block {
+    width: 616px;
+    margin-bottom: 28px;
+  }
+}
+
+.rightcol .block {
+  margin-bottom: 16px;
+}
+
+.block .block_header {
+  position: relative;
+  height: 25px;
+  line-height: 25px;
+  color: #d6d7d8;
+  border-bottom: 1px solid #000000;
+  font-weight: bold;
+  font-size: 12px;
+  div, h4 {
+    padding: 0px 16px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}
+
+.block_header .right {
+  position: absolute;
+  right: 0px;
+  height: 26px;
+  border-left: 1px solid #000000;
+  a {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: normal;
+    color: #b0aeac;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.block_content {
+  border: 1px solid #4d4b49;
+  background-color: #262626;
+  font-size: 12px;
+  color: #b0aeac;
+}
+
+.underlined_links a {
+  color: #B0AEAC;
+  text-decoration: underline;
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.rightcol {
+  .block_flipped_gradient {
+    border: none;
+    background-image: url( '/static/steam/images/rightcol_bg_block_flipped.png' );
+    background-position: top left;
+    background-repeat: no-repeat;
+    height: 1px;
+  }
+  .block_content {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-image: url( '/static/steam/images/rightcol_bg_block.png' );
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color #262626;
+    border-image: none;
+    border-style: none none none solid;
+    border-width: medium medium medium 1px;
+  }
+  #col_right_review_payment_tips .block_content {
+    background-image: url( '/static/steam/images/rightcol_bg_block_green.png' );
+  }
+}
+
+.block_content.nopad {
+  padding: 0px;
+}
+
+.block_content_inner {
+  padding: 16px;
+}
+
+.inner_block_col_left {
+  position: absolute;
+  width: 118px;
+}
+
+.inner_block_col_right {
+  margin-left: 124px;
+}
+
+.block {
+  .block_content {
+    .rule {
+      border-bottom: 1px solid #3c3d3e;
+    }
+    .inner_rule {
+      border-bottom: 1px solid #3c3d3e;
+      margin: 16px 0px;
+      &.small_margin {
+        margin: 6px 0px;
+      }
+    }
+  }
+  .block_footer {
+    margin-top: 1px;
+    position: relative;
+    height: 26px;
+    line-height: 26px;
+    background-color: #262626;
+    color: #626366;
+    font-size: 10px;
+    text-align: center;
+  }
+}
+
+.block_footer {
+  div {
+    padding: 0px 16px;
+  }
+  a {
+    color: #b0aeac;
+  }
+  .right {
+    position: absolute;
+    right: 0px;
+    border-left: 1px solid #000000;
+    height: 26px;
+  }
+}
+
+.block_header .right {
+  position: absolute;
+  right: 0px;
+  border-left: 1px solid #000000;
+  height: 26px;
+}
+
+.block_footer .left, .block_header .left {
+  position: absolute;
+  left: 0px;
+  border-right: 1px solid #000000;
+  height: 26px;
+}
+
+.block_footer img {
+  vertical-align: middle;
+}
+
+.block .block_header {
+  /* background-image: url('/static/steam/images/full_bg_gray.png'); */
+  background-repeat: no-repeat;
+  background-color: #303030;
+}
+
+.leftcol .block .block_header {
+  background-image: url('/static/steam/images/maincol_bg_gray.png');
+  background-repeat: no-repeat;
+  background-color: #303030;
+}
+
+.rightcol .block {
+  .block_header {
+    /* background-image: url('/static/steam/images/rightcol_bg_blue.png'); */
+    background-repeat: no-repeat;
+    background-color: #3C3D3E;
+  }
+  .block_header_green {
+    background-image: url('/static/steam/images/rightcol_bg_green.png');
+  }
+}
+
+.block_content h4 {
+  color: #ffffff;
+}
+
+/* 網頁圖片比例縮小 300px */
+
+.spotlight_img a img {
+  vertical-align: middle;
+  width: 100%;
+  margin: auto;
+  /*max-width:255px;   */
+  /* FF IE7 */
+  /*max-height:255px; */
+  /* FF IE7 */
+  /*_width:expression(this.width > 255 && this.width > this.height ? 255: auto); */
+  /* IE6 */
+  /*_height:expression(this.height > 255 ? 255 : auto); */
+  /* IE6 */
+}
+
+/*For xs*/
+
+.carousel-indicators-xs {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  margin-left: -30%;
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+  li {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 1px;
+    text-indent: -999px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .active {
+    margin: 0;
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+  }
+}

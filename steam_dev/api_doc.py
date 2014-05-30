@@ -1,11 +1,12 @@
 api_root_api_doc = """
-##IF you want to use this API, You have to sign up a dev account.
+##If you want to use this API, You have to sign up a dev account.
 
 ##Get your `api_token` and `secret_token`
 
-##All api return data charset is `utf-8`, content type is `application/json`
+##All api return data charset is `utf-8`, if format=json content type is `application/json`
 
 ##Detailed usage instructions, please refer to the following link.
+
 
 --------------------------------------------------------------------------
 
