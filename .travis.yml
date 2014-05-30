@@ -9,21 +9,20 @@ env:
   - DJANGO_VERSION=1.6.5
 
 install:
-  - apt-get install python-pip3
-  - pip3 install pillow
-  - pip3 install -q Django==$DJANGO_VERSION
+  - pip install pillow
+  - pip install -q Django==$DJANGO_VERSION
   - apt-get install gettext
-  - pip3 install pymysql
-  - pip3 install djangorestframework
-  - pip3 install markdown
-  - pip3 install django-filter
-  - pip3 install django-nose
-  - pip3 install django-bootstrap-form
-  - pip3 install pytz
-  - pip3 install django-taggit
-  - pip3 install grappelli
-  - pip3 install south
-  - pip3 install -q Django==$DJANGO_VERSION
+  - pip install pymysql
+  - pip install djangorestframework
+  - pip install markdown
+  - pip install django-filter
+  - pip install django-nose
+  - pip install django-bootstrap-form
+  - pip install pytz
+  - pip install django-taggit
+  - pip install grappelli
+  - pip install south
+  - pip install -q Django==$DJANGO_VERSION
  
   
 # command to run tests
