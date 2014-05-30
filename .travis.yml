@@ -20,9 +20,8 @@ install:
   - pip install django-bootstrap-form
   - pip install pytz
   - pip install django-taggit
-  - pip install grappelli
+  - pip install django-grappelli
   - pip install south
-  - pip install -q Django==$DJANGO_VERSION
  
   
 # command to run tests
