@@ -52,10 +52,10 @@ body {
 }
 
 /* 網頁圖片比例縮小 300px */
-/*.album-pic a img {
+.album-pic a img {
     vertical-align: middle;
     width: 100%;
-    margin: auto;*/
+    margin: auto;
 /*max-width:300px;   *//* FF IE7 */
 /*max-height:300px; *//* FF IE7 */
 /*_width:expression(this.width > 300 && this.width > this.height ? 300: auto); *//* IE6 */
