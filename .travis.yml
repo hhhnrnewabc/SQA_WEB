@@ -22,11 +22,17 @@ install:
   - pip install django-taggit
   - pip install django-grappelli
   - pip install south
+  - pip install -q coveralls
+  - pip install -q coverage
  
   
 # command to run tests
 script: 
-    python ./runtests.py
+  python coverage run --source='.' ./runtests.py
+
+
+after_success:
+  coveralls
 
 
 branches:  
