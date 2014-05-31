@@ -9,7 +9,7 @@ env:
   - DJANGO_VERSION=1.6.5
 
 install:
-  - pip install pillow
+  - pip install -q pillow
   - pip install -q Django==$DJANGO_VERSION
   - sudo apt-get install gettext
   - pip install pymysql
