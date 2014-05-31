@@ -2,13 +2,18 @@
 import os
 import sys
 
-with open("SQA_Project/onaws.pid") as readfile:
-    ONAWS = eval(readfile.readline())
+AWSTMPFILE = "onaws.tmp"
+
+if os.path.isfile(AWSTMPFILE):
+    with open(AWSTMPFILE) as readfile:
+        ONAWS = eval(readfile.readline())
+else:
+    ONAWS = True
 
 
 if __name__ == "__main__":
 
-    with open("SQA_Project/onaws.pid", 'w') as outfile:
+    with open(AWSTMPFILE, 'w') as outfile:
 
         if sys.argv[1] == "travis-ci":
             outfile.write("False")
