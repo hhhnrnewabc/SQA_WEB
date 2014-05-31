@@ -11,7 +11,10 @@ def get_server_mode():
     if os.path.isfile(AWSTMPFILE) and os.stat(AWSTMPFILE)[6] != 0:
         with open(AWSTMPFILE) as readfile:
             ONAWS = eval(readfile.readline())
-            print("ON TEST MODE")
+            if ONAWS:
+                print("ON AWS MODE")
+            else:
+                print("ON TEST MODE")
     else:
         print("ON AWS MODE")
         ONAWS = True
