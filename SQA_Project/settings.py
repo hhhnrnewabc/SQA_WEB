@@ -176,3 +176,5 @@ if ONAWS:
     import sys
     sys.path.insert(0, '..')
     from aws_path_fix import *
+else:
+    from test_path import *

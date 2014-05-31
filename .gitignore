@@ -73,3 +73,4 @@ images/
 #ipython notebook
 *.ipynb
 
+*.pid

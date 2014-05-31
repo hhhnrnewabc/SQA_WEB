@@ -2,15 +2,21 @@
 import os
 import sys
 
-ONAWS = True
+with open("SQA_Project/onaws.pid") as readfile:
+    ONAWS = eval(readfile.readline())
+
 
 if __name__ == "__main__":
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "SQA_Project.settings")
+    with open("SQA_Project/onaws.pid", 'w') as outfile:
 
-    if sys.argv[1] == "travis-ci":
-        ONAWS = False
-        sys.argv = [sys.argv[0]] + sys.argv[2:]
+        if sys.argv[1] == "travis-ci":
+            outfile.write("False")
+            sys.argv = [sys.argv[0]] + sys.argv[2:]
+        else:
+            outfile.write("True")
+
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "SQA_Project.settings")
 
 
     from django.core.management import execute_from_command_line
