@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-01 02:11+0800\n"
+"POT-Creation-Date: 2014-06-01 04:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,13 +87,12 @@ msgid "Sex :Female, Male, Other "
 msgstr "性別 :女, 男, 其他"
 
 #: views.py:84
-#, fuzzy
-msgid " Image Upload Success"
-msgstr "更新成功"
+msgid "Image Upload Success"
+msgstr " 圖片上傳成功"
 
 #: views.py:93
-msgid "Image Upload Failed "
-msgstr ""
+msgid "Image Upload Fail"
+msgstr "圖片上傳失敗"
 
 #: views.py:94
 msgid "Update Success"

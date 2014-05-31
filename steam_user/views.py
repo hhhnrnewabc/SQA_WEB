@@ -81,7 +81,7 @@ class SteamUserView(FormView):
                     if old_photo_name and old_photo_name != settings.NO_IMAGE_AVAILABLE_PHOTO:
                         os.remove(os.path.join(settings.MEDIA_ROOT, str(old_photo_name)))
                     self._steam_user.update(form.cleaned_data)
-                    messages.success(self.request, _(' Image Upload Success'))
+                    messages.success(self.request, _('Image Upload Success'))
 
                 # new image is not allow to save
                 # return old image and save other data
@@ -90,7 +90,7 @@ class SteamUserView(FormView):
                     form.cleaned_data['photo'] = self._steam_user.photo
                     self._steam_user.update(form.cleaned_data)
             except OSError:
-                messages.error(self.request, _('Image Upload Failed '))
+                messages.error(self.request, _('Image Upload Fail'))
         messages.success(self.request, _("Update Success"))
         return super(SteamUserView, self).form_valid(form)
 
