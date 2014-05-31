@@ -28,7 +28,7 @@ install:
   
 # command to run tests
 script: 
-  python coverage run --source='.' ./runtests.py
+  coverage run --source='.' ./runtests.py
 
 
 after_success:
