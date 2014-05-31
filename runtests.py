@@ -4,7 +4,7 @@
 import os
 import sys
 
-from manage import AWSTMPFILE
+AWSTMPFILE = "onaws.tmp"
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "SQA_Project.settings")
 
