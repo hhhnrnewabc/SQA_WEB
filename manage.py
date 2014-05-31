@@ -4,7 +4,8 @@ import sys
 
 AWSTMPFILE = "onaws.tmp"
 
-if os.path.isfile(AWSTMPFILE):
+# check file is exist and not empty
+if os.path.isfile(AWSTMPFILE) and os.stat(AWSTMPFILE)[6] != 0:
     with open(AWSTMPFILE) as readfile:
         ONAWS = eval(readfile.readline())
 else:

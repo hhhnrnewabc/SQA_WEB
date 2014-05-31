@@ -122,20 +122,20 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 AUTH_USER_MODEL = 'baseuser.BaseUser'
 
-#django nose testing setting
-# Use nose to run all tests
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# #django nose testing setting
+# # Use nose to run all tests
+# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-# Tell nose to measure coverage on the 'baseuser' apps
-NOSE_ARGS = [
-    '--with-coverage',
-    # '--cover-erase',
-    '--cover-tests',
-    '--cover-package=baseuser, steam,steam_user,steam_dev',
-    '--cover-html',
-    '--cover-inclusive',
-    '--all-modules',
-]
+# # Tell nose to measure coverage on the 'baseuser' apps
+# NOSE_ARGS = [
+#     '--with-coverage',
+#     # '--cover-erase',
+#     '--cover-tests',
+#     '--cover-package=baseuser, steam,steam_user,steam_dev',
+#     '--cover-html',
+#     '--cover-inclusive',
+#     '--all-modules',
+# ]
 
 # for bootstrap3 class
 from django.contrib.messages import constants as messages

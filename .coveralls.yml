@@ -28,7 +28,7 @@ install:
 
 
 # command to run tests
-script: python ./manage.py travis-ci test
+script: coverage run --source='.' manage.py test
 
 
 branches:  
