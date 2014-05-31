@@ -4,6 +4,10 @@ from baseuser.models import BaseUser, UserManager
 
 class BaseUserTestCase(TestCase):
     def setUp(self):
+        # set defalut lang to English
+        from django.utils.translation import activate
+        activate('en-us')
+
         BaseUser.objects.create_superuser(email="XX@yy.com", password="1234")
         BaseUser.objects.create_staff(email="YY@yy.com", password="1234")
         BaseUser.objects.create_user(email="ZZ@yy.com", password="1234")
@@ -48,5 +52,5 @@ class BaseUserTestCase(TestCase):
 
     def test_create_user_with_no_input_email(self):
         kargs = {'password': "1234", }
-        self.assertRaisesRegex(ValueError, "此欄位必須填入資料",
+        self.assertRaisesRegex(ValueError, "The given email must be set",
             BaseUser.objects.create_user, **kargs)

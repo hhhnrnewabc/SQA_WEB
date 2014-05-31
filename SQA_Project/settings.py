@@ -80,8 +80,6 @@ ROOT_URLCONF = 'SQA_Project.urls'
 WSGI_APPLICATION = 'SQA_Project.wsgi.application'
 
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 

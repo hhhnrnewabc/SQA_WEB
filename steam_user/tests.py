@@ -6,6 +6,10 @@ from baseuser.models import BaseUser
 class SteamUserTestCase(TestCase):
 
     def setUp(self):
+        # set defalut lang to English
+        from django.utils.translation import activate
+        activate('en-us')
+
         xx = BaseUser.objects.create_superuser(email="XX@yy.com", password="1234")
         self.sx = SteamUser.objects.create(baseuser=xx, first_name='F', last_name='L',
             nick_name='N', cell_phone='1234567890', sex="F")

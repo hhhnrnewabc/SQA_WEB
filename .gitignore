@@ -74,3 +74,4 @@ images/
 *.ipynb
 
 *.pid
+*.tmp
