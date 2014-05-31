@@ -2,16 +2,9 @@
 import os
 import sys
 
-AWSTMPFILE = "onaws.tmp"
+from server_mode import get_server_mode
 
-# check file is exist and not empty
-if os.path.isfile(AWSTMPFILE) and os.stat(AWSTMPFILE)[6] != 0:
-    with open(AWSTMPFILE) as readfile:
-        ONAWS = eval(readfile.readline())
-        print("ON TEST MODE")
-else:
-    print("ON AWS MODE")
-    ONAWS = True
+ONAWS = get_server_mode()
 
 
 if __name__ == "__main__":

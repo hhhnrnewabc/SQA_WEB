@@ -4,15 +4,13 @@
 import os
 import sys
 
-AWSTMPFILE = "onaws.tmp"
+from server_mode import set_server_mode_test
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "SQA_Project.settings")
 
 if __name__ == "__main__":
 
-    with open(AWSTMPFILE, 'w') as outfile:
-        print("START TEST MODE")
-        outfile.write("False")
+    set_server_mode_test()
 
     from django.core.management import execute_from_command_line
     args = sys.argv
