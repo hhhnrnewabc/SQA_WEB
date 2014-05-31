@@ -23,7 +23,6 @@ INSTALLING THE PKG
     pip install djangorestframework
     pip install markdown
     pip install django-filter
-    pip install django-nose
     pip install django-bootstrap-form
     pip install pytz
     pip install django-taggit
@@ -34,6 +33,7 @@ INSTALLING THE PKG
 
     pip install -q coveralls
     pip install -q coverage
+    pip install django-nose
 
 
 ####Not use SSL
