@@ -92,8 +92,8 @@ class SteamUserView(FormView):
             except OSError:
                 messages.error(self.request, str(self._user.get_email()) + ' Upload Failed ')
 
-        # return super(SteamUserView, self).form_valid(form)
-        return self.render_to_response(self.get_context_data(form=form, success_message=_("Update Success")))
+        return super(SteamUserView, self).form_valid(form)
+        # return self.render_to_response(self.get_context_data(form=form, success_message=_("Update Success")))
 
     def dispatch(self, *args, **kwargs):
         user = self.request.user
