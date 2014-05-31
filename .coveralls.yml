@@ -1,0 +1,39 @@
+service_name: travis-pro
+repo_token: D8fQJyE72MzGPezl2TWat9bjALaqO7j5g
+
+language: python
+python:
+  - "3.3"
+  - "3.4"
+  # does not have headers provided, please ask https://launchpad.net/~pypy/+archive/ppa
+  # maintainers to fix their pypy-dev package.
+# command to install dependencies
+env:
+  - DJANGO_VERSION=1.6.5
+
+install:
+  - pip install -q pillow
+  - pip install -q Django==$DJANGO_VERSION
+  - sudo apt-get install gettext
+  - pip install pymysql
+  - pip install djangorestframework
+  - pip install markdown
+  - pip install django-filter
+  - pip install django-nose
+  - pip install django-bootstrap-form
+  - pip install pytz
+  - pip install django-taggit
+  - pip install django-grappelli
+  - pip install south
+
+
+# command to run tests
+script: python ./manage.py travis-ci test
+
+
+branches:  
+    only:  
+        - master  
+notifications:  
+    email:  
+        - <hhhnrnew82@gmail.com>   
