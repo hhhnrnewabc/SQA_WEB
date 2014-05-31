@@ -1,4 +1,4 @@
-service_name: travis-pro
+
 repo_token: D8fQJyE72MzGPezl2TWat9bjALaqO7j5g
 
 language: python
