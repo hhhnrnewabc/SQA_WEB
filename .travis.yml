@@ -25,7 +25,7 @@ install:
  
   
 # command to run tests
-script: python3.4 ./manage.py travis-ci test
+script: python ./manage.py travis-ci test
 
 
 branches:  
