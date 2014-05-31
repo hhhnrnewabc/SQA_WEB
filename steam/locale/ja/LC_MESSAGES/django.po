@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA_Steam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-31 23:58+0800\n"
+"POT-Creation-Date: 2014-06-01 02:11+0800\n"
 "PO-Revision-Date: 2014-05-06 23:55+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: form.py:37 form.py:68
+#: form.py:37 form.py:70
 msgid "Email"
 msgstr "メール"
 
@@ -34,11 +34,15 @@ msgstr "これは電子メール形式ではありません"
 msgid "Password"
 msgstr "パスワード"
 
-#: form.py:42
+#: form.py:42 form.py:44 templates/steam/login.html:42
+msgid "Caps lock is on"
+msgstr "キャプスロックはオンになっている"
+
+#: form.py:43
 msgid "Password confirmation"
 msgstr "パスワードの確認"
 
-#: form.py:53
+#: form.py:55
 msgid "Passwords don't match"
 msgstr "パスワードが一致しません"
 
@@ -66,27 +70,27 @@ msgstr "アップデート日付"
 msgid "Published Date"
 msgstr "発行日"
 
-#: views.py:64
+#: views.py:65
 msgid "disabled account"
 msgstr "無効になったアカウント"
 
-#: views.py:70
+#: views.py:71
 msgid "invalid login"
 msgstr "無効なログイン"
 
-#: views.py:77
+#: views.py:78
 msgid "Logout Success"
 msgstr "ログアウト成功"
 
-#: views.py:91
+#: views.py:103
 msgid "Create User Success"
 msgstr ""
 
-#: views.py:129
+#: views.py:148
 msgid "Welcome SQA Game Center Project"
 msgstr "FCU SQA ゲームセンター  プロジェクト"
 
-#: views.py:154
+#: views.py:173
 msgid "Sign up Success"
 msgstr "登録成功"
 
@@ -244,19 +248,19 @@ msgstr "\"電子メールアドレス\""
 msgid "\"Password\""
 msgstr "\"パスワード\""
 
-#: templates/steam/login.html:42
-msgid "Caps lock is on"
-msgstr "キャプスロックはオンになっている"
-
 #: templates/steam/login.html:47
 msgid "Login in"
 msgstr "ログイン"
 
-#: templates/steam/login.html:54
+#: templates/steam/login.html:55
 msgid " OR Reset Password"
 msgstr "またはパスワードをリセット"
 
-#: templates/steam/login.html:56
+#: templates/steam/login.html:57
+msgid "Out of service"
+msgstr "一時停止"
+
+#: templates/steam/login.html:57
 msgid "Reset Password"
 msgstr "パスワードをリセット"
 
