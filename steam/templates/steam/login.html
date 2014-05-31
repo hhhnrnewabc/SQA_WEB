@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label for="inputPassword3" class="control-label">{% trans "Password" %}</label>
                     <div class="">
-                        <input type="password" name="UserPassword" class="form-control" id="inputPassword3" placeholder={% trans '"Password"' %} required>
+                        <input type="password" name="UserPassword" class="form-control" id="inputPassword" placeholder={% trans '"Password"' %} data-toggle="tooltip" data-trigger="manual" data-title="{% trans 'Caps lock is on' %}" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -47,8 +47,9 @@
                         <button type="submit" class="btn btn-primary form-control">{% trans "Login in" %}</button>
                     </div>
                 </div>
+            </form>
+            <div class="form-signin">
                 {% if login_fall %}
-                <br/>
                 <div class="form-group">
                     <div class="">
                         <label class="control-label">{% trans " OR Reset Password" %}</label>
@@ -57,8 +58,32 @@
                     </div>
                 </div>
                 {% endif %}
-            </form>
+            </div>
         </div>
     </div>
 {% endblock %}
 
+{% block script %}
+<script>
+$('[type=password]').keypress(function(e) {
+  var $password = $(this),
+      tooltipVisible = $('.tooltip').is(':visible'),
+      s = String.fromCharCode(e.which);
+  
+  //Check if capslock is on. No easy way to test for this
+  //Tests if letter is upper case and the shift key is NOT pressed.
+  if ( s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey ) {
+    if (!tooltipVisible)
+        $password.tooltip('show');
+  } else {
+    if (tooltipVisible)
+        $password.tooltip('hide');
+  }
+  
+  //Hide the tooltip when moving away from the password field
+  $password.blur(function(e) {
+    $password.tooltip('hide');
+  });
+});
+</script>
+{% endblock %}

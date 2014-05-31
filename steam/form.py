@@ -38,8 +38,10 @@ class UserCreationForm(forms.ModelForm):
                              error_messages={'unique': _("This email has already been registered."),
                                              'invalid': _("This is not the e-mail format")},
                              widget=forms.EmailInput(attrs={'required': True}))
-    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={'required': True}))
-    password2 = forms.CharField(label=_('Password confirmation'), widget=forms.PasswordInput(attrs={'required': True}))
+    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={'required': True,
+                                'data-toggle': 'tooltip', 'data-trigger': 'manual', 'data-title': _("Caps lock is on")}))
+    password2 = forms.CharField(label=_('Password confirmation'), widget=forms.PasswordInput(attrs={'required': True,
+                                'data-toggle': 'tooltip', 'data-trigger': 'manual', 'data-title': _("Caps lock is on")}))
 
     class Meta:
         model = BaseUser
@@ -108,4 +110,3 @@ class PasswordResetForm(forms.Form):
             msg = EmailMessage(subject, email, from_email, [user.email])
             msg.content_subtype = "html"  # Main content is now text/html
             msg.send()
-

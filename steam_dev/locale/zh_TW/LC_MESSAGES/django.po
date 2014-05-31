@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-28 13:10+0800\n"
+"POT-Creation-Date: 2014-05-31 23:58+0800\n"
 "PO-Revision-Date: 2014-05-06 18:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: form.py:81
+#: form.py:77
 msgid "I Agree"
 msgstr "我同意"
 
-#: form.py:83
+#: form.py:79
 msgid "If you agree the terns. Please check I agree."
 msgstr "如果你同意條款，請勾選我同意"
 
@@ -114,7 +114,7 @@ msgstr "小圖片"
 msgid "Image Small:jpg"
 msgstr "小圖片:jpg"
 
-#: views.py:104
+#: views.py:34 views.py:123
 msgid "Update Success"
 msgstr "更新成功"
 
@@ -122,7 +122,27 @@ msgstr "更新成功"
 msgid "Next"
 msgstr ""
 
-#: templates/steam_dev/dev_profile.html:35
-#: templates/steam_dev/userProfile.html:32
+#: templates/steam_dev/dev_profile.html:30
+msgid "Email"
+msgstr ""
+
+#: templates/steam_dev/dev_profile.html:45
 msgid "Update"
 msgstr ""
+
+#: templates/steam_dev/update_secret_token.html:62
+msgid "Confirm"
+msgstr ""
+
+#: templates/steam_dev/update_secret_token.html:66
+msgid "Are you sure you want to update secret token."
+msgstr ""
+
+#: templates/steam_dev/update_secret_token.html:73
+msgid "Cancel"
+msgstr ""
+
+#: templates/steam_dev/update_secret_token.html:74
+#, fuzzy
+msgid "Update Secret Token"
+msgstr "更新成功"

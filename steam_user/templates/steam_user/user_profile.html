@@ -5,12 +5,13 @@
 {% endblock %}
 
 {% block message %}
-  {% if success_message %}
-    <div class="alert alert-success alert-dismissable container">
+    {% for message in messages %}
+
+    <div {% if message.tags %}class="alert alert-{{ message.tags }}{% else %}default{% endif %} alert-dismissable container">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>{{ success_message }}</strong>
+        <strong>{{ message }}</strong>
     </div>
-  {% endif %}
+    {% endfor %}
 {% endblock %} 
 
 {% block importCSS %}<link href="{% static 'steam/stylesheets/edit.css' %}" rel="stylesheet">{% endblock %}
@@ -49,4 +50,14 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block script %}
+<script>
+function createAutoClosingAlert(selector, delay) {
+   var alert = $(selector).alert();
+   window.setTimeout(function() { alert.alert('close') }, delay);
+}
+
+createAutoClosingAlert(".alert", 5000);
+</script>
 {% endblock %}

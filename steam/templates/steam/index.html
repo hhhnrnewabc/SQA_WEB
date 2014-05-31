@@ -217,5 +217,14 @@
     </div>
     {% endblock %}
 
+    {% block script %}
+    <script>
+    function createAutoClosingAlert(selector, delay) {
+       var alert = $(selector).alert();
+       window.setTimeout(function() { alert.alert('close') }, delay);
+    }
 
+    createAutoClosingAlert(".alert", 5000);
+    </script>
+    {% endblock %}
 

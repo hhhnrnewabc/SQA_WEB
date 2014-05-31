@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-28 13:15+0800\n"
+"POT-Creation-Date: 2014-05-31 23:58+0800\n"
 "PO-Revision-Date: 2014-05-06 18:30+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,27 +66,27 @@ msgstr "更新日期"
 msgid "Published Date"
 msgstr "發佈日期"
 
-#: views.py:60
+#: views.py:64
 msgid "disabled account"
 msgstr "登入失敗：非法帳號"
 
-#: views.py:66
+#: views.py:70
 msgid "invalid login"
 msgstr "登入失敗"
 
-#: views.py:73
+#: views.py:77
 msgid "Logout Success"
 msgstr "登出成功"
 
-#: views.py:87
+#: views.py:91
 msgid "Create User Success"
 msgstr ""
 
-#: views.py:125
+#: views.py:129
 msgid "Welcome SQA Game Center Project"
 msgstr "FCU SQA 遊戲中心專案"
 
-#: views.py:150
+#: views.py:154
 msgid "Sign up Success"
 msgstr "註冊成功"
 
@@ -95,70 +95,91 @@ msgstr "註冊成功"
 msgid "Password reset on %(site_name)s"
 msgstr ""
 
-#: templates/steam/base_body.html:24
+#: templates/steam/base_body.html:4
+msgid "You are using an <strong>outdated</strong> browser. Please "
+msgstr ""
+
+#: templates/steam/base_body.html:4
+msgid "upgrade your browser"
+msgstr ""
+
+#: templates/steam/base_body.html:4
+msgid "to improve your experience."
+msgstr ""
+
+#: templates/steam/base_body.html:27
 msgid "Download"
 msgstr "下載"
 
-#: templates/steam/base_body.html:28 templates/steam/base_body.html.py:48
+#: templates/steam/base_body.html:31 templates/steam/base_body.html.py:53
 msgid "Game"
 msgstr "遊戲"
 
-#: templates/steam/base_body.html:30 templates/steam/base_body.html.py:51
+#: templates/steam/base_body.html:34 templates/steam/base_body.html.py:57
+#, fuzzy
+msgid "All Game"
+msgstr "遊戲"
+
+#: templates/steam/base_body.html:36 templates/steam/base_body.html.py:59
 msgid "Action"
 msgstr "動作"
 
-#: templates/steam/base_body.html:33 templates/steam/base_body.html.py:54
+#: templates/steam/base_body.html:38 templates/steam/base_body.html.py:61
 msgid "Another action"
 msgstr ""
 
-#: templates/steam/base_body.html:35 templates/steam/base_body.html.py:56
-#: templates/steam/base_body.html:83 templates/steam/base_body.html.py:108
+#: templates/steam/base_body.html:40 templates/steam/base_body.html.py:63
 msgid "Something else here"
 msgstr ""
 
-#: templates/steam/base_body.html:39 templates/steam/base_body.html.py:60
-#: templates/steam/base_body.html:87 templates/steam/base_body.html.py:112
+#: templates/steam/base_body.html:44 templates/steam/base_body.html.py:67
+#: templates/steam/base_body.html:96 templates/steam/base_body.html.py:123
 msgid "Separated link"
 msgstr ""
 
-#: templates/steam/base_body.html:41 templates/steam/base_body.html.py:62
-#: templates/steam/base_body.html:89 templates/steam/base_body.html.py:114
+#: templates/steam/base_body.html:46 templates/steam/base_body.html.py:69
+#: templates/steam/base_body.html:98 templates/steam/base_body.html.py:125
 msgid "One more separated link"
 msgstr ""
 
-#: templates/steam/base_body.html:68
+#: templates/steam/base_body.html:75
 msgid "User"
 msgstr "使用者"
 
-#: templates/steam/base_body.html:72 templates/steam/base_body.html.py:96
+#: templates/steam/base_body.html:79 templates/steam/base_body.html.py:105
 msgid "Developer"
 msgstr "開發者"
 
-#: templates/steam/base_body.html:75 templates/steam/base_body.html.py:100
+#: templates/steam/base_body.html:82 templates/steam/base_body.html.py:109
 msgid "Home"
 msgstr ""
 
-#: templates/steam/base_body.html:78 templates/steam/base_body.html.py:103
+#: templates/steam/base_body.html:85 templates/steam/base_body.html.py:112
+msgid "API ROOT"
+msgstr ""
+
+#: templates/steam/base_body.html:89 templates/steam/base_body.html.py:116
 msgid "Developer Profile"
 msgstr "開發者個人資訊"
 
-#: templates/steam/base_body.html:81 templates/steam/base_body.html.py:106
-msgid "API"
-msgstr ""
+#: templates/steam/base_body.html:92 templates/steam/base_body.html.py:119
+#, fuzzy
+msgid "Developer API Token"
+msgstr "開發者個人資訊"
 
-#: templates/steam/base_body.html:121
+#: templates/steam/base_body.html:132
 msgid "About"
 msgstr "關於"
 
-#: templates/steam/base_body.html:128
+#: templates/steam/base_body.html:139
 msgid "Login"
 msgstr "登入"
 
-#: templates/steam/base_body.html:130 templates/steam/create_user.html:23
+#: templates/steam/base_body.html:141 templates/steam/create_user.html:23
 msgid "Sign up"
 msgstr "註冊"
 
-#: templates/steam/base_body.html:134
+#: templates/steam/base_body.html:145
 msgid "Logout"
 msgstr "登出"
 
@@ -222,6 +243,10 @@ msgstr "\"電子郵件地址\""
 #: templates/steam/login.html:42
 msgid "\"Password\""
 msgstr "\"密碼\""
+
+#: templates/steam/login.html:42
+msgid "Caps lock is on"
+msgstr "大寫鎖定"
 
 #: templates/steam/login.html:47
 msgid "Login in"

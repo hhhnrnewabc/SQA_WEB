@@ -21,6 +21,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.contrib.sites.models import get_current_site
 from django.template import loader
 from django.conf import settings
+import datetime
 
 
 def index(request):
@@ -75,7 +76,18 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return render_to_response('steam/index.html', {'logout_success': _("Logout Success"), },
-                              context_instance=RequestContext(request, ))
+                              context_instance=RequestContext(request))
+
+
+def resend_email(request):
+    can_send_mail_time = True
+    send_mail_time = request.session.get('_send_signup_mail_time', None)
+    if send_mail_time:
+        send_mail_time = datetime.datetime.fromtimestamp(send_mail_time)
+    if not send_mail_time or send_mail_time + datetime.timedelta(minutes=10) > datetime.datetime.now():
+        can_send_mail_time = False
+    return render_to_response('steam/resend_email.html', {'can_send_mail_time': can_send_mail_time, },
+                              context_instance=RequestContext(request))
 
 
 class CreateUserView(FormView):
@@ -107,10 +119,17 @@ class EmailView(generic.View):
         try:
             user = BaseUser.objects.get(id=self.request.session["_auth_user_id"])
         except (BaseUser.DoesNotExist, TypeError, ValueError, OverflowError, KeyError):
-            return HttpResponse("{'status':'error'}", mimetype='application/json')
+            return HttpResponse('{"status":"error"}', mimetype='application/json')
 
         if user.is_active:
-            return HttpResponse("{'status': 'is_already_active'}", mimetype='application/json')
+            return HttpResponse('{"status": "is_already_active"}', mimetype='application/json')
+        send_mail_time = self.request.session.get('_send_signup_mail_time', None)
+        if send_mail_time:
+            send_mail_time = datetime.datetime.fromtimestamp(send_mail_time)
+        if not send_mail_time or send_mail_time + datetime.timedelta(minutes=10) > datetime.datetime.now():
+            return HttpResponse('{"status":"error"}', mimetype='application/json')
+
+        self.request.session["_send_signup_mail_time"] = datetime.datetime.now().timestamp()
         token = signup_token_generator.make_token(user)
         current_site = get_current_site(self.request)
         site_name = current_site.name
@@ -127,7 +146,7 @@ class EmailView(generic.View):
         }
         subject = loader.render_to_string('steam/email_confirm.html', c)
         user.email_user(_('Welcome SQA Game Center Project'), subject)
-        return HttpResponse("{'status':'ok'}", mimetype='application/json')
+        return HttpResponse('{"status":"ok"}', mimetype='application/json')
 
 
 def active_user(request, uidb64, token):
