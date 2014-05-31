@@ -14,13 +14,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 from manage import ONAWS
 
+# import path for AWS EC2 SERVER
+# . is point to WEB/
+# path put in ../aws_path_fix.py
+if ONAWS:
+    import sys
+    sys.path.insert(0, '..')
+    from aws_path_fix import *
+else:
+    from test_path import *
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=j*!hhle^wxqgs$12o&2rg2$mhl7*+tqy7o#f%@k7*6o7dzt2%'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
@@ -167,12 +174,4 @@ for tag in AUTOLOAD_TEMPLATETAGS:
     add_to_builtins(tag)
 
 
-# import path for AWS EC2 SERVER
-# . is point to WEB/
-# path put in ../aws_path_fix.py
-if ONAWS:
-    import sys
-    sys.path.insert(0, '..')
-    from aws_path_fix import *
-else:
-    from test_path import *
+

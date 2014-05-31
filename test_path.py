@@ -1,3 +1,8 @@
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = """~IlJm]Vx=c,qXh`d+a\(a^_o9n|#JP=p>i8F1pAH\pu~':,AI)"+E`7m~>JUJOxl-IH$.Xi"`l|:~jNluGg6Ll_c7!YU>,QW'L"""
+
+# SECURITY WARNING: don't run with debug turned on in production!
+
 
 # LOGS
 import os
