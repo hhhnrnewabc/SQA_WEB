@@ -8,9 +8,9 @@ AWSTMPFILE = "onaws.tmp"
 if os.path.isfile(AWSTMPFILE) and os.stat(AWSTMPFILE)[6] != 0:
     with open(AWSTMPFILE) as readfile:
         ONAWS = eval(readfile.readline())
-        print("TEST MODE")
+        print("ON TEST MODE")
 else:
-    print("AWS MODE")
+    print("ON AWS MODE")
     ONAWS = True
 
 
