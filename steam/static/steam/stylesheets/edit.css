@@ -66,3 +66,7 @@ body {
 hr {
     border-top: 1px solid #999;
 }
+
+.token p {
+  word-wrap: break-word;
+}
