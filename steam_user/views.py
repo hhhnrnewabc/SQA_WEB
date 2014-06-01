@@ -36,14 +36,14 @@ def get_user_list():
 
 def index(request):
     user_list_count = len(get_user_list())
-    rander4_user = []
-    while len(rander4_user) < 4:
+    random4_user = []
+    while len(random4_user) < 4:
         u = get_user_list()[random.randrange(0, user_list_count)]
-        if u not in rander4_user:
-            rander4_user.append(u)
+        if u not in random4_user:
+            random4_user.append(u)
 
     return render_to_response('steam_user/index.html',
-                              {"rander4_user": rander4_user},
+                              {"random4_user": random4_user},
                               context_instance=RequestContext(request))
 
 

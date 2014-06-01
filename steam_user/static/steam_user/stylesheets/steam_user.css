@@ -18,7 +18,7 @@
     height: 320px;
     padding-top: 20px;
     vertical-align: top;
-    width: 300px;
+    width: 100%;
 }
 
 .splash_feature > div {
@@ -47,3 +47,4 @@
 .uk-grid .uk-width-medium-1-4 {
 	padding-top: 20px;
 }
+

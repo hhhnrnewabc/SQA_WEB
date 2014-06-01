@@ -9,10 +9,10 @@
 {% block maininfo %}
     <div class="col-md-12">
         <div class="container">
-            <div class="" id="" style="margin-top: 50px; margin-bottom: 30px;">
-            {% for u in rander4_user %}
+            <div class="" id="random4user" style="margin-top: 50px; margin-bottom: 30px;">
+            {% for u in random4_user %}
                 {% if forloop.counter0|divisibleby:"2" %}
-                <div class="uk-grid" style="padding-top: 30px; padding-bottom: 10px;">
+                <div class="hidden-xs uk-grid">
                 {% endif %}
                     {% if forloop.counter0  == 0 %}
                     <div class="uk-width-medium-1-4 uk-push-1-4">
@@ -23,30 +23,42 @@
                     {% elif forloop.counter0  == 3 %}
                     <div class="uk-width-medium-1-4 uk-push-1-4">
                     {% endif %}
-                        <div class="uk-panel uk-panel-box uk-scrollspy-init-inview uk-scrollspy-inview uk-animation-scale-up" data-uk-scrollspy="{cls:'uk-animation-scale-up', repeat: true}">
-                            <div class="uk-grid">
-                                <div class="uk-width-medium-2-4">
-                                    <a href="#" class="uk-thumbnail uk-overlay-toggle">
-                                        <div class="uk-overlay">
-                                            <img width="500" height="360" alt="" src="{{ u.photo.url }}">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="uk-width-medium-2-4">
+                        <div class="uk-scrollspy-init-inview uk-scrollspy-inview uk-animation-scale-up" data-uk-scrollspy="{cls:'uk-animation-scale-up', repeat: true}">
+                            <div class="uk-thumbnail">
+                                <a href="{% url 'steam_user:user_profile' u.id %}">
+                                    <img  width="192" height="192" src="{{ u.photo.url }}" alt="">
+                                    <div class="uk-thumbnail-caption">
                                     {% if u.nick_name %}
-                                    <h3>{{ u.nick_name|truncatechars:9 }}</h3>
-                                    {% else %}
-                                    <p>{{ u.get_full_name|truncatechars:9 }}</p>
-                                    {% endif %}
-                                    <a href="{% url 'steam_user:user_profile' u.id %}">Profile</a>
-                                    <p>{{ u.baseuser.date_joined|timesince:u.baseuser.last_login }}</p>
-                                </div>
-                            </div>                    
+                                        <p>{{ u.nick_name|truncatechars:18 }}</p>
+                                        {% else %}
+                                        <p>{{ u.get_full_name|truncatechars:18 }}</p>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>             
                         </div>
                     </div>
                 {% if not forloop.counter0|divisibleby:"2" %}
                 </div>
                 {% endif %}
+            {% endfor %}
+            {% for u in random4_user %}
+                <div class="visible-xs uk-grid">
+                    <div class="uk-width-medium-1-1">
+                        <div class="thumbnail">
+                            <a href="{% url 'steam_user:user_profile' u.id %}">
+                                <img class="uk-border-circle" width="128" height="128" src="{{ u.photo.url }}" alt="">
+                                <div class="uk-thumbnail-caption">
+                                    {% if u.nick_name %}
+                                        <p>{{ u.nick_name|truncatechars:18 }}</p>
+                                    {% else %}
+                                        <p>{{ u.get_full_name|truncatechars:18 }}</p>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>                         
+                    </div>
+                </div>
             {% endfor %}
             </div>
             <div class="uk-grid" id="" style="margin-top: 30px; margin-bottom: 30px;">
