@@ -26,6 +26,8 @@ def update_secret_token(request):
         steam_dev = SteamDeveloper.objects.get(baseuser=request.user)
     except SteamDeveloper.DoesNotExist:
         return HttpResponseRedirect(reverse('steam_dev:dev_apply'))
+    except (TypeError, TypeError, ValueError, OverflowError, KeyError):
+        return HttpResponseRedirect(reverse('steam:user_signup'))
 
     if request.POST.get('UpdateSecretToken', None):
         steam_dev.create_new_secret_token()
