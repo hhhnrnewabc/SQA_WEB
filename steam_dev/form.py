@@ -29,12 +29,10 @@ class ReadOnlyFieldsMixin(object):
 
 class SteamDevForm(ReadOnlyFieldsMixin, forms.ModelForm):
 
-    readonly_fields = ('api_token', 'secret_token',)
-
     class Meta:
         model = SteamDeveloper
-        fields = ('first_name', 'last_name', 'address', 'work_phone', 'fax', 'company_name',
-                  'api_token', 'secret_token',)
+        fields = ('first_name', 'last_name', 'work_phone', 'fax',
+                  'company_name', 'address')
 
     def __init__(self, *args, **kwargs):
         super(SteamDevForm, self).__init__(*args, **kwargs)

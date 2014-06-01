@@ -29,14 +29,13 @@ def update_secret_token(request):
 
     if request.POST.get('UpdateSecretToken', None):
         steam_dev.create_new_secret_token()
-        return render_to_response('steam_dev/update_secret_token.html',
-                                  {'steam_dev': steam_dev,
-                                   'success_message': _("Update Success")},
-                                  context_instance=RequestContext(request))
+        messages.success(request, _("Update Success"))
+        return HttpResponseRedirect(reverse('steam_dev:update_secret_token'))
+    else:
 
-    return render_to_response('steam_dev/update_secret_token.html',
-                              {'steam_dev': steam_dev},
-                              context_instance=RequestContext(request))
+        return render_to_response('steam_dev/update_secret_token.html',
+                                  {'steam_dev': steam_dev},
+                                  context_instance=RequestContext(request))
 
 
 # require for steam_dev
@@ -60,7 +59,7 @@ def steam_dev_required(function):
 
 class SteamDevApplyView(FormView):
     template_name = 'steam_dev/dev_apply.html'
-    success_url = '/steam/dev/dev_profile'
+    success_url = '/steam/dev/dev_profile/'
     form_class = SteamDevApplyForm
     _steam_user = None
     _steam_dev = None
@@ -108,19 +107,15 @@ class SteamDevApplyView(FormView):
 class SteamDevProfileView(FormView):
     template_name = 'steam_dev/dev_profile.html'
     form_class = SteamDevForm
-    success_url = 'dev_profile'
+    success_url = '/steam/dev/dev_profile/'
     _steam_dev = None
     _user = None
 
     def form_valid(self, form):
-        # Exclude readonly_fields for ReadOnlyFieldsMixin
-        if self.form_class.readonly_fields:
-            for k in self.form_class.readonly_fields:
-                form.cleaned_data.pop(k, None)
         # UPDATE DATA
         self._steam_dev.update(**form.cleaned_data)
-        # return super(SteamDevProfileView, self).form_valid(form)
-        return self.render_to_response(self.get_context_data(form=form, success_message=_("Update Success")))
+        messages.success(self.request, _("Update Success"))
+        return super(SteamDevProfileView, self).form_valid(form)
 
     @steam_dev_required
     def dispatch(self, request, *args, **kwargs):

@@ -6,7 +6,6 @@
 
 {% block message %}
     {% for message in messages %}
-
     <div {% if message.tags %}class="alert alert-{{ message.tags }}{% else %}default{% endif %} alert-dismissable container">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong>{{ message }}</strong>

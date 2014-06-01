@@ -48,7 +48,7 @@ msgstr "地址"
 
 #: models.py:25
 msgid "Your Address"
-msgstr "你網站的網址"
+msgstr "你的的地址"
 
 #: models.py:26
 msgid "Work Phone"
