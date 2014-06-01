@@ -27,7 +27,6 @@ def get_user_list():
     global user_list, next_pudate_time
     now = datetime.datetime.now()
     if not next_pudate_time or now > next_pudate_time:
-        print('Update user_list')
         next_pudate_time = now + datetime.timedelta(minutes=10)
         user_list = SteamUser.objects.filter(baseuser__is_superuser=False,
                                              baseuser__is_staff=False,
