@@ -74,7 +74,8 @@ class SteamUser(models.Model):
 
 
 class StreamFriends(models.Model):
-    steam_user_id = models.ForeignKey(SteamUser)
+    user = models.ForeignKey(SteamUser, related_name='user')
+    friend = models.ForeignKey(SteamUser, related_name='friend')
     last_togther_play_game = models.ForeignKey(Game)
     last_togther_play_time = models.DateTimeField()
 

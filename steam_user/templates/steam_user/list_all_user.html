@@ -41,7 +41,7 @@
                             {% endif %}
                             <ul class="uk-comment-meta uk-subnav uk-subnav-line">
                                 <li><span>{% trans "加入日期" %} : {{ contact.baseuser.date_joined|date:"Y/m/d l H:i" }}</span></li>
-                                <li><a href="/pofile/">Profile</a></li>
+                                <li><a href="{% url 'steam_user:user_profile' contact.id %}">Profile</a></li>
                                 <li><a href="#">#</a></li>
                             </ul>
                         </header>
@@ -60,7 +60,7 @@
                     {% if not contacts.has_previous %}
                         <li class="uk-disabled"><span><i class="uk-icon-angle-left"></i></span></li>
                     {% else %}
-                        <li><a href="?page={{ contacts.previous_page_number }}"><i class="uk-icon-angle-double-left"></i></a></li>
+                        <li><a href="?page={{ contacts.previous_page_number }}"><i class="uk-icon-angle-left"></i></a></li>
                     {% endif %}
                     {% for p in contacts.leading_range %}
                         <li><a href="?page={{ p }}">{{ p }}</a></li>
@@ -80,7 +80,7 @@
                     {% if not contacts.has_next %}
                         <li class="uk-disabled"><span><i class="uk-icon-angle-right"></i></span></li>
                     {% else %}
-                        <li><a href="?page={{ contacts.next_page_number }}"><i class="uk-icon-angle-double-right"></i></a></li>
+                        <li><a href="?page={{ contacts.next_page_number }}"><i class="uk-icon-angle-right"></i></a></li>
                     {% endif %}
                     {% if contacts.number != contacts.paginator.num_pages %}
                         <li><a href="?page={{ contacts.paginator.num_pages }}"><i class="uk-icon-angle-double-right"></i></a></li>

@@ -21,6 +21,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.contrib.sites.models import get_current_site
 from django.template import loader
 from django.conf import settings
+from django.views.decorators.debug import sensitive_post_parameters
 import datetime
 
 
@@ -36,6 +37,7 @@ def login_page(request):
     return render(request, 'steam/login.html', )
 
 
+@sensitive_post_parameters('password')
 def user_login(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect(reverse('steam:index', ))

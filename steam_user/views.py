@@ -15,17 +15,28 @@ from django.db.models.fields.files import ImageFieldFile, FileField
 from django.utils.translation import ugettext_lazy as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from SQA_Project.Digg_like_paginator import DiggPaginator
+import random
+
+user_list = SteamUser.objects.filter(baseuser__is_superuser=False,
+                                     baseuser__is_staff=False,
+                                     baseuser__is_active=True)
 
 
 def index(request):
-    return render(request, 'steam_user/index.html')
+    user_list_count = len(user_list)
+    rander4_user = []
+    while len(rander4_user) < 4:
+        u = user_list[random.randrange(0, user_list_count)]
+        if u not in rander4_user:
+            rander4_user.append(u)
+
+    return render_to_response('steam_user/index.html',
+                              {"rander4_user": rander4_user},
+                              context_instance=RequestContext(request))
 
 
 def list_all_user(request):
-    user_list = SteamUser.objects.filter(baseuser__is_superuser=False,
-                                         baseuser__is_staff=False,
-                                         baseuser__is_active=True)
-    paginator = DiggPaginator(user_list, 5, body=2, margin=2, tail=2)
+    paginator = DiggPaginator(user_list, 10, body=2, margin=2, tail=2)
 
     page = request.GET.get('page')
     try:
@@ -44,7 +55,7 @@ def list_all_user(request):
 
 def user_profile(request, user_id):
     try:
-        user_profile = SteamUser.objects.ger(id=user_id)
+        user_profile = SteamUser.objects.get(id=user_id)
     except SteamUser.DoesNotExist:
         raise Http404
 
@@ -54,7 +65,7 @@ def user_profile(request, user_id):
 
 
 class SteamUserView(FormView):
-    template_name = 'steam_user/user_profile.html'
+    template_name = 'steam_user/self_profile.html'
     form_class = SteamUserForm
     success_url = '/steam/user_profile/'
     _user = None
