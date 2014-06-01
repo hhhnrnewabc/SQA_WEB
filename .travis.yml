@@ -41,4 +41,5 @@ branches:
 notifications:  
     email:  
         - <hhhnrnew82@gmail.com>   
+    hipchat: 2071baba97d44c268b540915531762@FCU        
   
