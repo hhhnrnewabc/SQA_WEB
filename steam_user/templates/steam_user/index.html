@@ -38,7 +38,8 @@
                                     {% else %}
                                     <p>{{ u.get_full_name|truncatechars:9 }}</p>
                                     {% endif %}
-                                    <p>Lorem ipsum dolor sit amet..</p>
+                                    <a href="{% url 'steam_user:user_profile' u.id %}">Profile</a>
+                                    <p>{{ u.baseuser.date_joined|timesince:u.baseuser.last_login }}</p>
                                 </div>
                             </div>                    
                         </div>

@@ -15,18 +15,31 @@ from django.db.models.fields.files import ImageFieldFile, FileField
 from django.utils.translation import ugettext_lazy as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from SQA_Project.Digg_like_paginator import DiggPaginator
+import datetime
 import random
 
-user_list = SteamUser.objects.filter(baseuser__is_superuser=False,
-                                     baseuser__is_staff=False,
-                                     baseuser__is_active=True)
+next_pudate_time = None
+user_list = []
+
+
+# user_list update, interval of at least 10 minutes
+def get_user_list():
+    global user_list, next_pudate_time
+    now = datetime.datetime.now()
+    if not next_pudate_time or now > next_pudate_time:
+        print('Update user_list')
+        next_pudate_time = now + datetime.timedelta(minutes=10)
+        user_list = SteamUser.objects.filter(baseuser__is_superuser=False,
+                                             baseuser__is_staff=False,
+                                             baseuser__is_active=True)
+    return user_list
 
 
 def index(request):
-    user_list_count = len(user_list)
+    user_list_count = len(get_user_list())
     rander4_user = []
     while len(rander4_user) < 4:
-        u = user_list[random.randrange(0, user_list_count)]
+        u = get_user_list()[random.randrange(0, user_list_count)]
         if u not in rander4_user:
             rander4_user.append(u)
 
@@ -36,7 +49,7 @@ def index(request):
 
 
 def list_all_user(request):
-    paginator = DiggPaginator(user_list, 10, body=2, margin=2, tail=2)
+    paginator = DiggPaginator(get_user_list(), 10, body=2, margin=2, tail=2)
 
     page = request.GET.get('page')
     try:
