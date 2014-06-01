@@ -65,10 +65,10 @@ cover/
 # *.svg
 # *.woff
 
-images/
-*.png
-*.jpg
-*.ico
+#images/
+#*.png
+#*.jpg
+#*.ico
 
 #ipython notebook
 *.ipynb
