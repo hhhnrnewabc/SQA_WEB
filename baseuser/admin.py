@@ -9,6 +9,7 @@ from baseuser.models import BaseUser
 from steam_user.models import SteamUser
 from steam_dev.models import SteamDeveloper
 
+
 class SteamUserInline(admin.StackedInline):
     model = SteamUser
     readonly_fields = ('created', 'api_token', 'secret_token')
