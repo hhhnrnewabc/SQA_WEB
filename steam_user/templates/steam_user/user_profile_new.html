@@ -1,0 +1,148 @@
+{% extends "steam/base.html" %}
+
+{% block title %}
+  <title>User Profile</title>
+{% endblock %}
+
+{% block message %}
+    {% for message in messages %}
+    <div {% if message.tags %}class="alert alert-{{ message.tags }}{% else %}default{% endif %} alert-dismissable container">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+{% endblock %} 
+
+{% block importCSS %}
+    <link href="{% static 'steam/stylesheets/edit.css' %}" rel="stylesheet">
+    <link href="{% static 'steam/stylesheets/uikit.addons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'steam/stylesheets/uikit.almost-flat.addons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'steam/stylesheets/uikit.gradient.addons.min.css' %}" rel="stylesheet">
+{% endblock %}
+{% block importjavascripts %}
+
+    <script>
+    /**
+     * setup JQuery's AJAX methods to setup CSRF token in the request before sending it off.
+     * http://stackoverflow.com/questions/5100539/django-csrf-check-failing-with-an-ajax-post-request
+     */
+
+    function getCookie(name)
+    {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    $.ajaxSetup({ 
+         beforeSend: function(xhr, settings) {
+             if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                 // Only send the token to relative URLs i.e. locally.
+                 xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+             }
+         } 
+    });
+    </script>
+
+    <script type="text/javascript" src="{% static 'steam/javascripts/upload.js' %}"></script>
+    <script type="text/javascript" src="{% static 'steam/javascripts/search.min.js' %}"></script>
+{% endblock %}
+
+{% block maininfo %}
+    <div class="col-md-12">
+        <div class="steam_user_edit">
+            <div class="container">
+                <form action="{% url 'steam:steam_user_profile' %}" method="post" class="uk-form form-edit form-horizontal" enctype="multipart/form-data">{% csrf_token %}
+                    <fieldset data-uk-margin>
+                        <div class="title-panel uk-panel uk-panel-box uk-width-medium-1-1 uk-container-center uk-text-center">
+                            <h2 class="form-edit-heading">Edit Steam User</h2>
+                        </div>
+                        <div class="form-group uk-margin-small-top">
+                            <div class="col-sm-2 col-lg-2" >
+                                <h3 class="form-edit-heading control-label">{% trans 'Email' %}</h3>
+                            </div>
+                            <div class="col-sm-8 col-lg-8" style="padding-top: 7px;">
+                               <h3 class="form-edit-heading">{{ user }}</h3>
+                            </div>
+                        </div>
+                        <div class="uk-placeholder uk-text-center" id="upload-drop">
+                            <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Attach binaries by dropping them here or <a class="uk-form-file">selecting one<input type="file" id="upload-select"></a>.
+                        </div>
+                        <div class="uk-progress uk-hidden" id="progressbar">
+                            <div style="width: 0%;" class="uk-progress-bar">0%</div>
+                        </div>
+                        <div class="form-group">
+                            <span class="control-label col-sm-2 col-lg-2 " >
+                                <p></p>
+                            </span>
+                            <div class=" col-sm-10 col-lg-10 ">
+                                <hr>
+                               <input class="btn btn-success form-control" type="submit" value="{% trans 'Update' %}" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+<script>
+    
+    $(function(){
+
+        var progressbar = $("#progressbar"),
+            bar         = progressbar.find('.uk-progress-bar'),
+            settings    = {
+
+            action: '{% url "steam_user:steam_user_profile_new" %}', // upload url
+
+            allow : '*.(jpg|jpeg|gif|png)', // allow only images
+
+            loadstart: function() {
+                bar.css("width", "0%").text("0%");
+                progressbar.removeClass("uk-hidden");
+            },
+
+            progress: function(percent) {
+                percent = Math.ceil(percent);
+                bar.css("width", percent+"%").text(percent+"%");
+            },
+
+            allcomplete: function(response) {
+
+                bar.css("width", "100%").text("100%");
+
+                setTimeout(function(){
+                    progressbar.addClass("uk-hidden");
+                }, 250);
+
+                alert("Upload Completed")
+            }
+        };
+
+        var select = new $.UIkit.upload.select($("#upload-select"), settings),
+            drop   = new $.UIkit.upload.drop($("#upload-drop"), settings);
+    });
+
+</script>
+<script>
+function createAutoClosingAlert(selector, delay) {
+   var alert = $(selector).alert();
+   window.setTimeout(function() { alert.alert('close') }, delay);
+}
+
+createAutoClosingAlert(".alert", 5000);
+</script>
+{% endblock %}

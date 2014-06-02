@@ -76,6 +76,19 @@ def user_profile(request, user_id):
                               context_instance=RequestContext(request))
 
 
+def steam_user_profile_new(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            print('Raw Data: %s' % request.body)
+            print("POST Data: %s" % request.POST)
+            print(request.POST.dict())
+    print(request.POST)
+
+    return render_to_response('steam_user/user_profile_new.html',
+                              {},
+                              context_instance=RequestContext(request))
+
+
 class SteamUserView(FormView):
     template_name = 'steam_user/self_profile.html'
     form_class = SteamUserForm
