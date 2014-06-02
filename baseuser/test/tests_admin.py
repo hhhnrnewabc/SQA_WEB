@@ -147,12 +147,14 @@ class BaseUserAdminFormTestCase(TestCase):
         self.assertEqual(BaseUser.objects.get(email="YY@yy.com"), user)
 
     def test_user_change_form(self):
+        raw_data = {'password': "1234"}
         form_data = {'email': 'YY@yy.com',
-                     'password': "1234",
+                     'password': "1111",
                      'is_active': False,
                      'is_staff': False,
                      'is_superuser': False,
                      }
         form = UserChangeForm(data=form_data)
-        form.initial = form_data
+        form.initial = raw_data
+        self.assertEqual(form.is_valid(), True)
         self.assertEqual(form.clean_password(), '1234')
