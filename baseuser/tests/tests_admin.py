@@ -44,13 +44,9 @@ class BaseUserAdminTestCase(TestCase):
              (None,
               {'classes': ('wide',),
                'fields': ('email',
-                          'password1',
-                          'password2',
-                          'is_active',
-                          'is_staff',
-                          'groups',
-                          'user_permissions'
-                          )
+                          'password1', 'password2',
+                          'is_active', 'is_staff',
+                          'groups', 'user_permissions')
                }
               ),
             )
@@ -62,12 +58,9 @@ class BaseUserAdminTestCase(TestCase):
             def get_fieldsets(self, request, obj=None):
                 return [(None,
                          {'classes': ('wide',),
-                          'fields': ('email',
-                                     'is_active',
-                                     'is_staff',
-                                     'groups',
-                                     'user_permissions'
-                                     )
+                          'fields': ('email', 'is_active',
+                                     'is_staff', 'groups',
+                                     'user_permissions')
                           }
                          )
                         ]
@@ -80,30 +73,18 @@ class BaseUserAdminTestCase(TestCase):
         # test inline from
         user = SteamUserInline(BaseUser, self.site)
         user_form = user.get_formset(request).form
-        self.assertEqual(user_form._meta.fields, ['baseuser',
-                                                  'first_name',
-                                                  'last_name',
-                                                  'nick_name',
-                                                  'cell_phone',
-                                                  'sex',
-                                                  'photo',
-                                                  'created',
-                                                  'api_token',
-                                                  'secret_token'])
+        self.assertEqual(user_form._meta.fields,
+            ['baseuser', 'first_name', 'last_name',
+             'nick_name', 'cell_phone', 'sex',
+             'photo', 'created', 'api_token', 'secret_token'])
 
         dev = SteamDeveloperInline(BaseUser, self.site)
         dev_form = dev.get_formset(request).form
-        self.assertEqual(dev_form._meta.fields, ['baseuser',
-                                                 'steam_user',
-                                                 'first_name',
-                                                 'last_name',
-                                                 'address',
-                                                 'work_phone',
-                                                 'fax',
-                                                 'company_name',
-                                                 'api_token',
-                                                 'secret_token',
-                                                 'created'])
+        self.assertEqual(dev_form._meta.fields,
+            ['baseuser', 'steam_user', 'first_name',
+             'last_name', 'address', 'work_phone',
+             'fax', 'company_name', 'api_token',
+             'secret_token', 'created'])
 
 
 class BaseUserAdminFormTestCase(TestCase):

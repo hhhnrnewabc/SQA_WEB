@@ -44,15 +44,20 @@ class SteamUserTestCase(TestCase):
     def test_upload_name(self):
         filename = 'p.jpeg'
         upload_file_name = get_upload_file_name(self.sx, filename)
-        upload_dir, user_dir, user_hash_dir, filename = upload_file_name.split('/')
+        try:
+            upload_dir, user_dir, user_hash_dir, filename = upload_file_name.split('/')
+        except Exception as e:
+            print(e)
         self.assertEqual(upload_dir, "uploaded_files")
         self.assertEqual(user_dir, "user")
         self.assertEqual(len(user_hash_dir), 64)
-
-        year, m, d = filename.split('_')[:3]
-        from time import gmtime, strftime
-        now_time = strftime("%Y_%m_%d", gmtime())
-        Nyear, Nm, Nd = now_time.split('_')[:3]
+        try:
+            year, m, d = filename.split('_')[:3]
+            from time import gmtime, strftime
+            now_time = strftime("%Y_%m_%d", gmtime())
+            Nyear, Nm, Nd = now_time.split('_')[:3]
+        except Exception as e:
+            print(e)
         self.assertEqual(Nyear, year)
         self.assertEqual(Nm, m)
         self.assertEqual(Nd, d)

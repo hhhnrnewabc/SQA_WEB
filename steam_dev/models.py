@@ -61,16 +61,7 @@ class SteamDeveloper(models.Model):
 
     def save(self, commit=True, *args, **kwargs):
         if not self.api_token:
-            key = self.generate_key()
-            # Check api_token is unique
-            try:
-                count = 0  # generate_key in 10 times
-                while count < 10 and SteamUser.objects.get(api_token=key):
-                    count += 1
-                    key = self.generate_key()
-
-            except SteamUser.DoesNotExist:
-                self.api_token = key
+            self.api_token = self.generate_key()
         if not self.secret_token:
             self.secret_token = self.generate_key()
         if commit:
@@ -109,16 +100,7 @@ class SteamDevAPPS(models.Model):
 
     def save(self, commit=True, *args, **kwargs):
         if not self.api_token:
-            key = self.generate_key()
-            # Check api_token is unique
-            try:
-                count = 0  # generate_key in 10 times
-                while count < 10 and SteamUser.objects.get(api_token=key):
-                    count += 1
-                    key = self.generate_key()
-
-            except SteamUser.DoesNotExist:
-                self.api_token = key
+            self.api_token = self.generate_key()
         if not self.secret_token:
             self.secret_token = self.generate_key()
         if commit:
