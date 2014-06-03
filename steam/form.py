@@ -23,9 +23,14 @@ class AdminImageWidget(forms.FileInput):
     def render(self, name, value, attrs=None):
         output = []
         if value and hasattr(value, "url"):
-            output.append(('<div class="thumbnail album-pic"> <a target="_blank" href="%s">'
-                           '<img src="%s"  data-src="holder.js/300x300" \
-                           alt="300x300" /></a> </div>'
+            output.append(('<div class="thumbnail album-pic"> <a data-uk-modal="{target:\'#user-img\'}">'
+                           '<img src="%s" /></a> </div>'
+                           '<div class="uk-modal" id="user-img" style="display: none; padding-right: 15px; padding-top: 80px;">'
+                           '    <div class="uk-modal-dialog uk-modal-dialog-frameless" style="width: 80%%; height: auto;">'
+                           '        <button class="uk-modal-close uk-close uk-close-alt" type="button"></button>'
+                           '        <img alt="" src="%s">'
+                           '    </div>'
+                           '</div>'
                            % (value.url, value.url)))
         output.append(super(AdminImageWidget, self).render(name, value, attrs))
         return mark_safe(u''.join(output))
