@@ -93,6 +93,10 @@ class search(APIView):
                                                        baseuser__is_staff=False,
                                                        baseuser__is_active=True,
                                                        nick_name__contains=search_name))
+            user_list += list(SteamUser.objects.filter(baseuser__is_superuser=False,
+                                                       baseuser__is_staff=False,
+                                                       baseuser__is_active=True,
+                                                       baseuser__email__contains=search_name))
             user_set = set(user_list)
             if user_list:
                 serializer = SteamUserSerializer(user_set, many=True)
