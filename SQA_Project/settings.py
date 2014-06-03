@@ -53,6 +53,7 @@ INSTALLED_APPS = (
     'steam',
     'steam_dev',
     'steam_user',
+    'game_info',
     'django_nose',  # django nose testing
     'bootstrapform',  # Twitter Bootstrap for Django Form.
     # 'debug_toolbar',  # Django Debug Toolbar

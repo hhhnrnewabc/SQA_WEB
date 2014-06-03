@@ -63,27 +63,33 @@
             </div>
             <div class="uk-grid" id="" style="margin-top: 30px; margin-bottom: 30px;">
                 <div class="uk-width-medium-1-3" id="splash_features_outer">
-                    <div class="splash_feature">
-                        <div id="splash_feature_chat" class="splash_feature_icon"></div>
-                        <div class="splash_feature_title">{% trans "Chat" %}</div>
-                        <p>{% trans "Chat with friends in web." %}</p>
-                        <p class="label label-default">{% trans "Coming soon!" %}</p>
-                    </div>
+                    <a>
+                        <div class="splash_feature">
+                            <div id="splash_feature_chat" class="splash_feature_icon"></div>
+                            <div class="splash_feature_title">{% trans "Chat" %}</div>
+                            <p>{% trans "Chat with friends in web." %}</p>
+                            <p class="label label-default">{% trans "Coming soon!" %}</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="uk-width-medium-1-3" id ="splash_features_outer">
-                    <div id="splash_feature_margin" class="splash_feature">
-                        <div id="splash_feature_meet" class="splash_feature_icon"></div>
-                        <div class="splash_feature_title">{% trans "ADD" %}</div>
-                        <p>{% trans "Add friends on web." %}</p> 
-                        <p class="label label-default">{% trans "Coming soon!" %}</p>      
-                    </div>
+                    <a>
+                        <div id="splash_feature_margin" class="splash_feature">
+                            <div id="splash_feature_meet" class="splash_feature_icon"></div>
+                            <div class="splash_feature_title">{% trans "ADD" %}</div>
+                            <p>{% trans "Add friends on web." %}</p> 
+                            <p class="label label-default">{% trans "Coming soon!" %}</p>      
+                        </div>
+                    </a>
                 </div>
                 <div class="uk-width-medium-1-3" id="splash_features_outer">
-                    <div class="splash_feature">
-                        <div id="splash_feature_know" class="splash_feature_icon"></div>
-                        <div class="splash_feature_title">{% trans "Serach" %}</div>
-                        <p>{% trans "Search player on web." %}</p>
-                    </div>
+                    <a href="{% url 'steam_user:list_all_user' %}">
+                        <div class="splash_feature">
+                            <div id="splash_feature_know" class="splash_feature_icon"></div>
+                            <div class="splash_feature_title">{% trans "Serach" %}</div>
+                            <p>{% trans "Search player on web." %}</p>
+                        </div>
+                    </a>
                 </div>
             </div>            
         </div>

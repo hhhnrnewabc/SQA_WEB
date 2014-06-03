@@ -53,4 +53,3 @@ class GameSystemRequirements(models.Model):
     graphics = models.CharField(max_length=50)
     hard_drive = models.CharField(max_length=50)
     additional_notes = models.CharField(max_length=200)
-

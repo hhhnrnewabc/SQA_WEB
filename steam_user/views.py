@@ -61,8 +61,43 @@ def list_all_user(request):
         contacts = paginator.page(paginator.num_pages)
 
     return render_to_response('steam_user/list_all_user.html',
-                              {"contacts": contacts},
+                              {"contacts": contacts,
+                               },
                               context_instance=RequestContext(request))
+
+
+from steam_user.serializers import SteamUserSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+
+
+class search(APIView):
+
+    # @csrf_exempt
+    def post(sself, request, format="json"):
+        user_list = []
+        data = request.DATA
+        if data:
+            search_name = data.get('search', '')
+            user_list = list(SteamUser.objects.filter(baseuser__is_superuser=False,
+                                                      baseuser__is_staff=False,
+                                                      baseuser__is_active=True,
+                                                      first_name__contains=search_name))
+            user_list += list(SteamUser.objects.filter(baseuser__is_superuser=False,
+                                                       baseuser__is_staff=False,
+                                                       baseuser__is_active=True,
+                                                       last_name__contains=search_name))
+            user_list += list(SteamUser.objects.filter(baseuser__is_superuser=False,
+                                                       baseuser__is_staff=False,
+                                                       baseuser__is_active=True,
+                                                       nick_name__contains=search_name))
+            user_set = set(user_list)
+            if user_list:
+                serializer = SteamUserSerializer(user_set, many=True)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response("", status=status.HTTP_200_OK)
 
 
 def user_profile(request, user_id):

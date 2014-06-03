@@ -1,0 +1,13 @@
+<script type="text/autocomplete">
+    <ul class="uk-nav uk-nav-autocomplete uk-autocomplete-results">
+        {{~items}}
+        <li data-value="{{ $item.id }}">
+            <a>
+                {{ $item.first_name }} {{ $item.last_name }}
+                {{ $item.nick_name }}
+                <div>{{{ $item.text }}}</div>
+            </a>
+        </li>
+        {{/items}}
+    </ul>
+</script>
