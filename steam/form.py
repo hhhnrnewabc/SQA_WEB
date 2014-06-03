@@ -26,7 +26,7 @@ class AdminImageWidget(forms.FileInput):
             output.append(('<div class="thumbnail album-pic"> <a data-uk-modal="{target:\'#user-img\'}">'
                            '<img src="%s" /></a> </div>'
                            '<div class="uk-modal" id="user-img" style="display: none; padding-right: 15px; padding-top: 80px;">'
-                           '    <div class="uk-modal-dialog uk-modal-dialog-frameless" style="width: 80%%; height: auto;">'
+                           '    <div class="uk-modal-dialog uk-modal-dialog-frameless uk-container-center" style="width: 80%%; height: auto;">'
                            '        <button class="uk-modal-close uk-close uk-close-alt" type="button"></button>'
                            '        <img alt="" src="%s">'
                            '    </div>'
