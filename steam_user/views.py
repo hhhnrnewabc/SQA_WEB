@@ -150,10 +150,10 @@ class SteamUserView(FormView):
 
                 # if there upload new image, delete old image
                 if new_photo_name != '' and old_photo_name != '' \
-                        and new_photo_name != settings.NO_IMAGE_AVAILABLE_PHOTO and new_photo_name != old_photo_name:
+                        and new_photo_name != settings.USER_DEFAULT_AVATAR_POHTO and new_photo_name != old_photo_name:
                     import os
                     # delete the previous image but not default images
-                    if old_photo_name and old_photo_name != settings.NO_IMAGE_AVAILABLE_PHOTO:
+                    if old_photo_name and old_photo_name != settings.USER_DEFAULT_AVATAR_POHTO:
                         os.remove(os.path.join(settings.MEDIA_ROOT, str(old_photo_name)))
                     self._steam_user.update(form.cleaned_data)
                     messages.success(self.request, _('Image Upload Success'))
@@ -182,7 +182,7 @@ class SteamUserView(FormView):
     def get_initial(self):
         # no image will return default image
         if self._steam_user.photo.name == '':
-            default_photo = ImageFieldFile(_('Image'), field=FileField(), name=settings.NO_IMAGE_AVAILABLE_PHOTO)
+            default_photo = ImageFieldFile(_('Image'), field=FileField(), name=settings.USER_DEFAULT_AVATAR_POHTO)
             self._steam_user.photo = default_photo
             # save image path to db
             self._steam_user.update({'photo': default_photo})

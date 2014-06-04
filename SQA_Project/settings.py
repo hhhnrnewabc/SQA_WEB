@@ -157,6 +157,7 @@ MESSAGE_TAGS = {
 }
 
 NO_IMAGE_AVAILABLE_PHOTO = 'noImageAvailable300.png'
+USER_DEFAULT_AVATAR_POHTO = 'userDefaultAvatar.png'
 
 
 # The number of days a signup link is valid for.

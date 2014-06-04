@@ -31,7 +31,7 @@ class SteamUser(models.Model):
                                   blank=True)
     sex = models.CharField(_('Sex'), max_length=1, choices=SEX, help_text=_('Sex :Female, Male, Other '), blank=True)
     photo = models.ImageField(_('Image'), help_text=_('Image:jpg'), upload_to=get_upload_file_name, max_length=200,
-                              blank=True, default=settings.NO_IMAGE_AVAILABLE_PHOTO)
+                              blank=True, default=settings.USER_DEFAULT_AVATAR_POHTO)
 
     api_token = models.CharField(max_length=100, unique=True, blank=True)
     secret_token = models.CharField(max_length=100, blank=True)
