@@ -76,23 +76,24 @@
 
             <ul class="uk-comment-list">
                 {% for contact in contacts.object_list %}
-                <li>       
-                    <article class="uk-comment">
-                        <header class="uk-comment-header">
-                            <img class="uk-comment-avatar" src="{{ contact.photo.url }}" width="64" height="64" alt="">
-                            {% if contact.nick_name %}
-                                <h4 class="uk-comment-title">{{ contact.nick_name }}</h4>
-                            {% else %}
-                                <h4 class="uk-comment-title">{{ contact.get_full_name }}</h4>
-                            {% endif %}
-                            <ul class="uk-comment-meta uk-subnav uk-subnav-line">
-                                <li><span>{% trans "加入日期" %} : {{ contact.baseuser.date_joined|date:"Y/m/d l H:i" }}</span></li>
-                                <li><a href="{% url 'steam_user:user_profile' contact.id %}">Profile</a></li>
-                                <li><a href="#">#</a></li>
-                            </ul>
-                        </header>
-                        <div class="uk-comment-body"></div>
-                    </article>
+                <li>
+                    <a href="{% url 'steam_user:user_profile' contact.id %}">       
+                        <article class="uk-comment">
+                            <header class="uk-comment-header">
+                                <img class="uk-comment-avatar" src="{{ contact.photo.url }}" width="64" height="64" alt="">
+                                {% if contact.nick_name %}
+                                    <h4 class="uk-comment-title">{{ contact.nick_name }}</h4>
+                                {% else %}
+                                    <h4 class="uk-comment-title">{{ contact.get_full_name }}</h4>
+                                {% endif %}
+                                <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                    <li><span>{% trans "加入日期" %} : {{ contact.baseuser.date_joined|date:"Y/m/d l H:i" }}</span></li>
+                                    <li><a href="#">#</a></li>
+                                </ul>
+                            </header>
+                            <div class="uk-comment-body"></div>
+                        </article>
+                    </a>
                 </li>
                 {% endfor %}
             </ul>

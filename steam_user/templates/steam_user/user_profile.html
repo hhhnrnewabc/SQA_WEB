@@ -10,34 +10,38 @@
     <div class="col-md-12">
         <div class="steam_user_edit">
             <div class="container">
-                <form action="{% url 'steam:steam_user_profile' %}" method="post" class="uk-form form-edit form-horizontal" enctype="multipart/form-data">{% csrf_token %}
-                    <fieldset data-uk-margin>
-                        <div class="title-panel uk-panel uk-panel-box uk-width-medium-1-1 uk-container-center uk-text-center">
-                            <h2 class="form-edit-heading">Edit Steam User</h2>
-                        </div>
-                        <div class="form-group uk-margin-small-top">
-                            <div class="col-sm-2 col-lg-2" >
-                                <h3 class="form-edit-heading control-label">{% trans 'Email' %}</h3>
+                <article class="uk-comment">
+                    <header class="uk-comment-header">
+                            <img class="uk-comment-avatar" <a data-uk-modal="{target:'#user-img'}" src="{{user_profile.photo.url}}" width="200px" height="200px">
+                            <h2 class="uk-comment-title" style="wwhite-space: nowrap;">{{user_profile.nick_name}}</h2>
+                            <div class="uk-comment-meta" >
+                                <h6>{{user_profile.get_full_name}}</h6>
+                                <p>{{user_profile.baseuser.email}}</p>
                             </div>
-                            <div class="col-sm-8 col-lg-8" style="padding-top: 7px;">
-                               <h3 class="form-edit-heading">{{ user }}</h3>
+                            <div class="uk-float-left" style="padding-top: 20px;">
+                                {% if user_profile.baseuser == user %}
+                                <div class="profile_header_actions">
+                                    <a href="{% url 'steam:steam_user_profile' %}">
+                                        <button class="uk-button uk-button-primary">
+                                            <span style="color: #FFFFFF">{% trans '編輯個人檔案' %}</span>
+                                        </button>
+                                    </a>
+                                </div>
+                                {% endif %}
                             </div>
-                        </div>
-                        {% for field in form %}
-                            {{ field|bootstrap_horizontal }}
-                        {% endfor %}
-                        <div class="form-group">
-                            <span class="control-label col-sm-2 col-lg-2 " >
-                                <p></p>
-                            </span>
-                            <div class=" col-sm-10 col-lg-10 ">
-                                <hr>
-                               <input class="btn btn-success form-control" type="submit" value="{% trans 'Update' %}" />
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+                    </header>
+                    <div class="uk-comment-body"></div>
+                </article>
+
+                <div class="uk-modal" id="user-img" style="display: none; padding-right: 15px; padding-top: 50px;">
+                    <div class="uk-modal-dialog uk-modal-dialog-frameless uk-container-center" id="user-img-show" style="width: 70%; height: auto; text-align: center; background: rgba(0,0,0,0.5)">
+                        <button class="uk-modal-close uk-close uk-close-alt" type="button"></button>
+                        <img style="vertical-align : middle;" alt="" src="{{user_profile.photo.url}}" name="modal-user-img">
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+
 {% endblock %}
