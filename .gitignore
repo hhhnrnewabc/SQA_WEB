@@ -75,3 +75,4 @@ cover/
 
 *.pid
 *.tmp
+*.sqlite3
