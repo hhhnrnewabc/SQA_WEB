@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-04 22:18+0800\n"
+"POT-Creation-Date: 2014-06-04 22:32+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,31 +100,31 @@ msgstr "更新成功"
 
 #: templates/steam_user/index.html:69
 msgid "Chat"
-msgstr ""
+msgstr "聊天"
 
 #: templates/steam_user/index.html:70
 msgid "Chat with friends in web."
-msgstr ""
+msgstr "在網頁上聊天"
 
 #: templates/steam_user/index.html:71 templates/steam_user/index.html.py:81
 msgid "Coming soon!"
-msgstr ""
+msgstr "即將推出"
 
 #: templates/steam_user/index.html:79
 msgid "ADD"
-msgstr ""
+msgstr "加"
 
 #: templates/steam_user/index.html:80
 msgid "Add friends on web."
-msgstr ""
+msgstr "在網頁上加好友"
 
 #: templates/steam_user/index.html:89
-msgid "Serach"
-msgstr ""
+msgid "Search"
+msgstr "搜尋"
 
 #: templates/steam_user/index.html:90
 msgid "Search player on web."
-msgstr ""
+msgstr "在網頁上搜尋玩家"
 
 #: templates/steam_user/list_all_user.html:90
 msgid "加入日期"
@@ -141,5 +141,5 @@ msgid "Update"
 msgstr "更新"
 
 #: templates/steam_user/user_profile.html:26
-msgid "編輯個人檔案"
-msgstr ""
+msgid "Edit Profile"
+msgstr "編輯個人檔案"
