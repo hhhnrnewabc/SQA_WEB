@@ -31,18 +31,22 @@
                             <li class="{% active request '^/steam/game/' %} ">
                                 <a href="{% url 'steam:game_index' %}">{% trans "All Game" %}</a>
                             </li>
-                            <li><a href="#">{% trans "Action" %}</a>
-                            </li>
-                            <li><a href="#">{% trans "Another action" %}</a>
-                            </li>
-                            <li><a href="#">{% trans "Something else here" %}</a>
-                            </li>
                             <li class="uk-nav-divider"></li>
-                            <li class="uk-nav-header">Nav header</li>
-                            <li><a href="#">{% trans "Separated link" %}</a>
-                            </li>
-                            <li><a href="#">{% trans "One more separated link" %}</a>
-                            </li>
+                            <li><a href="#">{% trans "Action" %}</a></li>
+                            <li><a href="#">{% trans "Adventure" %}</a>
+                            <li><a href="#">{% trans "Strategy" %}</a>
+                            <li><a href="#">{% trans "RPG" %}</a>
+                            <li><a href="#">{% trans "Indie" %}</a>
+                            <li><a href="#">{% trans "Massively Multiplayer" %}</a>
+                            <li><a href="#">{% trans "Adventure" %}</a>
+                            <li><a href="#">{% trans "Casual" %}</a>
+                            <li><a href="#">{% trans "Simulation" %}</a>
+                            <li><a href="#">{% trans "Racing" %}</a>
+                            <li><a href="#">{% trans "Sports" %}</a>
+                            <li class="uk-nav-divider"></li>
+                            <li class="uk-nav-header">{% trans "Browse by platform" %}</li>
+                            <li><a href="#">{% trans "Mac OS" %}</a></li>
+                            <li><a href="#">{% trans "Linux" %}</a></li>
                         </ul>
                     </li>
                     <!-- game end only xs -->
@@ -54,18 +58,22 @@
                                 <li class="{% active request '^/steam/game/' %} ">
                                     <a href="{% url 'steam:game_index' %}">{% trans "All Game" %}</a>
                                 </li>
-                                <li><a href="#">{% trans "Action" %}</a>
-                                </li>
-                                <li><a href="#">{% trans "Another action" %}</a>
-                                </li>
-                                <li><a href="#">{% trans "Something else here" %}</a>
-                                </li>
                                 <li class="uk-nav-divider"></li>
-                                <li class="uk-nav-header">Nav header</li>
-                                <li><a href="#">{% trans "Separated link" %}</a>
-                                </li>
-                                <li><a href="#">{% trans "One more separated link" %}</a>
-                                </li>
+                                <li><a href="#">{% trans "Action" %}</a></li>
+                                <li><a href="#">{% trans "Adventure" %}</a>
+                                <li><a href="#">{% trans "Strategy" %}</a>
+                                <li><a href="#">{% trans "RPG" %}</a>
+                                <li><a href="#">{% trans "Indie" %}</a>
+                                <li><a href="#">{% trans "Massively Multiplayer" %}</a>
+                                <li><a href="#">{% trans "Adventure" %}</a>
+                                <li><a href="#">{% trans "Casual" %}</a>
+                                <li><a href="#">{% trans "Simulation" %}</a>
+                                <li><a href="#">{% trans "Racing" %}</a>
+                                <li><a href="#">{% trans "Sports" %}</a>
+                                <li class="uk-nav-divider"></li>
+                                <li class="uk-nav-header">{% trans "Browse by platform" %}</li>
+                                <li><a href="#">{% trans "Mac OS" %}</a></li>
+                                <li><a href="#">{% trans "Linux" %}</a></li>
                             </ul>
                         </div>
                     </li>
@@ -76,12 +84,10 @@
                         <a data-toggle="dropdown">{% trans "User" %} <i class="uk-icon-caret-down"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="{% active request '^/steam/user/$' %} ">
-                                <a href="{% url 'steam_user:index' %}">{% trans "Home" %}</a>
+                                <a href="{% url 'steam_user:index' %}">{% trans "User Home" %}</a>
                             </li>
                             <li class="{% active request '^/steam/user/list_all/$' %} ">
-                                <a href="{% url 'steam_user:list_all_user' %}">{% trans "List All User" %}</a>
-                            </li>
-                            <li><a href="#">{% trans "Another action" %}</a>
+                                <a href="{% url 'steam_user:list_all_user' %}">{% trans "All User" %}</a>
                             </li>
                         </ul>
                     </li>
@@ -92,12 +98,10 @@
                         <div class="uk-dropdown">
                             <ul class="uk-nav uk-nav-dropdown">
                                 <li class="{% active request '^/steam/user/$' %} ">
-                                    <a href="{% url 'steam_user:index' %}">{% trans "Home" %}</a>
+                                    <a href="{% url 'steam_user:index' %}">{% trans "User Home" %}</a>
                                 </li>
                                 <li class="{% active request '^/steam/user/list_all/$' %} ">
-                                    <a href="{% url 'steam_user:list_all_user' %}">{% trans "List All User" %}</a>
-                                </li>
-                                <li><a href="#">{% trans "Another action" %}</a>
+                                    <a href="{% url 'steam_user:list_all_user' %}">{% trans "All User" %}</a>
                                 </li>
                             </ul>
                         </div>
@@ -109,7 +113,7 @@
                         <a href="#" data-toggle="dropdown">{% trans "Developer" %} <i class="uk-icon-caret-down"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="{% active request '^/steam/dev/$' %} ">
-                                <a href="{% url 'steam_dev:index' %}">{% trans "Home" %}</a>
+                                <a href="{% url 'steam_dev:index' %}">{% trans "Developer Home" %}</a>
                             </li>
                             <li class="{% active request '^/steam/dev/dev_profile$' %}">
                                 <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
@@ -130,7 +134,7 @@
                         <div class="uk-dropdown">
                             <ul class="uk-nav uk-nav-dropdown">
                                 <li class="{% active request '^/steam/dev/$' %} ">
-                                    <a href="{% url 'steam_dev:index' %}">{% trans "Home" %}</a>
+                                    <a href="{% url 'steam_dev:index' %}">{% trans "Developer Home" %}</a>
                                 </li>
                                 <li class="{% active request '^/steam/dev/dev_profile/$' %}">
                                     <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
