@@ -1,25 +1,7 @@
 {% extends "steam/base.html" %}
-{% block title %}
-    <title>SQA Game Center Project</title>
-{% endblock %}
-
-
-
-    {% block message %}
-      {% if logout_success %}
-        <div class="alert alert-success alert-dismissable container">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>{{logout_success}}</strong>
-        </div>
-      {% endif %}
-      {% if signup_success%}
-        <div class="alert alert-success alert-dismissable container">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>{{signup_success}}</strong>
-        </div>
-      {% endif %}
-    {% endblock %} 
-
+    {% block title %}
+        <title>SQA Game Center Project</title>
+    {% endblock %}
 
     {% block maininfo %}
     <div class="carousel">
@@ -215,16 +197,5 @@
             </div>
         </div>
     </div>
-    {% endblock %}
-
-    {% block script %}
-    <script>
-    function createAutoClosingAlert(selector, delay) {
-       var alert = $(selector).alert();
-       window.setTimeout(function() { alert.alert('close') }, delay);
-    }
-
-    createAutoClosingAlert(".alert", 5000);
-    </script>
     {% endblock %}
 

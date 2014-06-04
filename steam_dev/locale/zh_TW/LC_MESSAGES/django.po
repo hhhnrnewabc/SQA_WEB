@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-01 04:59+0800\n"
+"POT-Creation-Date: 2014-06-04 14:35+0800\n"
 "PO-Revision-Date: 2014-05-06 18:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: form.py:77
+#: form.py:75
 msgid "I Agree"
 msgstr "我同意"
 
-#: form.py:79
+#: form.py:77
 msgid "If you agree the terns. Please check I agree."
 msgstr "如果你同意條款，請勾選我同意"
 
@@ -74,75 +74,126 @@ msgstr "公司名稱"
 msgid "Your Company Name, Max length 50"
 msgstr "你的公司名稱名稱. 最多50個字"
 
-#: models.py:82
+#: models.py:73
 msgid "Web URL"
 msgstr "網址"
 
-#: models.py:82
+#: models.py:73
 msgid "Your Web URL Address"
 msgstr "你網站的網址"
 
-#: models.py:83
+#: models.py:74
 msgid "APP Name"
 msgstr "應用程式名稱"
 
-#: models.py:83
+#: models.py:74
 msgid "Your APP Name. Max Length:30"
 msgstr "你的應用程式名稱. 最多30個字"
 
-#: models.py:84
+#: models.py:75
 msgid "APP Introduction"
 msgstr "應用程式詳細介紹"
 
-#: models.py:85
+#: models.py:76
 msgid "Your APP Introduction. Max Length:300"
 msgstr "你的應用程式詳細介紹. 最多300個字"
 
-#: models.py:86
+#: models.py:77
 msgid "Image Big"
 msgstr "大圖片"
 
-#: models.py:86
+#: models.py:77
 msgid "Image Big:jpg"
 msgstr "大圖片:jpg"
 
-#: models.py:89
+#: models.py:80
 msgid "Image Small"
 msgstr "小圖片"
 
-#: models.py:89
+#: models.py:80
 msgid "Image Small:jpg"
 msgstr "小圖片:jpg"
 
-#: views.py:34 views.py:123
+#: views.py:34 views.py:119
 msgid "Update Success"
 msgstr "更新成功"
 
-#: templates/steam_dev/dev_apply.html:46
+#: templates/steam_dev/dev_apply.html:17
+msgid "Developer Terms"
+msgstr ""
+
+#: templates/steam_dev/dev_apply.html:48
 msgid "Next"
 msgstr ""
 
-#: templates/steam_dev/dev_profile.html:30
+#: templates/steam_dev/dev_profile.html:16
+msgid "Edit Steam Developer"
+msgstr ""
+
+#: templates/steam_dev/dev_profile.html:20
 msgid "Email"
 msgstr ""
 
-#: templates/steam_dev/dev_profile.html:45
+#: templates/steam_dev/dev_profile.html:35
 msgid "Update"
 msgstr ""
 
-#: templates/steam_dev/update_secret_token.html:62
+#: templates/steam_dev/terms_zh-tw.html:6
+msgid "Google 十大信條"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:14
+msgid "以使用者為中心"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:22
+msgid "專心將一件事做到盡善盡美"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:30
+msgid "在時間內越快越好"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:38
+msgid "認真不在穿著"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:46
+msgid "精益求精"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:54
+msgid "資訊需求無所不在"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:62
+msgid "資訊無涯"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:70
+msgid "資訊需求無國界"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:78
+msgid "網路上講民主"
+msgstr ""
+
+#: templates/steam_dev/terms_zh-tw.html:86
+msgid "賺錢不必為惡"
+msgstr ""
+
+#: templates/steam_dev/update_secret_token.html:56
 msgid "Confirm"
 msgstr ""
 
-#: templates/steam_dev/update_secret_token.html:66
+#: templates/steam_dev/update_secret_token.html:60
 msgid "Are you sure you want to update secret token."
 msgstr ""
 
-#: templates/steam_dev/update_secret_token.html:73
+#: templates/steam_dev/update_secret_token.html:67
 msgid "Cancel"
 msgstr ""
 
-#: templates/steam_dev/update_secret_token.html:74
-#, fuzzy
+#: templates/steam_dev/update_secret_token.html:68
 msgid "Update Secret Token"
 msgstr "更新成功"

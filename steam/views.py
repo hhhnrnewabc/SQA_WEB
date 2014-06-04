@@ -57,6 +57,7 @@ def user_login(request):
             if not is_create:
                 steam_user.create_new_secret_token()
             # Redirect to a success page.
+            messages.success(request, _('Login Success'))
             if next == "":
                 return HttpResponseRedirect(reverse('steam:index'))
             else:
@@ -64,21 +65,21 @@ def user_login(request):
 
         else:
             # Return a 'disabled account' error message
-            return render_to_response('steam/login.html', {'login_fall': _("disabled account"), },
-                context_instance=RequestContext(request))
+            messages.error(request, _('Disabled account'))
+            return render_to_response('steam/login.html',
+                                      context_instance=RequestContext(request))
 
     else:
         # Return an 'invalid login' error message.
-        return render_to_response('steam/login.html',
-                                  {'login_fall': _("invalid login"),
-                                   'user_email': email
-                                   }, context_instance=RequestContext(request))
+        messages.error(request, _('Invalid login'))
+        return render_to_response('steam/login.html', {'user_email': email},
+                                  context_instance=RequestContext(request))
 
 
 def user_logout(request):
     logout(request)
-    return render_to_response('steam/index.html', {'logout_success': _("Logout Success"), },
-                              context_instance=RequestContext(request))
+    messages.success(request, _('Login Success'))
+    return HttpResponseRedirect(reverse('steam:index'))
 
 
 def resend_email(request):

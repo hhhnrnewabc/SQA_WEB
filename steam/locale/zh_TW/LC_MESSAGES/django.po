@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-01 04:59+0800\n"
+"POT-Creation-Date: 2014-06-04 14:35+0800\n"
 "PO-Revision-Date: 2014-05-06 18:30+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,31 +18,31 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.5\n"
 
-#: form.py:37 form.py:70
+#: form.py:42 form.py:75
 msgid "Email"
 msgstr "電子郵件"
 
-#: form.py:38
+#: form.py:43
 msgid "This email has already been registered."
 msgstr "電子郵件已經被註冊"
 
-#: form.py:39
+#: form.py:44
 msgid "This is not the e-mail format"
 msgstr "無效的電子郵件格式"
 
-#: form.py:41 templates/steam/login.html:40
+#: form.py:46 templates/steam/login.html:40
 msgid "Password"
 msgstr "密碼"
 
-#: form.py:42 form.py:44 templates/steam/login.html:42
+#: form.py:47 form.py:49 templates/steam/login.html:42
 msgid "Caps lock is on"
 msgstr "大寫鎖定"
 
-#: form.py:43
+#: form.py:48
 msgid "Password confirmation"
 msgstr "確認密碼"
 
-#: form.py:55
+#: form.py:60
 msgid "Passwords don't match"
 msgstr "密碼不一致"
 
@@ -70,27 +70,27 @@ msgstr "更新日期"
 msgid "Published Date"
 msgstr "發佈日期"
 
-#: views.py:65
-msgid "disabled account"
-msgstr "登入失敗：非法帳號"
-
-#: views.py:71
-msgid "invalid login"
-msgstr "登入失敗"
-
-#: views.py:78
-msgid "Logout Success"
+#: views.py:60 views.py:81
+msgid "Login Success"
 msgstr "登出成功"
 
-#: views.py:103
+#: views.py:68
+msgid "Disabled account"
+msgstr "登入失敗：非法帳號"
+
+#: views.py:74
+msgid "Invalid login"
+msgstr "登入失敗"
+
+#: views.py:106
 msgid "Create User Success"
 msgstr ""
 
-#: views.py:148
+#: views.py:151
 msgid "Welcome SQA Game Center Project"
 msgstr "FCU SQA 遊戲中心專案"
 
-#: views.py:173
+#: views.py:176
 msgid "Sign up Success"
 msgstr "註冊成功"
 
@@ -98,6 +98,10 @@ msgstr "註冊成功"
 #, python-format
 msgid "Password reset on %(site_name)s"
 msgstr ""
+
+#: templates/steam/base.html:73
+msgid "Please fill out personal information."
+msgstr "請填寫個人資訊"
 
 #: templates/steam/base_body.html:4
 msgid "You are using an <strong>outdated</strong> browser. Please "
@@ -111,79 +115,82 @@ msgstr ""
 msgid "to improve your experience."
 msgstr ""
 
-#: templates/steam/base_body.html:27
+#: templates/steam/base_body.html:24
 msgid "Download"
 msgstr "下載"
 
-#: templates/steam/base_body.html:31 templates/steam/base_body.html.py:53
+#: templates/steam/base_body.html:29 templates/steam/base_body.html.py:51
 msgid "Game"
 msgstr "遊戲"
 
-#: templates/steam/base_body.html:34 templates/steam/base_body.html.py:57
-#, fuzzy
+#: templates/steam/base_body.html:32 templates/steam/base_body.html.py:55
 msgid "All Game"
-msgstr "遊戲"
+msgstr "全部遊戲"
 
-#: templates/steam/base_body.html:36 templates/steam/base_body.html.py:59
+#: templates/steam/base_body.html:34 templates/steam/base_body.html.py:57
 msgid "Action"
 msgstr "動作"
 
-#: templates/steam/base_body.html:38 templates/steam/base_body.html.py:61
+#: templates/steam/base_body.html:36 templates/steam/base_body.html.py:59
+#: templates/steam/base_body.html:84 templates/steam/base_body.html.py:100
 msgid "Another action"
 msgstr ""
 
-#: templates/steam/base_body.html:40 templates/steam/base_body.html.py:63
+#: templates/steam/base_body.html:38 templates/steam/base_body.html.py:61
 msgid "Something else here"
 msgstr ""
 
-#: templates/steam/base_body.html:44 templates/steam/base_body.html.py:67
-#: templates/steam/base_body.html:96 templates/steam/base_body.html.py:123
+#: templates/steam/base_body.html:42 templates/steam/base_body.html.py:65
 msgid "Separated link"
 msgstr ""
 
-#: templates/steam/base_body.html:46 templates/steam/base_body.html.py:69
-#: templates/steam/base_body.html:98 templates/steam/base_body.html.py:125
+#: templates/steam/base_body.html:44 templates/steam/base_body.html.py:67
 msgid "One more separated link"
 msgstr ""
 
-#: templates/steam/base_body.html:75
+#: templates/steam/base_body.html:76 templates/steam/base_body.html.py:91
 msgid "User"
 msgstr "使用者"
 
-#: templates/steam/base_body.html:79 templates/steam/base_body.html.py:105
-msgid "Developer"
-msgstr "開發者"
-
-#: templates/steam/base_body.html:82 templates/steam/base_body.html.py:109
+#: templates/steam/base_body.html:79 templates/steam/base_body.html.py:95
+#: templates/steam/base_body.html:112 templates/steam/base_body.html.py:133
 msgid "Home"
 msgstr ""
 
-#: templates/steam/base_body.html:85 templates/steam/base_body.html.py:112
-msgid "API ROOT"
+#: templates/steam/base_body.html:82 templates/steam/base_body.html.py:98
+msgid "List All User"
 msgstr ""
 
-#: templates/steam/base_body.html:89 templates/steam/base_body.html.py:116
+#: templates/steam/base_body.html:109 templates/steam/base_body.html.py:129
+msgid "Developer"
+msgstr "開發者"
+
+#: templates/steam/base_body.html:115 templates/steam/base_body.html.py:136
 msgid "Developer Profile"
 msgstr "開發者個人資訊"
 
-#: templates/steam/base_body.html:92 templates/steam/base_body.html.py:119
+#: templates/steam/base_body.html:119 templates/steam/base_body.html.py:140
 #, fuzzy
 msgid "Developer API Token"
 msgstr "開發者個人資訊"
 
-#: templates/steam/base_body.html:132
+#: templates/steam/base_body.html:122 templates/steam/base_body.html.py:143
+msgid "API ROOT"
+msgstr ""
+
+#: templates/steam/base_body.html:151
 msgid "About"
 msgstr "關於"
 
-#: templates/steam/base_body.html:139
+#: templates/steam/base_body.html:158
 msgid "Login"
 msgstr "登入"
 
-#: templates/steam/base_body.html:141 templates/steam/create_user.html:23
+#: templates/steam/base_body.html:160 templates/steam/create_user.html:23
 msgid "Sign up"
 msgstr "註冊"
 
-#: templates/steam/base_body.html:145
+#: templates/steam/base_body.html:164
 msgid "Logout"
 msgstr "登出"
 
@@ -265,14 +272,13 @@ msgid "Reset Password"
 msgstr "重設密碼"
 
 #: templates/steam/password_reset_email.html:3
-#, fuzzy, python-format
+# python-format
 msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
 msgstr "因為您在 %(site_name)s 註冊，才會收到這封電子郵件"
 
 #: templates/steam/password_reset_email.html:5
-#, fuzzy
 msgid "Please go to the following page and choose a new password:"
 msgstr "請進入下面的頁面，以啟動帳戶："
 

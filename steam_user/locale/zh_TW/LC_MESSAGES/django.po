@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-01 04:59+0800\n"
+"POT-Creation-Date: 2014-06-04 14:35+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: form.py:8 models.py:33 views.py:110
+#: form.py:8 models.py:33 views.py:185
 msgid "Image"
 msgstr "圖片"
 
@@ -86,26 +86,58 @@ msgstr "性別"
 msgid "Sex :Female, Male, Other "
 msgstr "性別 :女, 男, 其他"
 
-#: views.py:84
+#: views.py:159
 msgid "Image Upload Success"
 msgstr " 圖片上傳成功"
 
-#: views.py:93
+#: views.py:168
 msgid "Image Upload Fail"
 msgstr "圖片上傳失敗"
 
-#: views.py:94
+#: views.py:169
 msgid "Update Success"
 msgstr "更新成功"
 
-#: templates/steam_user/list_all_user.html:43
+#: templates/steam_user/index.html:69
+msgid "Chat"
+msgstr ""
+
+#: templates/steam_user/index.html:70
+msgid "Chat with friends in web."
+msgstr ""
+
+#: templates/steam_user/index.html:71 templates/steam_user/index.html.py:81
+msgid "Coming soon!"
+msgstr ""
+
+#: templates/steam_user/index.html:79
+msgid "ADD"
+msgstr ""
+
+#: templates/steam_user/index.html:80
+msgid "Add friends on web."
+msgstr ""
+
+#: templates/steam_user/index.html:89
+msgid "Serach"
+msgstr ""
+
+#: templates/steam_user/index.html:90
+msgid "Search player on web."
+msgstr ""
+
+#: templates/steam_user/list_all_user.html:89
 msgid "加入日期"
 msgstr ""
 
-#: templates/steam_user/user_profile.html:30
+#: templates/steam_user/self_profile.html:30
+#: templates/steam_user/user_profile.html:20
+#: templates/steam_user/user_profile_new.html:64
 msgid "Email"
 msgstr ""
 
-#: templates/steam_user/user_profile.html:45
+#: templates/steam_user/self_profile.html:45
+#: templates/steam_user/user_profile.html:35
+#: templates/steam_user/user_profile_new.html:82
 msgid "Update"
 msgstr "更新"

@@ -12,5 +12,3 @@ class TimezoneMiddleware(object):
         else:
             timezone.deactivate()
             # timezone.activate(pytz.timezone('Asia/Taipei'))
-
-

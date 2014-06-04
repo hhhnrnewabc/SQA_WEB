@@ -61,7 +61,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',  # 自動切換語言
+    'django.middleware.locale.LocaleMiddleware',  # i18n auto switch lang
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -69,6 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',  # Django Debug Toolbar
     'baseuser.middleware.time_zone.TimezoneMiddleware',  # for change time_zone
+    'baseuser.middleware.check.CheckUserNameMiddleware',  # check user name
 )
 
 

@@ -1,90 +1,78 @@
 {% extends "steam/base.html" %} {% load staticfiles %}
-{% block title %}
-  <title>Dev SQA Game Center Project</title>
-{% endblock %}
-
-
-
-    {% block message %}
-      {% if logout_success %}
-        <div class="alert alert-success alert-dismissable container">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>{{logout_success}}</strong>
-        </div>
-      {% endif %} 
-    {% endblock %} 
-
+    {% block title %}
+        <title>Dev SQA Game Center Project</title>
+    {% endblock %}
 
     {% block maininfo %}
     <div class="carousel">
     <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, Developer!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more »</a>
-        </p>
-      </div>
+        <div class="container">
+            <h1>Hello, Developer!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg" role="button">Learn more »</a>
+            </p>
+        </div>
     </div>
     </div>
     {% endblock %} {% block secondinfo %}
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h2>List</h2>
-          <p>總計：{{ poll_len }} 資料</p>
-          <p><a class="btn btn-default" href="#list" role="button">View List »</a>
-          </p>
-        </div>
-
-        <div class="col-md-4 ">
-          <h2>最後五筆資料</h2>
-          <table class="table">
-            {% if latest_poll_list %} {% for poll in latest_poll_list %}
-            <tr>
-              <td>
-                <p>Last {{ forloop.counter }}</p>
-              </td>
-              <td>
-                <a href="/polls/{{ poll.id }}/">{{ poll.question }}</a>
-              </td>
-            </tr>
-            {% endfor %} {% else %}
-            <div class="alert alert-warning">
-              <a href="#" class="alert-link">
-                <p>No polls are available.</p>
-              </a>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>List</h2>
+                <p>總計：{{ poll_len }} 資料</p>
+                <p><a class="btn btn-default" href="#list" role="button">View List »</a>
+                </p>
             </div>
-            {% endif %}
-          </table>
+
+            <div class="col-md-4 ">
+                <h2>最後五筆資料</h2>
+                <table class="table">
+                    {% if latest_poll_list %} {% for poll in latest_poll_list %}
+                    <tr>
+                        <td>
+                            <p>Last {{ forloop.counter }}</p>
+                        </td>
+                        <td>
+                            <a href="/polls/{{ poll.id }}/">{{ poll.question }}</a>
+                        </td>
+                    </tr>
+                    {% endfor %} {% else %}
+                    <div class="alert alert-warning">
+                        <a href="#" class="alert-link">
+                            <p>No polls are available.</p>
+                        </a>
+                    </div>
+                    {% endif %}
+                </table>
+            </div>
         </div>
-      </div>
     </div>
     {% endblock %}
 
     {% block thirdinfo %}
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a>
-          </p>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details »</a>
+                </p>
+            </div>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a>
-          </p>
-        </div>
-      </div>
     </div>
     {% endblock %}
 
