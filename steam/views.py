@@ -78,7 +78,7 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    messages.success(request, _('Login Success'))
+    messages.success(request, _('Logout Success'))
     return HttpResponseRedirect(reverse('steam:index'))
 
 

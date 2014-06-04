@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA_Steam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-04 14:35+0800\n"
+"POT-Creation-Date: 2014-06-04 14:53+0800\n"
 "PO-Revision-Date: 2014-05-06 23:55+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,9 +70,9 @@ msgstr "アップデート日付"
 msgid "Published Date"
 msgstr "発行日"
 
-#: views.py:60 views.py:81
+#: views.py:60
 msgid "Login Success"
-msgstr "ログアウト成功"
+msgstr "ログイン成功"
 
 #: views.py:68
 msgid "Disabled account"
@@ -81,6 +81,10 @@ msgstr "無効になったアカウント"
 #: views.py:74
 msgid "Invalid login"
 msgstr "無効なログイン"
+
+#: views.py:81
+msgid "Logout Success"
+msgstr "ログアウト成功"
 
 #: views.py:106
 msgid "Create User Success"
@@ -97,7 +101,7 @@ msgstr "登録成功"
 #: templates/password_reset_subject.txt:2
 #, python-format
 msgid "Password reset on %(site_name)s"
-msgstr ""
+msgstr "%(site_name)s パスワードのリセット"
 
 #: templates/steam/base.html:73
 msgid "Please fill out personal information."
@@ -105,15 +109,15 @@ msgstr "個人情報を記入してください。"
 
 #: templates/steam/base_body.html:4
 msgid "You are using an <strong>outdated</strong> browser. Please "
-msgstr ""
+msgstr "あなたがブラウザ<strong>古いの</strong>を使用しています。"
 
 #: templates/steam/base_body.html:4
 msgid "upgrade your browser"
-msgstr ""
+msgstr "あなたの経験を向上させるために、"
 
 #: templates/steam/base_body.html:4
 msgid "to improve your experience."
-msgstr ""
+msgstr "ブラウザをアップグレードしてください。"
 
 #: templates/steam/base_body.html:24
 msgid "Download"
@@ -271,8 +275,9 @@ msgstr "一時停止"
 msgid "Reset Password"
 msgstr "パスワードをリセット"
 
+# python-format
 #: templates/steam/password_reset_email.html:3
-#python-format
+#, python-format
 msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."

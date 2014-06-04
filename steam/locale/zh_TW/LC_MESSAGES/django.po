@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SQA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-04 14:35+0800\n"
+"POT-Creation-Date: 2014-06-04 14:53+0800\n"
 "PO-Revision-Date: 2014-05-06 18:30+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,9 +70,9 @@ msgstr "更新日期"
 msgid "Published Date"
 msgstr "發佈日期"
 
-#: views.py:60 views.py:81
+#: views.py:60
 msgid "Login Success"
-msgstr "登出成功"
+msgstr "登入成功"
 
 #: views.py:68
 msgid "Disabled account"
@@ -81,6 +81,10 @@ msgstr "登入失敗：非法帳號"
 #: views.py:74
 msgid "Invalid login"
 msgstr "登入失敗"
+
+#: views.py:81
+msgid "Logout Success"
+msgstr "登出成功"
 
 #: views.py:106
 msgid "Create User Success"
@@ -105,15 +109,15 @@ msgstr "請填寫個人資訊"
 
 #: templates/steam/base_body.html:4
 msgid "You are using an <strong>outdated</strong> browser. Please "
-msgstr ""
+msgstr "你正在使用<strong>太舊</strong>的瀏覽器 請"
 
 #: templates/steam/base_body.html:4
 msgid "upgrade your browser"
-msgstr ""
+msgstr "更新你的瀏覽器"
 
 #: templates/steam/base_body.html:4
 msgid "to improve your experience."
-msgstr ""
+msgstr "確保使用正常顯示"
 
 #: templates/steam/base_body.html:24
 msgid "Download"
@@ -271,8 +275,9 @@ msgstr "暫停服務"
 msgid "Reset Password"
 msgstr "重設密碼"
 
-#: templates/steam/password_reset_email.html:3
 # python-format
+#: templates/steam/password_reset_email.html:3
+#, python-format
 msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
