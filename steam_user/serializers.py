@@ -4,8 +4,11 @@ from rest_framework import serializers, fields
 
 
 class SteamUserSerializer(serializers.ModelSerializer):
-    photo = fields.SerializerMethodField('get_photo')
+    email = fields.SerializerMethodField('get_email')
 
     class Meta:
         model = SteamUser
-        fields = ('first_name', 'last_name', 'nick_name', 'id')
+        fields = ('first_name', 'last_name', 'nick_name', 'id', 'email')
+
+    def get_email(self, obj):
+        return '%s' % obj.baseuser.email

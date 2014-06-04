@@ -54,7 +54,8 @@
                                       {{~items}}\
                                       <li data-url="{{!$item.id}}">\
                                           <a href="/steam/user/{{!$item.id}}/">\
-                                              {{$item.nick_name}}\
+                                              {{^$item.nick_name}}{{$item.email}}{{/end}}\
+                                              {{#$item.nick_name}}{{{$item.nick_name}}}{{/$item.nick_name}}\
                                               {{#$item.first_name}}<div>{{{$item.first_name}}} {{{$item.last_name}}}</div>{{/$item.first_name}}\
                                           </a>\
                                       </li>\
