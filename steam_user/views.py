@@ -19,26 +19,27 @@ import datetime
 import random
 
 next_pudate_time = None
-user_list = []
+user_qlist = []
+SEARCH_TIME_LIMIT_MINUTES = 10
 
 
 # user_list update, interval of at least 10 minutes
-def get_user_list():
-    global user_list, next_pudate_time
+def get_user_qlist():
+    global user_qlist, next_pudate_time
     now = datetime.datetime.now()
     if not next_pudate_time or now > next_pudate_time:
-        next_pudate_time = now + datetime.timedelta(minutes=10)
-        user_list = SteamUser.objects.filter(baseuser__is_superuser=False,
-                                             baseuser__is_staff=False,
-                                             baseuser__is_active=True)
-    return user_list
+        next_pudate_time = now + datetime.timedelta(minutes=SEARCH_TIME_LIMIT_MINUTES)
+        user_qlist = SteamUser.objects.filter(baseuser__is_superuser=False,
+                                              baseuser__is_staff=False,
+                                              baseuser__is_active=True)
+    return user_qlist
 
 
 def index(request):
-    user_list_count = len(get_user_list())
+    user_list_count = len(get_user_qlist())
     random4_user = []
     while len(random4_user) < 4:
-        u = get_user_list()[random.randrange(0, user_list_count)]
+        u = get_user_qlist()[random.randrange(0, user_list_count)]
         if u not in random4_user:
             random4_user.append(u)
 
@@ -48,7 +49,7 @@ def index(request):
 
 
 def list_all_user(request):
-    paginator = DiggPaginator(get_user_list(), 10, body=2, margin=2, tail=2)
+    paginator = DiggPaginator(get_user_qlist(), 10, body=2, margin=2, tail=2)
 
     page = request.GET.get('page')
     try:
@@ -71,6 +72,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+from django.db.models import Q
 
 
 class search(APIView):
@@ -81,25 +83,14 @@ class search(APIView):
         data = request.DATA
         if data:
             search_name = data.get('search', '')
-            user_list = list(SteamUser.objects.filter(baseuser__is_superuser=False,
-                                                      baseuser__is_staff=False,
-                                                      baseuser__is_active=True,
-                                                      first_name__contains=search_name))
-            user_list += list(SteamUser.objects.filter(baseuser__is_superuser=False,
-                                                       baseuser__is_staff=False,
-                                                       baseuser__is_active=True,
-                                                       last_name__contains=search_name))
-            user_list += list(SteamUser.objects.filter(baseuser__is_superuser=False,
-                                                       baseuser__is_staff=False,
-                                                       baseuser__is_active=True,
-                                                       nick_name__contains=search_name))
-            user_list += list(SteamUser.objects.filter(baseuser__is_superuser=False,
-                                                       baseuser__is_staff=False,
-                                                       baseuser__is_active=True,
-                                                       baseuser__email__contains=search_name))
-            user_set = set(user_list)
+            user_list = get_user_qlist().filter(
+                Q(first_name__contains=search_name) |
+                Q(last_name__contains=search_name) |
+                Q(baseuser__email__contains=search_name)
+                )
+
             if user_list:
-                serializer = SteamUserSerializer(user_set, many=True)
+                serializer = SteamUserSerializer(user_list, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
         return Response("", status=status.HTTP_200_OK)
 
