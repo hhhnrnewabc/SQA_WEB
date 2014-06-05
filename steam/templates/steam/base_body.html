@@ -119,7 +119,7 @@
                                 <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
                             </li>
                             <li class="{% active request '^/steam/dev/app/$' %}">
-                                <a href="">{% trans "Manage Applications" %}</a>
+                                <a href="{% url 'steam_dev:app_token' %}">{% trans "Manage Applications" %}</a>
                             </li>
                             <li class="uk-nav-divider"></li>
                             <li>
@@ -143,7 +143,7 @@
                                     <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
                                 </li>
                                 <li class="{% active request '^/steam/dev/app/$' %}">
-                                    <a href="#">{% trans "Manage Applications" %}</a>
+                                    <a href="{% url 'steam_dev:app_token' %}">{% trans "Manage Applications" %}</a>
                                 </li>
                                 <li class="uk-nav-divider"></li>
                                 <li>

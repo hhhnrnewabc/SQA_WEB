@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^dev_profile/$', views.SteamDevProfileView.as_view(), name='dev_profile'),
     # url(r'^app/$', views.SteamDevProfileView.as_view(), name='manager_app'),
     url(r'^dev_profile/update_secret_token/$', views.update_secret_token, name='update_secret_token'),
+    url(r'^app_token/$', views.app_token, name='app_token'),
 
     url(r'^api/$', views.APIRoot.as_view(), name="api_root"),
     url(r'^api/steam_user_list$', views.SteamUserList.as_view(), name="steam_user_list"),

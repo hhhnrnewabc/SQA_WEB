@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from steam_dev.form import SteamDevForm, SteamDevAPPForm, SteamDevApplyForm
 from steam_user.models import SteamUser
-from steam_dev.models import SteamDeveloper
+from steam_dev.models import SteamDeveloper, SteamDevAPPS
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -38,6 +38,21 @@ def update_secret_token(request):
         return render_to_response('steam_dev/update_secret_token.html',
                                   {'steam_dev': steam_dev},
                                   context_instance=RequestContext(request))
+
+
+def app_token(request):
+    try:
+        steam_dev = SteamDeveloper.objects.get(baseuser=request.user)
+    except SteamDeveloper.DoesNotExist:
+        return HttpResponseRedirect(reverse('steam_dev:dev_apply'))
+    except (TypeError, TypeError, ValueError, OverflowError, KeyError):
+        return HttpResponseRedirect(reverse('steam:user_signup'))
+
+    apps = SteamDevAPPS.objects.filter(steam_dev=steam_dev)
+
+    return render_to_response('steam_dev/app_token.html',
+                              {'apps': apps},
+                              context_instance=RequestContext(request))
 
 
 # require for steam_dev

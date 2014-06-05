@@ -1,0 +1,42 @@
+{% extends "steam/base.html" %}
+
+{% block title %}
+  <title>APP</title>
+{% endblock %}
+
+{% block importCSS %}<link href="{% static 'steam/stylesheets/edit.css' %}" rel="stylesheet">{% endblock %}
+{% block maininfo %}
+    <div class="col-md-12">
+        <div class="steam_user_edit">
+            <div class="container" style="margin-top: 50px;">
+                {% for app in apps %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">APP Name</h3>
+                        </div>
+                        <div class="panel-body">
+                            {{ app.app_name }}
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">APP API Token:</h3>
+                        </div>
+                        <div class="panel-body token">
+                            <p>{{ app.api_token }}</p>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">APP Secret Token:</h3>
+                        </div>
+                        <div class="panel-body token">
+                            <p>{{ app.api_token }}</p>
+                        </div>
+                    </div>
+                    </br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
