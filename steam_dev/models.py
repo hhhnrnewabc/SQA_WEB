@@ -85,7 +85,7 @@ class SteamDevAPPS(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.get_app_name()
+        return "%s-%s" % (self.steam_dev, self.get_app_name())
 
     def get_app_name(self):
         return self.app_name

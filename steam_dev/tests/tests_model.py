@@ -74,10 +74,10 @@ class SteamDevAPPSTestCase(TestCase):
             )
 
     def test_name(self):
-        name = self.app.get_app_name()
+        name = str(self.app.steam_dev) + '-' + self.app.get_app_name()
         name_str = str(self.app)
         self.assertEqual(name, name_str)
-        self.assertEqual(name, 'app')
+        self.assertEqual(name, 'FL-app')
 
         update_dict = {'app_name': "new app"}
         self.app.update(**update_dict)
