@@ -10,6 +10,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.template import loader
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+from steam.models import (Game, GameLanguages, GameVersions, GameUpdatedDate, GameReviews, GameSystemRequirements)
 
 
 class AdminImageWidget(forms.FileInput):
@@ -115,3 +116,42 @@ class PasswordResetForm(forms.Form):
             msg = EmailMessage(subject, email, from_email, [user.email])
             msg.content_subtype = "html"  # Main content is now text/html
             msg.send()
+
+
+class GameForm_1_Name(forms.ModelForm):
+
+    class Meta:
+        model = Game
+
+
+class GameForm_2_Version(forms.ModelForm):
+
+    class Meta:
+        model = GameVersions
+
+
+class GameForm_3_Language(forms.ModelForm):
+
+    class Meta:
+        model = GameLanguages
+
+
+class GameForm_4_SysRequirement(forms.ModelForm):
+
+    class Meta:
+        model = GameSystemRequirements
+
+
+class GameForm_5_UpdatedDate(forms.ModelForm):
+
+    reason = forms.CharField(label=_("Game Update Reason"), widget=forms.Textarea,
+                             help_text=_("Update reason. Max Lenght:1000. Type:MarkDown, text"))
+
+    class Meta:
+        model = GameUpdatedDate
+
+
+class GameReviewsForm(forms.ModelForm):
+
+    class Meta:
+        model = GameReviews

@@ -23,6 +23,9 @@ from django.template import loader
 from django.conf import settings
 from django.views.decorators.debug import sensitive_post_parameters
 import datetime
+from steam.models import (GameForm_1_Name, GameForm_2_Version,
+                          GameForm_3_Language, GameForm_4_SysRequirement,
+                          GameForm_5_UpdatedDate, GameReviewsForm)
 
 
 def index(request):
@@ -200,3 +203,34 @@ def baseuser_password_reset(request):
             'html_email_template_name': None
     }
     return password_reset(request, **c)
+
+
+# def game_edit(request):
+#     mode = request.session.get('edit_mode', None)
+#     edit_step = request.session.get('editing_game_step', None)
+#     game_id = request.session.get('editibg_game_is', None)
+
+#     if edit_step:
+#         form_dict = {'1': GameForm_1_Name(),
+#                      '2': GameForm_2_Version(),
+#                      '3': GameForm_3_Language(),
+#                      '4': GameForm_4_SysRequirement(),
+#                      '5': GameForm_5_UpdatedDate()}
+
+#         form = form_dict.get('edit_step', None)
+
+#         if request.POST:
+#             if mode and game_id:
+#                 game = Game.objects.get(id=game_id)
+#                 form = form(request.POST, instance=game)
+#             else:
+#                 form = form(request.POST)
+
+#             if form.is_valid():
+#                 form.save()
+#                 if int(edit_step) <=5:
+#                 request.session['editing_game_step'] = str(int(edit_step)+1)
+#                 return HttpResponseRedirect
+
+
+

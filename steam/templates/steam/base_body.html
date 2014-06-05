@@ -118,6 +118,9 @@
                             <li class="{% active request '^/steam/dev/dev_profile$' %}">
                                 <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
                             </li>
+                            <li class="{% active request '^/steam/dev/app/$' %}">
+                                <a href="">{% trans "Manage Applications" %}</a>
+                            </li>
                             <li class="uk-nav-divider"></li>
                             <li>
                                 <a href="{% url 'steam_dev:update_secret_token' %}">{% trans "Developer API Token" %}</a>
@@ -138,6 +141,9 @@
                                 </li>
                                 <li class="{% active request '^/steam/dev/dev_profile/$' %}">
                                     <a href="{% url 'steam_dev:dev_profile' %}">{% trans "Developer Profile" %}</a>
+                                </li>
+                                <li class="{% active request '^/steam/dev/app/$' %}">
+                                    <a href="#">{% trans "Manage Applications" %}</a>
                                 </li>
                                 <li class="uk-nav-divider"></li>
                                 <li>
