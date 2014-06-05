@@ -23,9 +23,9 @@ from django.template import loader
 from django.conf import settings
 from django.views.decorators.debug import sensitive_post_parameters
 import datetime
-from steam.models import (GameForm_1_Name, GameForm_2_Version,
-                          GameForm_3_Language, GameForm_4_SysRequirement,
-                          GameForm_5_UpdatedDate, GameReviewsForm)
+# from steam.form import (GameForm_1_Name, GameForm_2_Version,
+#                           GameForm_3_Language, GameForm_4_SysRequirement,
+#                           GameForm_5_UpdatedDate, GameReviewsForm)
 
 
 def index(request):
