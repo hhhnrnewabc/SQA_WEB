@@ -21,11 +21,32 @@ class SteamUserViewTestCase(TestCase):
 
     def test_login_logout(self):
         c = Client()
-        response = c.post('/steam/login/', {'Email': 'XX@yy.com', 'UserPassword': '1234'})
-        response.status_code
+        response = c.get('/')
+        response = c.get('/steam/login/')
         self.assertEqual(response.status_code, 200)
 
-        response = c.post('/steam/userLogout/')
+        response = c.post('/steam/userLogin/', {'Email': 'XX@yy.com', 'UserPassword': '1234'})
+        self.assertEqual(response.status_code, 302)
+
+        response = c.get('/steam/userLogin/')
+        self.assertEqual(response.status_code, 302)
+
+        c.logout()
+
+        response = c.post('/steam/userLogin/?next=/steam', {'Email': 'XX@yy.com', 'UserPassword': '1234'})
+        self.assertEqual(response.status_code, 302)
+
+        c.logout()
+
+        response = c.post('/steam/userLogin/', {'Email': 'XX@yy.com', 'UserPassword': '4321'})
+        response = c.get('/')
+
+        is_login = c.login(email='XX@yy.com', password='1234')
+        self.assertEqual(is_login, True)
+        response = c.get('/steam/user_profile/')
+        self.assertEqual(response.status_code, 200)
+
+        response = c.get('/steam/userLogout/')
         self.assertEqual(response.status_code, 302)
 
     def test_change_lang(self):
@@ -44,3 +65,8 @@ class SteamUserViewTestCase(TestCase):
         c.get('/')
         self.assertEqual(response.status_code, 302)
         self.assertEqual(timezone.get_current_timezone_name(), 'Asia/Taipei')
+
+    def test_game_index(self):
+        c = Client()
+        response = c.get('/steam/game/')
+        self.assertEqual(response.status_code, 200)
