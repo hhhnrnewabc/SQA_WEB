@@ -129,8 +129,8 @@ class EmailView(generic.View):
         send_mail_time = self.request.session.get('_send_signup_mail_time', None)
         if send_mail_time:
             send_mail_time = datetime.datetime.fromtimestamp(send_mail_time)
-        if not send_mail_time or send_mail_time + datetime.timedelta(minutes=10) > datetime.datetime.now():
-            return HttpResponse('{"status":"error"}', mimetype='application/json')
+            if send_mail_time + datetime.timedelta(minutes=10) > datetime.datetime.now():
+                return HttpResponse('{"status":"please wait 10 minutes."}', mimetype='application/json')
 
         self.request.session["_send_signup_mail_time"] = datetime.datetime.now().timestamp()
         token = signup_token_generator.make_token(user)
