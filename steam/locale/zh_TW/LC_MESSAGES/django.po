@@ -117,7 +117,7 @@ msgstr "更新你的瀏覽器"
 
 #: templates/steam/base_body.html:4
 msgid "to improve your experience."
-msgstr "確保使用正常顯示"
+msgstr "確保能正常顯示"
 
 #: templates/steam/base_body.html:24
 msgid "Download"
