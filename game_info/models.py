@@ -32,7 +32,7 @@ class GameRelation(models.Model):
 
 
 class GameInfo(models.Model):
-    game = models.ForeignKey(GameRelation, null=True)
+    game = models.ForeignKey(SteamDevAPPS, null=True)
 
     nema = models.CharField(max_length=20)
     chess = models.CharField(max_length=20)
