@@ -219,6 +219,8 @@ class APIRoot(generics.GenericAPIView):
                                         request=request, format=format),
             'Steam Developer List': reverse('steam_dev:steam_dev_list',
                                             request=request, format=format),
+            'Game Info update': reverse('game_info:update',
+                                            request=request, format=format),
         }
         return Response(url_dict)
 

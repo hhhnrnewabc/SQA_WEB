@@ -7,9 +7,12 @@ from steam_dev.models import SteamDevAPPS
 from game_info.models import GameInfo
 from game_info.serializers import GameInfoSerializer
 from django.http import Http404
+from game_info.api_doc import game_info_update_api
 
 
 class SteamDevAPPSGameInfo(APIView):
+
+    __doc__ = game_info_update_api
 
     def post(self, request, format=None):
         try:
