@@ -23,6 +23,8 @@ from django.template import loader
 from django.conf import settings
 from django.views.decorators.debug import sensitive_post_parameters
 import datetime
+from steam_dev.models import SteamDevAPPS
+from game_info.models import GameInfo
 # from steam.form import (GameForm_1_Name, GameForm_2_Version,
 #                           GameForm_3_Language, GameForm_4_SysRequirement,
 #                           GameForm_5_UpdatedDate, GameReviewsForm)
@@ -33,7 +35,19 @@ def index(request):
 
 
 def game_index(request):
-    return render(request, 'steam/game_index.html')
+    apps = SteamDevAPPS.objects.all()
+    return render_to_response('steam/game_index.html', {"apps": apps},
+                              context_instance=RequestContext(request))
+
+
+def game_detail(request, pk):
+    try:
+        app = SteamDevAPPS.objects.get(id=pk)
+        infos = GameInfo.objects.filter(game=pk).order_by('name', '-created')[:10]
+    except SteamDevAPPS.DoesNotExist:
+        raise Http404
+    return render_to_response('steam/game_detail.html', {"app": app, "infos": infos},
+                              context_instance=RequestContext(request))
 
 
 def login_page(request):

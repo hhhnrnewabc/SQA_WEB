@@ -1,0 +1,84 @@
+{% extends "steam/base.html" %}
+{% block title %}
+    <title>SQA Game Center Project</title>
+{% endblock %}
+
+
+{% block maininfo %}
+<div class="carousel">
+    <div class="jumbotron">
+        <div class="container">
+			<div class="uk-grid">
+				<div class="uk-width-medium-1-1">
+					<div class="uk-panel uk-panel-box uk-scrollspy-init-inview uk-scrollspy-inview uk-animation-scale-up" data-uk-scrollspy="{cls:'uk-animation-scale-up', repeat: true}">
+						<div class="uk-grid">
+							<div class="uk-width-medium-4-6 uk-container-center" style="text-align: center;">
+								<div class="uk-thumbnail uk-overlay-toggle" href="#">
+									<div class="uk-overlay">
+										<img src="{{ app.photo_big.url }}" width="auto" height="auto" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="uk-width-medium-2-6">
+								<h3>{{ app.app_name }}</h3>
+								<div class="uk-thumbnail uk-overlay-toggle" href="#">
+									<div class="uk-overlay">
+										<img src="{{ app.photo_small.url }}" width="128" height="auto" alt="">
+									</div>
+								</div>
+								</br>
+								<p>{{ app.app_introduction }}</p>
+								</br>
+								<small>{{ app.created }}</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %} 
+
+{% block secondinfo %}
+<div class="carousel">
+    <div class="container">
+        <div class="">
+			<table class="uk-table">
+			    <caption>戰況</caption>
+			    <thead>
+			        <tr>
+			        	<td>name</td>
+			            <td>chess</td>
+			            <td>action</td>
+			            <td>eaten</td>
+			            
+			            <td>fromx</td>
+			            <td>fromy</td>
+			            <td>tox</td>
+			            <td>toy</td>
+
+			            <td>created</td>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    {% for info in infos %}
+			        <tr>
+			            <td>{{ info.name }}</td>
+			            <td>{{ info.chess }}</td>
+			            <td>{{ info.action }}</td>
+			            <td>{{ info.eaten }}</td>
+
+			            <td>{{ info.fromx }}</td>
+			            <td>{{ info.fromy }}</td>
+			            <td>{{ info.tox }}</td>
+			            <td>{{ info.toy }}</td>
+			            <td>{{ info.created }}</td>
+			        </tr>
+			    {% endfor %}
+			    </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %} 

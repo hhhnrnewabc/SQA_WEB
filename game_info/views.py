@@ -14,6 +14,7 @@ class SteamDevAPPSGameInfo(APIView):
 
     __doc__ = game_info_update_api
 
+    @csrf_exempt
     def post(self, request, format=None):
         try:
             game = SteamDevAPPS.objects.get(api_token=request.DATA.get('api_token', None))
@@ -28,6 +29,7 @@ class SteamDevAPPSGameInfo(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @csrf_exempt
     def get(selfr, request, format=None):
         app = GameInfo.objects.all()
         serializers = GameInfoSerializer(app, many=True)

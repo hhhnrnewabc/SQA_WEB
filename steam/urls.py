@@ -15,6 +15,7 @@ urlpatterns = patterns('',
 
 	url(r'^$', views.index, name='index'),
 	url(r'^game/$', views.game_index, name='game_index'),
+    url(r'^game/(?P<pk>\d+)/$', views.game_detail, name='game_detail'),
 
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'steam/login.html'}, name='loginPage'),
 
