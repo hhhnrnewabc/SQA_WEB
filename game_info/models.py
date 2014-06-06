@@ -4,11 +4,19 @@ from steam_dev.models import SteamDevAPPS
 
 class GameRelation(models.Model):
 
-    game = models.ForeignKey(SteamDevAPPS, primary_key=True)
+    game = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        try:
+            app = SteamDevAPPS.objects.get(id=self.game)
+            self.name = str(app.steam_dev) + app.app_name
+            return super(GameRelation, self).save(*args, **kwargs)
+        except SteamDevAPPS.DoesNotExist:
+            pass
 
     # def update_game(self, game, commit=True, *args, **kwargs):
     #     try:
@@ -32,9 +40,9 @@ class GameRelation(models.Model):
 
 
 class GameInfo(models.Model):
-    game = models.ForeignKey(SteamDevAPPS, null=True)
+    game = models.ForeignKey(GameRelation, null=True)
 
-    nema = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
     chess = models.CharField(max_length=20)
 
     action = models.CharField(max_length=20)
@@ -49,3 +57,4 @@ class GameInfo(models.Model):
 
     def __str__(self):
         return self.name
+

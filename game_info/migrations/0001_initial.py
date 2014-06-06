@@ -19,7 +19,7 @@ class Migration(SchemaMigration):
         db.create_table('game_info_gameinfo', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('game', self.gf('django.db.models.fields.related.ForeignKey')(null=True, to=orm['game_info.GameRelation'])),
-            ('nema', self.gf('django.db.models.fields.CharField')(max_length=20)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=20)),
             ('chess', self.gf('django.db.models.fields.CharField')(max_length=20)),
             ('action', self.gf('django.db.models.fields.CharField')(max_length=20)),
             ('eaten', self.gf('django.db.models.fields.CharField')(max_length=20)),
@@ -51,7 +51,7 @@ class Migration(SchemaMigration):
             'fromy': ('django.db.models.fields.CharField', [], {'max_length': '5'}),
             'game': ('django.db.models.fields.related.ForeignKey', [], {'null': 'True', 'to': "orm['game_info.GameRelation']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'nema': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
             'tox': ('django.db.models.fields.CharField', [], {'max_length': '5'}),
             'toy': ('django.db.models.fields.CharField', [], {'max_length': '5'})
         },

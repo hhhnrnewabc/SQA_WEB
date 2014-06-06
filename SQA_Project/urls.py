@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^steam/', include('steam.urls', namespace="steam")),
     url(r'^steam/dev/', include('steam_dev.urls', namespace="steam_dev")),
     url(r'^steam/user/', include('steam_user.urls', namespace="steam_user")),
+    url(r'^steam/game_info/', include('game_info.urls', namespace="game_info")),
 
     # if nignx setting location /media/ : won't need it
     # for Filename and path attacks : use under line
