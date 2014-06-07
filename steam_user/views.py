@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import  login_required
 from django.forms.models import model_to_dict
-from steam_user.models import SteamUser
+from steam_user.models import SteamUser, SteamUserOnlineToken
 from steam_user.form import SteamUserForm
 from django.views.generic.edit import FormView
 from django.http import Http404
@@ -17,6 +17,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from SQA_Project.Digg_like_paginator import DiggPaginator
 import datetime
 import random
+from django.utils import timezone
+
+ONLINE_TIMEOUT_MINUTES = 10
 
 next_pudate_time = None
 user_qlist = []
@@ -68,9 +71,11 @@ def list_all_user(request):
 
 
 from steam_user.serializers import SteamUserSerializer
+from steam_user.serializers import SteamUserOnlineCheckSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.renderers import JSONRenderer
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.db.models import Q
 
@@ -93,6 +98,32 @@ class search(APIView):
                 serializer = SteamUserSerializer(user_list, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
         return Response("", status=status.HTTP_200_OK)
+
+
+class check_is_online(APIView):
+
+    # renderer_classes = (JSONRenderer)
+
+    @csrf_exempt
+    def post(self, request, format="json"):
+        data = request.DATA
+        if data:
+            token = data.get("token", None)
+            try:
+                user_online = SteamUserOnlineToken.objects.get(token=token)
+                print(user_online.updated)
+                print(type(user_online.updated))
+                delate = datetime.timedelta(minutes=ONLINE_TIMEOUT_MINUTES)
+                now = timezone.now()
+                if user_online.updated + delate < now:
+                    return Response({"detail": "time out"},
+                                    status=status.HTTP_200_OK)
+                user_online.update_online_time()
+            except SteamUserOnlineToken.DoesNotExist:
+                return Response({"detail": "not found"},
+                                status=status.HTTP_400_BAD_REQUEST)
+            serializer = SteamUserOnlineCheckSerializer(user_online)
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 def user_profile(request, user_id):

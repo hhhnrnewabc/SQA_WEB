@@ -7,6 +7,7 @@ import binascii
 import hashlib
 import os
 from django.conf import settings
+import datetime
 
 
 SEX = (
@@ -79,4 +80,27 @@ class StreamFriends(models.Model):
     last_togther_play_game = models.ForeignKey(Game)
     last_togther_play_time = models.DateTimeField()
 
+
+class SteamUserOnlineToken(models.Model):
+    user = models.ForeignKey(SteamUser, related_name='user_online_token')
+    token = models.CharField(max_length=40, unique=True, blank=True)
+    updated = models.DateTimeField(default=datetime.datetime.today())
+
+    def generate_key(self):
+        return binascii.hexlify(os.urandom(20)).decode("utf-8")
+
+    def update_online_time(self):
+        self.updated = datetime.datetime.today()
+        self.save()
+
+    def update_token(self):
+        self.token = self.generate_key()
+        self.save()
+
+    def save(self, commit=True, *args, **kwargs):
+        if not self.token:
+            self.token = self.generate_key()
+        if commit:
+            self.updated = datetime.datetime.today()
+            return super(SteamUserOnlineToken, self).save(*args, **kwargs)
 

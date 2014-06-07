@@ -1,0 +1,416 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"s",
+				"style	Attr"
+			],
+			[
+				"Ga",
+				"GameForm	(global, class)"
+			],
+			[
+				"__in",
+				"__init__	magic"
+			],
+			[
+				"su",
+				"super	(builtin, function)"
+			],
+			[
+				"Fr",
+				"from	(keyword, instance)"
+			],
+			[
+				"re",
+				"reason	(local, instance)"
+			],
+			[
+				"p",
+				"publisher	(local, instance)"
+			],
+			[
+				"d",
+				"developer	(local, instance)"
+			],
+			[
+				"rel",
+				"release_date	(local, instance)"
+			],
+			[
+				"Ha",
+				"hard_drive	(local, instance)"
+			],
+			[
+				"r",
+				"reason	(local, instance)"
+			],
+			[
+				"Has",
+				"has_subtitles	(local, instance)"
+			],
+			[
+				"De",
+				"developer	(local, instance)"
+			],
+			[
+				"bo",
+				"button	Tag"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"h",
+				"href	Attr"
+			],
+			[
+				"f",
+				"form	(local, instance)"
+			],
+			[
+				"err",
+				"error"
+			],
+			[
+				"ex",
+				"except	(keyword, instance)"
+			],
+			[
+				"g",
+				"global	(keyword, instance)"
+			],
+			[
+				"update",
+				"Update"
+			],
+			[
+				"pr",
+				"print	(builtin, function)"
+			],
+			[
+				"BU",
+				"button"
+			],
+			[
+				"T",
+				"template"
+			],
+			[
+				"fi",
+				"filename"
+			],
+			[
+				"b",
+				"byte_data"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 367.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_dev/views.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/Gravatar全球認證頭像.ipynb",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/SQA.sublime-project",
+		"/Users/swim/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/swim/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/swim/Library/Application Support/Sublime Text 3/Packages/User/Python3.sublime-settings",
+		"/Users/swim/Library/Application Support/Sublime Text 3/Packages/Django Manage Commands/DjangoCommands.sublime-settings",
+		"/Users/swim/Dropbox/Python/TK/TKwithMVC.py",
+		"/Users/swim/Dropbox/Python/TK/Untitled.py",
+		"/Users/swim/Dropbox/Python/SQAProject/QT/test_main_windows.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/examples/widgets/videoplayer.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/examples/widgets/settings.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/examples/widgets/scatter.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/examples/widgets/customcollide.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/MyPaintApp4.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/MyPaintApp3.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/MyPaintApp2.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/UserName_Password.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/hello_world.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/MyPaintApp.py",
+		"/Users/swim/Dropbox/Python/SQAProject/kivy/UserName:Password.py",
+		"/Users/swim/Dropbox/Python/PYQt/Hello, word!.py",
+		"/Users/swim/Downloads/PyQt-gpl-5.3.1-snapshot-0e31a2da0fa2/configure.py",
+		"/Volumes/Kivy/examples/RST_Editor/main.py",
+		"/Volumes/Kivy/examples/demo/pictures/main.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/templates/steam/game_detail.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/templates/steam/game_index.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/SQA_Project/urls.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_dev/api_doc.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/tests/tests_view.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/tests/tests_model.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_dev/tests/tests_model.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/baseuser/tests/tests.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_dev/models.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/form.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/locale/ja/LC_MESSAGES/django.po",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/locale/zh_TW/LC_MESSAGES/django.po",
+		"/Users/swim/Dropbox/Python/FCU課程檢索/reTest1.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/templates/steam/base_body.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/templates/steam_user/index.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/views.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/templates/steam_user/search_show_date.html",
+		"/Users/swim/Dropbox/Python/SQAProject/serveraction.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/urls.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_dev/admin.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/tests.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/baseuser/test/tests_admin.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/baseuser/test/tests_model.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/baseuser/test/tests_view.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/baseuser/tests.py",
+		"/Users/swim/Dropbox/Python/SQAProject/AWS_path/serveraction.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_dev/templates/steam_dev/dev_apply.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_dev/templates/steam_dev/dev_profile.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_dev/templates/steam_dev/update_secret_token.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/static/steam_user/stylesheets/steam_user.css",
+		"/Users/swim/Dropbox/Python/SQAProject/back_up/steam_user/index.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/templates/steam_user/self_profile.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/SQA_Project/dbsetings.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/models.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/models.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/templates/steam/login.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/templates/steam/signup_thanks.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam_user/templates/steam_user/user_profile.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/cover/index.html",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/admin/templates/registration/password_reset_complete.html",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/auth/templates/registration/password_reset_subject.txt",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/admin/templates/registration/password_reset_form.html",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/admin/templates/registration/password_reset_done.html",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/admin/templates/registration/password_reset_confirm.html",
+		"/Users/swim/Dropbox/Python/FCU課程檢索/page1_1.html",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/admin/templates/registration/password_reset_email.html",
+		"/Users/swim/Dropbox/Python/SQAProject/lwtCountdown-html/index.html",
+		"/Users/swim/Dropbox/Python/SQAProject/規格/dev_data_type.html",
+		"/Users/swim/Dropbox/Python/SQAProject/key/other/SQA-WEB.key",
+		"/Users/swim/Dropbox/Python/SQAProject/key/other/SQA-WEB.csr",
+		"/Users/swim/Dropbox/Python/SQAProject/key/other/SQA_WEB.key",
+		"/Users/swim/Dropbox/Python/SQAProject/key/other/SQA_WEB.csr",
+		"/Users/swim/Dropbox/Python/SQAProject/aws_path_fix.py",
+		"/Users/swim/Dropbox/Python/SQAProject/key/ssl.crt",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/auth/urls.py",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/auth/views.py",
+		"/usr/local/lib/python3.4/site-packages/django/contrib/auth/forms.py",
+		"/usr/local/lib/python3.4/site-packages/rest_framework/templates/rest_framework/api.html",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/SQA_Project/settings.py",
+		"/Users/swim/Downloads/barb_demo.py",
+		"/Users/swim/Dropbox/homework＆doc/演算法/HW/HW02_ConvexHull/ConvexHull.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/aws_path_fix.py",
+		"/Users/swim/Dropbox/Python/SQAProject/__init__.py",
+		"/Users/swim/Dropbox/Python/SQAProject/AWS_path/aws_path_fix.py",
+		"/Users/swim/Dropbox/Python/SQAProject/AWS_path/settings.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/SQA_Project/wsgi.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/SQA_Project/views.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/SQA_Project/__init__.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/manage.py",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/SQA_porject/settings.py",
+		"/usr/local/etc/nginx/nginx.conf",
+		"/Users/swim/Downloads/sfsca.crt",
+		"/Users/swim/Dropbox/HTML/mysite/mysite/wsgi.py",
+		"/Users/swim/Dropbox/Python/SQAProject/back_up/locale/zh_TW/LC_MESSAGES/django.po",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/locale/zh_TW/LC_MESSAGES/django.mo",
+		"/usr/local/lib/python3.4/site-packages/django/core/management/commands/makemessages.py",
+		"/Users/swim/Downloads/initializr/index.html",
+		"/Users/swim/Downloads/initializr/css/bootstrap.css",
+		"/Users/swim/Downloads/initializr/css/bootstrap-theme.css",
+		"/Users/swim/Dropbox/Python/SQAProject/規格/條款2.html",
+		"/Users/swim/Dropbox/Python/SQAProject/規格/條款.html",
+		"/usr/local/lib/python3.4/site-packages/bootstrapform/templates/bootstrapform/field.html",
+		"/usr/local/lib/python3.4/site-packages/bootstrapform/templates/field.html.backup",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/static/steam/stylesheets/edit.css",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/static/steam/stylesheets/styles.css",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/static/steam/stylesheets/dashboard.css",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/static/steam/stylesheets/jumbotron.css",
+		"/Users/swim/Dropbox/Python/SQAProject/WEB/steam/static/steam/stylesheets/signin.css",
+		"/Users/swim/Dropbox/HTML/mysite/mysite/views.py",
+		"/Users/swim/Dropbox/HTML/mysite/polls/views.py",
+		"/Users/swim/Dropbox/HTML/mysite/mysite/urls.py",
+		"/Users/swim/Dropbox/HTML/mysite/mysite/settings.py",
+		"/Users/swim/Dropbox/HTML/mysite/authprofile/models.py",
+		"/Users/swim/Dropbox/Python/Django/test project/mysite/polls/forms.py",
+		"/Users/swim/Dropbox/Python/Django/test project/mysite/polls/templates/polls/contact.html",
+		"/Users/swim/Dropbox/Python/Django/test project/mysite/polls/urls.py",
+		"/Users/swim/Dropbox/Python/Django/test project/mysite/polls/templates/polls/index.html",
+		"/Users/swim/Dropbox/Python/Django/test project/mysite/polls/templates/polls/detail.html",
+		"/Users/swim/Dropbox/Python/Django/test project/mysite/polls/class SingleObjectMixin(ContextMixin).py",
+		"/Users/swim/Dropbox/Python/Django/test project/mysite/polls/views.py",
+		"/Users/swim/Dropbox/Python/Django/test project/mysite/mysite/settings.py",
+		"/Users/swim/Dropbox/HTML/mysite/polls/templates/polls/base.html",
+		"/Users/swim/Dropbox/HTML/mysite/polls/templates/polls/index.html"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"QAction",
+			"dashboard",
+			"image",
+			"get_current_site",
+			"default_token_generator\n",
+			"urlsafe_base64_decode",
+			"force_bytes",
+			"urlsafe_base64_encode",
+			"get_user_model",
+			"UNUSABLE_PASSWORD"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 179.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "SQA.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 216.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from steam_dev.form import SteamDevForm, SteamDevAPPForm, SteamDevApplyForm
-from steam_user.models import SteamUser
+from steam_user.models import SteamUser, SteamUserOnlineToken
 from steam_dev.models import SteamDeveloper, SteamDevAPPS
 from django.views.generic.edit import FormView
 from django.contrib import messages
@@ -180,7 +180,6 @@ from django.views.decorators.csrf import csrf_exempt
 from steam_dev.serializers import SteamUserSerializer
 from steam_dev.serializers import SteamDeveloperSerializer
 from steam_dev.serializers import SteamDevAPPSSerializer
-from rest_framework import generics
 from steam_dev.api_doc import (api_root_api_doc,
                                SteamUserList_api_doc,
                                SteamDeveloperList_api_doc,
@@ -266,15 +265,16 @@ class SteamUserCheck(APIView):
             secret_token = data.get('user_secret_token', None)
             if api_token and secret_token:
                 try:
-                    steam_users = SteamUser.objects.get(api_token=api_token,
-                                                        secret_token=secret_token,
-                                                        baseuser__is_superuser=False,
-                                                        baseuser__is_staff=False,
-                                                        baseuser__is_active=True)
+                    steam_user = SteamUser.objects.get(api_token=api_token,
+                                                       secret_token=secret_token,
+                                                       baseuser__is_superuser=False,
+                                                       baseuser__is_staff=False,
+                                                       baseuser__is_active=True)
                 except SteamUser.DoesNotExist:
                     return Response({"detail": "not found"}, status=status.HTTP_200_OK)
+                SteamUserOnlineToken.objects.get_or_create(user=steam_user)
+                serializer = SteamUserSerializer(steam_user)
 
-                serializer = SteamUserSerializer(steam_users)
                 return Response(serializer.data, status=status.HTTP_200_OK)
 
             Response({"detail": "no user token"}, status=status.HTTP_200_OK)

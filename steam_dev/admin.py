@@ -33,3 +33,4 @@ class SteamDevAPPSAdmin(admin.ModelAdmin):
 
 admin.site.register(SteamDeveloper, SteamDeveloperAdmin)
 admin.site.register(SteamDevAPPS, SteamDevAPPSAdmin)
+
