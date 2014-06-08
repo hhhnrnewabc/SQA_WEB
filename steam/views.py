@@ -43,7 +43,7 @@ def game_index(request):
 def game_detail(request, pk):
     try:
         app = SteamDevAPPS.objects.get(id=pk)
-        infos = GameInfo.objects.filter(game=pk).order_by('name', '-created')[:10]
+        infos = GameInfo.objects.filter(game=pk).order_by('-created')
     except SteamDevAPPS.DoesNotExist:
         raise Http404
     return render_to_response('steam/game_detail.html', {"app": app, "infos": infos},
